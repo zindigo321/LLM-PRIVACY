@@ -1,0 +1,179 @@
+{
+  "classifier_input": {
+    "baselines": {
+      "scalar_mean_mse": 0.22193865837012977
+    },
+    "evidence": {
+      "files_matching": 42,
+      "files_on_list": 42,
+      "hash_list": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\uid_20261012_v2_r1_execution\\FINAL_ARTIFACTS_SHA256.txt",
+      "hash_list_sha256": "c521d26742b88f4a000ebe9c03c51569c6745d268bf00bdbb69e9590f6f023e7",
+      "package": {
+        "files": {
+          "../uid_20261012_v2/config.json": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd",
+          "../uid_20261012_v2/uid_common.py": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230",
+          "execution_r1.json": "7aa1ef61e2f231d19a7a0fff3483f480de6611215f6c027aed10014d23cfc52f"
+        },
+        "manifest_r1_sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044"
+      },
+      "problems": [],
+      "verified": true
+    },
+    "final_eval": {
+      "dot": 174.7909258261268,
+      "finite": true,
+      "n": 1024,
+      "pred_energy": 184.253674474197,
+      "sse": 62.00238956147455,
+      "target_energy": 227.3305667395311
+    },
+    "reported_only": {
+      "final_train_mode": {
+        "dot": 175.20276197464375,
+        "finite": true,
+        "n": 1024,
+        "pred_energy": 184.92862315287806,
+        "sse": 61.85366594312161,
+        "target_energy": 227.3305667395311
+      },
+      "frozen_criteria": {
+        "max_rse": 0.01,
+        "min_cosine": 0.99
+      },
+      "input_sha256": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722",
+      "model_state_sha256_final": "fc3a8a7e8480bd3a1ebddbbdd46d7164e1bd9c552ca3ce56f4b84fec2d300985"
+    },
+    "run": {
+      "guard_actions": [],
+      "interrupted": false,
+      "limits": {
+        "aggregate_wall_s": {
+          "limit": 7200,
+          "used": 510.515999999996
+        },
+        "arm_wall_s": {
+          "limit": 1800,
+          "used": 506.3440000000046
+        },
+        "evidence_bytes": {
+          "limit": 536870912,
+          "used": 83280
+        },
+        "invocations": {
+          "limit": 1,
+          "used": 1
+        },
+        "rss_bytes": {
+          "limit": 4294967296,
+          "used": 824033280
+        },
+        "training_starts": {
+          "limit": 2,
+          "used": 2
+        }
+      },
+      "prerequisite": {
+        "control": "U-CHECK",
+        "status": "COMPLETED_PASS"
+      },
+      "status": "COMPLETED_FIT_FAIL",
+      "updates_done": 3000,
+      "updates_planned": 3000
+    }
+  },
+  "disclosure": "EP-20261012-v1 was selected on 2026-10-12 AFTER the UID-20261012-v2 U-FIT result was observed; for this run it is a post-hoc exploratory classification, not a pre-registered test. The recorded COMPLETED_FIT_FAIL status and the frozen strict criteria (RSE <= 0.01, cosine >= 0.99) are unchanged and remain the standard for near-identity reconstruction.",
+  "does_not_establish": [
+    "identity reconstruction",
+    "compression",
+    "generalization",
+    "downstream usefulness"
+  ],
+  "exploratory": {
+    "checks": {
+      "M0": {
+        "pass": true,
+        "problems": []
+      },
+      "M1": {
+        "margin": -0.22725889680944172,
+        "operator": "<=",
+        "pass": true,
+        "threshold": 0.5,
+        "value": 0.2727411031905583
+      },
+      "M2": {
+        "margin": 0.054047226463373566,
+        "operator": ">=",
+        "pass": true,
+        "threshold": 0.8,
+        "value": 0.8540472264633736
+      },
+      "M3": {
+        "margin": -0.11700171813997634,
+        "operator": "<=",
+        "pass": true,
+        "threshold": 0.17755092669610384,
+        "value": 0.06054920855612749
+      },
+      "V1": {
+        "pass": true,
+        "problems": []
+      },
+      "V2": {
+        "pass": true,
+        "problems": []
+      }
+    },
+    "outcome": "PASS",
+    "policy_id": "EP-20261012-v1",
+    "quantities": {
+      "best_baseline": "scalar_mean",
+      "best_baseline_mse": 0.22193865837012977,
+      "cosine": 0.8540472264633736,
+      "mse": 0.06054920855612749,
+      "mse_over_best_baseline": 0.2728195664549294,
+      "rse": 0.2727411031905583,
+      "scalar_mean_mse": 0.22193865837012977,
+      "zero_mse": 0.22200250658157333
+    },
+    "reasons": [],
+    "thresholds": {
+      "baseline_factor": 0.8,
+      "max_rse": 0.5,
+      "min_cosine": 0.8
+    }
+  },
+  "final_train_mode_reported_only": {
+    "best_baseline": "scalar_mean",
+    "best_baseline_mse": 0.22193865837012977,
+    "cosine": 0.8544958598853383,
+    "mse": 0.0604039706475797,
+    "mse_over_best_baseline": 0.2721651608204429,
+    "rse": 0.2720868857639887,
+    "scalar_mean_mse": 0.22193865837012977,
+    "zero_mse": 0.22200250658157333
+  },
+  "label": "DERIVED: exploratory, post-hoc",
+  "original_outcome": {
+    "changed_by_this_assessment": false,
+    "criteria": {
+      "max_rse": 0.01,
+      "min_cosine": 0.99
+    },
+    "status": "COMPLETED_FIT_FAIL"
+  },
+  "policy": {
+    "classifier_sha256": "f7efd10029e8e50071b9a5013b23eefb1d2e3707d07d05e80fda4a690e160cd1",
+    "id": "EP-20261012-v1",
+    "policy_sha256": "fe14a225d16fed0373314eb89291035a2c8175bb17f37a7a03cf21c8e7fca592"
+  },
+  "schema": "ep-assessment-v1",
+  "subject": {
+    "arm": "U-FIT",
+    "evidence_dir": "diagnostics/uid_20261012_v2_r1_execution",
+    "manifest_r1_sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044",
+    "protocol_id": "UID-20261012-v2",
+    "revision_id": "UID-20261012-v2-r1",
+    "run_root": "D:/cgfed-runs/uid_20261012_v2_r1"
+  }
+}

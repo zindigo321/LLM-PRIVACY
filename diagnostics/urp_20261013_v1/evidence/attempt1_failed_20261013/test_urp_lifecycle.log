@@ -1,0 +1,29 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA --basetemp=C:\Users\acc04\AppData\Local\Temp\urp_v1_lc_final_20261013 checks/test_urp_lifecycle.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\urp_20261013_v1
+start: 2026-10-13T13:48:54+08:00
+end: 2026-10-13T13:49:18+08:00
+exit_code: 1
+--- output (stdout+stderr) ---
+F.....                                                                   [100%]
+================================== FAILURES ===================================
+_______ test_completed_arm_records_both_spaces_states_and_measurements ________
+
+tmp_path = WindowsPath('C:/Users/acc04/AppData/Local/Temp/urp_v1_lc_final_20261013/test_completed_arm_records_bot0')
+
+    def test_completed_arm_records_both_spaces_states_and_measurements(tmp_path):
+        import torch
+    
+        sys.path.insert(0, str(URP))
+>       import uid_common as C
+E       ModuleNotFoundError: No module named 'uid_common'
+
+checks\test_urp_lifecycle.py:52: ModuleNotFoundError
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_urp_lifecycle.py::test_second_invocation_is_refused_and_writes_nothing
+PASSED checks/test_urp_lifecycle.py::test_closed_arm_names_are_refused_by_the_supervisor
+PASSED checks/test_urp_lifecycle.py::test_child_refuses_a_module_with_an_unapproved_hash
+PASSED checks/test_urp_lifecycle.py::test_child_error_is_an_execution_error
+PASSED checks/test_urp_lifecycle.py::test_soft_stop_is_a_resource_stop
+FAILED checks/test_urp_lifecycle.py::test_completed_arm_records_both_spaces_states_and_measurements
+1 failed, 5 passed in 23.27s

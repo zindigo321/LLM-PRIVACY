@@ -1,0 +1,16 @@
+recorded: 2026-10-13T09:35:11+0800
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855        0  D:\cgfed-runs\urc_20261013_v1\arms\R-FIT\child.stderr.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855        0  D:\cgfed-runs\urc_20261013_v1\arms\R-FIT\child.stdout.txt
+1470ecdaaac2e1b41ac6a744ce5840cb3b95b9069cdfea8c973d1f64fa0c8895    15377  D:\cgfed-runs\urc_20261013_v1\arms\R-FIT\child_record.json
+e0dcace85e48ba41c1b3906eafd417c7c63e5447d69b25ca711601f131f726cd    62274  D:\cgfed-runs\urc_20261013_v1\arms\R-FIT\curve.jsonl
+e03f6f3a581c4b8a48f0433591d842200682751d4beb3d480fe977a7dde35c58  1996636  D:\cgfed-runs\urc_20261013_v1\arms\R-FIT\final_state.safetensors
+d28ac9778aadf4c69416c40117ff73e84306b467ee831507abdb63b05c38e98a  1996636  D:\cgfed-runs\urc_20261013_v1\arms\R-FIT\init_state.safetensors
+cb164cc01028d036c4bef36dc237229bb859e38ba1bf9f2ae6db835091a1a579     1435  D:\cgfed-runs\urc_20261013_v1\arms\R-FIT\job.json
+d7d792484cae7fad64685bb32d4219a78f9aa7ff185660c32f0ad972bea0e8f5      517  D:\cgfed-runs\urc_20261013_v1\ledger\end_R-FIT.json
+f8a8fddbd0ceee0a42771b02434584019eae604702dc8291d54d9651536fb380     2506  D:\cgfed-runs\urc_20261013_v1\ledger\invocation_001.json
+fb0dd867f905688c3c840d2b66ad0ec11ac54da2cb4f3f3c42e787e54976e1af      661  D:\cgfed-runs\urc_20261013_v1\ledger\invocation_001_end.json
+4c1e201429cc312df802f067520a82ddc4283feeecc4e3b26c7a8af2a64aceba       79  D:\cgfed-runs\urc_20261013_v1\ledger\start_R-FIT.json
+d7d792484cae7fad64685bb32d4219a78f9aa7ff185660c32f0ad972bea0e8f5      517  D:\projects-cd\cg-fedllm-reproduction\diagnostics\urc_20261013_v1\scientific_ledger_mirror\end_R-FIT.json
+f8a8fddbd0ceee0a42771b02434584019eae604702dc8291d54d9651536fb380     2506  D:\projects-cd\cg-fedllm-reproduction\diagnostics\urc_20261013_v1\scientific_ledger_mirror\invocation_001.json
+fb0dd867f905688c3c840d2b66ad0ec11ac54da2cb4f3f3c42e787e54976e1af      661  D:\projects-cd\cg-fedllm-reproduction\diagnostics\urc_20261013_v1\scientific_ledger_mirror\invocation_001_end.json
+4c1e201429cc312df802f067520a82ddc4283feeecc4e3b26c7a8af2a64aceba       79  D:\projects-cd\cg-fedllm-reproduction\diagnostics\urc_20261013_v1\scientific_ledger_mirror\start_R-FIT.json

@@ -1,0 +1,17 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA checks/test_r1_measure.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1
+start: 2026-10-12T19:03:40+08:00
+end: 2026-10-12T19:03:45+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+.......                                                                  [100%]
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_r1_measure.py::test_a_train_mode_forward_on_the_model_itself_mutates_bn
+PASSED checks/test_r1_measure.py::test_step0_on_isolated_copies_changes_nothing
+PASSED checks/test_r1_measure.py::test_isolated_copy_does_not_share_storage
+PASSED checks/test_r1_measure.py::test_training_after_isolated_step0_matches_training_without_it
+PASSED checks/test_r1_measure.py::test_groups_partition_every_parameter_and_grads_come_from_the_training_backward
+PASSED checks/test_r1_measure.py::test_param_change_is_exact
+PASSED checks/test_r1_measure.py::test_rss_sampler_reports_a_labelled_sampled_maximum
+7 passed in 3.81s

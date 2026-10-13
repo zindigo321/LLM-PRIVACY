@@ -1,0 +1,192 @@
+{
+  "label": "DERIVED from recorded sums; no reconstruction re-run",
+  "matched": false,
+  "resnet3_r3_single_snapshot": {
+    "determinism": {
+      "allow_tf32": false,
+      "cublas_workspace_config": ":4096:8",
+      "cudnn_benchmark": false,
+      "deterministic_algorithms": true,
+      "torch_num_threads": 24
+    },
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "final_eval": {
+      "cosine": 0.08718036691133635,
+      "dot": 0.14639225495710592,
+      "hat": 0.20941392478154486,
+      "mse": 4.25377633621716e-06,
+      "norm_ratio": 0.12471139818255722,
+      "rse": 0.9938081619334862,
+      "sig": 13.464593911708402,
+      "sse": 13.381223326575736
+    },
+    "gpu_wall_s_charged": 316.04699999999866,
+    "input": {
+      "n": 3145728,
+      "n_check": {
+        "sse_over_mse": 3145728.0,
+        "zero_sse_over_zero_mse": 3145728.0
+      },
+      "normalized_abs_quantiles": {
+        "max": 0.8891991972923279,
+        "p50": 0.07751402631402016,
+        "p99": 0.34310624778270715
+      },
+      "selected": {
+        "client_id": 91,
+        "end_adapter_hash": "ad7d949f5009d56ccdb461036233a540b708bf1236fca9096024445366e884d5",
+        "file": "snapshots/t0007_c0091.safetensors",
+        "file_sha256": "09c95184a657fa778aef48e18196f95c568854476b75f2812d68dfd58126dd45",
+        "phi_sha256": "485cbe5f3a450b43d7780fe9cd97afe5169ea81ce0bdaf21166938adfcac2546",
+        "position": 39,
+        "start_adapter_hash": "aa3ab51c854c3480985381da05543beb73cb0ea624fe000866b69d630093d580",
+        "start_file": "starts/aa3ab51c854c3480985381da05543beb73cb0ea624fe000866b69d630093d580.safetensors",
+        "start_file_sha256": "31b60754e8b55992c908e416f2652c8f2dbbbdee0030440fa2163a5528cd5a7a",
+        "time_index": 7
+      },
+      "shape": [
+        1,
+        2048,
+        1536
+      ]
+    },
+    "iterations_done": 3000,
+    "latent_over_input_elements": 0.015625,
+    "latent_shape": [
+      64,
+      32,
+      24
+    ],
+    "normalization": {
+      "mode": "global_exact_maxabs_train",
+      "scale_global": 0.015751632224572334
+    },
+    "optimizer": {
+      "adam_beta1": 0.9,
+      "adam_beta2": 0.999,
+      "adam_epsilon": 1e-08,
+      "learning_rate": 0.0002,
+      "weight_decay": 0.0
+    },
+    "parameters": {
+      "buffer_elements": 1941,
+      "checkpoint_sha256": "dd46dbccba65c53b3c709ea46cedaaea9a470177d2d72dc2cfe1a19cb2dbbbc0",
+      "groups": {
+        "decoder.core": 221952,
+        "decoder.sampling": 24746,
+        "encoder.core": 221952,
+        "encoder.sampling": 24833
+      },
+      "total": 493483,
+      "verified": true
+    },
+    "representation": {
+      "id": "R3",
+      "kind": "balanced_effective_delta_r8",
+      "layout": "layer_major_qkvo_AtB"
+    },
+    "scalar_mean_baseline_recorded": false,
+    "seeds": {
+      "ae_batches": 7537694578433112870,
+      "ae_init": 453875208010999487,
+      "ae_seed": 1
+    },
+    "status": "FIT FAIL",
+    "train_mse_over_zero_mse_normalized": {
+      "1": 12.289031805520272,
+      "1000": 1.0130957801072022,
+      "2000": 0.999820035575089,
+      "3000": 0.9937319542192566
+    },
+    "verified": true,
+    "verified_against": "results/phase5/p5a_v2/artifact_manifest.json (run_root_artifacts)",
+    "vs_scalar_mean_bound": {
+      "reason": "the scalar-mean SSE is SIG - n * mean^2 <= SIG; the record has no element sum, so its value is unknown",
+      "relative_sse_reduction_at_most": 0.0061918380665137995
+    },
+    "vs_zero": {
+      "relative_sse_reduction": 0.0061918380665137995,
+      "sse_over_baseline": 0.9938081619334862
+    }
+  },
+  "schema": "ep-comparison-v1",
+  "uformer_u_fit": {
+    "cpu": {
+      "applied_as_requested": true,
+      "cuda_available": false,
+      "deterministic_algorithms": true,
+      "inter_op_threads": 24,
+      "intra_op_threads": 24,
+      "requested": {
+        "inter_op_threads": 24,
+        "intra_op_threads": 24
+      },
+      "torch_version": "2.14.0+cu130"
+    },
+    "curve_pre_update_train_rse": {
+      "1": 1.8777610933333893,
+      "1000": 0.3508269683728274,
+      "2000": 0.3186847269764734,
+      "3000": 0.2719886690109984
+    },
+    "final_eval": {
+      "cosine": 0.8540472264633736,
+      "dot": 174.7909258261268,
+      "mse": 0.06054920855612749,
+      "n": 1024,
+      "pred_energy": 184.253674474197,
+      "rse": 0.2727411031905583,
+      "sse": 62.00238956147455,
+      "target_energy": 227.3305667395311
+    },
+    "input": {
+      "dtype": "torch.float32",
+      "energy_sum_sq": 227.3305667395311,
+      "max": 0.7994620203971863,
+      "mean": 0.007990507583599538,
+      "min": -0.7989941835403442,
+      "numel": 1024,
+      "sha256": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722",
+      "shape": [
+        1,
+        1,
+        32,
+        32
+      ],
+      "z_n": 0.22200250658157333
+    },
+    "latent_over_input_elements": 64.0,
+    "latent_shape": [
+      64,
+      32,
+      32
+    ],
+    "parameters": {
+      "groups": {
+        "decoder.core": 317964,
+        "decoder.sampling": 24746,
+        "encoder.core": 317964,
+        "encoder.sampling": 24833
+      },
+      "total": 685507
+    },
+    "scalar_mean_baseline_recorded": true,
+    "status": "COMPLETED_FIT_FAIL",
+    "step0_eval": {
+      "cosine": -0.017032150079659105,
+      "rse": 1.0059377103460292
+    },
+    "updates_done": 3000,
+    "verified": true,
+    "vs_scalar_mean": {
+      "relative_sse_reduction": 0.7271804335450707,
+      "sse_over_baseline": 0.2728195664549294
+    },
+    "vs_zero": {
+      "relative_sse_reduction": 0.7272588968094418,
+      "sse_over_baseline": 0.2727411031905583
+    },
+    "wall_s": 506.3440000000046
+  },
+  "why_not_matched": "input source, scale, size, geometry (stride 1 vs stride 2), bottleneck (64:1 expansion vs 1/64), device, seed procedure and parameter count all differ"
+}

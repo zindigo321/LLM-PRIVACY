@@ -9,3 +9,17 @@
 *.ps1 text eol=crlf
 # verbatim third-party copy: keep upstream bytes (CRLF) so its SHA-256 matches the pinned source
 src/cg_fedllm/evaluation/resources/ceval_subject_mapping.json -text
+
+# Preserve frozen diagnostic archive bytes (20261013).
+diagnostics/uid_20261012_v2/** -text !eol
+diagnostics/uid_20261012_v2_r1/** -text !eol
+diagnostics/uid_20261012_v2_r1_execution/** -text !eol
+diagnostics/exploratory_progression_20261012/** -text !eol
+diagnostics/urc_20261013_v1/** -text !eol
+diagnostics/urc_20261013_v1_execution/** -text !eol
+diagnostics/synthetic_comparison_summary_20261013/** -text !eol
+diagnostics/urp_20261013_v1/** -text !eol
+diagnostics/urp_20261013_v1_execution/** -text !eol
+
+# Preserve copied scientific run records byte for byte.
+diagnostics/uformer_archive_20261013/raw_runs/** -text !eol

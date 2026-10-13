@@ -1,0 +1,63 @@
+{
+  "protocol_id": "UID-20261012-v2",
+  "frozen": "2026-10-12T09:45:00+08:00",
+  "description": "Frozen manifest of approved diagnostic files with SHA-256 verification hashes",
+  "files": [
+    {
+      "path": "config.json",
+      "sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd",
+      "bytes": 2633,
+      "verify": true,
+      "note": "Frozen configuration; canonical SHA-256 computed separately"
+    },
+    {
+      "path": "uformer_blocks.py",
+      "sha256": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747",
+      "bytes": 10213,
+      "verify": true,
+      "note": "LeWinTransformerBlock / BasicUformerLayer vendored from upstream 65fc970a"
+    },
+    {
+      "path": "uformer_ae.py",
+      "sha256": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606",
+      "bytes": 8544,
+      "verify": true,
+      "note": "UformerAutoEncoder: CG-FedLLM App. B.4 adaptation with ResNet sampling"
+    },
+    {
+      "path": "uid_common.py",
+      "sha256": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230",
+      "bytes": 9691,
+      "verify": true,
+      "note": "Helpers: hashing, input, metrics, criteria, model building"
+    },
+    {
+      "path": "uid_runner.py",
+      "sha256": "a4ae1ed06948cd33996f06ccddf02bb0ef43c9ec1eb2dd0dfc9302f0026d9e6c",
+      "bytes": 7172,
+      "verify": true,
+      "note": "Single-invocation training runner with resource limits"
+    },
+    {
+      "path": "third_party/uformer_65fc970/model.py",
+      "sha256": "03a2c6e50b4342e03a457dd10537c14d0f832ce186da49c781fbd9d7027904a9",
+      "bytes": 54011,
+      "verify": true,
+      "note": "Pinned upstream ZhendongWang6/Uformer@65fc970a (MIT)"
+    },
+    {
+      "path": "third_party/uformer_65fc970/LICENSE",
+      "sha256": "5bce7d17fb155d8c96d7b74901b710b43939a4851f60b0adb28e6adbd606f3a5",
+      "bytes": 1070,
+      "verify": true,
+      "note": "MIT License (c) 2022 Zhendong Wang"
+    }
+  ],
+  "dependencies": {
+    "torch": "2.14.0+cu130",
+    "numpy": "2.4.6",
+    "psutil": "7.2.2",
+    "einops_upstream": "0.8.1",
+    "note": "einops is NOT installed; rearrange/repeat are reimplemented inline"
+  }
+}

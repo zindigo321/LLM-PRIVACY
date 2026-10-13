@@ -248,6 +248,13 @@ experimental claims.
   stated limits. See `docs/phase5_p5a_v2_findings.md` and
   `results/phase5/p5a_v2/`; v1 remains historical and was never executed.
 
+### Uformer diagnostic archive
+
+[Results and evidence limits](docs/uformer_publication_note.md) cover U-CHECK, U-FIT, R-FIT and U-PATCH.
+The three fit arms failed the original strict criterion and passed EP-v1; U-FIT's EP assessment was post hoc.
+These single-input, single-seed fit diagnostics use a 64:1 expanded latent and establish neither compression nor generalization.
+The future primary gate (RSE <= 0.50, cosine >= 0.65) is not implemented in this archive commit.
+
 The remaining project-level goals are to determine whether a viable operational
 compressed FAF path can be established, and to reproduce the
 paper-scale claims across the required settings and seeds.

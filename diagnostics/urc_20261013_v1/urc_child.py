@@ -1,0 +1,381 @@
+"""URC-20261013-v1 child: the R-FIT arm in one fresh process (adapted from the r1 ``uid_r1_child.py``).
+
+``python -B urc_child.py <job.json>``. The job file (written by the supervisor) names the arm, the resolved config,
+the arm's output directory and the soft stop on the supervisor's ``time.monotonic()`` clock (system-wide on Windows).
+The CPU configuration is applied, and observed, before the model, the input or any other tensor is created. The child
+writes ``child_record.json``, ``curve.jsonl``, ``init_state.safetensors`` and ``final_state.safetensors``; a process
+that is killed writes nothing more, and its arm is closed by the supervisor from the start record.
+
+Changes from r1 (``review/child_diff.patch``): the model is the stride-1 ResNet-3 variant; the input and both baselines
+are asserted equal to the U-FIT reference before any update; the encoder/decoder sampling layers' initial tensors are
+hashed; the initial and final states (parameters and buffers) are saved and read back. Measurements, training loop,
+step-0 isolation and the final train/eval procedure are the r1 code, unchanged.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import sys
+import time
+import traceback
+from pathlib import Path
+
+URC_DIR = Path(__file__).resolve().parent
+
+
+class SoftStop(Exception):
+    """The soft stop of this arm arrived before training finished."""
+
+
+def main(job_path: str) -> int:
+    job = json.loads(Path(job_path).read_text(encoding="utf-8"))
+    out = Path(job["out_dir"])
+    start_watchdog(job)  # first: also covers imports and setup; exits at once if the supervisor is gone
+    sys.path[:0] = [str(Path(p)) for p in job["sys_path"]]  # URC package first, then frozen UID, then r1
+    import signal
+
+    if hasattr(signal, "SIGBREAK"):  # Ctrl+Break in a shared console: an interrupt, not an abrupt exit
+        signal.signal(signal.SIGBREAK, signal.default_int_handler)
+    import torch
+    import uid_common as C  # frozen UID module, unchanged
+    import uid_r1_control as K  # r1 module, unchanged
+    import uid_r1_measure as M  # r1 module, unchanged
+    import urc_control as U
+
+    rec: dict = {"arm": job["arm"], "mode": job["mode"], "pid": os.getpid(), "status": "EXECUTION_ERROR"}
+    curve = (out / "curve.jsonl").open("x", encoding="utf-8")
+    sampler = M.RSSSampler(job["poll_interval_s"]).start()
+    job["_sampler"] = sampler
+    t_begin = time.monotonic()
+    try:
+        if job["mode"] == "scientific" and job.get("fixture_hooks"):
+            raise RuntimeError("fixture hooks are refused in scientific mode")
+        rec["env"] = {k: os.environ.get(k) for k in ENV_KEYS}
+        if rec["env"]["CUDA_VISIBLE_DEVICES"] != "-1" or rec["env"]["PYTHONPATH"] is not None:
+            raise RuntimeError(f"child environment not as set by the supervisor: {rec['env']}")
+        cpu = job["cpu"]
+        try:
+            rec["cpu"] = C.configure_cpu(cpu["intra_op_threads"], cpu["inter_op_threads"])
+        except Exception as exc:  # report, never claim
+            rec["cpu"] = {"error": f"{type(exc).__name__}: {exc}"}
+            raise
+        rec["cpu"]["requested"] = cpu
+        rec["cpu"]["applied_as_requested"] = (
+            rec["cpu"]["intra_op_threads"] == cpu["intra_op_threads"]
+            and rec["cpu"]["inter_op_threads"] == cpu["inter_op_threads"]
+            and rec["cpu"]["deterministic_algorithms"] is True
+            and rec["cpu"]["cuda_available"] is False
+        )
+        if not rec["cpu"]["applied_as_requested"]:
+            raise RuntimeError(f"CPU configuration not applied as requested: {rec['cpu']}")
+        if rec["cpu"]["torch_version"] != job["expected_torch_version"]:
+            raise RuntimeError(f"torch {rec['cpu']['torch_version']} is not {job['expected_torch_version']}")
+        cfg, raw_sha, canon_sha = load_job_config(job, K, U)
+        rec["config_sha256"] = {"raw": raw_sha, "canonical": canon_sha}
+        run_arm(job, cfg, rec, curve, torch, C, M, U)
+    except SoftStop as exc:
+        rec["status"] = "RESOURCE_STOP"
+        rec["stop_reason"] = str(exc)
+    except KeyboardInterrupt:
+        rec["status"] = "INCOMPLETE"
+        # a stop request reaches the main thread at its next Python bytecode; a main thread blocked in one long
+        # native call is not woken and is ended by the supervisor's kill instead (no child record then)
+        rec["stop_reason"] = "interrupted (stop request or Ctrl+C -> KeyboardInterrupt)"
+    except Exception as exc:
+        rec["status"] = "EXECUTION_ERROR"
+        rec["error"] = {"type": type(exc).__name__, "message": str(exc), "traceback": traceback.format_exc()}
+    finally:
+        curve.close()
+        rec["rss"] = sampler.stop()
+        rec["child_monotonic_s"] = {"begin": t_begin, "end": time.monotonic()}
+        K.create_exclusive(out / "child_record.json", K.json_safe(rec))
+    return K.CHILD_EXIT[rec["status"]]
+
+
+FIXTURE_PROTOCOL_ID = "URC-V1-ENGINEERING-FIXTURE"
+ENV_KEYS = ("CUDA_VISIBLE_DEVICES", "HF_HUB_OFFLINE", "PYTHONDONTWRITEBYTECODE", "PYTHONPATH")
+MODULES = ("uid_common", "uid_r1_control", "uid_r1_measure", "urc_control", "resnet3_s1")
+FORBIDDEN_MODULES = ("cg_fedllm", "uformer_ae", "uformer_blocks")
+
+
+def imported_modules(job: dict, K) -> dict:
+    """Files and SHA-256 of the diagnostic modules actually imported; in scientific mode each must have its approved
+    hash. ``cg_fedllm`` (the package, with uncommitted SSBD work) and the Uformer modules must not be imported."""
+    files = {n: str(Path(sys.modules[n].__file__).resolve()) for n in MODULES if n in sys.modules}
+    files["urc_child"] = str(Path(__file__).resolve())
+    sha = {n: K.sha256_file(p) for n, p in files.items()}
+    expected = job.get("expected_module_sha256")
+    if expected is not None:
+        bad = {n: sha.get(n) for n in set(sha) | set(expected) if expected.get(n) != sha.get(n)}
+        if bad:
+            raise RuntimeError(f"imported module(s) without the approved SHA-256: {bad}")
+    present = [m for m in FORBIDDEN_MODULES if m in sys.modules]
+    if present:
+        raise RuntimeError(f"module(s) {present} must not be imported by the URC diagnostic")
+    # coverage: every imported module whose file lies under the repository (diagnostics or src) must be listed.
+    # __main__ / __mp_main__ are this file (hashed above as urc_child); relative pseudo-paths (torch.ops) are skipped
+    repo = URC_DIR.parents[1]
+    local = sorted(
+        n
+        for n, m in list(sys.modules.items())
+        if n not in ("__main__", "__mp_main__")
+        and isinstance(getattr(m, "__file__", None), str)
+        and Path(m.__file__).is_absolute()
+        and Path(m.__file__).resolve().is_relative_to(repo)
+    )
+    unlisted = [n for n in local if n not in MODULES]
+    if unlisted:
+        raise RuntimeError(f"repository module(s) imported but not listed as runtime modules: {unlisted}")
+    return {"files": files, "sha256": sha, "checked_against_approved": expected is not None, "local": local}
+
+
+def load_job_config(job: dict, K, U) -> tuple[dict, str, str]:
+    """Scientific: the frozen resolved config, which must equal a fresh resolution of the pinned sources and have the
+    hash named in the job. Engineering: a fixture config only, which can never be the registered one (own protocol
+    id, other bytes, other seeds)."""
+    data = Path(job["config_path"]).read_bytes()
+    cfg = json.loads(data.decode("utf-8"))
+    raw, canon = K.hashlib.sha256(data).hexdigest(), K.sha256_canonical(cfg)
+    if job["mode"] == "scientific":
+        if Path(job["config_path"]).resolve() != (U.URC_DIR / U.RESOLVED_NAME).resolve():
+            raise RuntimeError("scientific job with a config other than the frozen resolved_config.json")
+        if raw != job.get("expected_config_sha256") or cfg != U.load_resolved():
+            raise RuntimeError("resolved_config.json is not the approved, freshly re-resolved configuration")
+        if job["model_arm"] != job["arm"] or job["arm"] != U.ARM:
+            raise RuntimeError(f"scientific arm must be {U.ARM}, got {job['arm']!r} / {job['model_arm']!r}")
+        return cfg, raw, canon
+    if job["mode"] != "engineering":
+        raise RuntimeError(f"unknown mode {job['mode']!r}")
+    if cfg.get("protocol_id") != FIXTURE_PROTOCOL_ID or raw == job.get("expected_config_sha256"):
+        raise RuntimeError("engineering jobs accept only fixture configs")
+    if int(cfg["input"]["data_seed"]) == 20261012 or int(cfg["model_init_seed"]) == 1:
+        raise RuntimeError("fixture configs must not use the registered seeds")
+    return cfg, raw, canon
+
+
+def reference_checks(rec: dict, cfg: dict) -> dict:
+    """Shared-condition checks of the input and baselines against the values the resolved config expects (the
+    U-FIT record's values). Any difference is a NOT_MATCHED shared condition; the run refuses before any update."""
+    exp, inp, base = cfg["expected"], rec["input"], rec["baselines"]
+    checks = {
+        "input_sha256": (inp["sha256"], exp["input_sha256"]),
+        "input_shape": (inp["shape"], list(exp["input_shape"])),
+        "input_dtype": (inp["dtype"], exp["input_dtype"]),
+        "target_energy": (inp["energy_sum_sq"], exp["target_energy"]),
+        "zero_prediction_mse": (base["zero_prediction"]["mse"], exp["zero_prediction_mse"]),
+        "shared_scalar_mean_mse": (base["shared_scalar_mean"]["mse"], exp["shared_scalar_mean_mse"]),
+    }
+    out = {k: {"observed": a, "expected": b, "equal": a == b} for k, (a, b) in checks.items()}
+    out["all_equal"] = all(v["equal"] for v in out.values())
+    return out
+
+
+def precision_checks(model, x, torch) -> dict:
+    """CPU fp32 for the input and every parameter and buffer of the model (the shared precision condition)."""
+    float_tensors = [t for t in (*model.parameters(), *model.buffers()) if t.is_floating_point()]
+    return {
+        "input_dtype_cpu": (str(x.dtype), str(x.device)) == ("torch.float32", "cpu"),
+        "model_float_tensors_fp32_cpu": all(
+            t.dtype == torch.float32 and t.device.type == "cpu" for t in float_tensors
+        ),
+        "default_dtype": str(torch.get_default_dtype()),
+    }
+
+
+def sampling_init(model, C) -> dict:
+    """Tensor-level SHA-256 (``uid_common.tensor_sha256``) of every parameter and buffer of the sampling stacks at
+    initialization, keyed by state-dict name; compared with the Uformer layers by ``checks/check_init_comparison.py``."""
+    out = {}
+    for side in ("encoder", "decoder"):
+        stack = getattr(model, side).sampling
+        out[f"{side}.sampling"] = {k: C.tensor_sha256(v, k) for k, v in sorted(stack.state_dict().items())}
+    return out
+
+
+def start_watchdog(job: dict) -> None:
+    """Exit (no record) if the supervisor is gone or the hard deadline passes; turn a stop request into
+    KeyboardInterrupt. The supervisor is identified by PID and creation time, so a reused PID is not mistaken for it."""
+    import _thread
+    import threading
+
+    import psutil
+
+    def gone(why: str) -> None:
+        sys.stderr.write(f"urc_child: {why}; exiting without a child record\n")
+        sys.stderr.flush()
+        os._exit(137)  # the supervisor (or, if it is dead, the start record) closes the arm
+
+    try:
+        parent = psutil.Process(int(job["supervisor_pid"]))
+        same = abs(parent.create_time() - float(job["supervisor_create_time"])) < 0.01
+    except psutil.Error:
+        same = False
+    if not same:
+        gone("supervisor not running at child start")
+    hard_at, poll, stop_file = (
+        float(job["hard_stop_monotonic"]),
+        float(job["poll_interval_s"]),
+        Path(job["stop_file"]),
+    )
+    hooks = job.get("fixture_hooks") or {}
+    ignore_stop = job["mode"] == "engineering" and bool(hooks.get("ignore_stop_request"))
+
+    def run() -> None:
+        interrupted = False
+        while True:
+            time.sleep(poll)
+            if time.monotonic() >= hard_at:
+                gone("hard deadline passed")
+            if not parent.is_running():
+                gone("supervisor ended")
+            if not interrupted and not ignore_stop and stop_file.exists():
+                interrupted = True
+                _thread.interrupt_main()
+
+    threading.Thread(target=run, name="watchdog", daemon=True).start()
+
+
+def fixture_hook(job: dict, where: str, k: int = 0) -> None:
+    """Engineering-only behaviours; ``run_arm`` refuses any hook in scientific mode before the watchdog starts."""
+    h = job.get("fixture_hooks") or {}
+    if not h:
+        return
+    if where == "update":
+        if h.get("sleep_each_update_s"):
+            time.sleep(float(h["sleep_each_update_s"]))
+        if h.get("hang_at_update") == k:
+            time.sleep(10**6)
+        if h.get("raise_at_update") == k:
+            raise RuntimeError(f"fixture error at update {k}")
+        if h.get("alloc_mib_at_update", [None])[0] == k:
+            import torch
+
+            job["_ballast"] = torch.ones(int(h["alloc_mib_at_update"][1]) * 2**18)  # touched float32 pages
+            time.sleep(10**6)
+    elif where == "final_eval" and h.get("hang_in_final_eval"):
+        time.sleep(10**6)
+
+
+def write_point(curve, line: dict, K) -> None:
+    curve.write(json.dumps(K.json_safe(line), sort_keys=True, allow_nan=False) + "\n")
+    curve.flush()
+    os.fsync(curve.fileno())
+
+
+def run_arm(job: dict, cfg: dict, rec: dict, curve, torch, C, M, U) -> None:
+    """Shared settings throughout: ``C.make_input`` / ``C.reconstruct`` / ``C.metrics`` / ``C.baselines`` (frozen UID)
+    and the resolved optimizer and update count; ``U.build_model`` builds the stride-1 ResNet-3 variant."""
+    import uid_r1_control as K
+    from torch import nn
+
+    soft_at, every, out = float(job["soft_stop_monotonic"]), int(job["curve_every"]), Path(job["out_dir"])
+    if int(cfg["max_updates"]) != int(job["max_updates"]):
+        raise RuntimeError(f"job max_updates {job['max_updates']} != config {cfg['max_updates']}")
+    model = U.build_model(cfg)
+    rec["modules"] = imported_modules(job, K)  # after build_model, which imports resnet3_s1
+    rec["model"] = {"config": model.cfg.to_dict(), "parameters": model.num_parameters()}
+    rec["model"]["buffer_elements"] = sum(b.numel() for b in model.buffers())
+    x = C.make_input(cfg).requires_grad_(False)
+    rec["input"] = C.describe_input(x)
+    rec["baselines"] = C.baselines(x)
+    rec["reference_checks"] = reference_checks(rec, cfg)
+    rec["precision"] = precision_checks(model, x, torch)
+    if not (rec["precision"]["input_dtype_cpu"] and rec["precision"]["model_float_tensors_fp32_cpu"]):
+        raise RuntimeError(f"NOT_MATCHED shared condition (CPU fp32): {rec['precision']}")
+    if job["mode"] == "scientific" and not rec["reference_checks"]["all_equal"]:
+        # a violated shared condition: refused before the optimizer exists, so no update is made on another input
+        raise RuntimeError(f"NOT_MATCHED shared condition (input/baselines): {rec['reference_checks']}")
+    o = cfg["optimizer"]
+    if o["name"] != "Adam":
+        raise RuntimeError(f"unsupported optimizer {o['name']!r}")
+    opt = torch.optim.Adam(
+        model.parameters(),
+        lr=float(o["lr"]),
+        betas=tuple(float(b) for b in o["betas"]),
+        eps=float(o["eps"]),
+        weight_decay=float(o["weight_decay"]),
+    )
+    rec["optimizer_defaults"] = {
+        k: v for k, v in opt.defaults.items() if isinstance(v, (int, float, tuple, bool))
+    }
+    rec["model_state_sha256_init"] = C.state_sha256(model)
+    rec["sampling_init_tensor_sha256"] = sampling_init(model, C)
+    meta = {"protocol_id": cfg["protocol_id"], "arm": job["arm"], "variant": model.cfg.to_dict()["variant"]}
+    rec["init_state_file"] = U.save_state(out / "init_state.safetensors", model, {**meta, "point": "init"})
+    rec["trainable"] = M.trainable_coverage(model, opt)
+    theta0 = M.snapshot(model)
+    # step 0 on disposable copies: the training model, its BN buffers and the RNG state are left untouched
+    fp_before = M.state_fingerprint(model)
+    step0 = {}
+    for mode in ("eval", "train"):
+        with M.isolated(model, mode) as twin, torch.no_grad():
+            step0[mode] = C.metrics(C.reconstruct(twin, x), x)
+    fp_after = M.state_fingerprint(model)
+    rec["step0"] = {"post_init": step0, "isolation_verified": fp_before == fp_after}
+    if fp_before != fp_after:
+        raise RuntimeError("step-0 measurement changed the training model or the RNG state")
+    model.train()
+    max_updates, done, prev = int(cfg["max_updates"]), 0, None
+    for k in range(1, max_updates + 1):
+        if time.monotonic() >= soft_at:
+            raise SoftStop(f"soft stop before update {k}: {done} update(s) done")
+        fixture_hook(job, "update", k)
+        opt.zero_grad(set_to_none=True)
+        x_hat = C.reconstruct(model, x)  # train-mode forward of update k (pre-update for update k)
+        loss = nn.functional.mse_loss(x_hat, x)
+        loss.backward()
+        point = None
+        if k == 1 or k % every == 0 or k == max_updates:
+            point = {
+                "update": k,
+                "pre_update_train_loss": float(loss.detach()),
+                "pre_update_train": C.metrics(x_hat, x),
+                "grad": M.grad_stats(model),
+            }
+            prev = M.snapshot(model)
+        opt.step()
+        done = k
+        if point is not None:
+            point["param_change_this_update"] = M.param_change(model, prev)
+            point["param_change_from_init"] = M.param_change(model, theta0)
+            point["monotonic_s"] = time.monotonic()
+            point["rss_bytes_at_point"] = job["_sampler"].poll()
+            write_point(curve, point, K)
+    rec["updates_done"] = done
+    rec["model_state_sha256_final"] = C.state_sha256(model)
+    rec["param_change_total"] = M.param_change(model, theta0)
+    # final state (parameters and BatchNorm buffers), saved before the final evaluation touches any copy
+    rec["final_state_file"] = U.save_state(out / "final_state.safetensors", model, {**meta, "point": "final"})
+    if rec["final_state_file"]["state_sha256"] != rec["model_state_sha256_final"]:
+        raise RuntimeError("final state file hash differs from the final model state")
+    fixture_hook(job, "final_eval")
+    # final: two independent copies of the same final state; each starts from the same CPU RNG state
+    final_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
+    rng = torch.get_rng_state()
+    final, outputs, loaded, loaded_before = {}, {}, [], []
+    for mode in ("eval", "train"):
+        twin = U.build_model(cfg)
+        twin.load_state_dict(final_state, strict=True)
+        loaded_before.append(C.state_sha256(twin))
+        twin.train(mode == "train")
+        torch.set_rng_state(rng)
+        with torch.no_grad():
+            outputs[mode] = C.reconstruct(twin, x)
+        final[f"{mode}_mode"] = C.metrics(outputs[mode], x)
+        loaded.append(C.state_sha256(twin))
+    rec["modules_at_end"] = imported_modules(job, K)  # nothing unlisted was imported during the run
+    final["copies_loaded_identical_state"] = len(set(loaded_before)) == 1
+    final["train_copy_state_changed_by_forward"] = loaded[1] != loaded_before[1]
+    final["train_minus_eval_output_sse"] = float(
+        (outputs["train"].double() - outputs["eval"].double()).square().sum()
+    )
+    rec["final"] = final
+    rec["verdict_basis"] = "eval_mode"
+    rec["status"] = (
+        "COMPLETED_PASS" if C.passes(final["eval_mode"], cfg["criteria"]) else "COMPLETED_FIT_FAIL"
+    )
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1]))

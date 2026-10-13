@@ -1,0 +1,16 @@
+{
+  "arms": {
+    "U-PATCH": "NOT_STARTED"
+  },
+  "invocations": 0,
+  "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/urp_20261013_v1/scientific_ledger_mirror",
+  "ledger_primary": "D:\\cgfed-runs\\urp_20261013_v1\\ledger",
+  "protocol_id": "URP-20261013-v1",
+  "records": [],
+  "roots_exist": {
+    "mirror": false,
+    "primary": false
+  },
+  "run_root_exists": false,
+  "starts": 0
+}

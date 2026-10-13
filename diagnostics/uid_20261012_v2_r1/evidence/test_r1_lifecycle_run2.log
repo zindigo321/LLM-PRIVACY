@@ -1,0 +1,21 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA --basetemp=C:\Users\acc04\AppData\Local\Temp\uid_r1_pytest_lifecycle2 checks/test_r1_lifecycle.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1
+start: 2026-10-12T18:48:13+08:00
+end: 2026-10-12T18:49:34+08:00
+exit_code: 0
+--- output ---
+...........                                                              [100%]
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_r1_lifecycle.py::test_completed_arm_records_required_fields_and_cpu
+PASSED checks/test_r1_lifecycle.py::test_second_invocation_is_refused
+PASSED checks/test_r1_lifecycle.py::test_per_arm_soft_stop_is_a_resource_stop
+PASSED checks/test_r1_lifecycle.py::test_hang_inside_an_update_is_killed_at_the_hard_deadline
+PASSED checks/test_r1_lifecycle.py::test_hang_in_final_evaluation_is_killed
+PASSED checks/test_r1_lifecycle.py::test_aggregate_budget_is_shared_across_two_children
+PASSED checks/test_r1_lifecycle.py::test_rss_guard_kills_the_child
+PASSED checks/test_r1_lifecycle.py::test_child_error_is_an_execution_error
+PASSED checks/test_r1_lifecycle.py::test_supervisor_interrupt_writes_end_records
+PASSED checks/test_r1_lifecycle.py::test_killed_supervisor_leaves_an_unfinished_start_that_blocks_reentry
+PASSED checks/test_r1_lifecycle.py::test_registered_config_is_refused_in_engineering_mode
+11 passed in 81.15s (0:01:21)

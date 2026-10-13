@@ -1,0 +1,4 @@
+command: D:/conda_envs/cgfedllm/python.exe -B checks/check_resnet_sampling.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1
+start: 2026-10-12T19:00:02+08:00
+exit_code: 0

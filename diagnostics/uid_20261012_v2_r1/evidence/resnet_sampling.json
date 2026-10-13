@@ -1,0 +1,42 @@
+{
+  "all_ok": true,
+  "cases": [
+    {
+      "case": "encoder_sampling",
+      "eval": {
+        "forward_max_abs": 0.0,
+        "input_grad_max_abs": 0.0,
+        "param_grad_max_abs": 0.0
+      },
+      "layers": 22,
+      "ok": true,
+      "structure_identical": true,
+      "train": {
+        "forward_max_abs": 0.0,
+        "input_grad_max_abs": 0.0,
+        "param_grad_max_abs": 0.0
+      }
+    },
+    {
+      "case": "decoder_sampling",
+      "eval": {
+        "forward_max_abs": 0.0,
+        "input_grad_max_abs": 0.0,
+        "param_grad_max_abs": 0.0
+      },
+      "layers": 21,
+      "ok": true,
+      "structure_identical": true,
+      "train": {
+        "forward_max_abs": 0.0,
+        "input_grad_max_abs": 0.0,
+        "param_grad_max_abs": 0.0
+      }
+    }
+  ],
+  "package_file": "D:\\projects-cd\\cg-fedllm-reproduction\\src\\cg_fedllm\\compression\\autoencoder.py",
+  "tolerances_declared_before_run": {
+    "dtype": "float64",
+    "max_abs": 1e-12
+  }
+}

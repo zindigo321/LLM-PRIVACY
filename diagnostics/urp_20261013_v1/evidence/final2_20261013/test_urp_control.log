@@ -1,0 +1,42 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA --basetemp=C:\Users\acc04\AppData\Local\Temp\urp_v1_ctl_final2_20261013 checks/test_urp_control.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\urp_20261013_v1
+start: 2026-10-13T13:52:10+08:00
+end: 2026-10-13T13:52:13+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+................................                                         [100%]
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_urp_control.py::test_resolution_reads_the_frozen_uid_settings
+PASSED checks/test_urp_control.py::test_frozen_resolved_config_equals_a_fresh_resolution
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path0-2999]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path1-0.001]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path2-2]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path3-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path4-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path5-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path6-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path7-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path8-0.0157]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path9-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path10-0.85]
+PASSED checks/test_urp_control.py::test_any_setting_or_input_difference_refuses[path11-value11]
+PASSED checks/test_urp_control.py::test_scientific_plan_is_exactly_one_u_patch_start
+PASSED checks/test_urp_control.py::test_closed_arms_and_other_plans_are_refused[arms0]
+PASSED checks/test_urp_control.py::test_closed_arms_and_other_plans_are_refused[arms1]
+PASSED checks/test_urp_control.py::test_closed_arms_and_other_plans_are_refused[arms2]
+PASSED checks/test_urp_control.py::test_closed_arms_and_other_plans_are_refused[arms3]
+PASSED checks/test_urp_control.py::test_closed_arms_and_other_plans_are_refused[arms4]
+PASSED checks/test_urp_control.py::test_wrong_manifest_hash_refuses_before_anything
+PASSED checks/test_urp_control.py::test_supervisor_cli_offers_no_arm_selection[argv0]
+PASSED checks/test_urp_control.py::test_supervisor_cli_offers_no_arm_selection[argv1]
+PASSED checks/test_urp_control.py::test_supervisor_cli_offers_no_arm_selection[argv2]
+PASSED checks/test_urp_control.py::test_scientific_without_approved_hash_is_refused
+PASSED checks/test_urp_control.py::test_registered_input_loads_with_its_recorded_values
+PASSED checks/test_urp_control.py::test_normalization_equals_the_production_normalizer_bit_for_bit
+PASSED checks/test_urp_control.py::test_patch_file_is_the_rule_tile_of_the_record
+PASSED checks/test_urp_control.py::test_state_files_save_and_load_bit_for_bit
+PASSED checks/test_urp_control.py::test_pinned_files_are_checked
+PASSED checks/test_urp_control.py::test_one_start_accounting_refuses_a_second_start
+PASSED checks/test_urp_control.py::test_resolved_config_is_not_json_text_with_crlf
+32 passed in 2.40s

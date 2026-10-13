@@ -1,0 +1,9 @@
+command: D:/conda_envs/cgfedllm/python.exe -B print_plan.py
+time: 2026-10-12T19:51:57+08:00
+exit_code: 0
+identity {"config_canonical_sha256": "bb0111fab6310ab5430d931b781fc3c97cdb928da773d0cf8e71ea532fb4e5b3", "config_raw_sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd", "frozen_manifest_sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca", "r1_manifest_sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044"}
+plan {"aggregate_seconds": 7200.0, "arms": [{"arm": "U-CHECK", "max_seconds": 300.0, "max_updates": 500}, {"arm": "U-FIT", "max_seconds": 1800.0, "max_updates": 3000}], "cpu": {"inter_op_threads": 24, "intra_op_threads": 24}, "curve_every": 100, "end_margin_s": 20, "eval_reserve_s": 60, "evidence_cap_bytes": 536870912, "interrupt_grace_s": 20, "kill_wait_s": 10, "max_invocations": 1, "max_training_starts": 2, "poll_interval_s": 0.25, "prerequisite": {"U-FIT": "U-CHECK"}, "python_executable": "D:/conda_envs/cgfedllm/python.exe", "rss_available_fraction": 0.5, "rss_cap_bytes": 4294967296, "run_root": "D:/cgfed-runs/uid_20261012_v2_r1", "torch_version": "2.14.0+cu130"}
+U-CHECK soft_stop_after_s 220.0 kill_at_s 280.0 (from its start record, aggregate not binding)
+U-FIT soft_stop_after_s 1720.0 kill_at_s 1780.0 (from its start record, aggregate not binding)
+available_bytes_now 8692248576 rss_limit_now 4294967296
+module_hashes {"uformer_ae": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606", "uformer_blocks": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747", "uid_common": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230", "uid_r1_child": "9fec077c56467442cd556dc37ea257f379150dc7f80a685a0b29fc76c78e6dbe", "uid_r1_control": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074", "uid_r1_measure": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760"}

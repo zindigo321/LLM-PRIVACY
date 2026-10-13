@@ -1,0 +1,23 @@
+﻿{
+  "arms": {
+    "U-CHECK": "COMPLETED_PASS",
+    "U-FIT": "COMPLETED_FIT_FAIL"
+  },
+  "invocations": 1,
+  "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/uid_20261012_v2_r1/scientific_ledger_mirror",
+  "ledger_primary": "D:\\cgfed-runs\\uid_20261012_v2_r1\\ledger",
+  "records": [
+    "end_U-CHECK.json",
+    "end_U-FIT.json",
+    "invocation_001.json",
+    "invocation_001_end.json",
+    "start_U-CHECK.json",
+    "start_U-FIT.json"
+  ],
+  "roots_exist": {
+    "mirror": true,
+    "primary": true
+  },
+  "run_root_exists": true,
+  "starts": 2
+}

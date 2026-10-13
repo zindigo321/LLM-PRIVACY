@@ -1,0 +1,4 @@
+command: D:/conda_envs/cgfedllm/python.exe -B checks/check_upstream_correspondence.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1
+start: 2026-10-12T18:52:30+08:00
+exit_code: 0

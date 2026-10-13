@@ -1,0 +1,7 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. checks/test_r1_control.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1
+start: 2026-10-12T18:04:00+08:00
+exit_code: 0
+--- output ---
+..........                                                               [100%]
+10 passed in 1.27s

@@ -1,0 +1,4 @@
+tool-shell pid=81128 ppid=50276 in_job=True query_ok=True flags=0x800 kill_on_close=False breakaway_ok=True silent_breakaway_ok=False time=2026-10-13T16:55:22.048+08:00
+detached child started pid=30368; tool shell exits now
+detached-child (at start) pid=30368 ppid=81128 in_job=True query_ok=True flags=0x800 kill_on_close=False breakaway_ok=True silent_breakaway_ok=False time=2026-10-13T16:55:23.546+08:00
+detached-child (25 s later, after the tool shell exited) pid=30368 ppid=81128 in_job=True query_ok=True flags=0x800 kill_on_close=False breakaway_ok=True silent_breakaway_ok=False time=2026-10-13T16:55:49.524+08:00

@@ -1,0 +1,70 @@
+{
+  "all_bit_identical": true,
+  "cpu": {
+    "cuda_available": false,
+    "deterministic_algorithms": true,
+    "inter_op_threads": 24,
+    "intra_op_threads": 24,
+    "torch_version": "2.14.0+cu130"
+  },
+  "input_sha256_equal": true,
+  "modes": {
+    "eval": {
+      "bit_identical": true,
+      "differences": {},
+      "recorded": {
+        "cosine": 0.8835333171508959,
+        "dot": 191.51816666364624,
+        "finite": true,
+        "max_abs_err": 0.9137855768203735,
+        "mse": 0.04978779838194819,
+        "n": 1024,
+        "pred_energy": 206.6884721308763,
+        "rse": 0.22426682990470648,
+        "sse": 50.982705543114946,
+        "target_energy": 227.3305667395311
+      },
+      "replayed": {
+        "cosine": 0.8835333171508959,
+        "dot": 191.51816666364624,
+        "finite": true,
+        "max_abs_err": 0.9137855768203735,
+        "mse": 0.04978779838194819,
+        "n": 1024,
+        "pred_energy": 206.6884721308763,
+        "rse": 0.22426682990470648,
+        "sse": 50.982705543114946,
+        "target_energy": 227.3305667395311
+      }
+    },
+    "train": {
+      "bit_identical": true,
+      "differences": {},
+      "recorded": {
+        "cosine": 0.8843358254149193,
+        "dot": 192.3514445116198,
+        "finite": true,
+        "max_abs_err": 0.9106640219688416,
+        "mse": 0.049551172408096957,
+        "n": 1024,
+        "pred_energy": 208.11272282959982,
+        "rse": 0.2232009591742592,
+        "sse": 50.74040054589128,
+        "target_energy": 227.3305667395311
+      },
+      "replayed": {
+        "cosine": 0.8843358254149193,
+        "dot": 192.3514445116198,
+        "finite": true,
+        "max_abs_err": 0.9106640219688416,
+        "mse": 0.049551172408096957,
+        "n": 1024,
+        "pred_energy": 208.11272282959982,
+        "rse": 0.2232009591742592,
+        "sse": 50.74040054589128,
+        "target_energy": 227.3305667395311
+      }
+    }
+  },
+  "optimizer_created": false
+}

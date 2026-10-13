@@ -1,0 +1,11 @@
+note: gate rerun over the whole URP directory after checks/build_manifest_urp.py was added (written after the final2 run; no other file changed)
+sha256 checks/build_manifest_urp.py: 1c0ba7bdf58c7c9965cd1b3442fbd0c6e924483afff6b83f88b64fdcef41ab33
+command: D:/conda_envs/cgfedllm/python.exe -B -m ruff check --no-cache --config ../../pyproject.toml .
+command: D:/conda_envs/cgfedllm/python.exe -B -m ruff format --check --no-cache --config ../../pyproject.toml .
+cwd: D:/projects-cd/cg-fedllm-reproduction/diagnostics/urp_20261013_v1
+start: 2026-10-13T13:54:09+0800
+end: 2026-10-13T13:54:10+0800
+exit_codes: check=0 format=0
+--- output ---
+All checks passed!
+17 files already formatted

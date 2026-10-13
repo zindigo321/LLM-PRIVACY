@@ -1,0 +1,11 @@
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1
+env: CUDA_VISIBLE_DEVICES=-1 HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=[]
+
+command 1: D:/conda_envs/cgfedllm/python.exe -B uid_r1_supervise.py --status
+start: 2026-10-12T19:53:27.957+08:00
+exit_code: 0
+
+command 2: D:/conda_envs/cgfedllm/python.exe -B uid_r1_supervise.py --scientific --approved-r1-manifest-sha256 9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044
+start: 2026-10-12T19:53:29.000+08:00
+end: 2026-10-12T20:01:59.925+08:00
+exit_code: 0

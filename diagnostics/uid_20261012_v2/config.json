@@ -1,0 +1,72 @@
+{
+  "protocol_id": "UID-20261012-v2",
+  "description": "Uformer encoder-decoder reconstruction diagnostic: one small synthetic fitting control to establish whether the actual network can learn to reconstruct its input under a clearly specified configuration and budget.",
+  "model_init_seed": 1,
+  "input": {
+    "data_seed": 20261012,
+    "shape": [1, 1, 32, 32],
+    "scale": 1.6,
+    "offset": -0.8,
+    "note": "x = scale * rand(shape) + offset, range [-0.8, 0.8]"
+  },
+  "criteria": {
+    "max_rse": 0.01,
+    "min_cosine": 0.99
+  },
+  "global_limits": {
+    "max_scientific_seconds": 7200,
+    "max_rss_bytes": 4294967296,
+    "max_training_starts": 2,
+    "note": "RSS limit: min(4 GiB, 50% of available physical RAM at launch)"
+  },
+  "cpu_config": {
+    "intra_op_threads": 24,
+    "inter_op_threads": 24,
+    "note": "Fixed CPU thread counts for determinism"
+  },
+  "u_check": {
+    "description": "Training-pipeline control: 1x1 Conv2d, one input/output channel, with bias",
+    "model": {
+      "in_channels": 1,
+      "out_channels": 1
+    },
+    "optimizer": {
+      "name": "Adam",
+      "lr": 0.01,
+      "betas": [0.9, 0.999],
+      "eps": 1e-08,
+      "weight_decay": 0
+    },
+    "max_updates": 500,
+    "max_seconds": 300
+  },
+  "u_fit": {
+    "description": "Uformer encoder-decoder reconstruction control",
+    "model": {
+      "input_hw": [32, 32],
+      "in_channels": 1,
+      "stem_kernel": 3,
+      "stem_channels": 1,
+      "down_channels": [2, 4, 8, 16, 32, 64],
+      "down_strides": [1, 1, 1, 1, 1, 1],
+      "final_kernel": 7,
+      "core_layers": 3,
+      "core_depth": 2,
+      "num_heads": 2,
+      "win_size": 8,
+      "mlp_ratio": 4.0,
+      "qkv_bias": true,
+      "shift_flag": true
+    },
+    "optimizer": {
+      "name": "Adam",
+      "lr": 0.0002,
+      "betas": [0.9, 0.999],
+      "eps": 1e-08,
+      "weight_decay": 0
+    },
+    "max_updates": 3000,
+    "max_seconds": 1800
+  },
+  "note_bottleneck": "all-stride-1: latent [64, 32, 32], element ratio 64:1 expansion, weak spatial compression; shift_flag true: SW-MSA alternates with W-MSA; num_heads 2, win_size 8 (author default), qkv_bias true, mlp_ratio 4.0, LeFF hidden 4*dim; core_layers 3, core_depth 2 (six BasicUformer blocks total, 3+3); ResNet sampling layers with BatchNorm/ReLU, Tanh head; NO global shortcut, NO encoder-decoder skip; 32x32 is square and divisible by win_size 8; initialization: Linear/LayerNorm per upstream Uformer._init_weights; token layout: row-major [B, h*w, C]; BatchNorm train/eval difference is EXPECTED; a deterministic run, stochastic regularization (dropout, attention_drop, drop_path) all ZERO"
+}

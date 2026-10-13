@@ -1,0 +1,280 @@
+{
+  "arm": "R-FIT",
+  "built_utc": "2026-10-13T01:12:00Z",
+  "dependencies": {
+    "check-only": {
+      "pytest": "9.1.1",
+      "ruff": "0.16.9"
+    },
+    "numpy": "2.4.6",
+    "psutil": "7.2.2",
+    "safetensors": "0.8.0",
+    "torch": "2.14.0+cu130"
+  },
+  "files": [
+    {
+      "bytes": 14740,
+      "path": "urc_supervise.py",
+      "role": "runtime: scientific entry point (supervisor; from r1 with review/supervise_diff.patch)",
+      "sha256": "87b706c93fd8ece95f7f3ae1815a19995ae1322b5dc84ace07f75194d97901dd"
+    },
+    {
+      "bytes": 19529,
+      "path": "urc_child.py",
+      "role": "runtime: R-FIT child process (from r1 with review/child_diff.patch)",
+      "sha256": "7a43d842c360441e812660929db1273a3ea73c477adae7335f5b62109545c844"
+    },
+    {
+      "bytes": 14588,
+      "path": "urc_control.py",
+      "role": "runtime: identity, resolution, one-arm plan, model build, state files",
+      "sha256": "e4365a823bd75216a42452e46e558c47d03c4635bf0b412dd45d2fc0c82961ec"
+    },
+    {
+      "bytes": 9884,
+      "path": "resnet3_s1.py",
+      "role": "runtime: the stride-1 ResNet-3 diagnostic variant",
+      "sha256": "46380d86592c6cded5c8443f110826c71b6c49a318870461618727f3508b13fd"
+    },
+    {
+      "bytes": 2843,
+      "path": "urc_config.json",
+      "role": "runtime: URC configuration (expected shared values, limits, paths)",
+      "sha256": "fcabcfd8f22527996b4d644a7e049e622771de6cac51eb0842a4385c6e4d6c51"
+    },
+    {
+      "bytes": 3303,
+      "path": "resolved_config.json",
+      "role": "runtime: resolved scientific configuration (re-resolved and compared at launch)",
+      "sha256": "5db03929eb17c0c49dabd26d894b144cfa85e470bc9188549a87402886466608"
+    },
+    {
+      "bytes": 5872,
+      "path": "protocol.md",
+      "role": "protocol",
+      "sha256": "31505aa9b8dc05c49f20a48b5f0dcd5dbee191b19a30c22f0c100100c24bbdfb"
+    },
+    {
+      "bytes": 15106,
+      "path": "urc_analyze.py",
+      "role": "post-run: seal, strict, EP, matching, signed differences",
+      "sha256": "14afc2be327d568bd37f3a8d92cc50a97a71b97e2cb60560a2d33b7a23770d99"
+    },
+    {
+      "bytes": 9691,
+      "path": "../uid_20261012_v2/uid_common.py",
+      "role": "runtime: frozen UID helpers (unchanged; input, metrics, baselines, CPU)",
+      "sha256": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230"
+    },
+    {
+      "bytes": 2633,
+      "path": "../uid_20261012_v2/config.json",
+      "role": "runtime: frozen UID config (shared settings are read from it)",
+      "sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd"
+    },
+    {
+      "bytes": 2172,
+      "path": "../uid_20261012_v2/manifest.json",
+      "role": "reference identity: frozen UID manifest",
+      "sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca"
+    },
+    {
+      "bytes": 15959,
+      "path": "../uid_20261012_v2_r1/uid_r1_control.py",
+      "role": "runtime: r1 ledger / start accounting / deadlines (unchanged)",
+      "sha256": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074"
+    },
+    {
+      "bytes": 5965,
+      "path": "../uid_20261012_v2_r1/uid_r1_measure.py",
+      "role": "runtime: r1 measurements and RSS sampler (unchanged)",
+      "sha256": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760"
+    },
+    {
+      "bytes": 644,
+      "path": "../uid_20261012_v2_r1/execution_r1.json",
+      "role": "runtime: r1 execution mechanics (read for margins and versions)",
+      "sha256": "7aa1ef61e2f231d19a7a0fff3483f480de6611215f6c027aed10014d23cfc52f"
+    },
+    {
+      "bytes": 6721,
+      "path": "../uid_20261012_v2_r1/manifest_r1.json",
+      "role": "reference identity: r1 manifest",
+      "sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044"
+    },
+    {
+      "bytes": 22390,
+      "path": "../exploratory_progression_20261012/ep_classify.py",
+      "role": "post-run: frozen EP-20261012-v1 classifier",
+      "sha256": "f7efd10029e8e50071b9a5013b23eefb1d2e3707d07d05e80fda4a690e160cd1"
+    },
+    {
+      "bytes": 5871,
+      "path": "../exploratory_progression_20261012/POLICY.md",
+      "role": "post-run: frozen EP-20261012-v1 policy",
+      "sha256": "fe14a225d16fed0373314eb89291035a2c8175bb17f37a7a03cf21c8e7fca592"
+    },
+    {
+      "bytes": 894,
+      "path": "checks/build_resolved_config.py",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "c3f09b492d53b975d4b89e63a4449914f96c7db8992e62dcb2223a761d0b3ce7"
+    },
+    {
+      "bytes": 4283,
+      "path": "checks/check_init_comparison.py",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "989cd694cc7aba9d95774d1f78655722f5a319bdd0edb774371bc5c0ee9e84ef"
+    },
+    {
+      "bytes": 2746,
+      "path": "checks/check_reference_input.py",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "c8f5bc5fb80c83987080fbd28913078f5639ce70aa5c4c83accb950810e47010"
+    },
+    {
+      "bytes": 1080,
+      "path": "checks/fixture_config.json",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "34cb6cfffc5d4195b47f422ad066bd1c11f2065e5497b82336e5f469003f3a63"
+    },
+    {
+      "bytes": 1595,
+      "path": "checks/fixture_run.py",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "cd5f14edc0ae7d8eaa0615d1144939a46ee9b2c7053547ae769fab6ebbbe6fc1"
+    },
+    {
+      "bytes": 2552,
+      "path": "checks/probe_cpu_cost.py",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "adf335863ac2d18a2cb54c064cffdcefba74c6b73867c74624623414caa53555"
+    },
+    {
+      "bytes": 2786,
+      "path": "checks/run_all_checks.ps1",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "a447fbe06ebc4cf850246f41dc9b6a51438dceea5fade2244b1a2a2092f6d55b"
+    },
+    {
+      "bytes": 4274,
+      "path": "checks/test_urc_analyze.py",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "eaa10a382d881d6198a4e381d8f0db7edbd92b323585b10aa43af7c0028aab9e"
+    },
+    {
+      "bytes": 7116,
+      "path": "checks/test_urc_control.py",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "2da847628068789b6fc64db316140267f1c3839627d4fce23d2b8988bf2a83e6"
+    },
+    {
+      "bytes": 7836,
+      "path": "checks/test_urc_lifecycle.py",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "432f57e202e9972ff5d5fd04ab99055bb5bcb90ee74d5bc88e991beddcd445fc"
+    },
+    {
+      "bytes": 6250,
+      "path": "checks/test_urc_model.py",
+      "role": "engineering check (fixtures, registered input/baselines only, fresh models)",
+      "sha256": "eff736eab01aab26bfd96d2a20e7a9592ae67abde1355a3f0fdee9a914a22471"
+    },
+    {
+      "bytes": 4515,
+      "path": "checks/build_manifest_urc.py",
+      "role": "manifest builder",
+      "sha256": "f1cf03a156cb10641ab8c4ed323e6c0d588d6d932a1788f197456f0f2003f25c"
+    },
+    {
+      "bytes": 4124,
+      "path": "review/MATCHING.md",
+      "role": "review document",
+      "sha256": "75fa26427c7bd76143dfb47b6ef004a253243d94c4623f5479e3ca1bce4329be"
+    },
+    {
+      "bytes": 17869,
+      "path": "review/child_diff.patch",
+      "role": "review document",
+      "sha256": "a8b15c4ae3e0d8a27605bc38cab4b2f1a728c7045edf0e9a403a79b9899db4b5"
+    },
+    {
+      "bytes": 7077,
+      "path": "review/supervise_diff.patch",
+      "role": "review document",
+      "sha256": "b291298118b5c533dd9b3ee6749dc05e09b58dd1badaea313a47955c83eafafe"
+    },
+    {
+      "bytes": 880,
+      "path": "evidence/final_20261013/SUMMARY.txt",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "e763085c1f0dfba87c2ca0abc9f9d9a3b1327a15b3d1467a2b1fbd5e39fc108b"
+    },
+    {
+      "bytes": 36177,
+      "path": "evidence/final_20261013/check_init_comparison.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "89cd9cd7785b540b32d283feb44140874ddb0229e3c71880d110f67a45534a14"
+    },
+    {
+      "bytes": 4857,
+      "path": "evidence/final_20261013/check_reference_input.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "67f1df9cf928442730a4691b478abae2566ecdb9f1692269b8b618bb65d0b436"
+    },
+    {
+      "bytes": 974,
+      "path": "evidence/final_20261013/probe_cpu_cost.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "d3bfd2b94bc42a20ac948d8f378aee082825e9081070603d6b0df9ab9ba6fb4c"
+    },
+    {
+      "bytes": 302,
+      "path": "evidence/final_20261013/ruff_check.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "8944b3f38e913502d161bc7cae444b7f39fb141c4e85db1fc7c995829933dc35"
+    },
+    {
+      "bytes": 319,
+      "path": "evidence/final_20261013/ruff_format_check.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "2d67ecb295a128b0964ccccd4958294af11a687e4396161d169beb9cc08279d2"
+    },
+    {
+      "bytes": 672,
+      "path": "evidence/final_20261013/status_readonly.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "4f27e5e133ccdc1e1555014feed82cdfaf053636128d101741d3808db63d4570"
+    },
+    {
+      "bytes": 801,
+      "path": "evidence/final_20261013/test_urc_analyze.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "8e17c3322a74df7c3d602ff12f86c54dba07b6e6235a4fafca97e5dd880e4107"
+    },
+    {
+      "bytes": 2914,
+      "path": "evidence/final_20261013/test_urc_control.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "c62a263e4017ae02b19c7851391a958209ee1b8c3b32e9d7fb5999b370597337"
+    },
+    {
+      "bytes": 1217,
+      "path": "evidence/final_20261013/test_urc_lifecycle.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "6a3d7b49d41a7be1605a6e803f2071162b71e3c3c36b2e7133f6826662f60191"
+    },
+    {
+      "bytes": 1658,
+      "path": "evidence/final_20261013/test_urc_model.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "c2ad9b13f8ddc9d5323c2934ded7ecb43754d0e59176bd43132036c21ff29756"
+    }
+  ],
+  "protocol_id": "URC-20261013-v1",
+  "python": "D:\\conda_envs\\cgfedllm\\python.exe",
+  "reference": {
+    "u_fit_child_record": "D:/cgfed-runs/uid_20261012_v2_r1/arms/U-FIT/child_record.json",
+    "u_fit_child_record_sha256": "d8150ec1b8a1ff61ffee1c9e7bf42114060794894305b3c66cf24228faff3ecb"
+  }
+}

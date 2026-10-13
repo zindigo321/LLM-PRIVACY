@@ -1,0 +1,2 @@
+uformer_u_fit verified {'sse_over_baseline': 0.2727411031905583, 'relative_sse_reduction': 0.7272588968094418}
+resnet3_r3_single_snapshot verified {'sse_over_baseline': 0.9938081619334862, 'relative_sse_reduction': 0.0061918380665137995}

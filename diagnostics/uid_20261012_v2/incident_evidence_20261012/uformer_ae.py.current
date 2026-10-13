@@ -1,0 +1,206 @@
+"""UID-20261012-v2 Uformer auto-encoder: the CG-FedLLM App. B.4 adaptation as implemented for this diagnostic.
+
+Paper (arXiv:2405.13746v3, App. B.4 and Table 7): the ResNet AE's down/upsampling layers are retained and its core
+blocks are replaced by BasicUformer layers of two LeWinTransformerBlocks each, three on each side. The retained
+sampling layers are this repository's ResNet-3 reconstruction (``cg_fedllm.compression.autoencoder``) with its
+BatchNorm/ReLU, padding and Tanh head. They are re-declared here so that the diagnostic does not import uncommitted
+package code; ``checks/check_resnet_sampling.py`` compares them with the package.
+
+Encoder:  ReflectionPad(1) -> Conv3x3(1 -> 1, no bias) -> BN -> ReLU
+          6 x [Conv3x3 stride s_i pad 1 (no bias) -> BN -> ReLU], channels 1 -> 2 -> 4 -> ... -> 64
+          3 x BasicUformerLayer(dim 64, depth 2) on the latent token grid
+Decoder:  3 x BasicUformerLayer(dim 64, depth 2)
+          6 x [ConvTranspose3x3 stride s_i pad 1 output_pad s_i - 1 (no bias) -> BN -> ReLU], 64 -> ... -> 1
+          ReflectionPad(3) -> Conv7x7(1 -> 1, bias) -> Tanh
+
+There is no encoder-decoder skip and no global input-output shortcut: ``decode`` receives only the latent ``z``.
+The paper does not state heads, window, shift, MLP ratio, feed-forward type, initialisation or the token layout;
+the values used here are implementation choices recorded in ``uformer_architecture_map.md``.
+"""
+
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass
+
+import torch
+from torch import nn
+from uformer_blocks import BasicUformerLayer, init_weights
+
+
+@dataclass(frozen=True)
+class UformerAEConfig:
+    input_hw: tuple[int, int] = (32, 32)
+    in_channels: int = 1
+    stem_kernel: int = 3
+    stem_channels: int = 1
+    down_channels: tuple[int, ...] = (2, 4, 8, 16, 32, 64)
+    down_strides: tuple[int, ...] = (2, 2, 2, 2, 2, 2)
+    final_kernel: int = 7
+    core_layers: int = 3
+    core_depth: int = 2
+    num_heads: int = 2
+    win_size: int = 8
+    mlp_ratio: float = 4.0
+    qkv_bias: bool = True
+    shift_flag: bool = True
+
+    def __post_init__(self) -> None:
+        for name in ("input_hw", "down_channels", "down_strides"):
+            object.__setattr__(self, name, tuple(int(v) for v in getattr(self, name)))
+        if len(self.down_strides) != len(self.down_channels) or any(s not in (1, 2) for s in self.down_strides):
+            raise ValueError(f"one stride in (1, 2) per down stage required, got {self.down_strides}")
+        h, w = self.input_hw
+        f = self.spatial_factor
+        if h % f or w % f:
+            raise ValueError(f"input {h}x{w} must be divisible by the stride product {f}")
+        if min(h, w) <= self.final_kernel // 2:
+            raise ValueError(f"input {h}x{w} too small for the reflection padding of the head")
+        lh, lw = self.latent_hw
+        if lh != lw:
+            raise ValueError(f"latent grid {lh}x{lw} must be square (LeWin/LeFF token layout)")
+        if lh > self.win_size and lh % self.win_size:
+            raise ValueError(f"latent grid {lh} must be divisible by the window {self.win_size}")
+        if self.latent_channels % self.num_heads:
+            raise ValueError(f"latent channels {self.latent_channels} not divisible by {self.num_heads} heads")
+
+    @property
+    def latent_channels(self) -> int:
+        return self.down_channels[-1]
+
+    @property
+    def spatial_factor(self) -> int:
+        f = 1
+        for s in self.down_strides:
+            f *= s
+        return f
+
+    @property
+    def latent_hw(self) -> tuple[int, int]:
+        return (self.input_hw[0] // self.spatial_factor, self.input_hw[1] // self.spatial_factor)
+
+    @property
+    def latent_shape(self) -> tuple[int, int, int]:
+        return (self.latent_channels, *self.latent_hw)
+
+    @property
+    def latent_element_ratio(self) -> float:
+        c, h, w = self.latent_shape
+        return (c * h * w) / (self.in_channels * self.input_hw[0] * self.input_hw[1])
+
+    def to_dict(self) -> dict:
+        return {k: list(v) if isinstance(v, tuple) else v for k, v in asdict(self).items()}
+
+
+def _core(cfg: UformerAEConfig) -> nn.ModuleList:
+    return nn.ModuleList(
+        [
+            BasicUformerLayer(
+                cfg.latent_channels,
+                cfg.latent_hw,
+                cfg.core_depth,
+                cfg.num_heads,
+                cfg.win_size,
+                mlp_ratio=cfg.mlp_ratio,
+                qkv_bias=cfg.qkv_bias,
+                shift_flag=cfg.shift_flag,
+            )
+            for _ in range(cfg.core_layers)
+        ]
+    )
+
+
+def _run_core(core: nn.ModuleList, z: torch.Tensor) -> torch.Tensor:
+    """[B, C, h, w] -> row-major tokens [B, h*w, C] -> core -> [B, C, h, w]."""
+    b, c, h, w = z.shape
+    t = z.flatten(2).transpose(1, 2).contiguous()
+    for layer in core:
+        t = layer(t)
+    return t.transpose(1, 2).reshape(b, c, h, w)
+
+
+class UformerEncoder(nn.Module):
+    def __init__(self, cfg: UformerAEConfig) -> None:
+        super().__init__()
+        layers: list[nn.Module] = [
+            nn.ReflectionPad2d(cfg.stem_kernel // 2),
+            nn.Conv2d(cfg.in_channels, cfg.stem_channels, kernel_size=cfg.stem_kernel, bias=False),
+            nn.BatchNorm2d(cfg.stem_channels),
+            nn.ReLU(inplace=False),
+        ]
+        chans = [cfg.stem_channels, *cfg.down_channels]
+        for c_in, c_out, stride in zip(chans[:-1], chans[1:], cfg.down_strides):
+            layers += [
+                nn.Conv2d(c_in, c_out, kernel_size=3, stride=stride, padding=1, bias=False),
+                nn.BatchNorm2d(c_out),
+                nn.ReLU(inplace=False),
+            ]
+        self.sampling = nn.Sequential(*layers)
+        self.core = _core(cfg)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return _run_core(self.core, self.sampling(x))
+
+
+class UformerDecoder(nn.Module):
+    def __init__(self, cfg: UformerAEConfig) -> None:
+        super().__init__()
+        self.core = _core(cfg)
+        chans = [cfg.stem_channels, *cfg.down_channels]
+        layers: list[nn.Module] = []
+        # mirrored geometry: output_padding = stride - 1 gives H_out = stride * H_in for kernel 3, padding 1
+        for c_in, c_out, stride in zip(reversed(chans[1:]), reversed(chans[:-1]), reversed(cfg.down_strides)):
+            layers += [
+                nn.ConvTranspose2d(
+                    c_in, c_out, kernel_size=3, stride=stride, padding=1, output_padding=stride - 1, bias=False
+                ),
+                nn.BatchNorm2d(c_out),
+                nn.ReLU(inplace=False),
+            ]
+        layers += [
+            nn.ReflectionPad2d(cfg.final_kernel // 2),
+            nn.Conv2d(cfg.stem_channels, cfg.in_channels, kernel_size=cfg.final_kernel, bias=True),
+            nn.Tanh(),
+        ]
+        self.sampling = nn.Sequential(*layers)
+
+    def forward(self, z: torch.Tensor) -> torch.Tensor:
+        return self.sampling(_run_core(self.core, z))
+
+
+class UformerAutoEncoder(nn.Module):
+    def __init__(self, cfg: UformerAEConfig) -> None:
+        super().__init__()
+        self.cfg = cfg
+        self.encoder = UformerEncoder(cfg)
+        self.decoder = UformerDecoder(cfg)
+        # upstream Uformer applies its _init_weights to every module after construction; it touches only the
+        # Linear and LayerNorm layers, all of which are in the BasicUformer cores
+        self.apply(init_weights)
+
+    def encode(self, x: torch.Tensor) -> torch.Tensor:
+        expected = (self.cfg.in_channels, *self.cfg.input_hw)
+        if tuple(x.shape[1:]) != expected:
+            raise ValueError(f"input shape {tuple(x.shape)} != [B, {expected}]")
+        return self.encoder(x)
+
+    def decode(self, z: torch.Tensor) -> torch.Tensor:
+        return self.decoder(z)
+
+    def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        z = self.encode(x)
+        return self.decode(z), z
+
+    def num_parameters(self) -> dict[str, int]:
+        def count(m: nn.Module) -> int:
+            return sum(p.numel() for p in m.parameters())
+
+        parts = {
+            "encoder_sampling": count(self.encoder.sampling),
+            "encoder_core": count(self.encoder.core),
+            "decoder_core": count(self.decoder.core),
+            "decoder_sampling": count(self.decoder.sampling),
+        }
+        parts["encoder"] = parts["encoder_sampling"] + parts["encoder_core"]
+        parts["decoder"] = parts["decoder_core"] + parts["decoder_sampling"]
+        parts["total"] = parts["encoder"] + parts["decoder"]
+        return parts

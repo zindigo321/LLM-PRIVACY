@@ -1,0 +1,2 @@
+analysis.json 7150 bytes sha256=a4721424aaf4539daf55c8498344da6e0efbe2679c96d610780e2e0600722d5f (file bytes)
+{"ep_outcome": "PASS", "status_recorded": "COMPLETED_FIT_FAIL", "strict_near_identity": {"criteria": {"max_rse": 0.01, "min_cosine": 0.99}, "matches_record": true, "rederived_status": "COMPLETED_FIT_FAIL", "space": "original (Phi values)"}}

@@ -1,0 +1,21 @@
+{
+  "arms": {
+    "R-FIT": "COMPLETED_FIT_FAIL"
+  },
+  "invocations": 1,
+  "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/urc_20261013_v1/scientific_ledger_mirror",
+  "ledger_primary": "D:\\cgfed-runs\\urc_20261013_v1\\ledger",
+  "protocol_id": "URC-20261013-v1",
+  "records": [
+    "end_R-FIT.json",
+    "invocation_001.json",
+    "invocation_001_end.json",
+    "start_R-FIT.json"
+  ],
+  "roots_exist": {
+    "mirror": true,
+    "primary": true
+  },
+  "run_root_exists": true,
+  "starts": 1
+}

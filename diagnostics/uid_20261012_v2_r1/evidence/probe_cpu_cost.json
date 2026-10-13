@@ -1,0 +1,35 @@
+{
+  "bit_identical_across_passes": true,
+  "cpu_observed": {
+    "cuda_available": false,
+    "deterministic_algorithms": true,
+    "inter_op_threads": 24,
+    "intra_op_threads": 24,
+    "torch_version": "2.14.0+cu130"
+  },
+  "digests": [
+    "aa74a9bcae544c7be77ed66a7f8107f4e8b52be0ed2c955cd3f5881c9c15a1fc",
+    "aa74a9bcae544c7be77ed66a7f8107f4e8b52be0ed2c955cd3f5881c9c15a1fc",
+    "aa74a9bcae544c7be77ed66a7f8107f4e8b52be0ed2c955cd3f5881c9c15a1fc",
+    "aa74a9bcae544c7be77ed66a7f8107f4e8b52be0ed2c955cd3f5881c9c15a1fc",
+    "aa74a9bcae544c7be77ed66a7f8107f4e8b52be0ed2c955cd3f5881c9c15a1fc"
+  ],
+  "first_pass_s": 0.17662600000039674,
+  "median_after_first_s": 0.13679940000292845,
+  "note": "forward+backward only; the Adam step and measurement overhead are not included",
+  "os_peak_wset_bytes": 786817024,
+  "passes": 5,
+  "registered_budget": {
+    "seconds": 1800,
+    "updates": 3000
+  },
+  "rss_bytes_end": 737046528,
+  "seconds_per_forward_backward": [
+    0.17662600000039674,
+    0.13679940000292845,
+    0.13395370000216644,
+    0.13526359999377746,
+    0.14085700000578072
+  ],
+  "state_sha256_of_probe_model_unchanged": true
+}

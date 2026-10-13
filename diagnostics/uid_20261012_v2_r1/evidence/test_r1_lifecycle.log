@@ -1,0 +1,72 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA --basetemp=C:\Users\acc04\AppData\Local\Temp\uid_r1_pytest_lifecycle checks/test_r1_lifecycle.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1
+start: 2026-10-12T18:35:16+08:00
+end: 2026-10-12T18:36:15+08:00
+exit_code: 1
+--- output ---
+........FF.                                                              [100%]
+================================== FAILURES ===================================
+________________ test_supervisor_interrupt_writes_end_records _________________
+
+tmp_path = WindowsPath('C:/Users/acc04/AppData/Local/Temp/uid_r1_pytest_lifecycle/test_supervisor_interrupt_writ0')
+
+    def test_supervisor_interrupt_writes_end_records(tmp_path):
+        args = [PY, "-B", str(RUN), str(tmp_path), json.dumps([{**FIT, "max_updates": 6}]), "{}",
+                json.dumps({"sleep_each_update_s": 2.0})]
+        proc = subprocess.Popen(args, cwd=R1, env=ENV, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
+        deadline = time.monotonic() + 120
+        while not (arm_dir(tmp_path, "FX-FIT") / "curve.jsonl").exists() or not (
+                arm_dir(tmp_path, "FX-FIT") / "curve.jsonl").read_text():
+            assert time.monotonic() < deadline and proc.poll() is None
+            time.sleep(0.2)
+        proc.send_signal(signal.CTRL_BREAK_EVENT)
+        out, err = proc.communicate(timeout=120)
+        lg = ledger(tmp_path)
+>       assert lg["end_FX-FIT.json"]["status"] == "INCOMPLETE", (out, err)
+               ^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'end_FX-FIT.json'
+
+checks\test_r1_lifecycle.py:155: KeyError
+____ test_killed_supervisor_leaves_an_unfinished_start_that_blocks_reentry ____
+
+tmp_path = WindowsPath('C:/Users/acc04/AppData/Local/Temp/uid_r1_pytest_lifecycle/test_killed_supervisor_leaves_0')
+
+    def test_killed_supervisor_leaves_an_unfinished_start_that_blocks_reentry(tmp_path):
+        args = [PY, "-B", str(RUN), str(tmp_path), json.dumps([{**FIT, "max_updates": 6}]), "{}",
+                json.dumps({"sleep_each_update_s": 3.0})]
+        proc = subprocess.Popen(args, cwd=R1, env=ENV, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        deadline = time.monotonic() + 120
+        while not (tmp_path / "run/ledger/start_FX-FIT.json").exists():
+            assert time.monotonic() < deadline and proc.poll() is None
+            time.sleep(0.2)
+        time.sleep(2.0)
+        proc.kill()  # the supervisor dies without writing anything more
+        proc.communicate(timeout=60)
+        time.sleep(3.0)  # the child's watchdog notices the dead parent and exits
+        lg = ledger(tmp_path)
+        assert "start_FX-FIT.json" in lg and "end_FX-FIT.json" not in lg
+        p2, _ = run(tmp_path, [FIT])
+        assert p2.returncode == 2 and "INCOMPLETE prior start" in p2.stderr
+>       assert not (arm_dir(tmp_path, "FX-FIT") / "child_record.json").exists()  # nothing re-ran
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = (WindowsPath('C:/Users/acc04/AppData/Local/Temp/uid_r1_pytest_lifecycle/test_killed_supervisor_leaves_0/run/arms/FX-FIT') / 'child_record.json').exists
+E        +      where WindowsPath('C:/Users/acc04/AppData/Local/Temp/uid_r1_pytest_lifecycle/test_killed_supervisor_leaves_0/run/arms/FX-FIT') = arm_dir(WindowsPath('C:/Users/acc04/AppData/Local/Temp/uid_r1_pytest_lifecycle/test_killed_supervisor_leaves_0'), 'FX-FIT')
+
+checks\test_r1_lifecycle.py:177: AssertionError
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_r1_lifecycle.py::test_completed_arm_records_required_fields_and_cpu
+PASSED checks/test_r1_lifecycle.py::test_second_invocation_is_refused
+PASSED checks/test_r1_lifecycle.py::test_per_arm_soft_stop_is_a_resource_stop
+PASSED checks/test_r1_lifecycle.py::test_hang_inside_an_update_is_killed_at_the_hard_deadline
+PASSED checks/test_r1_lifecycle.py::test_hang_in_final_evaluation_is_killed
+PASSED checks/test_r1_lifecycle.py::test_aggregate_budget_is_shared_across_two_children
+PASSED checks/test_r1_lifecycle.py::test_rss_guard_kills_the_child
+PASSED checks/test_r1_lifecycle.py::test_child_error_is_an_execution_error
+PASSED checks/test_r1_lifecycle.py::test_registered_config_is_refused_in_engineering_mode
+FAILED checks/test_r1_lifecycle.py::test_supervisor_interrupt_writes_end_records
+FAILED checks/test_r1_lifecycle.py::test_killed_supervisor_leaves_an_unfinished_start_that_blocks_reentry
+2 failed, 9 passed in 58.04s

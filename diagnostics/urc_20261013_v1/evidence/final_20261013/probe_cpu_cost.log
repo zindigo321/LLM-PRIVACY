@@ -1,0 +1,34 @@
+command: D:/conda_envs/cgfedllm/python.exe -B checks/probe_cpu_cost.py 6
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\urc_20261013_v1
+start: 2026-10-13T09:11:23+08:00
+end: 2026-10-13T09:11:27+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+{
+  "arm_limit_s": 1800.0,
+  "bit_identical_across_passes": true,
+  "cpu": {
+    "cuda_available": false,
+    "deterministic_algorithms": true,
+    "inter_op_threads": 24,
+    "intra_op_threads": 24,
+    "torch_version": "2.14.0+cu130"
+  },
+  "engineering_only": {
+    "data_seed": 777,
+    "model_seed": 31337,
+    "optimizer": null
+  },
+  "median_excluding_first_s": 0.019810199999483302,
+  "passes": 6,
+  "projected_3000_updates_s_without_adam": 59.43059999844991,
+  "rss_bytes_after": 676679680,
+  "seconds_per_forward_backward": [
+    0.04600590000336524,
+    0.020916600013151765,
+    0.019810199999483302,
+    0.022689399993396364,
+    0.01705450000008568,
+    0.01623269999981858
+  ]
+}

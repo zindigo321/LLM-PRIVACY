@@ -1,0 +1,336 @@
+{
+  "all_ok": true,
+  "bytecode_after": [],
+  "bytecode_before": [],
+  "checks": {
+    "child_imports_approved": true,
+    "cuda_unavailable": true,
+    "dependencies_equal": true,
+    "entries_all_match": true,
+    "external_all_match": true,
+    "interpreter_matches_plan": true,
+    "ledger_empty": true,
+    "manifest_approved": true,
+    "no_bytecode_written": true,
+    "no_run_root_no_mirror": true,
+    "pythonpath_unset": true,
+    "supervisor_imports_approved": true,
+    "torch_free_package_checks": true,
+    "torch_version_equals_plan": true,
+    "unlisted_as_expected": true
+  },
+  "child_scientific_config_branch": {
+    "accepted": true,
+    "arm": "U-PATCH",
+    "canonical_sha256": "6523fee59160a92ac3768802cd6225519b6e96a86fa38213a76402dcd5e55f1a",
+    "raw_sha256": "7f17fbae708d00b43daab7b3ac3645f13cd893be0e279abbd986d89854225e8b"
+  },
+  "cpu_logical": 32,
+  "cpu_physical": 24,
+  "dependencies": {
+    "all_equal": true,
+    "cuda_available_with_env": false,
+    "installed": {
+      "numpy": "2.4.6",
+      "psutil": "7.2.2",
+      "python": "3.11.16",
+      "safetensors": "0.8.0",
+      "torch": "2.14.0+cu130"
+    },
+    "manifest": {
+      "numpy": "2.4.6",
+      "psutil": "7.2.2",
+      "python": "3.11.16",
+      "safetensors": "0.8.0",
+      "torch": "2.14.0+cu130"
+    },
+    "torch.__version__": "2.14.0+cu130",
+    "torch_origin": "D:\\conda_envs\\cgfedllm\\Lib\\site-packages\\torch\\__init__.py",
+    "torch_version_equals_plan": true
+  },
+  "disk_free_bytes": {
+    "D:": 189267697664
+  },
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "-1",
+    "HF_HUB_OFFLINE": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": null
+  },
+  "expected_module_sha256": {
+    "uformer_ae": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606",
+    "uformer_blocks": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747",
+    "uid_common": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230",
+    "uid_r1_control": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074",
+    "uid_r1_measure": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760",
+    "urp_child": "9b7bae14a3c79412007f774471614f63b98f2c66f97926525eefde87e2960066",
+    "urp_control": "6d3dba01015dd2edf09717d6b7856f03ef0683083d872ff486f9a0eef1ffd076"
+  },
+  "identity": {
+    "input": {
+      "input_record_sha256": "bec71fdac597a6b340457e5330349da9f47f2d4d777757fbfe948126ba67b6c1",
+      "patch_file_sha256": "957704bf86fcce6d0b9c90b715e1a62435bbb96df65864d961cf23a3c8ae75fd",
+      "selection_rule_sha256": "e0b1df83a9ca79ac8e4682d25b6b56d1a8c76b17bd7d373684f48f2a31d7362d"
+    },
+    "reference": {
+      "child_record_sha256": "d8150ec1b8a1ff61ffee1c9e7bf42114060794894305b3c66cf24228faff3ecb",
+      "execution_sha256": "7aa1ef61e2f231d19a7a0fff3483f480de6611215f6c027aed10014d23cfc52f",
+      "frozen_config_canonical_sha256": "bb0111fab6310ab5430d931b781fc3c97cdb928da773d0cf8e71ea532fb4e5b3",
+      "frozen_config_raw_sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd",
+      "frozen_manifest_sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca",
+      "r1_manifest_sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044"
+    },
+    "resolved_config_sha256": "7f17fbae708d00b43daab7b3ac3645f13cd893be0e279abbd986d89854225e8b",
+    "urp_config_sha256": "11ea9daa64d1fb31ad2709d5f44c07e7be4fff62f58b14191eff3d544d2bb9f3",
+    "urp_manifest_sha256": "1df7af08c8b5897ad23fac88ab94e4ad36212a47cd542bb584e85ca07df91bd1"
+  },
+  "imports": {
+    "cg_fedllm_would_resolve_to (forbidden in the child; not imported)": "D:\\projects-cd\\cg-fedllm-reproduction\\.claude\\worktrees\\p5a-engineering-support\\src\\cg_fedllm\\__init__.py",
+    "child": {
+      "uformer_ae": {
+        "approved": true,
+        "origin": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\uid_20261012_v2\\uformer_ae.py",
+        "sha256": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606"
+      },
+      "uformer_blocks": {
+        "approved": true,
+        "origin": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\uid_20261012_v2\\uformer_blocks.py",
+        "sha256": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747"
+      },
+      "uid_common": {
+        "approved": true,
+        "origin": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\uid_20261012_v2\\uid_common.py",
+        "sha256": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230"
+      },
+      "uid_r1_control": {
+        "approved": true,
+        "origin": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\uid_20261012_v2_r1\\uid_r1_control.py",
+        "sha256": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074"
+      },
+      "uid_r1_measure": {
+        "approved": true,
+        "origin": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\uid_20261012_v2_r1\\uid_r1_measure.py",
+        "sha256": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760"
+      },
+      "urp_child": {
+        "approved": true,
+        "origin": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\urp_20261013_v1\\urp_child.py",
+        "sha256": "9b7bae14a3c79412007f774471614f63b98f2c66f97926525eefde87e2960066"
+      },
+      "urp_control": {
+        "approved": true,
+        "origin": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\urp_20261013_v1\\urp_control.py",
+        "sha256": "6d3dba01015dd2edf09717d6b7856f03ef0683083d872ff486f9a0eef1ffd076"
+      }
+    },
+    "child_all_approved": true,
+    "child_forbidden_modules": [
+      "cg_fedllm",
+      "resnet3_s1",
+      "urc_control",
+      "ep_classify"
+    ],
+    "supervisor": {
+      "uid_r1_control": {
+        "approved": true,
+        "origin": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\uid_20261012_v2_r1\\uid_r1_control.py",
+        "sha256": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074"
+      },
+      "urp_control": {
+        "approved": true,
+        "origin": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\urp_20261013_v1\\urp_control.py",
+        "sha256": "6d3dba01015dd2edf09717d6b7856f03ef0683083d872ff486f9a0eef1ffd076"
+      }
+    },
+    "supervisor_all_approved": true
+  },
+  "interpreter": {
+    "dont_write_bytecode": true,
+    "matches_plan": true,
+    "sys.executable": "D:\\conda_envs\\cgfedllm\\python.exe",
+    "version": "3.11.16"
+  },
+  "ledger_status": {
+    "arms": {
+      "U-PATCH": "NOT_STARTED"
+    },
+    "invocations": 0,
+    "records": [],
+    "roots_exist": {
+      "mirror": false,
+      "primary": false
+    },
+    "run_root_exists": false,
+    "starts": 0
+  },
+  "manifest": {
+    "bytes": 16432,
+    "entries": 61,
+    "entries_matching": 61,
+    "entries_mismatching": [],
+    "external_bound_files": 4,
+    "external_matching": 4,
+    "external_mismatching": [],
+    "is_approved": true,
+    "package_files_not_in_manifest": [
+      "CONTINUATION_CHECKPOINT.md",
+      "PROPOSED_LAUNCH.md",
+      "manifest_urp.json"
+    ],
+    "path": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\urp_20261013_v1\\manifest_urp.json",
+    "protocol_id": "URP-20261013-v1",
+    "sha256": "1df7af08c8b5897ad23fac88ab94e4ad36212a47cd542bb584e85ca07df91bd1",
+    "unlisted_as_expected": true
+  },
+  "memory": {
+    "available_bytes": 9176199168,
+    "rss_limit_at_launch_would_be": 4294967296,
+    "total_bytes": 34070192128
+  },
+  "plan": {
+    "aggregate_seconds": 7200.0,
+    "arms": [
+      {
+        "arm": "U-PATCH",
+        "max_seconds": 1800.0,
+        "max_updates": 3000
+      }
+    ],
+    "cpu": {
+      "inter_op_threads": 24,
+      "intra_op_threads": 24
+    },
+    "curve_every": 100,
+    "deadlines_from_arm_start_s": {
+      "kill": 1780.0,
+      "kill_wait": 10,
+      "soft_stop": 1720.0
+    },
+    "end_margin_s": 20,
+    "eval_reserve_s": 60,
+    "evidence_cap_bytes": 536870912,
+    "interrupt_grace_s": 20,
+    "kill_wait_s": 10,
+    "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/urp_20261013_v1/scientific_ledger_mirror",
+    "max_invocations": 1,
+    "max_training_starts": 1,
+    "mode": "scientific",
+    "poll_interval_s": 0.25,
+    "prerequisite": {},
+    "python_executable": "D:/conda_envs/cgfedllm/python.exe",
+    "rss_available_fraction": 0.5,
+    "rss_cap_bytes": 4294967296,
+    "run_root": "D:/cgfed-runs/urp_20261013_v1",
+    "torch_version": "2.14.0+cu130"
+  },
+  "recorded_local": "2026-10-13T16:49:20+0800",
+  "resolved": {
+    "arm": "U-PATCH",
+    "cpu": {
+      "inter_op_threads": 24,
+      "intra_op_threads": 24
+    },
+    "criteria": {
+      "max_rse": 0.01,
+      "min_cosine": 0.99
+    },
+    "input": {
+      "input_record": "input/input_record.json",
+      "input_record_sha256": "bec71fdac597a6b340457e5330349da9f47f2d4d777757fbfe948126ba67b6c1",
+      "normalization": {
+        "mode": "global_exact_maxabs_train",
+        "scale_global": 0.015751632224572334
+      },
+      "patch_file": "input/patch_x.safetensors",
+      "patch_file_sha256": "957704bf86fcce6d0b9c90b715e1a62435bbb96df65864d961cf23a3c8ae75fd",
+      "selection_rule": "input/SELECTION_RULE.md",
+      "selection_rule_sha256": "e0b1df83a9ca79ac8e4682d25b6b56d1a8c76b17bd7d373684f48f2a31d7362d",
+      "source": "R3 balanced_effective_delta_r8, t 7, client 91 (P5-A position 39), Phi sha256 485cbe5f3a450b43d7780fe9cd97afe5169ea81ce0bdaf21166938adfcac2546, Phi[0, 1024:1056, 768:800]",
+      "tensor_name": "x"
+    },
+    "input_expected": {
+      "dtype": "torch.float32",
+      "normalized_max_abs": 0.8495237827301025,
+      "normalized_scalar_mean_mse": 0.016651517003540468,
+      "normalized_sha256": "1d2f65aad35b9eb25e445d4b864ae1b1a894e4107ee358e61c602ffc898812bb",
+      "normalized_target_energy": 17.053869437280618,
+      "normalized_zero_prediction_mse": 0.016654169372344353,
+      "original_scalar_mean_mse": 4.131472976536517e-06,
+      "original_sha256": "92707ff85a521c92164bf90d2bb927d81eabbb9b3b2f107271ca2fafd75db98a",
+      "original_target_energy": 0.004231302211738306,
+      "original_zero_prediction_mse": 4.132131066150689e-06,
+      "shape": [
+        1,
+        1,
+        32,
+        32
+      ]
+    },
+    "limits": {
+      "aggregate_seconds": 7200.0,
+      "curve_every": 100,
+      "evidence_cap_bytes": 536870912,
+      "max_invocations": 1,
+      "max_training_starts": 1,
+      "rss_available_fraction": 0.5,
+      "rss_cap_bytes": 4294967296
+    },
+    "max_seconds": 1800.0,
+    "max_updates": 3000,
+    "mechanics": {
+      "end_margin_s": 20,
+      "eval_reserve_s": 60,
+      "interrupt_grace_s": 20,
+      "kill_wait_s": 10,
+      "poll_interval_s": 0.25,
+      "torch_version": "2.14.0+cu130"
+    },
+    "model_init_seed": 1,
+    "optimizer": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "lr": 0.0002,
+      "name": "Adam",
+      "weight_decay": 0
+    },
+    "reference_model_state_sha256_init": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7",
+    "u_fit_model": {
+      "core_depth": 2,
+      "core_layers": 3,
+      "down_channels": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "down_strides": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "final_kernel": 7,
+      "in_channels": 1,
+      "input_hw": [
+        32,
+        32
+      ],
+      "mlp_ratio": 4.0,
+      "num_heads": 2,
+      "qkv_bias": true,
+      "shift_flag": true,
+      "stem_channels": 1,
+      "stem_kernel": 3,
+      "win_size": 8
+    },
+    "variant": "uformer_uid_20261012_v2_u_fit"
+  },
+  "torch_imported_by_package_checks": false
+}

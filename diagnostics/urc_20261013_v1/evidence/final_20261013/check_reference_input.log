@@ -1,0 +1,168 @@
+command: D:/conda_envs/cgfedllm/python.exe -B checks/check_reference_input.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\urc_20261013_v1
+start: 2026-10-13T09:11:16+08:00
+end: 2026-10-13T09:11:20+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+{
+  "all_equal": true,
+  "comparisons": {
+    "baselines.shared_scalar_mean.cosine": {
+      "equal": true,
+      "r_fit": 0.016958812127391625,
+      "u_fit_or_expected": 0.016958812127391625
+    },
+    "baselines.shared_scalar_mean.dot": {
+      "equal": true,
+      "r_fit": 0.0653805670893931,
+      "u_fit_or_expected": 0.0653805670893931
+    },
+    "baselines.shared_scalar_mean.mse": {
+      "equal": true,
+      "r_fit": 0.22193865837012977,
+      "u_fit_or_expected": 0.22193865837012977
+    },
+    "baselines.shared_scalar_mean.n": {
+      "equal": true,
+      "r_fit": 1024,
+      "u_fit_or_expected": 1024
+    },
+    "baselines.shared_scalar_mean.pred_energy": {
+      "equal": true,
+      "r_fit": 0.06538056566057904,
+      "u_fit_or_expected": 0.06538056566057904
+    },
+    "baselines.shared_scalar_mean.rse": {
+      "equal": true,
+      "r_fit": 0.9997123986912279,
+      "u_fit_or_expected": 0.9997123986912279
+    },
+    "baselines.shared_scalar_mean.sse": {
+      "equal": true,
+      "r_fit": 227.26518617101289,
+      "u_fit_or_expected": 227.26518617101289
+    },
+    "baselines.shared_scalar_mean.target_energy": {
+      "equal": true,
+      "r_fit": 227.3305667395311,
+      "u_fit_or_expected": 227.3305667395311
+    },
+    "baselines.zero_prediction.cosine": {
+      "equal": true,
+      "r_fit": null,
+      "u_fit_or_expected": null
+    },
+    "baselines.zero_prediction.dot": {
+      "equal": true,
+      "r_fit": 0.0,
+      "u_fit_or_expected": 0.0
+    },
+    "baselines.zero_prediction.mse": {
+      "equal": true,
+      "r_fit": 0.22200250658157333,
+      "u_fit_or_expected": 0.22200250658157333
+    },
+    "baselines.zero_prediction.n": {
+      "equal": true,
+      "r_fit": 1024,
+      "u_fit_or_expected": 1024
+    },
+    "baselines.zero_prediction.pred_energy": {
+      "equal": true,
+      "r_fit": 0.0,
+      "u_fit_or_expected": 0.0
+    },
+    "baselines.zero_prediction.rse": {
+      "equal": true,
+      "r_fit": 1.0,
+      "u_fit_or_expected": 1.0
+    },
+    "baselines.zero_prediction.sse": {
+      "equal": true,
+      "r_fit": 227.3305667395311,
+      "u_fit_or_expected": 227.3305667395311
+    },
+    "baselines.zero_prediction.target_energy": {
+      "equal": true,
+      "r_fit": 227.3305667395311,
+      "u_fit_or_expected": 227.3305667395311
+    },
+    "expected.input_sha256": {
+      "equal": true,
+      "r_fit": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722",
+      "u_fit_or_expected": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722"
+    },
+    "expected.shared_scalar_mean_mse": {
+      "equal": true,
+      "r_fit": 0.22193865837012977,
+      "u_fit_or_expected": 0.22193865837012977
+    },
+    "expected.target_energy": {
+      "equal": true,
+      "r_fit": 227.3305667395311,
+      "u_fit_or_expected": 227.3305667395311
+    },
+    "expected.zero_prediction_mse": {
+      "equal": true,
+      "r_fit": 0.22200250658157333,
+      "u_fit_or_expected": 0.22200250658157333
+    },
+    "input.dtype": {
+      "equal": true,
+      "r_fit": "torch.float32",
+      "u_fit_or_expected": "torch.float32"
+    },
+    "input.energy_sum_sq": {
+      "equal": true,
+      "r_fit": 227.3305667395311,
+      "u_fit_or_expected": 227.3305667395311
+    },
+    "input.max": {
+      "equal": true,
+      "r_fit": 0.7994620203971863,
+      "u_fit_or_expected": 0.7994620203971863
+    },
+    "input.mean": {
+      "equal": true,
+      "r_fit": 0.007990507583599538,
+      "u_fit_or_expected": 0.007990507583599538
+    },
+    "input.min": {
+      "equal": true,
+      "r_fit": -0.7989941835403442,
+      "u_fit_or_expected": -0.7989941835403442
+    },
+    "input.numel": {
+      "equal": true,
+      "r_fit": 1024,
+      "u_fit_or_expected": 1024
+    },
+    "input.sha256": {
+      "equal": true,
+      "r_fit": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722",
+      "u_fit_or_expected": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722"
+    },
+    "input.shape": {
+      "equal": true,
+      "r_fit": [
+        1,
+        1,
+        32,
+        32
+      ],
+      "u_fit_or_expected": [
+        1,
+        1,
+        32,
+        32
+      ]
+    },
+    "input.z_n": {
+      "equal": true,
+      "r_fit": 0.22200250658157333,
+      "u_fit_or_expected": 0.22200250658157333
+    }
+  },
+  "reference_child_record_hash_ok": true,
+  "torch_modules_used": "uid_common.make_input, describe_input, baselines (no model, no optimizer)"
+}

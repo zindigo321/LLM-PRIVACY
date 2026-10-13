@@ -1,0 +1,84 @@
+command: D:/conda_envs/cgfedllm/python.exe -B checks/check_registered_binding.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\urp_20261013_v1
+start: 2026-10-13T13:49:24+08:00
+end: 2026-10-13T13:49:28+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+{
+  "all_ok": true,
+  "cpu": {
+    "cuda_available": false,
+    "deterministic_algorithms": true,
+    "inter_op_threads": 24,
+    "intra_op_threads": 24,
+    "torch_version": "2.14.0+cu130"
+  },
+  "forward": {
+    "latent_element_ratio": 64.0,
+    "latent_shape": [
+      1,
+      64,
+      32,
+      32
+    ],
+    "output_finite": true,
+    "output_shape": [
+      1,
+      1,
+      32,
+      32
+    ],
+    "output_within_tanh_range": true
+  },
+  "init_equals_u_fit_record": true,
+  "input_checks_all_equal": true,
+  "model_class": "UformerAutoEncoder",
+  "model_config": {
+    "core_depth": 2,
+    "core_layers": 3,
+    "down_channels": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "down_strides": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "final_kernel": 7,
+    "in_channels": 1,
+    "input_hw": [
+      32,
+      32
+    ],
+    "mlp_ratio": 4.0,
+    "num_heads": 2,
+    "qkv_bias": true,
+    "shift_flag": true,
+    "stem_channels": 1,
+    "stem_kernel": 3,
+    "win_size": 8
+  },
+  "optimizer_created": false,
+  "parameters": {
+    "decoder": 342710,
+    "decoder_core": 317964,
+    "decoder_sampling": 24746,
+    "encoder": 342797,
+    "encoder_core": 317964,
+    "encoder_sampling": 24833,
+    "total": 685507
+  },
+  "patch_file_sha256": "957704bf86fcce6d0b9c90b715e1a62435bbb96df65864d961cf23a3c8ae75fd",
+  "procedure": "fresh registered model; one forward on a disposable copy; no optimizer, no update, no save",
+  "state_and_rng_unchanged": true,
+  "state_sha256_init": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7",
+  "u_fit_recorded_state_sha256_init": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7"
+}

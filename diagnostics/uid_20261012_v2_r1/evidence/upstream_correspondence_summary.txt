@@ -1,0 +1,14 @@
+all_ok True | einops 0.8.1 | tol {'dtype': 'float64', 'max_abs': 1e-12, 'max_rel_l2': 1e-12}
+vendored_sha256 3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747
+window_partition                         ok=True  forward.max_abs=0.000e+00 rel=0.000e+00
+window_reverse                           ok=True  forward.max_abs=0.000e+00 rel=0.000e+00  roundtrip_exact=True
+shift_attention_mask                     ok=True  forward.max_abs=0.000e+00 rel=0.000e+00  exact=True
+relative_position_index                  ok=True  exact=True
+LinearProjection q/k/v                   ok=True  forward=k:0.0e+00,q:0.0e+00,v:0.0e+00
+attention scale (dim/heads)^-0.5         ok=True  upstream=0.1767766952966369  vendored=0.1767766952966369
+WindowAttention (W-MSA)                  ok=True  forward.max_abs=0.000e+00 rel=0.000e+00  input_grad.max_abs=0.000e+00 rel=0.000e+00  param_grads.max_abs=0.000e+00 rel=0.000e+00  state_keys=8
+WindowAttention (SW-MSA mask)            ok=True  forward.max_abs=0.000e+00 rel=0.000e+00  input_grad.max_abs=0.000e+00 rel=0.000e+00  param_grads.max_abs=0.000e+00 rel=0.000e+00  state_keys=8
+LeFF                                     ok=True  forward.max_abs=0.000e+00 rel=0.000e+00  input_grad.max_abs=0.000e+00 rel=0.000e+00  param_grads.max_abs=0.000e+00 rel=0.000e+00  state_keys=6
+LeWinTransformerBlock shift=0            ok=True  forward.max_abs=0.000e+00 rel=0.000e+00  input_grad.max_abs=0.000e+00 rel=0.000e+00  param_grads.max_abs=0.000e+00 rel=0.000e+00  state_keys=18
+LeWinTransformerBlock shift=4            ok=True  forward.max_abs=0.000e+00 rel=0.000e+00  input_grad.max_abs=0.000e+00 rel=0.000e+00  param_grads.max_abs=0.000e+00 rel=0.000e+00  state_keys=18
+BasicUformerLayer depth=2 shift_flag     ok=True  forward.max_abs=0.000e+00 rel=0.000e+00  input_grad.max_abs=0.000e+00 rel=0.000e+00  param_grads.max_abs=0.000e+00 rel=0.000e+00  state_keys=36

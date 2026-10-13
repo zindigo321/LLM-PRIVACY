@@ -1,0 +1,77 @@
+start: 2026-10-13T09:30:27+08:00
+exit_code: 0
+{
+  "child_scientific_config_branch": {
+    "accepted": true,
+    "arm": "R-FIT",
+    "raw_sha256": "5db03929eb17c0c49dabd26d894b144cfa85e470bc9188549a87402886466608"
+  },
+  "disk_free_bytes": {
+    "D:": 191193059328
+  },
+  "entries": 43,
+  "entries_mismatching": [],
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "-1",
+    "HF_HUB_OFFLINE": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": null
+  },
+  "expected_module_sha256": {
+    "resnet3_s1": "46380d86592c6cded5c8443f110826c71b6c49a318870461618727f3508b13fd",
+    "uid_common": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230",
+    "uid_r1_control": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074",
+    "uid_r1_measure": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760",
+    "urc_child": "7a43d842c360441e812660929db1273a3ea73c477adae7335f5b62109545c844",
+    "urc_control": "e4365a823bd75216a42452e46e558c47d03c4635bf0b412dd45d2fc0c82961ec"
+  },
+  "identity": {
+    "reference": {
+      "child_record_sha256": "d8150ec1b8a1ff61ffee1c9e7bf42114060794894305b3c66cf24228faff3ecb",
+      "execution_sha256": "7aa1ef61e2f231d19a7a0fff3483f480de6611215f6c027aed10014d23cfc52f",
+      "frozen_config_canonical_sha256": "bb0111fab6310ab5430d931b781fc3c97cdb928da773d0cf8e71ea532fb4e5b3",
+      "frozen_config_raw_sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd",
+      "frozen_manifest_sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca",
+      "r1_manifest_sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044"
+    },
+    "resolved_config_sha256": "5db03929eb17c0c49dabd26d894b144cfa85e470bc9188549a87402886466608",
+    "urc_config_sha256": "fcabcfd8f22527996b4d644a7e049e622771de6cac51eb0842a4385c6e4d6c51",
+    "urc_manifest_sha256": "b058adf35bf326516f17cb3d773222840b0d1f6605a0f6e4a535564e94588cb6"
+  },
+  "interpreter": {
+    "matches_plan": true,
+    "sys.executable": "D:\\conda_envs\\cgfedllm\\python.exe",
+    "version": "3.11.16"
+  },
+  "manifest_is_approved": true,
+  "manifest_sha256": "b058adf35bf326516f17cb3d773222840b0d1f6605a0f6e4a535564e94588cb6",
+  "memory": {
+    "available_bytes": 11495305216,
+    "rss_limit_at_launch_would_be": 4294967296
+  },
+  "package_files_not_in_manifest": [
+    "CONTINUATION_CHECKPOINT.md",
+    "PROPOSED_LAUNCH.md",
+    "manifest_urc.json"
+  ],
+  "plan": {
+    "aggregate_seconds": 7200.0,
+    "arms": [
+      {
+        "arm": "R-FIT",
+        "max_seconds": 1800.0,
+        "max_updates": 3000
+      }
+    ],
+    "cpu": {
+      "inter_op_threads": 24,
+      "intra_op_threads": 24
+    },
+    "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/urc_20261013_v1/scientific_ledger_mirror",
+    "max_invocations": 1,
+    "max_training_starts": 1,
+    "python_executable": "D:/conda_envs/cgfedllm/python.exe",
+    "run_root": "D:/cgfed-runs/urc_20261013_v1"
+  },
+  "torch_imported": false
+}

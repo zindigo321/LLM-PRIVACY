@@ -1,0 +1,611 @@
+independent_verification.json 19845 bytes sha256=f079ee5e7d20a33dc9ed76af5f8555b6adfd1aafa35642abdb8416c6f922bd21
+{
+  "agreement_with_urp_analyze": {
+    "classifier_input_rss_used": 828628992,
+    "ep_checks_equal": true,
+    "ep_outcome": true,
+    "ep_quantities_equal": true,
+    "evidence_verified": true,
+    "strict": true
+  },
+  "all_ok": true,
+  "context_u_fit": {
+    "label": "context only: U-FIT used a synthetic uniform input with no normalizer; not a matched comparison",
+    "u_check_note": "1x1 Conv2d on the same 32x32 input, same process setup: an upper bound on fixed overhead",
+    "u_check_rss_guard_sampled_max": 638971904,
+    "u_fit_arm_wall_s": 506.3440000000046,
+    "u_fit_child_process_s": 503.9380000000019,
+    "u_fit_final_eval": {
+      "cosine": 0.8540472264633736,
+      "rse": 0.2727411031905583
+    },
+    "u_fit_final_train": {
+      "cosine": 0.8544958598853383,
+      "rse": 0.2720868857639887
+    },
+    "u_fit_pre_update_loss_3000": 0.060382165014743805,
+    "u_fit_rss": {
+      "guard_sampled_max": 822517760,
+      "os_peak_wset": 824033280
+    },
+    "u_fit_step0_eval_rse": 1.0059377103460292,
+    "u_fit_target_mean_square": 0.22200250658157333,
+    "verified": true
+  },
+  "curve": {
+    "all_losses_finite": true,
+    "every_parameter_had_a_gradient": true,
+    "final_param_change_equals_point_3000": true,
+    "final_train_mode_mse_after_3000_over_pre_update_loss_3000": 0.9958672624900683,
+    "grad_l2_first_last": {
+      "decoder.core": [
+        0.06529397876069691,
+        0.002292097306064166
+      ],
+      "decoder.sampling": [
+        1.7548171481868298,
+        0.03605132313062532
+      ],
+      "encoder.core": [
+        0.0654138274517014,
+        0.0024511009217983502
+      ],
+      "encoder.sampling": [
+        1.3363886462448318,
+        0.05543778510404844
+      ]
+    },
+    "grad_nonfinite_total": 0,
+    "loglog_slope_1000_to_3000": -0.30053165117896485,
+    "loglog_slope_2000_to_3000": -0.34261036904044423,
+    "loss_fp32_vs_metrics_mse_max_rel_diff": 1.0059192199940021e-07,
+    "loss_ratio_3000_over_2000": 0.8702509367706883,
+    "loss_ratio_3000_over_2500": 0.9370185302487783,
+    "loss_strictly_decreasing_at_recorded_points": true,
+    "mean_s_per_update": 0.1740633544514849,
+    "points": 31,
+    "pre_update_rse_normalized": {
+      "1": 12.83861210739981,
+      "100": 0.7155775422607347,
+      "1000": 0.2670765968550774,
+      "1500": 0.24852193464590597,
+      "2000": 0.22055362983182597,
+      "2500": 0.2048380136117612,
+      "2900": 0.19220577069002273,
+      "3000": 0.19193700535079647,
+      "500": 0.3165436659628188
+    },
+    "relative_change_from_init_at_3000": {
+      "decoder.core": 0.03885878772871672,
+      "decoder.sampling": 0.05162105375722283,
+      "encoder.core": 0.04013940175480314,
+      "encoder.sampling": 0.030278171032295232
+    },
+    "rss_at_points_min_max": [
+      703991808,
+      783204352
+    ],
+    "s_per_100_updates_min_max": [
+      15.360000000000582,
+      18.875
+    ],
+    "schedule_as_registered": true,
+    "train_loop_s_point1_to_point3000": 522.0160000000033,
+    "update1_metrics_equal_step0_train_normalized": true,
+    "zero_gradient_groups": []
+  },
+  "derived": {
+    "eval_rse_minus_train_rse": 0.0023089313080691676,
+    "eval_sse_over_scalar_mean_sse": 0.19348353272071525,
+    "eval_sse_over_zero_sse": 0.19345271823265606,
+    "step0_eval_rse_minus_final_eval_rse": 0.8520707161569258,
+    "train_minus_eval_output_sse_over_eval_sse_normalized": 0.010852948830109732
+  },
+  "ep_frozen_classifier": {
+    "checks": {
+      "M0": {
+        "pass": true,
+        "problems": []
+      },
+      "M1": {
+        "margin": -0.3065472817673439,
+        "operator": "<=",
+        "pass": true,
+        "threshold": 0.5,
+        "value": 0.19345271823265606
+      },
+      "M2": {
+        "margin": 0.09810455804444884,
+        "operator": ">=",
+        "pass": true,
+        "threshold": 0.8,
+        "value": 0.8981045580444489
+      },
+      "M3": {
+        "margin": -2.50580639438876e-06,
+        "operator": "<=",
+        "pass": true,
+        "threshold": 3.305178381229214e-06,
+        "value": 7.99371986840454e-07
+      },
+      "V1": {
+        "pass": true,
+        "problems": []
+      },
+      "V2": {
+        "pass": true,
+        "problems": []
+      }
+    },
+    "outcome": "PASS",
+    "policy_id": "EP-20261012-v1",
+    "quantities": {
+      "best_baseline": "scalar_mean",
+      "best_baseline_mse": 4.131472976536517e-06,
+      "cosine": 0.8981045580444489,
+      "mse": 7.99371986840454e-07,
+      "mse_over_best_baseline": 0.19348353272071525,
+      "rse": 0.19345271823265606,
+      "scalar_mean_mse": 4.131472976536517e-06,
+      "zero_mse": 4.132131066150689e-06
+    },
+    "reasons": [],
+    "thresholds": {
+      "baseline_factor": 0.8,
+      "max_rse": 0.5,
+      "min_cosine": 0.8
+    }
+  },
+  "ep_reimplemented": {
+    "M1": [
+      0.19345271823265606,
+      0.5,
+      true
+    ],
+    "M2": [
+      0.8981045580444489,
+      0.8,
+      true
+    ],
+    "M3": [
+      7.99371986840454e-07,
+      3.305178381229214e-06,
+      true
+    ],
+    "best": 4.131472976536517e-06,
+    "mse_over_best": 0.19348353272071525,
+    "outcome": "PASS"
+  },
+  "ep_reimplemented_train_reported_only": {
+    "M1": [
+      0.1911437869245869,
+      0.5,
+      true
+    ],
+    "M2": [
+      0.8993734990926799,
+      0.8,
+      true
+    ],
+    "M3": [
+      7.898311800527734e-07,
+      3.305178381229214e-06,
+      true
+    ],
+    "best": 4.131472976536517e-06,
+    "mse_over_best": 0.19117423363008468,
+    "outcome": "PASS"
+  },
+  "input": {
+    "all_finite": true,
+    "dtype": "F32",
+    "file_keys": [
+      "x"
+    ],
+    "hashes_equal_recorded": true,
+    "normalized": {
+      "best_constant": "scalar_mean",
+      "recorded_scalar_mean_mse": 0.016651517003540468,
+      "recorded_zero_mse": 0.016654169372344353,
+      "scalar_mean_mse_fsum": 0.016651517003540468,
+      "scalar_mean_value_fp32": -0.0016286094905808568,
+      "target_energy_fsum": 17.053869437280618,
+      "ulps_scalar_mean_mse": 0.0,
+      "ulps_target_energy": 0.0,
+      "ulps_zero_mse": 0.0,
+      "zero_mse_fsum": 0.016654169372344353
+    },
+    "normalized_max_abs": 0.8495237827301025,
+    "normalized_max_abs_equal_recorded": true,
+    "original": {
+      "best_constant": "scalar_mean",
+      "recorded_scalar_mean_mse": 4.131472976536517e-06,
+      "recorded_zero_mse": 4.132131066150689e-06,
+      "scalar_mean_mse_fsum": 4.131472976536517e-06,
+      "scalar_mean_value_fp32": -2.565325667092111e-05,
+      "target_energy_fsum": 0.004231302211738306,
+      "ulps_scalar_mean_mse": 0.0,
+      "ulps_target_energy": 0.0,
+      "ulps_zero_mse": 0.0,
+      "zero_mse_fsum": 4.132131066150689e-06
+    },
+    "shape": [
+      1,
+      1,
+      32,
+      32
+    ],
+    "tensor_sha256_normalized": "1d2f65aad35b9eb25e445d4b864ae1b1a894e4107ee358e61c602ffc898812bb",
+    "tensor_sha256_original": "92707ff85a521c92164bf90d2bb927d81eabbb9b3b2f107271ca2fafd75db98a",
+    "zero_elements": 0
+  },
+  "integrity": {
+    "bytecode_files": [],
+    "entries": 61,
+    "entries_mismatching": [],
+    "external_bound_files": 4,
+    "external_mismatching": [],
+    "manifest_bytes": 16432,
+    "manifest_is_approved": true,
+    "manifest_sha256": "1df7af08c8b5897ad23fac88ab94e4ad36212a47cd542bb584e85ca07df91bd1",
+    "module_sha256_from_manifest": {
+      "uformer_ae": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606",
+      "uformer_blocks": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747",
+      "uid_common": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230",
+      "uid_r1_control": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074",
+      "uid_r1_measure": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760",
+      "urp_child": "9b7bae14a3c79412007f774471614f63b98f2c66f97926525eefde87e2960066",
+      "urp_control": "6d3dba01015dd2edf09717d6b7856f03ef0683083d872ff486f9a0eef1ffd076"
+    },
+    "pinned_match": {
+      "../exploratory_progression_20261012/POLICY.md": true,
+      "../exploratory_progression_20261012/ep_classify.py": true,
+      "../uid_20261012_v2/uformer_ae.py": true,
+      "../uid_20261012_v2/uformer_blocks.py": true,
+      "../uid_20261012_v2/uid_common.py": true,
+      "../uid_20261012_v2_r1/uid_r1_control.py": true,
+      "../uid_20261012_v2_r1/uid_r1_measure.py": true
+    },
+    "unlisted_as_expected": true,
+    "unlisted_files": [
+      "CONTINUATION_CHECKPOINT.md",
+      "PROPOSED_LAUNCH.md",
+      "manifest_urp.json",
+      "scientific_ledger_mirror/end_U-PATCH.json",
+      "scientific_ledger_mirror/invocation_001.json",
+      "scientific_ledger_mirror/invocation_001_end.json",
+      "scientific_ledger_mirror/start_U-PATCH.json"
+    ]
+  },
+  "metrics": {
+    "eval_mode": {
+      "cosine": 0.8981045580444489,
+      "cosine_from_exact_cos2": 0.8981045580444488,
+      "equal_recorded": {
+        "cosine": true,
+        "mse": true,
+        "norm_ratio": true,
+        "q_n": true,
+        "rse": true
+      },
+      "finite_recorded": true,
+      "mse": 7.99371986840454e-07,
+      "norm_ratio": 0.8914325708689224,
+      "q_n": 0.19345271823265606,
+      "rse": 0.19345271823265606,
+      "rse_exact_rounded": 0.19345271823265606,
+      "sse_identity_rel_err": 1.8543402597255115e-15,
+      "ulps_rse_float64_vs_exact": 0.0
+    },
+    "eval_mode_normalized": {
+      "cosine": 0.8981045587115517,
+      "cosine_from_exact_cos2": 0.8981045587115517,
+      "equal_recorded": {
+        "cosine": true,
+        "mse": true,
+        "norm_ratio": true,
+        "q_n": true,
+        "rse": true
+      },
+      "finite_recorded": true,
+      "mse": 0.0032217943154888165,
+      "norm_ratio": 0.8914325694763806,
+      "q_n": 0.1934527170618834,
+      "rse": 0.1934527170618834,
+      "rse_exact_rounded": 0.1934527170618834,
+      "sse_identity_rel_err": 2.6921698068016047e-16,
+      "ulps_rse_float64_vs_exact": 0.0
+    },
+    "normalized_vs_original_rel_diff": {
+      "eval_mode": {
+        "cosine": 7.427897024412725e-10,
+        "rse": 6.051983431372046e-09
+      },
+      "train_mode": {
+        "cosine": 1.700864018409599e-09,
+        "rse": 1.4310463528858417e-08
+      }
+    },
+    "step0_eval_original": {
+      "cosine": 0.012247414211391543,
+      "cosine_from_exact_cos2": 0.012247414211391543,
+      "equal_recorded": {
+        "cosine": true,
+        "mse": true,
+        "norm_ratio": true,
+        "q_n": true,
+        "rse": true
+      },
+      "finite_recorded": true,
+      "mse": 4.320239863629753e-06,
+      "norm_ratio": 0.22596085212404818,
+      "q_n": 1.0455234343895818,
+      "rse": 1.0455234343895818,
+      "rse_exact_rounded": 1.0455234343895818,
+      "sse_identity_rel_err": 3.9212311074906167e-16,
+      "ulps_rse_float64_vs_exact": 0.0
+    },
+    "train_mode": {
+      "cosine": 0.8993734990926799,
+      "cosine_from_exact_cos2": 0.8993734990926799,
+      "equal_recorded": {
+        "cosine": true,
+        "mse": true,
+        "norm_ratio": true,
+        "q_n": true,
+        "rse": true
+      },
+      "finite_recorded": true,
+      "mse": 7.898311800527734e-07,
+      "norm_ratio": 0.8953142140820148,
+      "q_n": 0.1911437869245869,
+      "rse": 0.1911437869245869,
+      "rse_exact_rounded": 0.1911437869245869,
+      "sse_identity_rel_err": 8.043170825419664e-16,
+      "ulps_rse_float64_vs_exact": 0.0
+    },
+    "train_mode_normalized": {
+      "cosine": 0.899373500622392,
+      "cosine_from_exact_cos2": 0.899373500622392,
+      "equal_recorded": {
+        "cosine": true,
+        "mse": true,
+        "norm_ratio": true,
+        "q_n": true,
+        "rse": true
+      },
+      "finite_recorded": true,
+      "mse": 0.003183340956358285,
+      "norm_ratio": 0.8953142136152933,
+      "q_n": 0.1911437841892307,
+      "rse": 0.1911437841892307,
+      "rse_exact_rounded": 0.1911437841892307,
+      "sse_identity_rel_err": 1.3623450171995683e-15,
+      "ulps_rse_float64_vs_exact": 0.0
+    }
+  },
+  "recorded_local": "2026-10-13T18:58:24+0800",
+  "records": {
+    "checks": {
+      "child_config_is_resolved_config": true,
+      "child_local_modules_listed_only": true,
+      "child_modules_checked": true,
+      "child_modules_equal_manifest": true,
+      "deadlines_as_registered": true,
+      "invocation_names_approved_manifest": true,
+      "job_module_hashes_equal_manifest": true,
+      "job_scientific_no_hooks": true,
+      "ledger_invocations_1": true,
+      "ledger_starts_1": true,
+      "no_stop_request_file": true,
+      "plan_one_upatch_start": true,
+      "status_after_counts": true
+    },
+    "kill_at_rederived": 122135.656,
+    "problems": []
+  },
+  "registered_baselines_original": {
+    "all_equal": true,
+    "scalar_mean_mse": [
+      4.131472976536517e-06,
+      4.131472976536517e-06,
+      4.131472976536517e-06,
+      4.131472976536517e-06
+    ],
+    "sources": "task statement, input_record.json, urp_config.json input_expected, child record",
+    "zero_prediction_mse": [
+      4.132131066150689e-06,
+      4.132131066150689e-06,
+      4.132131066150689e-06,
+      4.132131066150689e-06
+    ]
+  },
+  "resources": {
+    "available_ram_bytes_at_launch": 9453146112,
+    "child_os_peak_wset_bytes": 828628992,
+    "child_sampled_max_rss_bytes": 828366848,
+    "child_stdout_stderr_bytes": [
+      0,
+      0
+    ],
+    "evidence_bytes_run_root": 6416844,
+    "evidence_cap_bytes": 536870912,
+    "guard_action": null,
+    "guard_sampled_max_rss_bytes": 823758848,
+    "guard_samples": 1930,
+    "interrupted": false,
+    "rss_limit_bytes": 4294967296,
+    "supervisor_stderr_bytes": 0
+  },
+  "sealed": {
+    "entries": 15,
+    "entries_mismatching": [],
+    "ledger_records": [
+      "end_U-PATCH.json",
+      "invocation_001.json",
+      "invocation_001_end.json",
+      "start_U-PATCH.json"
+    ],
+    "listing_bytes": 2253,
+    "listing_has_crlf": false,
+    "listing_sha256": "ba9d191707212c2b270d662de444bc4bcb86974b8646915a152c70edb7e21e06",
+    "mirror_byte_identical": true,
+    "present_not_listed": [],
+    "recorded_line": "recorded: 2026-10-13T17:36:43+0800"
+  },
+  "states": {
+    "final": {
+      "all_float_finite": true,
+      "buffer_elements": 49545,
+      "bytes": 3168388,
+      "counts_equal_record": true,
+      "dtype_counts": {
+        "F32": 271,
+        "I64": 25
+      },
+      "file_equals_record": true,
+      "file_sha256": "f8a51b668e8890fc8012e582474802b036acf056f25618cb63a4e2c79f1f3f3a",
+      "metadata": {
+        "arm": "U-PATCH",
+        "format": "urp_20261013_v1.state/v1",
+        "point": "final",
+        "protocol_id": "URP-20261013-v1",
+        "state_sha256": "a3f1bf91f46faf09b0f461bf9641d4cf87a2748235f9c37abcc8a2d9fa907d3b",
+        "variant": "uformer_uid_20261012_v2_u_fit"
+      },
+      "num_batches_tracked_values": [
+        3000
+      ],
+      "parameter_elements": 685507,
+      "path": "D:\\cgfed-runs\\urp_20261013_v1\\arms\\U-PATCH\\final_state.safetensors",
+      "running_var_nonnegative": true,
+      "state_hash_agrees": true,
+      "state_sha256_recomputed_from_file": "a3f1bf91f46faf09b0f461bf9641d4cf87a2748235f9c37abcc8a2d9fa907d3b",
+      "tensors": 296
+    },
+    "group_change_init_to_final": {
+      "decoder.core": {
+        "counts_equal_record": true,
+        "delta_l2": 1.4789054061727511,
+        "numel": 317964,
+        "numel_changed": 317964,
+        "ref_l2": 38.05845453793808,
+        "rel_diff_delta_l2_vs_record": 1.5014118144287466e-16,
+        "rel_diff_ref_l2_vs_record": 0.0,
+        "relative_change": 0.03885878772871671
+      },
+      "decoder.sampling": {
+        "counts_equal_record": true,
+        "delta_l2": 0.5303474247028122,
+        "numel": 24746,
+        "numel_changed": 24746,
+        "ref_l2": 10.273858941296904,
+        "rel_diff_delta_l2_vs_record": 2.0933881695518486e-16,
+        "rel_diff_ref_l2_vs_record": 1.7290064517627244e-16,
+        "relative_change": 0.051621053757222854
+      },
+      "encoder.core": {
+        "counts_equal_record": true,
+        "delta_l2": 1.5259075430365452,
+        "numel": 317964,
+        "numel_changed": 317964,
+        "ref_l2": 38.015203922513685,
+        "rel_diff_delta_l2_vs_record": 1.4551642131813843e-16,
+        "rel_diff_ref_l2_vs_record": 0.0,
+        "relative_change": 0.04013940175480314
+      },
+      "encoder.sampling": {
+        "counts_equal_record": true,
+        "delta_l2": 0.3936104466620048,
+        "numel": 24833,
+        "numel_changed": 24833,
+        "ref_l2": 12.999809210476185,
+        "rel_diff_delta_l2_vs_record": 0.0,
+        "rel_diff_ref_l2_vs_record": 0.0,
+        "relative_change": 0.030278171032295232
+      }
+    },
+    "index_buffers_unchanged": true,
+    "init": {
+      "all_float_finite": true,
+      "buffer_elements": 49545,
+      "bytes": 3168388,
+      "counts_equal_record": true,
+      "dtype_counts": {
+        "F32": 271,
+        "I64": 25
+      },
+      "file_equals_record": true,
+      "file_sha256": "8cc88de20c2eb441f6347174dd1bab80d06cb8a99b4730f9bfc977a1084cdde2",
+      "metadata": {
+        "arm": "U-PATCH",
+        "format": "urp_20261013_v1.state/v1",
+        "point": "init",
+        "protocol_id": "URP-20261013-v1",
+        "state_sha256": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7",
+        "variant": "uformer_uid_20261012_v2_u_fit"
+      },
+      "num_batches_tracked_values": [
+        0
+      ],
+      "parameter_elements": 685507,
+      "path": "D:\\cgfed-runs\\urp_20261013_v1\\arms\\U-PATCH\\init_state.safetensors",
+      "running_var_nonnegative": true,
+      "state_hash_agrees": true,
+      "state_sha256_recomputed_from_file": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7",
+      "tensors": 296
+    },
+    "init_equals_u_fit_record": true,
+    "read_back_note": "the child compared the written bytes with the in-memory state bit for bit before returning (urp_control.save_state); the run completed, so that comparison passed",
+    "same_keys_and_shapes": true
+  },
+  "strict": {
+    "criteria": {
+      "max_rse": 0.01,
+      "min_cosine": 0.99,
+      "mode": "eval",
+      "space": "original"
+    },
+    "recorded": "COMPLETED_FIT_FAIL",
+    "rederived_eval": "COMPLETED_FIT_FAIL",
+    "rederived_train_reported_only": "COMPLETED_FIT_FAIL",
+    "valid_completion": true
+  },
+  "summary_checks": {
+    "analyze_agrees": true,
+    "baselines_registered_equal": true,
+    "context_verified": true,
+    "curve_ok": true,
+    "evidence_verified": true,
+    "frozen_and_reimplemented_ep_agree": true,
+    "metrics_equal_recorded": true,
+    "no_bytecode": true,
+    "sealed_no_crlf": true,
+    "states_ok": true,
+    "unlisted_as_expected": true
+  },
+  "timing": {
+    "aggregate_limit_s": 7200.0,
+    "arm_limit_s": 1800.0,
+    "arm_scope": "monotonic, from just before the start record to the child's exit",
+    "arm_wall_s": 528.1399999999994,
+    "child_process_s": 525.593000000008,
+    "child_scope": "child monotonic, after its imports, to just before child_record.json was written",
+    "child_spawn_and_imports_s": 2.0469999999913853,
+    "final_phase_after_point3000_s": 0.8899999999994179,
+    "final_phase_scope": "final state save and read-back, two final evaluations, module check",
+    "invocation_record_after_import_s": 0.0629999999946449,
+    "invocation_wall_clock_utc": "2026-10-13T09:03:42Z",
+    "scientific_command_scope": "Start-Process wall clock: interpreter start to process exit",
+    "scientific_command_wall_s": 528.635,
+    "scientific_exit_code": 0,
+    "setup_to_point1_s": 2.687000000005355,
+    "soft_stop_margin_s": 1192.3600000000006,
+    "supervisor_aggregate_s": 528.2809999999881,
+    "supervisor_aggregate_scope": "monotonic, from the import of urp_supervise to the invocation summary",
+    "train_loop_point1_to_point3000_s": 522.0160000000033,
+    "wrapper_elapsed_s": 535.223,
+    "wrapper_scope": "launch_scientific.ps1: status before, scientific command, status after (wall clock)"
+  },
+  "torch_imported": false
+}

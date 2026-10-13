@@ -1,0 +1,7 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m ruff check --no-cache --config ../../pyproject.toml .
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1
+start: 2026-10-12T19:06:19+08:00
+end: 2026-10-12T19:06:19+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+All checks passed!

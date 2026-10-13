@@ -1,0 +1,21 @@
+=== UID-20261012-v2 engineering check 1: Uformer geometry and gradients ===
+
+config.json canonical SHA-256: bb0111fab6310ab5430d931b781fc3c97cdb928da773d0cf8e71ea532fb4e5b3
+
+Uformer config: {'input_hw': [32, 32], 'in_channels': 1, 'stem_kernel': 3, 'stem_channels': 1, 'down_channels': [2, 4, 8, 16, 32, 64], 'down_strides': [1, 1, 1, 1, 1, 1], 'final_kernel': 7, 'core_layers': 3, 'core_depth': 2, 'num_heads': 2, 'win_size': 8, 'mlp_ratio': 4.0, 'qkv_bias': True, 'shift_flag': True}
+  latent shape: (64, 32, 32), element ratio: 64.0000
+
+Parameters: {'encoder_sampling': 24833, 'encoder_core': 317964, 'decoder_core': 317964, 'decoder_sampling': 24746, 'encoder': 342797, 'decoder': 342710, 'total': 685507}
+  total: 685,507
+
+Input: torch.Size([1, 1, 32, 32]), range [-0.7990, 0.7995], SHA-256: fc5e1283d1a44cb3...
+
+Latent z: torch.Size([1, 64, 32, 32]), range [-0.2162, 5.8317]
+Reconstructed: torch.Size([1, 1, 32, 32]), range [-0.9068, 0.5599]
+Initial MSE loss: 0.416868
+
+Encoder core gradient sample: norm 9.773037e-03, nonzero 4096/4096
+Decoder core gradient sample: norm 1.013065e-02, nonzero 4096/4096
+Input gradient: norm 1.961444e-01, finite True
+
+CHECK 1 PASS: forward/backward complete, gradients nonzero and finite

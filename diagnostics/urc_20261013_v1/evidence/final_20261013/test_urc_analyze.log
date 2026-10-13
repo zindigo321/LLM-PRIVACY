@@ -1,0 +1,12 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA --basetemp=C:\Users\acc04\AppData\Local\Temp\urc_v1_an_final_20261013 checks/test_urc_analyze.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\urc_20261013_v1
+start: 2026-10-13T09:11:10+08:00
+end: 2026-10-13T09:11:16+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+..                                                                       [100%]
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_urc_analyze.py::test_analysis_of_a_fixture_run
+PASSED checks/test_urc_analyze.py::test_matching_accepts_identical_records_and_flags_one_difference
+2 passed in 5.30s
