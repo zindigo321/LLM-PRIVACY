@@ -1,0 +1,65 @@
+{
+  "protocol_id": "UCOV-20261013-v1",
+  "description": "Input-coverage fitting study: four CPU arms, U-TILE-1..4, run one after another. Each trains a fresh frozen UID-20261012-v2 Uformer encoder-decoder (the U-FIT model, seed 1, identical initial state) to reconstruct its own registered 32x32 tile of the archived R3 training snapshot (t 7, client 91), in the frozen R3 normalized space. The primary verdict is the policy UPP-20261013-v1. The protocol is protocol.md.",
+  "variant": "uformer_uid_20261012_v2_u_fit",
+  "arms": ["U-TILE-1", "U-TILE-2", "U-TILE-3", "U-TILE-4"],
+  "primary_policy": {
+    "policy_id": "UPP-20261013-v1",
+    "policy_file": "../upp_20261013_v1/upp_policy.json",
+    "policy_sha256": "74b277b952e0af68dee00692cde6b95f8ed747d641843bbe98517c70d98c5770",
+    "classifier_file": "../upp_20261013_v1/upp_classify.py",
+    "classifier_sha256": "31904623223cc18b216b97bf2cfaa27734487c38a93ebe57efca5de84abecbb1",
+    "thresholds_expected": {"max_rse": 0.5, "min_cosine": 0.65, "baseline_factor": 0.8}
+  },
+  "reference": {
+    "protocol_id": "UID-20261012-v2",
+    "revision_id": "UID-20261012-v2-r1",
+    "arm": "U-FIT",
+    "frozen_config": "../uid_20261012_v2/config.json",
+    "frozen_config_raw_sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd",
+    "frozen_config_canonical_sha256": "bb0111fab6310ab5430d931b781fc3c97cdb928da773d0cf8e71ea532fb4e5b3",
+    "frozen_manifest_sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca",
+    "r1_manifest_sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044",
+    "execution": "../uid_20261012_v2_r1/execution_r1.json",
+    "execution_sha256": "7aa1ef61e2f231d19a7a0fff3483f480de6611215f6c027aed10014d23cfc52f",
+    "child_record": "D:/cgfed-runs/uid_20261012_v2_r1/arms/U-FIT/child_record.json",
+    "child_record_sha256": "d8150ec1b8a1ff61ffee1c9e7bf42114060794894305b3c66cf24228faff3ecb",
+    "model_state_sha256_init": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7",
+    "urp_manifest_sha256": "1df7af08c8b5897ad23fac88ab94e4ad36212a47cd542bb584e85ca07df91bd1"
+  },
+  "shared_expected": {
+    "model_init_seed": 1,
+    "optimizer": {"name": "Adam", "lr": 0.0002, "betas": [0.9, 0.999], "eps": 1e-08, "weight_decay": 0},
+    "max_updates": 3000,
+    "max_seconds": 1800,
+    "cpu_config": {"intra_op_threads": 24, "inter_op_threads": 24},
+    "torch_version": "2.14.0+cu130",
+    "input_shape": [1, 1, 32, 32]
+  },
+  "inputs": {
+    "inputs_record": "input/inputs_record.json",
+    "inputs_record_sha256": "b4ba2f96dff823c11524dbe448c22e2bdfbf161f6a974c19f003e1e52df5f57f",
+    "selection_rule": "input/SELECTION_RULE.md",
+    "selection_rule_sha256": "ddd58be9ec8ecae473a2ed48be749e8826f685470abf5c78d15d64f58bfe36f2",
+    "tensor_name": "x",
+    "normalization": {"mode": "global_exact_maxabs_train", "scale_global": 0.015751632224572334},
+    "phi_sha256": "485cbe5f3a450b43d7780fe9cd97afe5169ea81ce0bdaf21166938adfcac2546",
+    "tiles": {
+      "U-TILE-1": {"patch_file": "input/tile_1.safetensors", "patch_file_sha256": "b7d39da738313e83d6c36f5f1c73683b464257d27375017a6731b6b7be345a67", "slice": "Phi[0, 512:544, 384:416]"},
+      "U-TILE-2": {"patch_file": "input/tile_2.safetensors", "patch_file_sha256": "db9ab2901b1a0e9f440ade425883f836b8d56f25a6cd4af16e7aaf147628ffb3", "slice": "Phi[0, 512:544, 1152:1184]"},
+      "U-TILE-3": {"patch_file": "input/tile_3.safetensors", "patch_file_sha256": "858c5e4499c76ddf878ff22e10e0cf27cb69788663714181efc490946ee70552", "slice": "Phi[0, 1536:1568, 384:416]"},
+      "U-TILE-4": {"patch_file": "input/tile_4.safetensors", "patch_file_sha256": "95a51e95b19ef89a7b42c41ba86374f58bdbb4f1864925ca4434a276be2afe9e", "slice": "Phi[0, 1536:1568, 1152:1184]"}
+    }
+  },
+  "limits": {
+    "max_training_starts": 4,
+    "max_invocations": 1,
+    "aggregate_seconds": 9000
+  },
+  "execution": {
+    "run_root": "D:/cgfed-runs/ucov_20261013_v1",
+    "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror",
+    "python_executable": "D:/conda_envs/cgfedllm/python.exe"
+  },
+  "criteria_note": "The primary verdict is UPP-20261013-v1, read from the pinned policy file named in primary_policy; the historical strict criterion (uid config criteria) and EP-20261012-v1 are secondary references computed after the run and cannot veto a primary PASS."
+}

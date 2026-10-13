@@ -1,0 +1,23 @@
+launch wrapper: powershell pid=82100 started 2026-10-13T21:22:56.533+08:00
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\ucov_20261013_v1
+env: CUDA_VISIBLE_DEVICES=-1 HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=[]
+before: cpu_load_percent=10 free_physical_bytes=10416340992 at 2026-10-13T21:22:59.092+08:00
+
+command status_before: D:/conda_envs/cgfedllm/python.exe -B ucov_supervise.py --status
+start: 2026-10-13T21:22:59.107+08:00
+end: 2026-10-13T21:23:00.199+08:00
+exit_code: 0
+
+command scientific: D:/conda_envs/cgfedllm/python.exe -B ucov_supervise.py --scientific --frozen-ucov-manifest-sha256 3bc2ab302f6cd77b63b9bb8b77894041fd97cbdd63d5fa7f380a4dae080fe824
+start: 2026-10-13T21:23:00.267+08:00
+end: 2026-10-13T21:56:08.046+08:00
+exit_code: 0
+
+after: cpu_load_percent=33 free_physical_bytes=10457153536 at 2026-10-13T21:56:10.277+08:00
+
+command status_after: D:/conda_envs/cgfedllm/python.exe -B ucov_supervise.py --status
+start: 2026-10-13T21:56:10.279+08:00
+end: 2026-10-13T21:56:11.347+08:00
+exit_code: 0
+
+LAUNCH_SCRIPT_END scientific_exit_code=0 at 2026-10-13T21:56:11.350+08:00

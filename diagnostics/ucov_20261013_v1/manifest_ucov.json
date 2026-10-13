@@ -1,0 +1,448 @@
+{
+  "arms": [
+    "U-TILE-1",
+    "U-TILE-2",
+    "U-TILE-3",
+    "U-TILE-4"
+  ],
+  "built_utc": "2026-10-13T13:18:48Z",
+  "dependencies": {
+    "check-only": {
+      "pytest": "9.1.1",
+      "ruff": "0.16.9"
+    },
+    "input-build-only": "cg_fedllm from this repository's src at HEAD 0ad2795 (blobs in inputs_record.json)",
+    "numpy": "2.4.6",
+    "psutil": "7.2.2",
+    "python": "3.11.16",
+    "safetensors": "0.8.0",
+    "torch": "2.14.0+cu130"
+  },
+  "external_bound_files": [
+    {
+      "bytes": 5357,
+      "path": "D:/cgfed-runs/uid_20261012_v2_r1/arms/U-FIT/child_record.json",
+      "role": "reference: U-FIT record (initial state hash)",
+      "sha256": "d8150ec1b8a1ff61ffee1c9e7bf42114060794894305b3c66cf24228faff3ecb"
+    },
+    {
+      "bytes": 12541,
+      "path": "D:/cgfed-runs/urp_20261013_v1/arms/U-PATCH/child_record.json",
+      "role": "context: URP-v1 centre-tile record",
+      "sha256": "45640ed18111e03935e4b9451bb02f364bea14bdbb0ccec1bd31f1faa24b9583"
+    },
+    {
+      "bytes": 182764,
+      "path": "D:/cgfed-runs/phase3_tierb_qwen15_1p8b_seed1/tgap_federated_state/index.jsonl",
+      "role": "input source: index",
+      "sha256": "b6834e476f21f3d6b07f6489b5113576e566ab3987a2f4593405664476d07240"
+    },
+    {
+      "bytes": 12612824,
+      "path": "D:/cgfed-runs/phase3_tierb_qwen15_1p8b_seed1/tgap_federated_state/snapshots/t0007_c0091.safetensors",
+      "role": "input source: end state (read once by prepare_inputs.py)",
+      "sha256": "09c95184a657fa778aef48e18196f95c568854476b75f2812d68dfd58126dd45"
+    },
+    {
+      "bytes": 12612736,
+      "path": "D:/cgfed-runs/phase3_tierb_qwen15_1p8b_seed1/tgap_federated_state/starts/aa3ab51c854c3480985381da05543beb73cb0ea624fe000866b69d630093d580.safetensors",
+      "role": "input source: start state (read once by prepare_inputs.py)",
+      "sha256": "31b60754e8b55992c908e416f2652c8f2dbbbdee0030440fa2163a5528cd5a7a"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 16365,
+      "path": "ucov_supervise.py",
+      "role": "runtime: scientific entry point (supervisor; from URP with review/supervise_diff.patch)",
+      "sha256": "9c77efc7368f0ff2f57650f60351cd37457bb0c9ed62b5610655b05b01380def"
+    },
+    {
+      "bytes": 20596,
+      "path": "ucov_child.py",
+      "role": "runtime: tile-arm child process (from URP with review/child_diff.patch)",
+      "sha256": "74e10c78f297a689bd6ee63721824853f4817120aa4f36ca5156944b0db19f93"
+    },
+    {
+      "bytes": 23177,
+      "path": "ucov_control.py",
+      "role": "runtime: identity, resolution, inputs, four-arm plan, policy binding",
+      "sha256": "5ed24447aa022ce5c684884c57a814c041084fd46b7f621fc89884c7009bb848"
+    },
+    {
+      "bytes": 4403,
+      "path": "ucov_config.json",
+      "role": "runtime: UCOV configuration (expected values, policy, inputs, limits, paths)",
+      "sha256": "94f19d982a7dd0c5cd2ea170aebb57cbf159042f7ee82fd99fbe1db83fc400a9"
+    },
+    {
+      "bytes": 9152,
+      "path": "resolved_config.json",
+      "role": "runtime: resolved scientific configuration (re-resolved and compared at launch)",
+      "sha256": "3db88e97fbe0c27806104d2b98ded6e17544976a446a232a909a9540c3056337"
+    },
+    {
+      "bytes": 4408,
+      "path": "input/tile_1.safetensors",
+      "role": "runtime: registered tile U-TILE-1 (original space)",
+      "sha256": "b7d39da738313e83d6c36f5f1c73683b464257d27375017a6731b6b7be345a67"
+    },
+    {
+      "bytes": 4408,
+      "path": "input/tile_2.safetensors",
+      "role": "runtime: registered tile U-TILE-2 (original space)",
+      "sha256": "db9ab2901b1a0e9f440ade425883f836b8d56f25a6cd4af16e7aaf147628ffb3"
+    },
+    {
+      "bytes": 4408,
+      "path": "input/tile_3.safetensors",
+      "role": "runtime: registered tile U-TILE-3 (original space)",
+      "sha256": "858c5e4499c76ddf878ff22e10e0cf27cb69788663714181efc490946ee70552"
+    },
+    {
+      "bytes": 4416,
+      "path": "input/tile_4.safetensors",
+      "role": "runtime: registered tile U-TILE-4 (original space)",
+      "sha256": "95a51e95b19ef89a7b42c41ba86374f58bdbb4f1864925ca4434a276be2afe9e"
+    },
+    {
+      "bytes": 34560,
+      "path": "input/inputs_record.json",
+      "role": "runtime: provenance, coordinates, normalization and baselines of the tiles",
+      "sha256": "b4ba2f96dff823c11524dbe448c22e2bdfbf161f6a974c19f003e1e52df5f57f"
+    },
+    {
+      "bytes": 4930,
+      "path": "input/SELECTION_RULE.md",
+      "role": "input: positional quarter-grid rule, registered before any payload read",
+      "sha256": "ddd58be9ec8ecae473a2ed48be749e8826f685470abf5c78d15d64f58bfe36f2"
+    },
+    {
+      "bytes": 239,
+      "path": "input/SELECTION_RULE.registered.txt",
+      "role": "input: registration time and hash of the rule",
+      "sha256": "4d56d9ecb21d9d9156c2821f84443cd855a869133a2a228f91afa4cd0e0ba143"
+    },
+    {
+      "bytes": 12961,
+      "path": "input/prepare_inputs.py",
+      "role": "input: the builder that produced the tiles and their record (run once)",
+      "sha256": "84c6a8121b2d77331db01c3e137d1f89b81cb0beb33ac7af0b35b32d346c7326"
+    },
+    {
+      "bytes": 1468,
+      "path": "input/prepare_inputs.out.txt",
+      "role": "input: console output of that single run",
+      "sha256": "9fb26dfbf7556a36255214ca4bff75e468141d96529af730489571ec8dec3002"
+    },
+    {
+      "bytes": 8656,
+      "path": "protocol.md",
+      "role": "protocol",
+      "sha256": "672da61cffdac6d079763ceea949cfe9596c430712e805c16b410be41bd29690"
+    },
+    {
+      "bytes": 18891,
+      "path": "ucov_analyze.py",
+      "role": "post-run: seal, evidence, primary policy, aggregate, secondary references",
+      "sha256": "27966362c4ce1c11b174a75606784f6f8e6d1ccfd62b05a3caaf6e8a96943681"
+    },
+    {
+      "bytes": 2348,
+      "path": "../upp_20261013_v1/upp_policy.json",
+      "role": "runtime: primary policy UPP-20261013-v1 (authoritative values)",
+      "sha256": "74b277b952e0af68dee00692cde6b95f8ed747d641843bbe98517c70d98c5770"
+    },
+    {
+      "bytes": 14395,
+      "path": "../upp_20261013_v1/upp_classify.py",
+      "role": "runtime: primary policy classifier",
+      "sha256": "31904623223cc18b216b97bf2cfaa27734487c38a93ebe57efca5de84abecbb1"
+    },
+    {
+      "bytes": 4585,
+      "path": "../upp_20261013_v1/POLICY.md",
+      "role": "primary policy text",
+      "sha256": "7dd0bc9f798bebe9d7e40a41b3fa65f7fb197dbec991c1434e15c008c8bec3ad"
+    },
+    {
+      "bytes": 17676,
+      "path": "../upp_20261013_v1/test_upp_classify.py",
+      "role": "primary policy tests",
+      "sha256": "5561fc10b201d96c4a0fc97594143912e17d89cd5fd0f4d20a7a16285f6e6b7f"
+    },
+    {
+      "bytes": 22226,
+      "path": "../urp_20261013_v1/urp_control.py",
+      "role": "runtime: frozen URP-v1 model binding, normalization and state files",
+      "sha256": "6d3dba01015dd2edf09717d6b7856f03ef0683083d872ff486f9a0eef1ffd076"
+    },
+    {
+      "bytes": 16432,
+      "path": "../urp_20261013_v1/manifest_urp.json",
+      "role": "reference identity: URP-v1 manifest",
+      "sha256": "1df7af08c8b5897ad23fac88ab94e4ad36212a47cd542bb584e85ca07df91bd1"
+    },
+    {
+      "bytes": 19130,
+      "path": "../urp_20261013_v1/input/prepare_input.py",
+      "role": "input: URP-v1 builder whose provenance functions are imported",
+      "sha256": "4ccef2ca9dc7c871eb7b0d9046460d93d958f66986426a7ee8a3dd93b315604b"
+    },
+    {
+      "bytes": 9691,
+      "path": "../uid_20261012_v2/uid_common.py",
+      "role": "runtime: frozen UID helpers (unchanged; build_model, metrics, baselines)",
+      "sha256": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230"
+    },
+    {
+      "bytes": 8544,
+      "path": "../uid_20261012_v2/uformer_ae.py",
+      "role": "runtime: frozen Uformer AE (unchanged)",
+      "sha256": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606"
+    },
+    {
+      "bytes": 10213,
+      "path": "../uid_20261012_v2/uformer_blocks.py",
+      "role": "runtime: frozen LeWin / BasicUformer blocks (unchanged)",
+      "sha256": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747"
+    },
+    {
+      "bytes": 2633,
+      "path": "../uid_20261012_v2/config.json",
+      "role": "runtime: frozen UID config (shared settings and the U-FIT model)",
+      "sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd"
+    },
+    {
+      "bytes": 2172,
+      "path": "../uid_20261012_v2/manifest.json",
+      "role": "reference identity: frozen UID manifest",
+      "sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca"
+    },
+    {
+      "bytes": 15959,
+      "path": "../uid_20261012_v2_r1/uid_r1_control.py",
+      "role": "runtime: r1 ledger / start accounting / deadlines (unchanged)",
+      "sha256": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074"
+    },
+    {
+      "bytes": 5965,
+      "path": "../uid_20261012_v2_r1/uid_r1_measure.py",
+      "role": "runtime: r1 measurements and RSS sampler (unchanged)",
+      "sha256": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760"
+    },
+    {
+      "bytes": 644,
+      "path": "../uid_20261012_v2_r1/execution_r1.json",
+      "role": "runtime: r1 execution mechanics (margins and versions)",
+      "sha256": "7aa1ef61e2f231d19a7a0fff3483f480de6611215f6c027aed10014d23cfc52f"
+    },
+    {
+      "bytes": 6721,
+      "path": "../uid_20261012_v2_r1/manifest_r1.json",
+      "role": "reference identity: r1 manifest",
+      "sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044"
+    },
+    {
+      "bytes": 22390,
+      "path": "../exploratory_progression_20261012/ep_classify.py",
+      "role": "post-run: frozen EP-20261012-v1 classifier (secondary)",
+      "sha256": "f7efd10029e8e50071b9a5013b23eefb1d2e3707d07d05e80fda4a690e160cd1"
+    },
+    {
+      "bytes": 5871,
+      "path": "../exploratory_progression_20261012/POLICY.md",
+      "role": "post-run: frozen EP-20261012-v1 policy (secondary)",
+      "sha256": "fe14a225d16fed0373314eb89291035a2c8175bb17f37a7a03cf21c8e7fca592"
+    },
+    {
+      "bytes": 4495,
+      "path": "checks/build_fixture_config.py",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "4a4493d89b21b302de322d4a0e5682f26a5aa850f0989d3c326efe625df2a9c3"
+    },
+    {
+      "bytes": 951,
+      "path": "checks/build_resolved_config.py",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "e0074816f9e5bfd73ecb55f3b00ad228cd42c8078d97fb46d09aa66e080b25b2"
+    },
+    {
+      "bytes": 3668,
+      "path": "checks/check_registered_binding.py",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "50458a638910b3d3a2c7b66c940e2c57cae1bc44882e27ae0875f3c0a1406325"
+    },
+    {
+      "bytes": 6922,
+      "path": "checks/fixture_config.json",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "582030a75df0d8529948389988e869541058195c07c6903fba85f90426c252de"
+    },
+    {
+      "bytes": 1877,
+      "path": "checks/fixture_run.py",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "503925d85aa9bd6eeebe594a95e7ac829a1bb0e380a26f685c3fa52378479041"
+    },
+    {
+      "bytes": 1176,
+      "path": "checks/fixture_tile_1.safetensors",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "a5e3d0b82206920fb6c03a2ccc0df65370bd36f9c0c201fa1c8a175c09e32129"
+    },
+    {
+      "bytes": 1176,
+      "path": "checks/fixture_tile_2.safetensors",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "fcc03c4f4e1bcee686d50cd89ee085f14c73e9c0f8b9db6f76a63d5036b61726"
+    },
+    {
+      "bytes": 1176,
+      "path": "checks/fixture_tile_3.safetensors",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "2b990b7156cab14c3dfb7ae1d0ae7d22dad07429513f591cb227d3f713ac9e56"
+    },
+    {
+      "bytes": 1176,
+      "path": "checks/fixture_tile_4.safetensors",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "9183468cadd55c385f82fa867d1e79fab15ec5ab64b5786bbe01021582d64c48"
+    },
+    {
+      "bytes": 1365,
+      "path": "checks/make_fixture_inputs.py",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "c8b8462123ed7a6bb90accced5acd7f2711edda6f63bef2afb57aee0846217ba"
+    },
+    {
+      "bytes": 2925,
+      "path": "checks/run_all_checks.ps1",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "f15a7882512fb9708183d32c7300bed7594eb3696b46c9aa2373a1b25b6e4268"
+    },
+    {
+      "bytes": 6645,
+      "path": "checks/test_ucov_analyze.py",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "15d758f9a7f864dd427f67e515b49170a41613f60454734b3e578f99922f0bdb"
+    },
+    {
+      "bytes": 9897,
+      "path": "checks/test_ucov_control.py",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "e82f46c8a5addec5a7cf56cebd88b456a4864fd7575ad8a394b361fb4eb8f40d"
+    },
+    {
+      "bytes": 3104,
+      "path": "checks/test_ucov_input_rule.py",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "1b1ee6345b6cac0fee43922aa1de19ce7f45c5188ce84949a6e8e0d79fd98c57"
+    },
+    {
+      "bytes": 13097,
+      "path": "checks/test_ucov_lifecycle.py",
+      "role": "engineering check (toy fixtures; registered model/tiles never optimized)",
+      "sha256": "d6a4f5a805ad76daa46328f34dfac471f2949978f86d5b9714be3aec763a8fdc"
+    },
+    {
+      "bytes": 7488,
+      "path": "checks/build_manifest_ucov.py",
+      "role": "manifest builder",
+      "sha256": "ea7e7517c670733e87e23360c1a9ddb396d47e820621aac89ec7212ce2b6a35a"
+    },
+    {
+      "bytes": 26947,
+      "path": "review/analyze_diff.patch",
+      "role": "review document",
+      "sha256": "12f87cdc1346ecb3f4e6f839398cfbc40e8d3553337c47649d2a77811a07955b"
+    },
+    {
+      "bytes": 20587,
+      "path": "review/child_diff.patch",
+      "role": "review document",
+      "sha256": "579f73a16982bb11eb8e6babbb6036136a51563714d93ad58b0ee07a474ebbe2"
+    },
+    {
+      "bytes": 33604,
+      "path": "review/control_diff.patch",
+      "role": "review document",
+      "sha256": "d46b1e4a50e2bbd4e471fc175881a9796aa41c9679dbc0ca45e29d8b0ac2e5b2"
+    },
+    {
+      "bytes": 17056,
+      "path": "review/supervise_diff.patch",
+      "role": "review document",
+      "sha256": "5b30fa18f05109c6208dfaa5ed5688fcbe0aa13f9cce31a60436f55c8f03eb1a"
+    },
+    {
+      "bytes": 810,
+      "path": "evidence/final1_20261013/SUMMARY.txt",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "633751d76176ac7a7b28cf759d419272a9585a5d07a1aee7b1443d1c1782a065"
+    },
+    {
+      "bytes": 2660,
+      "path": "evidence/final1_20261013/check_registered_binding.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "a5ff3d94f7e2b15ce3e0dd66921ab7092ad75bb806db41ab0f236fbf91dfa6cf"
+    },
+    {
+      "bytes": 188,
+      "path": "evidence/final1_20261013/ruff_build_manifest_ucov.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "53307519a4b20a8217c1194364057d7d3d6f0dfa97d4c576dfd08d94ad4f856a"
+    },
+    {
+      "bytes": 321,
+      "path": "evidence/final1_20261013/ruff_check.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "a5e1c41d16b2522af09e8096120044239395992420d87b791c41df75c71ae213"
+    },
+    {
+      "bytes": 338,
+      "path": "evidence/final1_20261013/ruff_format_check.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "5812e5863716e893d72a9ad679b78531d4665b5d4764e6d3e611aa8350e6bf48"
+    },
+    {
+      "bytes": 757,
+      "path": "evidence/final1_20261013/status_readonly.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "1e5fcbf0a2047fbf4649a548f5cef9f53951c2d4a85117b72922f934f8b2e402"
+    },
+    {
+      "bytes": 954,
+      "path": "evidence/final1_20261013/test_ucov_analyze.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "e48fee3a8f0b4feae4f0ec7f3be20809bf972271b8a27185e765aab7978ff48c"
+    },
+    {
+      "bytes": 4991,
+      "path": "evidence/final1_20261013/test_ucov_control.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "45b1a8d2cb61eaceb90abed4a96ee3173de488649c9464e72b1fb6733cec1a1e"
+    },
+    {
+      "bytes": 1179,
+      "path": "evidence/final1_20261013/test_ucov_input_rule.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "2c19e17d21bf71991cfbc3a0ca67448cb2d3fc606f125cc9546500b91eaf9a41"
+    },
+    {
+      "bytes": 1722,
+      "path": "evidence/final1_20261013/test_ucov_lifecycle.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "33780b6c5e4e6e29d70237bd918e198abeff01a05bdebe8992fec560db32bbd1"
+    },
+    {
+      "bytes": 8699,
+      "path": "evidence/final1_20261013/test_upp_classify.log",
+      "role": "engineering evidence (pre-freeze check logs)",
+      "sha256": "87bbaaa1a94e198482ad9f51c046d40fb624193caa2b9a5efeaee32fbbca0854"
+    }
+  ],
+  "primary_policy": "UPP-20261013-v1",
+  "protocol_id": "UCOV-20261013-v1",
+  "python": "D:\\conda_envs\\cgfedllm\\python.exe"
+}

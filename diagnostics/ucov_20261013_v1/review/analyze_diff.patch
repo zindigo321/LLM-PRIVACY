@@ -1,0 +1,506 @@
+diff --git a/urp_20261013_v1/urp_analyze.py b/ucov_20261013_v1/ucov_analyze.py
+index ce71590..2e13005 100644
+--- a/urp_20261013_v1/urp_analyze.py
++++ b/ucov_20261013_v1/ucov_analyze.py
+@@ -1,17 +1,23 @@
+-"""URP-20261013-v1 post-run analysis (read-only on the run root and mirror; never run before the invocation ends).
+-
+-``python -B urp_analyze.py --evidence-dir <new dir>`` does, in order:
+-1. seal: write ``FINAL_ARTIFACTS_SHA256.txt`` (SHA-256 and size of every file in the URP run root and ledger mirror);
+-2. evidence: the ledger roots agree, the invocation names the approved URP manifest, child / end / summary statuses
+-   agree, the run's input, model binding and module hashes are the registered ones, and both state files have their
+-   recorded hashes;
+-3. strict: re-derive the frozen near-identity verdict (eval mode, original space; RSE <= 0.01, cosine >= 0.99);
+-4. exploratory: apply the frozen EP-20261012-v1 classifier (``ep_classify.classify``, hash-pinned) to U-PATCH, in the
+-   original space, with the patch's own zero and scalar-mean baselines;
+-5. reported only: the same quantities in normalized space and in train mode, the curve, and resources. The U-FIT
+-   synthetic result is listed for context; it is not a matched comparison (other input, other scale).
+-
+-Imports no model code, runs no forward pass and writes only new files in ``--evidence-dir``.
++"""UCOV-20261013-v1 post-run analysis (read-only on the run root and mirror; never run before the invocation ends).
++
++``python -B ucov_analyze.py --evidence-dir <new dir>`` runs these steps in order:
++1. **Seal.** Write ``FINAL_ARTIFACTS_SHA256.txt``: SHA-256 and size of every file in the run root and the ledger
++   mirror.
++2. **Evidence, per arm.**
++   - The ledger roots agree, and the invocation names the frozen UCOV manifest and the primary policy hashes.
++   - Child, end and summary statuses agree.
++   - The run's tile, initial state, module and policy hashes are the registered ones.
++   - Both state files have their recorded hashes.
++3. **Primary.** UPP-20261013-v1 through ``upp_classify.classify`` (hash-pinned), per arm, and the four-arm
++   ``aggregate``. These decide the study.
++4. **Secondary references, reported only.**
++   - The historical strict near-identity criterion (0.01 / 0.99).
++   - The frozen EP-20261012-v1 ``ep_classify.classify``.
++   Neither can veto a primary PASS.
++5. **Reported only.** Normalized-space and train-mode quantities, curves, resources, and the URP-v1 centre tile for
++   context.
++
++The analyzer imports no model code, runs no forward pass, and writes only new files in ``--evidence-dir``.
+ """
+ 
+ from __future__ import annotations
+@@ -25,22 +31,33 @@ import time
+ from pathlib import Path
+ from typing import Any
+ 
+-URP_DIR = Path(__file__).resolve().parent
+-sys.path.insert(0, str(URP_DIR))
++UCOV_DIR = Path(__file__).resolve().parent
++sys.path.insert(0, str(UCOV_DIR))
+ 
+-import urp_control as U  # noqa: E402
++import ucov_control as U  # noqa: E402
+ 
+ K = U.K
+ sys.path.insert(0, str(U.EP_DIR))
+-import ep_classify as E  # noqa: E402  (frozen EP classifier; hash-pinned in urp_control.PINNED_SHA256)
++import ep_classify as E  # noqa: E402  (frozen EP classifier; hash-pinned in ucov_control.PINNED_SHA256)
++import upp_classify as P  # noqa: E402  (primary policy classifier; hash-pinned)
+ 
+ SUMS = ("finite", "n", "sse", "target_energy", "pred_energy", "dot")
++URP_CONTEXT = {
++    "label": "context only: the URP-20261013-v1 centre tile (32, 24), a separate closed experiment; not a fifth arm",
++    "final_eval_rse": 0.19345271823265606,
++    "final_eval_cosine": 0.8981045580444489,
++    "final_eval_mse": 7.99371986840454e-07,
++    "recorded_status_strict": "COMPLETED_FIT_FAIL",
++    "ep_v1_outcome_prespecified": "PASS",
++    "upp_v1_outcome_retrospective": "PASS (retrospective application; does not replace its recorded verdicts)",
++}
+ NOT_ESTABLISHED = [
+-    "compression (latent [64, 32, 32] is a 64:1 element expansion of the 32 x 32 patch)",
+-    "generalization to other patches, other snapshots or unseen snapshots",
+-    "reconstruction of the whole snapshot, or any property of the Phi tensor outside the patch",
+-    "statistical significance or seed stability (one seed, one start)",
++    "compression (latent [64, 32, 32] is a 64:1 element expansion of each 32 x 32 tile)",
++    "held-out generalization: each arm trains its own model on its own tile and is evaluated on that same tile",
++    "reconstruction of the whole snapshot, other snapshots, other layers' v/o blocks or any other tile",
++    "statistical significance or seed stability (one seed, one start per arm)",
+     "superiority of Uformer or of any architecture; downstream or FAF utility",
++    "that a failing tile shows the URP-v1 centre tile was uniquely favourable",
+ ]
+ 
+ 
+@@ -55,85 +72,151 @@ def seal(evidence: Path, roots: list[Path]) -> Path:
+     return out
+ 
+ 
++def strict_reference(m: dict, criteria: dict) -> str:
++    """The historical strict near-identity verdict (frozen uid_common.passes rule), torch-free; reported only."""
++    if not m["finite"] or m["rse"] is None or m["cosine"] is None:
++        return "FAIL"
++    if not (math.isfinite(m["rse"]) and math.isfinite(m["cosine"])):
++        return "FAIL"
++    ok = m["rse"] <= float(criteria["max_rse"]) and m["cosine"] >= float(criteria["min_cosine"])
++    return "PASS" if ok else "FAIL"
++
++
+ def recomputed(m: dict) -> dict[str, Any]:
+-    """RSE and cosine recomputed from the recorded sums (the frozen formulas), compared with the recorded values."""
+     t, p = m["target_energy"], m["pred_energy"]
+     rse = m["sse"] / t if t > 0 else None
+     cos = m["dot"] / math.sqrt(p * t) if p > 0 and t > 0 else None
+     return {"rse": rse, "cosine": cos, "recorded_equal": (rse, cos) == (m["rse"], m["cosine"])}
+ 
+ 
+-def strict_status(m: dict, criteria: dict) -> str:  # the frozen uid_common.passes rule, torch-free
+-    if not m["finite"] or m["rse"] is None or m["cosine"] is None:
+-        return "COMPLETED_FIT_FAIL"
+-    if not (math.isfinite(m["rse"]) and math.isfinite(m["cosine"])):
+-        return "COMPLETED_FIT_FAIL"
+-    ok = m["rse"] <= float(criteria["max_rse"]) and m["cosine"] >= float(criteria["min_cosine"])
+-    return "COMPLETED_PASS" if ok else "COMPLETED_FIT_FAIL"
+-
+-
+-def run_problems(
+-    child: dict, inv: dict, end: dict, inv_end: dict, resolved: dict, manifest_sha256: str, arm: str
+-):
+-    """Evidence problems of the run (V1 of EP-20261012-v1 as applied to URP)."""
++def arm_problems(
++    arm: str,
++    child: dict | None,
++    inv: dict,
++    end: dict | None,
++    summary_arm: dict,
++    resolved: dict,
++    run_root: Path,
++    manifest_sha256: str,
++) -> list[str]:
++    """Evidence problems of one started arm (the invocation-level identity is checked for every arm in ``analyze``)."""
+     problems = []
+-    if inv["identity"].get("urp_manifest_sha256") != manifest_sha256:
+-        problems.append("the invocation names another URP manifest")
+-    if not (child["status"] == end["status"] == inv_end["arms"][0]["status"]):
+-        problems.append(
+-            f"status disagreement: {child['status']}, {end['status']}, {inv_end['arms'][0]['status']}"
+-        )
+-    if child.get("input", {}).get("patch_file_sha256") != resolved["input"]["patch_file_sha256"]:
+-        problems.append("the run read another input patch")
++    pol = resolved["primary_policy"]
++    if child is None or end is None:
++        return [*problems, "child record or end record missing"]
++    if not (child["status"] == end["status"] == summary_arm["status"]):
++        problems.append(f"status disagreement: {child['status']}, {end['status']}, {summary_arm['status']}")
++    tile = resolved["inputs"]["tiles"][arm]
++    if child.get("input", {}).get("patch_file_sha256") != tile["patch_file_sha256"]:
++        problems.append("the run read another tile")
+     if not child.get("input_checks", {}).get("all_equal"):
+         problems.append("the run's input checks did not all hold")
+     if child.get("model_state_sha256_init") != resolved["reference"]["model_state_sha256_init"]:
+         problems.append("the run's initial state is not the U-FIT initial state")
+     if child.get("modules", {}).get("checked_against_approved") is not True:
+         problems.append("the run's modules were not checked against the approved hashes")
+-    for point in ("init", "final"):
+-        info = child.get(f"{point}_state_file")
+-        key = "model_state_sha256_init" if point == "init" else "model_state_sha256_final"
+-        path = Path(resolved["execution"]["run_root"]) / "arms" / arm / f"{point}_state.safetensors"
+-        if info is None or not path.is_file():
+-            problems.append(f"{point} state file missing")
+-        elif K.sha256_file(path) != info["file_sha256"] or info["state_sha256"] != child.get(key):
+-            problems.append(f"{point} state file differs from its record")
++    if child["status"] in ("COMPLETED_PASS", "COMPLETED_FIT_FAIL"):
++        cp = child.get("primary_policy") or {}
++        if (cp.get("policy_id"), cp.get("policy_sha256")) != (pol["policy_id"], pol["policy_sha256"]):
++            problems.append("the child applied another primary policy")
++        for point in ("init", "final"):
++            info = child.get(f"{point}_state_file")
++            key = "model_state_sha256_init" if point == "init" else "model_state_sha256_final"
++            path = run_root / "arms" / arm / f"{point}_state.safetensors"
++            if info is None or not path.is_file():
++                problems.append(f"{point} state file missing")
++            elif K.sha256_file(path) != info["file_sha256"] or info["state_sha256"] != child.get(key):
++                problems.append(f"{point} state file differs from its record")
+     return problems
+ 
+ 
+-def classifier_input(child: dict, end: dict, inv: dict, inv_end: dict, resolved: dict, ev: dict, starts: int):
+-    """The EP classifier's input for U-PATCH, built like ``ep_classify.uid_r1_input``: original-space final eval sums
+-    and the patch's original-space scalar-mean baseline."""
++def limits_block(
++    arm_end: dict | None, child: dict | None, inv: dict, inv_end: dict, resolved: dict, starts: int
++):
+     lim = resolved["limits"]
+-    rss = (
+-        end["guard"]["sampled_max_rss_bytes"],
+-        child["rss"]["sampled_max_rss_bytes"],
+-        child["rss"]["os_peak_wset_bytes"],
+-    )
++    rss_vals = [] if arm_end is None else [arm_end["guard"]["sampled_max_rss_bytes"]]
++    if child is not None and child.get("rss"):
++        rss_vals += [child["rss"]["sampled_max_rss_bytes"], child["rss"]["os_peak_wset_bytes"]]
++    rss_used = max((v for v in rss_vals if v is not None), default=None)
+     return {
++        "arm_wall_s": {
++            "used": None if arm_end is None else arm_end.get("arm_wall_s"),
++            "limit": resolved["max_seconds"],
++        },
++        "aggregate_wall_s": {"used": inv_end["aggregate_wall_s"], "limit": lim["aggregate_seconds"]},
++        "training_starts": {"used": starts, "limit": lim["max_training_starts"]},
++        "invocations": {"used": 1, "limit": lim["max_invocations"]},
++        "rss_bytes": {"used": rss_used, "limit": inv["rss_limit_bytes"]},
++        "evidence_bytes": {"used": inv_end["evidence_bytes_run_root"], "limit": lim["evidence_cap_bytes"]},
++    }
++
++
++def primary_input(arm, child, arm_end, summary_arm, inv, inv_end, resolved, ev, starts) -> dict[str, Any]:
++    """The UPP-20261013-v1 classifier input of one registered arm (started or not)."""
++    exp = resolved["inputs_expected"][arm]
++    started = arm_end is not None
++    rec: dict[str, Any] = {
+         "evidence": ev,
++        "input": {
++            "all_finite": exp["degeneracy_checks"].get("all_finite"),
++            "target_energy": exp["original_target_energy"],
++            "scalar_mean_mse": exp["original_scalar_mean_mse"],
++            "normalized_max_abs": exp["normalized_max_abs"],
++        },
+         "run": {
+-            "status": child["status"],
+-            "updates_done": child.get("updates_done"),
++            "started": started,
++            "status": summary_arm["status"]
++            if not started
++            else (child or {}).get("status", arm_end["status"]),
++            "updates_done": None if child is None else child.get("updates_done"),
+             "updates_planned": resolved["max_updates"],
+-            "prerequisite": None,  # URP-v1 has no prerequisite arm
+             "interrupted": inv_end["interrupted"],
+-            "guard_actions": [] if end["guard"]["action"] is None else [end["guard"]["action"]],
+-            "limits": {
+-                "arm_wall_s": {"used": end["arm_wall_s"], "limit": resolved["max_seconds"]},
+-                "aggregate_wall_s": {"used": inv_end["aggregate_wall_s"], "limit": lim["aggregate_seconds"]},
+-                "training_starts": {"used": starts, "limit": lim["max_training_starts"]},
+-                "invocations": {"used": 1, "limit": lim["max_invocations"]},
+-                "rss_bytes": {"used": max(v for v in rss if v is not None), "limit": inv["rss_limit_bytes"]},
+-                "evidence_bytes": {
+-                    "used": inv_end["evidence_bytes_run_root"],
+-                    "limit": lim["evidence_cap_bytes"],
+-                },
++            "guard_actions": []
++            if arm_end is None or arm_end["guard"]["action"] is None
++            else [arm_end["guard"]["action"]],
++            "limits": limits_block(arm_end, child, inv, inv_end, resolved, starts),
++        },
++        "baselines": {
++            "zero_prediction_mse": exp["original_zero_prediction_mse"],
++            "scalar_mean_mse": exp["original_scalar_mean_mse"],
++        },
++    }
++    if child is not None and child.get("final"):
++        rec["final_eval"] = {k: child["final"]["eval_mode"][k] for k in SUMS}
++        b = child["baselines"]["original"]
++        if (b["zero_prediction"]["mse"], b["shared_scalar_mean"]["mse"]) != (
++            exp["original_zero_prediction_mse"],
++            exp["original_scalar_mean_mse"],
++        ):
++            rec["evidence"] = {
++                **ev,
++                "verified": False,
++                "problems": [*ev["problems"], "recorded baselines differ from the registered ones"],
++            }
++    return rec
++
++
++def ep_input(prim: dict) -> dict:
++    """The frozen EP-20261012-v1 classifier input for the same arm (secondary reference; no prerequisite)."""
++    run = prim["run"]
++    return {
++        "evidence": prim["evidence"],
++        "run": {
++            **{
++                k: run[k]
++                for k in (
++                    "status",
++                    "updates_done",
++                    "updates_planned",
++                    "interrupted",
++                    "guard_actions",
++                    "limits",
++                )
+             },
++            "prerequisite": None,
+         },
+-        "final_eval": {k: child["final"]["eval_mode"][k] for k in SUMS},
+-        "baselines": {"scalar_mean_mse": child["baselines"]["original"]["shared_scalar_mean"]["mse"]},
++        "final_eval": prim.get("final_eval", {}),
++        "baselines": {"scalar_mean_mse": prim["baselines"]["scalar_mean_mse"]},
+     }
+ 
+ 
+@@ -156,83 +239,142 @@ def analyze(
+     evidence: Path,
+     run_root: Path | None = None,
+     mirror: Path | None = None,
+-    arm: str = U.ARM,
+     manifest_sha256: str | None = None,
++    arms: tuple[str, ...] = U.ARMS,
+ ) -> dict[str, Any]:
+-    """Scientific use: defaults only (the registered run root, mirror, arm and the frozen manifest). The overrides
+-    exist for the engineering test on a fixture run; they never change a registered path."""
++    """Scientific use: defaults only (the registered run root, mirror and the frozen manifest). The overrides exist
++    for the engineering test on a fixture run; they never change a registered path."""
+     run_root = Path(run_root or resolved["execution"]["run_root"])
+     mirror = Path(mirror or resolved["execution"]["ledger_mirror"])
+     sealed = seal(evidence, [run_root, mirror])
+     ledger = K.Ledger(run_root / "ledger", mirror).read()  # refuses if the two roots disagree
+     starts = sum(1 for n in ledger if n.startswith("start_"))
+-    inv, inv_end, end = (
+-        ledger["invocation_001.json"],
+-        ledger["invocation_001_end.json"],
+-        ledger[f"end_{arm}.json"],
+-    )
+-    child = K.load_json(run_root / "arms" / arm / "child_record.json")
++    inv, inv_end = ledger["invocation_001.json"], ledger["invocation_001_end.json"]
+     if manifest_sha256 is None:
+-        manifest_sha256 = K.sha256_file(URP_DIR / U.MANIFEST_NAME)
+-    resolved_paths = {**resolved, "execution": {**resolved["execution"], "run_root": str(run_root)}}
+-    problems = run_problems(child, inv, end, inv_end, resolved_paths, manifest_sha256, arm)
+-    ev = {"verified": not problems, "problems": problems, "sealed_list": str(sealed)}
++        manifest_sha256 = K.sha256_file(UCOV_DIR / U.MANIFEST_NAME)
++    policy = U.load_primary_policy(resolved["primary_policy"])
++    by_arm = {a["arm"]: a for a in inv_end["arms"]}
++    global_problems = []  # invocation-level identity: applies to every registered arm, started or not
++    if inv["identity"].get("ucov_manifest_sha256") != manifest_sha256:
++        global_problems.append("the invocation names another UCOV manifest")
++    if inv["identity"].get("primary_policy", {}).get("policy_sha256") != policy["policy_sha256"]:
++        global_problems.append("the invocation names another primary policy")
++    if inv.get("plan", {}).get("primary_policy_sha256") != policy["policy_sha256"]:
++        global_problems.append("the invocation plan names another primary policy")
++    if [a["arm"] for a in inv_end["arms"]] != list(arms):
++        global_problems.append(
++            f"the invocation summary lists {[a['arm'] for a in inv_end['arms']]}, not {list(arms)}"
++        )
+     out: dict[str, Any] = {
+-        "schema": "urp-v1-analysis",
++        "schema": "ucov-v1-analysis",
+         "protocol_id": U.PROTOCOL_ID,
+-        "evidence": ev,
+-        "status_recorded": child["status"],
+-        "resources": {
+-            "arm_wall_s": end["arm_wall_s"],
+-            "arm_wall_scope": "supervisor monotonic clock, from just before the start record to the child's exit",
+-            "child_process_s": child["child_monotonic_s"]["end"] - child["child_monotonic_s"]["begin"],
+-            "aggregate_wall_s": inv_end["aggregate_wall_s"],
+-            "guard_sampled_max_rss_bytes": end["guard"]["sampled_max_rss_bytes"],
+-            "os_peak_wset_bytes": child["rss"]["os_peak_wset_bytes"],
+-            "evidence_bytes_run_root": inv_end["evidence_bytes_run_root"],
+-            "rss_limit_bytes": inv["rss_limit_bytes"],
++        "primary_policy": {
++            "policy_id": policy["policy_id"],
++            "policy_sha256": policy["policy_sha256"],
++            "classifier_sha256": resolved["primary_policy"]["classifier_sha256"],
++            "thresholds": policy["thresholds"],
+         },
++        "sealed_list": str(sealed),
++        "ledger": {"records": sorted(ledger), "starts": starts, "invocations": 1},
++        "global_stop": inv_end.get("global_stop"),
++        "arms": {},
+     }
+-    if child["status"] not in ("COMPLETED_PASS", "COMPLETED_FIT_FAIL"):
+-        out["note"] = "U-PATCH did not complete; no metric is assessed"
+-        return out
+-    fe = child["final"]["eval_mode"]
+-    strict = strict_status(fe, resolved["criteria"])
+-    out["strict_near_identity"] = {
+-        "criteria": resolved["criteria"],
+-        "space": "original (Phi values)",
+-        "rederived_status": strict,
+-        "matches_record": strict == child["status"],
+-    }
+-    out["exploratory_ep"] = E.classify(classifier_input(child, end, inv, inv_end, resolved, ev, starts))
+-    out["exploratory_ep"]["space"] = "original (Phi values); baselines of the patch itself"
+-    base = child["baselines"]
+-    out["reported_only"] = {
+-        "final_eval_original": {**recomputed(fe), "mse": fe["mse"], "norm_ratio": fe["norm_ratio"]},
+-        "final_eval_normalized": recomputed(child["final"]["eval_mode_normalized"]),
+-        "final_train_original": recomputed(child["final"]["train_mode"]),
+-        "final_train_normalized": recomputed(child["final"]["train_mode_normalized"]),
+-        "train_minus_eval_output_sse_normalized": child["final"]["train_minus_eval_output_sse_normalized"],
+-        "baselines_mse": {
+-            space: {k: base[space][k]["mse"] for k in ("zero_prediction", "shared_scalar_mean")}
+-            for space in ("original", "normalized")
+-        },
+-        "step0_eval_rse": {
+-            s: child["step0"]["post_init"]["eval"][s]["rse"] for s in ("original", "normalized")
+-        },
+-        "curve": curve_summary(run_root / "arms" / arm / "curve.jsonl"),
+-        "u_fit_synthetic_context": {
+-            "label": "not matched: other input (synthetic), other scale; listed for orientation only",
+-            "u_fit_final_eval_rse": 0.2727411031905583,
+-            "u_fit_final_eval_cosine": 0.8540472264633736,
+-        },
++    outcomes = {}
++    for arm in arms:
++        summary_arm = by_arm.get(arm, {"arm": arm, "status": "NOT_RUN", "reason": "absent from the summary"})
++        arm_end = ledger.get(f"end_{arm}.json")
++        started = f"start_{arm}.json" in ledger
++        child_path = run_root / "arms" / arm / "child_record.json"
++        child = K.load_json(child_path) if child_path.is_file() else None
++        problems = list(global_problems)
++        if started:
++            problems += arm_problems(
++                arm, child, inv, arm_end, summary_arm, resolved, run_root, manifest_sha256
++            )
++        elif summary_arm["status"] != "NOT_RUN":
++            problems.append(f"no start record but summary status {summary_arm['status']}")
++        ev = {"verified": not problems, "problems": problems}
++        prim_in = primary_input(
++            arm, child, arm_end if started else None, summary_arm, inv, inv_end, resolved, ev, starts
++        )
++        prim = P.classify(prim_in, policy)
++        outcomes[arm] = prim["outcome"]
++        row: dict[str, Any] = {
++            "slice": resolved["inputs_expected"][arm]["slice"],
++            "started": started,
++            "recorded_status": summary_arm["status"],
++            "not_run_reason": summary_arm.get("reason"),
++            "primary": prim,
++            "evidence": ev,
++        }
++        if child is not None and child.get("final"):
++            fe = child["final"]["eval_mode"]
++            child_primary = (child.get("primary_verdict") or {}).get("outcome")
++            row["primary_consistency"] = {
++                "child_primary_outcome": child_primary,
++                "analysis_metric_outcome": prim["outcome"] if prim["class"] != "U" else None,
++                "agree": prim["class"] == "U" or child_primary == prim["outcome"],
++            }
++            row["secondary"] = {
++                "historical_strict": {
++                    "criteria": resolved["secondary_references"]["historical_strict_criteria"],
++                    "outcome": strict_reference(
++                        fe, resolved["secondary_references"]["historical_strict_criteria"]
++                    ),
++                    "role": "reported only; cannot veto the primary verdict",
++                },
++                "ep_v1": {
++                    **E.classify(ep_input(prim_in)),
++                    "role": "reported only; cannot veto the primary verdict",
++                },
++            }
++            base = child["baselines"]
++            row["reported_only"] = {
++                "final_eval_original": {**recomputed(fe), "mse": fe["mse"], "norm_ratio": fe["norm_ratio"]},
++                "final_eval_normalized": recomputed(child["final"]["eval_mode_normalized"]),
++                "final_train_original": recomputed(child["final"]["train_mode"]),
++                "final_train_normalized": recomputed(child["final"]["train_mode_normalized"]),
++                "train_minus_eval_output_sse_normalized": child["final"][
++                    "train_minus_eval_output_sse_normalized"
++                ],
++                "baselines_mse": {
++                    s: {k: base[s][k]["mse"] for k in ("zero_prediction", "shared_scalar_mean")}
++                    for s in ("original", "normalized")
++                },
++                "step0_eval_rse": {
++                    s: child["step0"]["post_init"]["eval"][s]["rse"] for s in ("original", "normalized")
++                },
++                "curve": curve_summary(run_root / "arms" / arm / "curve.jsonl"),
++            }
++        if arm_end is not None:
++            row["resources"] = {
++                "arm_wall_s": arm_end.get("arm_wall_s"),
++                "child_process_s": None
++                if child is None
++                else child["child_monotonic_s"]["end"] - child["child_monotonic_s"]["begin"],
++                "guard": arm_end.get("guard"),
++                "os_peak_wset_bytes": None if child is None else child["rss"]["os_peak_wset_bytes"],
++                "updates_done": None if child is None else child.get("updates_done"),
++            }
++        out["arms"][arm] = row
++    out["aggregate"] = P.aggregate(outcomes, len(arms), policy)
++    out["resources"] = {
++        "aggregate_wall_s": inv_end["aggregate_wall_s"],
++        "aggregate_limit_s": resolved["limits"]["aggregate_seconds"],
++        "evidence_bytes_run_root": inv_end["evidence_bytes_run_root"],
++        "evidence_cap_bytes": resolved["limits"]["evidence_cap_bytes"],
++        "rss_limit_bytes": inv["rss_limit_bytes"],
++        "interrupted": inv_end["interrupted"],
+     }
++    out["context_urp_v1_centre_tile"] = URP_CONTEXT
+     out["does_not_establish"] = NOT_ESTABLISHED
+     return out
+ 
+ 
+ def main() -> int:
+-    ap = argparse.ArgumentParser(description="URP-v1 post-run seal and analysis (read-only on the run roots)")
++    ap = argparse.ArgumentParser(
++        description="UCOV-v1 post-run seal and analysis (read-only on the run roots)"
++    )
+     ap.add_argument("--evidence-dir", type=Path, required=True, help="new directory for the analysis outputs")
+     args = ap.parse_args()
+     U.check_pinned()
+@@ -243,8 +385,11 @@ def main() -> int:
+     with (args.evidence_dir / "analysis.json").open("xb") as fh:
+         fh.write(data)
+     print(f"analysis.json {len(data)} bytes sha256={hashlib.sha256(data).hexdigest()} (file bytes)")
+-    summary = {k: out.get(k) for k in ("status_recorded", "strict_near_identity")}
+-    summary["ep_outcome"] = out.get("exploratory_ep", {}).get("outcome")
++    summary = {
++        "aggregate": out["aggregate"]["decision"],
++        "counts": out["aggregate"]["counts"],
++        "arms": {a: r["primary"]["outcome"] for a, r in out["arms"].items()},
++    }
+     print(json.dumps(summary, sort_keys=True))
+     return 0
+ 

@@ -1,0 +1,2 @@
+{"all_bit_identical": true, "arms": {"U-TILE-1": true, "U-TILE-2": true, "U-TILE-3": true, "U-TILE-4": true}}
+replay_final_states.json 5661 bytes sha256=a8a605345199ee2c2f025cb81752f35c99897e7624b136f7ce1ad7b0191865e3

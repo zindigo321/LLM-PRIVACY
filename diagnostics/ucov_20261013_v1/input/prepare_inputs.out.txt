@@ -1,0 +1,14 @@
+command: D:/conda_envs/cgfedllm/python.exe -B input/prepare_inputs.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\ucov_20261013_v1
+prepare_inputs.py sha256: 84c6a8121b2d77331db01c3e137d1f89b81cb0beb33ac7af0b35b32d346c7326
+start: 2026-10-13T20:37:23.597+08:00
+end: 2026-10-13T20:37:29.707+08:00
+exit_code: 0
+--- stdout ---
+tile_1.safetensors 4408 bytes sha256=b7d39da738313e83d6c36f5f1c73683b464257d27375017a6731b6b7be345a67
+tile_2.safetensors 4408 bytes sha256=db9ab2901b1a0e9f440ade425883f836b8d56f25a6cd4af16e7aaf147628ffb3
+tile_3.safetensors 4408 bytes sha256=858c5e4499c76ddf878ff22e10e0cf27cb69788663714181efc490946ee70552
+tile_4.safetensors 4416 bytes sha256=95a51e95b19ef89a7b42c41ba86374f58bdbb4f1864925ca4434a276be2afe9e
+inputs_record.json 34560 bytes sha256=b4ba2f96dff823c11524dbe448c22e2bdfbf161f6a974c19f003e1e52df5f57f
+{"U-TILE-1": {"all_finite": true, "normalized_max_abs_below_1": true, "scalar_mean_mse_positive": true, "target_energy_positive": true, "usable": true}, "U-TILE-2": {"all_finite": true, "normalized_max_abs_below_1": true, "scalar_mean_mse_positive": true, "target_energy_positive": true, "usable": true}, "U-TILE-3": {"all_finite": true, "normalized_max_abs_below_1": true, "scalar_mean_mse_positive": true, "target_energy_positive": true, "usable": true}, "U-TILE-4": {"all_finite": true, "normalized_max_abs_below_1": true, "scalar_mean_mse_positive": true, "target_energy_positive": true, "usable": true}}
+--- stderr ---

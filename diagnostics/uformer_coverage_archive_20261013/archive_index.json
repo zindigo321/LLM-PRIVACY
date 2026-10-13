@@ -1,0 +1,981 @@
+{
+  "schema": "uformer-coverage-publication-v1",
+  "file_count": 133,
+  "raw_record_count": 30,
+  "total_evidence_bytes": 1026024,
+  "manifest_sha256": "3bc2ab302f6cd77b63b9bb8b77894041fd97cbdd63d5fa7f380a4dae080fe824",
+  "execution_inventory_sha256": "e59f43d928e810ca6b8eea232cfd2008630fe89e0e62f4c9c2c0a811106798f1",
+  "files": [
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/build_fixture_config.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/build_fixture_config.py",
+      "bytes": 4495,
+      "sha256": "4a4493d89b21b302de322d4a0e5682f26a5aa850f0989d3c326efe625df2a9c3"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/build_manifest_ucov.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/build_manifest_ucov.py",
+      "bytes": 7488,
+      "sha256": "ea7e7517c670733e87e23360c1a9ddb396d47e820621aac89ec7212ce2b6a35a"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/build_resolved_config.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/build_resolved_config.py",
+      "bytes": 951,
+      "sha256": "e0074816f9e5bfd73ecb55f3b00ad228cd42c8078d97fb46d09aa66e080b25b2"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/check_registered_binding.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/check_registered_binding.py",
+      "bytes": 3668,
+      "sha256": "50458a638910b3d3a2c7b66c940e2c57cae1bc44882e27ae0875f3c0a1406325"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/fixture_config.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/fixture_config.json",
+      "bytes": 6922,
+      "sha256": "582030a75df0d8529948389988e869541058195c07c6903fba85f90426c252de"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/fixture_run.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/fixture_run.py",
+      "bytes": 1877,
+      "sha256": "503925d85aa9bd6eeebe594a95e7ac829a1bb0e380a26f685c3fa52378479041"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/fixture_tile_1.safetensors",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/fixture_tile_1.safetensors",
+      "bytes": 1176,
+      "sha256": "a5e3d0b82206920fb6c03a2ccc0df65370bd36f9c0c201fa1c8a175c09e32129"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/fixture_tile_2.safetensors",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/fixture_tile_2.safetensors",
+      "bytes": 1176,
+      "sha256": "fcc03c4f4e1bcee686d50cd89ee085f14c73e9c0f8b9db6f76a63d5036b61726"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/fixture_tile_3.safetensors",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/fixture_tile_3.safetensors",
+      "bytes": 1176,
+      "sha256": "2b990b7156cab14c3dfb7ae1d0ae7d22dad07429513f591cb227d3f713ac9e56"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/fixture_tile_4.safetensors",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/fixture_tile_4.safetensors",
+      "bytes": 1176,
+      "sha256": "9183468cadd55c385f82fa867d1e79fab15ec5ab64b5786bbe01021582d64c48"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/make_fixture_inputs.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/make_fixture_inputs.py",
+      "bytes": 1365,
+      "sha256": "c8b8462123ed7a6bb90accced5acd7f2711edda6f63bef2afb57aee0846217ba"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/run_all_checks.ps1",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/run_all_checks.ps1",
+      "bytes": 2925,
+      "sha256": "f15a7882512fb9708183d32c7300bed7594eb3696b46c9aa2373a1b25b6e4268"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/test_ucov_analyze.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/test_ucov_analyze.py",
+      "bytes": 6645,
+      "sha256": "15d758f9a7f864dd427f67e515b49170a41613f60454734b3e578f99922f0bdb"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/test_ucov_control.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/test_ucov_control.py",
+      "bytes": 9897,
+      "sha256": "e82f46c8a5addec5a7cf56cebd88b456a4864fd7575ad8a394b361fb4eb8f40d"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/test_ucov_input_rule.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/test_ucov_input_rule.py",
+      "bytes": 3104,
+      "sha256": "1b1ee6345b6cac0fee43922aa1de19ce7f45c5188ce84949a6e8e0d79fd98c57"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/checks/test_ucov_lifecycle.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/checks/test_ucov_lifecycle.py",
+      "bytes": 13097,
+      "sha256": "d6a4f5a805ad76daa46328f34dfac471f2949978f86d5b9714be3aec763a8fdc"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/SUMMARY.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/SUMMARY.txt",
+      "bytes": 810,
+      "sha256": "633751d76176ac7a7b28cf759d419272a9585a5d07a1aee7b1443d1c1782a065"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/check_registered_binding.log",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/check_registered_binding.log",
+      "bytes": 2660,
+      "sha256": "a5ff3d94f7e2b15ce3e0dd66921ab7092ad75bb806db41ab0f236fbf91dfa6cf"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/ruff_build_manifest_ucov.log",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/ruff_build_manifest_ucov.log",
+      "bytes": 188,
+      "sha256": "53307519a4b20a8217c1194364057d7d3d6f0dfa97d4c576dfd08d94ad4f856a"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/ruff_check.log",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/ruff_check.log",
+      "bytes": 321,
+      "sha256": "a5e1c41d16b2522af09e8096120044239395992420d87b791c41df75c71ae213"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/ruff_format_check.log",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/ruff_format_check.log",
+      "bytes": 338,
+      "sha256": "5812e5863716e893d72a9ad679b78531d4665b5d4764e6d3e611aa8350e6bf48"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/status_readonly.log",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/status_readonly.log",
+      "bytes": 757,
+      "sha256": "1e5fcbf0a2047fbf4649a548f5cef9f53951c2d4a85117b72922f934f8b2e402"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/test_ucov_analyze.log",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/test_ucov_analyze.log",
+      "bytes": 954,
+      "sha256": "e48fee3a8f0b4feae4f0ec7f3be20809bf972271b8a27185e765aab7978ff48c"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/test_ucov_control.log",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/test_ucov_control.log",
+      "bytes": 4991,
+      "sha256": "45b1a8d2cb61eaceb90abed4a96ee3173de488649c9464e72b1fb6733cec1a1e"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/test_ucov_input_rule.log",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/test_ucov_input_rule.log",
+      "bytes": 1179,
+      "sha256": "2c19e17d21bf71991cfbc3a0ca67448cb2d3fc606f125cc9546500b91eaf9a41"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/test_ucov_lifecycle.log",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/test_ucov_lifecycle.log",
+      "bytes": 1722,
+      "sha256": "33780b6c5e4e6e29d70237bd918e198abeff01a05bdebe8992fec560db32bbd1"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/evidence/final1_20261013/test_upp_classify.log",
+      "archive_path": "diagnostics/ucov_20261013_v1/evidence/final1_20261013/test_upp_classify.log",
+      "bytes": 8699,
+      "sha256": "87bbaaa1a94e198482ad9f51c046d40fb624193caa2b9a5efeaee32fbbca0854"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/input/SELECTION_RULE.md",
+      "archive_path": "diagnostics/ucov_20261013_v1/input/SELECTION_RULE.md",
+      "bytes": 4930,
+      "sha256": "ddd58be9ec8ecae473a2ed48be749e8826f685470abf5c78d15d64f58bfe36f2"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/input/SELECTION_RULE.registered.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1/input/SELECTION_RULE.registered.txt",
+      "bytes": 239,
+      "sha256": "4d56d9ecb21d9d9156c2821f84443cd855a869133a2a228f91afa4cd0e0ba143"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/input/inputs_record.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/input/inputs_record.json",
+      "bytes": 34560,
+      "sha256": "b4ba2f96dff823c11524dbe448c22e2bdfbf161f6a974c19f003e1e52df5f57f"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/input/prepare_inputs.out.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1/input/prepare_inputs.out.txt",
+      "bytes": 1468,
+      "sha256": "9fb26dfbf7556a36255214ca4bff75e468141d96529af730489571ec8dec3002"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/input/prepare_inputs.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/input/prepare_inputs.py",
+      "bytes": 12961,
+      "sha256": "84c6a8121b2d77331db01c3e137d1f89b81cb0beb33ac7af0b35b32d346c7326"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/input/tile_1.safetensors",
+      "archive_path": "diagnostics/ucov_20261013_v1/input/tile_1.safetensors",
+      "bytes": 4408,
+      "sha256": "b7d39da738313e83d6c36f5f1c73683b464257d27375017a6731b6b7be345a67"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/input/tile_2.safetensors",
+      "archive_path": "diagnostics/ucov_20261013_v1/input/tile_2.safetensors",
+      "bytes": 4408,
+      "sha256": "db9ab2901b1a0e9f440ade425883f836b8d56f25a6cd4af16e7aaf147628ffb3"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/input/tile_3.safetensors",
+      "archive_path": "diagnostics/ucov_20261013_v1/input/tile_3.safetensors",
+      "bytes": 4408,
+      "sha256": "858c5e4499c76ddf878ff22e10e0cf27cb69788663714181efc490946ee70552"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/input/tile_4.safetensors",
+      "archive_path": "diagnostics/ucov_20261013_v1/input/tile_4.safetensors",
+      "bytes": 4416,
+      "sha256": "95a51e95b19ef89a7b42c41ba86374f58bdbb4f1864925ca4434a276be2afe9e"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/manifest_ucov.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/manifest_ucov.json",
+      "bytes": 17562,
+      "sha256": "3bc2ab302f6cd77b63b9bb8b77894041fd97cbdd63d5fa7f380a4dae080fe824"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/protocol.md",
+      "archive_path": "diagnostics/ucov_20261013_v1/protocol.md",
+      "bytes": 8656,
+      "sha256": "672da61cffdac6d079763ceea949cfe9596c430712e805c16b410be41bd29690"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/resolved_config.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/resolved_config.json",
+      "bytes": 9152,
+      "sha256": "3db88e97fbe0c27806104d2b98ded6e17544976a446a232a909a9540c3056337"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/review/analyze_diff.patch",
+      "archive_path": "diagnostics/ucov_20261013_v1/review/analyze_diff.patch",
+      "bytes": 26947,
+      "sha256": "12f87cdc1346ecb3f4e6f839398cfbc40e8d3553337c47649d2a77811a07955b"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/review/child_diff.patch",
+      "archive_path": "diagnostics/ucov_20261013_v1/review/child_diff.patch",
+      "bytes": 20587,
+      "sha256": "579f73a16982bb11eb8e6babbb6036136a51563714d93ad58b0ee07a474ebbe2"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/review/control_diff.patch",
+      "archive_path": "diagnostics/ucov_20261013_v1/review/control_diff.patch",
+      "bytes": 33604,
+      "sha256": "d46b1e4a50e2bbd4e471fc175881a9796aa41c9679dbc0ca45e29d8b0ac2e5b2"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/review/supervise_diff.patch",
+      "archive_path": "diagnostics/ucov_20261013_v1/review/supervise_diff.patch",
+      "bytes": 17056,
+      "sha256": "5b30fa18f05109c6208dfaa5ed5688fcbe0aa13f9cce31a60436f55c8f03eb1a"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror/end_U-TILE-1.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/scientific_ledger_mirror/end_U-TILE-1.json",
+      "bytes": 548,
+      "sha256": "293c6538348aed937260eae7b24b4e3382d05a52100e9dbe7659cd25e3ebd8f1"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror/end_U-TILE-2.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/scientific_ledger_mirror/end_U-TILE-2.json",
+      "bytes": 544,
+      "sha256": "0cea5615fcb7609fb4cf7ae1e6446e0c952c73342d92de1ec4e6fa8c213c3ccf"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror/end_U-TILE-3.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/scientific_ledger_mirror/end_U-TILE-3.json",
+      "bytes": 532,
+      "sha256": "003e126f46b378299509bcae7502a27713cc18a2596875f0d831eb11193c36ac"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror/end_U-TILE-4.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/scientific_ledger_mirror/end_U-TILE-4.json",
+      "bytes": 549,
+      "sha256": "683abb480b04313aa87b3638e46974b850bb965f4d70b140d6aa3ac9ae61f0bc"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror/invocation_001.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/scientific_ledger_mirror/invocation_001.json",
+      "bytes": 4033,
+      "sha256": "09c937b07fa355d44f112a0a3570cfc787b0266df5c2f3d61974184c6715cd79"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror/invocation_001_end.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/scientific_ledger_mirror/invocation_001_end.json",
+      "bytes": 2349,
+      "sha256": "18e1346c3821b391ed6477403066a13cb26b9ce575e77df526a5908e3e047be6"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror/start_U-TILE-1.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/scientific_ledger_mirror/start_U-TILE-1.json",
+      "bytes": 84,
+      "sha256": "88677e56604dbd2d926d5d60ae4ac2ed8bec32d09db4196f3d5669470c23e2d1"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror/start_U-TILE-2.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/scientific_ledger_mirror/start_U-TILE-2.json",
+      "bytes": 83,
+      "sha256": "89bf3a478fd13707b9d5f13512349984e835c18fdd19b8f8e3bae3b66619a23d"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror/start_U-TILE-3.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/scientific_ledger_mirror/start_U-TILE-3.json",
+      "bytes": 83,
+      "sha256": "077732cd556750cbd75febe78c2ef385a591fa6c7e0035f83995d68c0db236d7"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror/start_U-TILE-4.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/scientific_ledger_mirror/start_U-TILE-4.json",
+      "bytes": 84,
+      "sha256": "b2cd2c4811f9782dbf352eb3ce072a09de1d83afefba89910e54e46008ebb55e"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/ucov_analyze.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/ucov_analyze.py",
+      "bytes": 18891,
+      "sha256": "27966362c4ce1c11b174a75606784f6f8e6d1ccfd62b05a3caaf6e8a96943681"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/ucov_child.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/ucov_child.py",
+      "bytes": 20596,
+      "sha256": "74e10c78f297a689bd6ee63721824853f4817120aa4f36ca5156944b0db19f93"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/ucov_config.json",
+      "archive_path": "diagnostics/ucov_20261013_v1/ucov_config.json",
+      "bytes": 4403,
+      "sha256": "94f19d982a7dd0c5cd2ea170aebb57cbf159042f7ee82fd99fbe1db83fc400a9"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/ucov_control.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/ucov_control.py",
+      "bytes": 23177,
+      "sha256": "5ed24447aa022ce5c684884c57a814c041084fd46b7f621fc89884c7009bb848"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/ucov_supervise.py",
+      "archive_path": "diagnostics/ucov_20261013_v1/ucov_supervise.py",
+      "bytes": 16365,
+      "sha256": "9c77efc7368f0ff2f57650f60351cd37457bb0c9ed62b5610655b05b01380def"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/CONTINUATION_CHECKPOINT.md",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/CONTINUATION_CHECKPOINT.md",
+      "bytes": 6744,
+      "sha256": "444ece10ac1559da9494de99711a7a6e4f5a875a975e259c64b369fcdf485d8c"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/EVIDENCE_INVENTORY_SHA256.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/EVIDENCE_INVENTORY_SHA256.txt",
+      "bytes": 23214,
+      "sha256": "e59f43d928e810ca6b8eea232cfd2008630fe89e0e62f4c9c2c0a811106798f1"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/EXECUTION_AUTHORIZATION.md",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/EXECUTION_AUTHORIZATION.md",
+      "bytes": 3215,
+      "sha256": "e558a42265e9e1cfad800baf46c11500630d927fdd48ffe9007dbff2b256d76b"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/NEXT_EXPERIMENT_PROPOSAL.md",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/NEXT_EXPERIMENT_PROPOSAL.md",
+      "bytes": 5470,
+      "sha256": "29df0ecc7fc75d75c91d36521c4918c4dc410641c821d5c5ccb6ea647dcc4c42"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/PUBLICATION_HANDOFF.md",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/PUBLICATION_HANDOFF.md",
+      "bytes": 8403,
+      "sha256": "531a518673758af7eeb77fcfc6110dfa68ef4af14cc90f8958415d8109dfb635"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/REPORT.md",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/REPORT.md",
+      "bytes": 11293,
+      "sha256": "19221e6992e3abec9725c01afa8a58fc187aa3aa133f3bd2262923a27b6b0efb"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/analysis/FINAL_ARTIFACTS_SHA256.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/analysis/FINAL_ARTIFACTS_SHA256.txt",
+      "bytes": 7067,
+      "sha256": "e2de275dc81f392120d0fa5fe876535fb5554edc9de1d508f690efb5d7aa56f6"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/analysis/analysis.json",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/analysis/analysis.json",
+      "bytes": 40080,
+      "sha256": "ed717404ead2a6fe158634ceda2f78f81ee2204936f4413471bdf60345f0ce6d"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/curves_ucov.csv",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/curves_ucov.csv",
+      "bytes": 15195,
+      "sha256": "3b8448351316ee25e4d40f50691f7248a330bb6df38c179823892aa4aaa45695"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/independent_verification.json",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/independent_verification.json",
+      "bytes": 43303,
+      "sha256": "1894ca8208ad1ca263db94875fa780b287fad2ab247a85de8b9c591a97968240"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/independent_verify.out.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/independent_verify.out.txt",
+      "bytes": 778,
+      "sha256": "92d717a171ccc20aa720847ecef3c489217896d40410eb555b9e200500bc2c44"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/independent_verify.py",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/independent_verify.py",
+      "bytes": 31975,
+      "sha256": "a1be19fab25193b0cf282032b0f48bcf65ee858a637e2550fb2dd854a7477cf0"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/launch/COMMANDS_AND_EXIT_CODES.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/launch/COMMANDS_AND_EXIT_CODES.txt",
+      "bytes": 1108,
+      "sha256": "c810ec799ef7333d66bfcc62fb03c87365f68b2865fe6b88c022a83d0f45628d"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/launch/scientific.stderr.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/launch/scientific.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/launch/scientific.stdout.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/launch/scientific.stdout.txt",
+      "bytes": 3424,
+      "sha256": "b6eb4b6f5ad1eb58232485a8eff336e8881c0fe74b1eec00d796e64fe57ca3f5"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/launch/status_after.stderr.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/launch/status_after.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/launch/status_after.stdout.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/launch/status_after.stdout.txt",
+      "bytes": 811,
+      "sha256": "a9ea5251f91d88f377cd2bc47e58b8be440d7d77250d1f3c9d7fd3ed78e4511f"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/launch/status_before.stderr.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/launch/status_before.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/launch/status_before.stdout.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/launch/status_before.stdout.txt",
+      "bytes": 523,
+      "sha256": "5ceb523e705f97de9235257ee5e114c0d288ef3f7fbb007b937650c0366eeda1"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/launch_scientific.ps1",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/launch_scientific.ps1",
+      "bytes": 3469,
+      "sha256": "ba8f8face4955d5c61cf5a08047ad0eca0a4b87ad2f3a1b44930898581fa8fef"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/learning_curves_ucov.svg",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/learning_curves_ucov.svg",
+      "bytes": 12171,
+      "sha256": "4fd69d071423bfb7ce86770b3461dec0bddabff81e4191f33ec997353052cf76"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/make_curve_figure.py",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/make_curve_figure.py",
+      "bytes": 8362,
+      "sha256": "3f455c747c32f94519329c7785caecb760daf2feefc4fec3ce25291429c17677"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/prelaunch_check.md",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/prelaunch_check.md",
+      "bytes": 1871,
+      "sha256": "2acc07f1f15de28f3d1c0940da2a624cdbb499ba74612b19a5bad5ff7bda6be1"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/prelaunch_verify.out.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/prelaunch_verify.out.txt",
+      "bytes": 11471,
+      "sha256": "74316f862dd6400bbf1b8cec28a235118a55128506c8bf86f9ae83cf3cf16f09"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/prelaunch_verify.py",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/prelaunch_verify.py",
+      "bytes": 10060,
+      "sha256": "3623fe4f48802371681846631ca4ecb40dc2d795d230ffe1e944cb0a7b20332a"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/replay_final_states.command.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/replay_final_states.command.txt",
+      "bytes": 154,
+      "sha256": "aea7be68dffebf91e9e72e180feabf3debb6fd1cffb6755ae150b0320a64658f"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/replay_final_states.err.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/replay_final_states.err.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/replay_final_states.json",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/replay_final_states.json",
+      "bytes": 5661,
+      "sha256": "a8a605345199ee2c2f025cb81752f35c99897e7624b136f7ce1ad7b0191865e3"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/replay_final_states.out.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/replay_final_states.out.txt",
+      "bytes": 220,
+      "sha256": "431f7fd5c78c99136ba69dbfb22646e931a71dd8367e08b2beabf6c2303f6daf"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/replay_final_states.py",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/replay_final_states.py",
+      "bytes": 7030,
+      "sha256": "7e169d948669dd1d9e6c982b9669b6abfc3434b66212b3cd3970350aaf8993e8"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/repo_gates_20261013/SUMMARY.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/repo_gates_20261013/SUMMARY.txt",
+      "bytes": 243,
+      "sha256": "d54c0c8ba3d2c4ba70f2e19350987ca2d516f1569dc3700c8b1128f78d155f96"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/repo_gates_20261013/pytest_cpu.log",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/repo_gates_20261013/pytest_cpu.log",
+      "bytes": 914,
+      "sha256": "529eec14241ec1dd8576425d04d72525b5d8b42081accdb07091cb9896421391"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/repo_gates_20261013/ruff_check.log",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/repo_gates_20261013/ruff_check.log",
+      "bytes": 253,
+      "sha256": "4bdc238dd5c1e0c6423f075f9d893d3570bbb8166f4f316ed0e1e4dc401ae183"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/repo_gates_20261013/ruff_format_check.log",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/repo_gates_20261013/ruff_format_check.log",
+      "bytes": 271,
+      "sha256": "1590e209250ce962a8c9cc6ce89dc0b654f24b55a6b1b58c9b301a08b5008182"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/run_analyzer.ps1",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/run_analyzer.ps1",
+      "bytes": 1920,
+      "sha256": "eaf934ecfa835e982d6966f501658e3f158c8db654151ef5f70b02320aff6ff6"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/ucov_analyze.command.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/ucov_analyze.command.txt",
+      "bytes": 947,
+      "sha256": "f100520ab75e0cd6f523c220929717dabae0068874c3007224eda3e44c0bce9f"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/ucov_analyze.err.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/ucov_analyze.err.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/ucov_analyze.out.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/ucov_analyze.out.txt",
+      "bytes": 279,
+      "sha256": "532713f556e17d7ce9b2f25a25cc4616578c626de14ec7e632b598411dbb80ce"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/verify_report_numbers.out.txt",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/verify_report_numbers.out.txt",
+      "bytes": 1850,
+      "sha256": "add1c05a76182e649fddd8404f81d9c0228a232b26fa91b8015bf3d16f9ef3c3"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/verify_report_numbers.py",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/verify_report_numbers.py",
+      "bytes": 4040,
+      "sha256": "8dab291d6bd34544f8d38960cee1ca7e16609b87afc3acfa28423e0299ba9a06"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1_execution/write_inventory.py",
+      "archive_path": "diagnostics/ucov_20261013_v1_execution/write_inventory.py",
+      "bytes": 1311,
+      "sha256": "eb7d513fd2d91fa4b3464f40a9376c5ccc08e2409f20b5ba5962f27b04568e98"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-1/child.stderr.txt",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-1/child.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-1/child.stdout.txt",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-1/child.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-1/child_record.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-1/child_record.json",
+      "bytes": 14410,
+      "sha256": "a4c54a1ee8e9c002064bdf5508b9acb254c85818381f62bcc4f3a7e216e0be78"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-1/curve.jsonl",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-1/curve.jsonl",
+      "bytes": 62475,
+      "sha256": "19b5af6a24127fee75cce327b352aad3f3534743be96bbf9549ea92fc18d741f"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-1/job.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-1/job.json",
+      "bytes": 1976,
+      "sha256": "22e6c6f418541bd249657d26d213d721e2a854ef55759f73b404117ec238b7d3"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-2/child.stderr.txt",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-2/child.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-2/child.stdout.txt",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-2/child.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-2/child_record.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-2/child_record.json",
+      "bytes": 14429,
+      "sha256": "396c63c2c95e7121e51f7ac402c356647d0bee4fb79ab47ab581feab096c75c9"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-2/curve.jsonl",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-2/curve.jsonl",
+      "bytes": 62492,
+      "sha256": "0f8a6426e8b7db9d4bc32525735b976181dbdaa9cba4138268fc338d510f1be1"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-2/job.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-2/job.json",
+      "bytes": 1974,
+      "sha256": "8f583b504563aac903786fce5e9529473532a68324e3ece2dbf0d4e8b296b1d2"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-3/child.stderr.txt",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-3/child.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-3/child.stdout.txt",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-3/child.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-3/child_record.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-3/child_record.json",
+      "bytes": 14432,
+      "sha256": "cf2c219154fa166a639ed646e969303096be3253f65bb3758dddbda1b5e52949"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-3/curve.jsonl",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-3/curve.jsonl",
+      "bytes": 62522,
+      "sha256": "e5d412e3b7508b771675c2c37e3a76a223714d24e96e4d020135ba41bf238fa8"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-3/job.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-3/job.json",
+      "bytes": 1974,
+      "sha256": "95f7a847018580f793bdf8980ef59aa0003dcf3b0d47e9ed69aa51bdd5e6c213"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-4/child.stderr.txt",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-4/child.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-4/child.stdout.txt",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-4/child.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-4/child_record.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-4/child_record.json",
+      "bytes": 14413,
+      "sha256": "3f8b89fd7af8e24709ea8fc2269f56d476c709bb34126aa0a9d43e1fa669de73"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-4/curve.jsonl",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-4/curve.jsonl",
+      "bytes": 62518,
+      "sha256": "7dff33a5a57dec64556a5b4808c021b672b8e2d4e60028dfa447b95cbaf0a88c"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-4/job.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/arms/U-TILE-4/job.json",
+      "bytes": 1976,
+      "sha256": "e34e14bfb020782d603ed8c5c82c75e41acedfdf6c2c76783f773a22fb09de79"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/ledger/end_U-TILE-1.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/ledger/end_U-TILE-1.json",
+      "bytes": 548,
+      "sha256": "293c6538348aed937260eae7b24b4e3382d05a52100e9dbe7659cd25e3ebd8f1"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/ledger/end_U-TILE-2.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/ledger/end_U-TILE-2.json",
+      "bytes": 544,
+      "sha256": "0cea5615fcb7609fb4cf7ae1e6446e0c952c73342d92de1ec4e6fa8c213c3ccf"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/ledger/end_U-TILE-3.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/ledger/end_U-TILE-3.json",
+      "bytes": 532,
+      "sha256": "003e126f46b378299509bcae7502a27713cc18a2596875f0d831eb11193c36ac"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/ledger/end_U-TILE-4.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/ledger/end_U-TILE-4.json",
+      "bytes": 549,
+      "sha256": "683abb480b04313aa87b3638e46974b850bb965f4d70b140d6aa3ac9ae61f0bc"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/ledger/invocation_001.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/ledger/invocation_001.json",
+      "bytes": 4033,
+      "sha256": "09c937b07fa355d44f112a0a3570cfc787b0266df5c2f3d61974184c6715cd79"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/ledger/invocation_001_end.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/ledger/invocation_001_end.json",
+      "bytes": 2349,
+      "sha256": "18e1346c3821b391ed6477403066a13cb26b9ce575e77df526a5908e3e047be6"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/ledger/start_U-TILE-1.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/ledger/start_U-TILE-1.json",
+      "bytes": 84,
+      "sha256": "88677e56604dbd2d926d5d60ae4ac2ed8bec32d09db4196f3d5669470c23e2d1"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/ledger/start_U-TILE-2.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/ledger/start_U-TILE-2.json",
+      "bytes": 83,
+      "sha256": "89bf3a478fd13707b9d5f13512349984e835c18fdd19b8f8e3bae3b66619a23d"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/ledger/start_U-TILE-3.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/ledger/start_U-TILE-3.json",
+      "bytes": 83,
+      "sha256": "077732cd556750cbd75febe78c2ef385a591fa6c7e0035f83995d68c0db236d7"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/ledger/start_U-TILE-4.json",
+      "archive_path": "diagnostics/uformer_coverage_archive_20261013/raw_runs/ucov_20261013_v1/ledger/start_U-TILE-4.json",
+      "bytes": 84,
+      "sha256": "b2cd2c4811f9782dbf352eb3ce072a09de1d83afefba89910e54e46008ebb55e"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/upp_20261013_v1/POLICY.md",
+      "archive_path": "diagnostics/upp_20261013_v1/POLICY.md",
+      "bytes": 4585,
+      "sha256": "7dd0bc9f798bebe9d7e40a41b3fa65f7fb197dbec991c1434e15c008c8bec3ad"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/upp_20261013_v1/test_upp_classify.py",
+      "archive_path": "diagnostics/upp_20261013_v1/test_upp_classify.py",
+      "bytes": 17676,
+      "sha256": "5561fc10b201d96c4a0fc97594143912e17d89cd5fd0f4d20a7a16285f6e6b7f"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/upp_20261013_v1/upp_classify.py",
+      "archive_path": "diagnostics/upp_20261013_v1/upp_classify.py",
+      "bytes": 14395,
+      "sha256": "31904623223cc18b216b97bf2cfaa27734487c38a93ebe57efca5de84abecbb1"
+    },
+    {
+      "original_path": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/upp_20261013_v1/upp_policy.json",
+      "archive_path": "diagnostics/upp_20261013_v1/upp_policy.json",
+      "bytes": 2348,
+      "sha256": "74b277b952e0af68dee00692cde6b95f8ed747d641843bbe98517c70d98c5770"
+    }
+  ],
+  "existing_dependencies": [
+    {
+      "archive_path": "diagnostics/exploratory_progression_20261012/POLICY.md",
+      "bytes": 5871,
+      "sha256": "fe14a225d16fed0373314eb89291035a2c8175bb17f37a7a03cf21c8e7fca592"
+    },
+    {
+      "archive_path": "diagnostics/exploratory_progression_20261012/ep_classify.py",
+      "bytes": 22390,
+      "sha256": "f7efd10029e8e50071b9a5013b23eefb1d2e3707d07d05e80fda4a690e160cd1"
+    },
+    {
+      "archive_path": "diagnostics/uid_20261012_v2/config.json",
+      "bytes": 2633,
+      "sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd"
+    },
+    {
+      "archive_path": "diagnostics/uid_20261012_v2/manifest.json",
+      "bytes": 2172,
+      "sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca"
+    },
+    {
+      "archive_path": "diagnostics/uid_20261012_v2/uformer_ae.py",
+      "bytes": 8544,
+      "sha256": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606"
+    },
+    {
+      "archive_path": "diagnostics/uid_20261012_v2/uformer_blocks.py",
+      "bytes": 10213,
+      "sha256": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747"
+    },
+    {
+      "archive_path": "diagnostics/uid_20261012_v2/uid_common.py",
+      "bytes": 9691,
+      "sha256": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230"
+    },
+    {
+      "archive_path": "diagnostics/uid_20261012_v2_r1/execution_r1.json",
+      "bytes": 644,
+      "sha256": "7aa1ef61e2f231d19a7a0fff3483f480de6611215f6c027aed10014d23cfc52f"
+    },
+    {
+      "archive_path": "diagnostics/uid_20261012_v2_r1/manifest_r1.json",
+      "bytes": 6721,
+      "sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044"
+    },
+    {
+      "archive_path": "diagnostics/uid_20261012_v2_r1/uid_r1_control.py",
+      "bytes": 15959,
+      "sha256": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074"
+    },
+    {
+      "archive_path": "diagnostics/uid_20261012_v2_r1/uid_r1_measure.py",
+      "bytes": 5965,
+      "sha256": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760"
+    },
+    {
+      "archive_path": "diagnostics/urp_20261013_v1/input/prepare_input.py",
+      "bytes": 19130,
+      "sha256": "4ccef2ca9dc7c871eb7b0d9046460d93d958f66986426a7ee8a3dd93b315604b"
+    },
+    {
+      "archive_path": "diagnostics/urp_20261013_v1/manifest_urp.json",
+      "bytes": 16432,
+      "sha256": "1df7af08c8b5897ad23fac88ab94e4ad36212a47cd542bb584e85ca07df91bd1"
+    },
+    {
+      "archive_path": "diagnostics/urp_20261013_v1/urp_control.py",
+      "bytes": 22226,
+      "sha256": "6d3dba01015dd2edf09717d6b7856f03ef0683083d872ff486f9a0eef1ffd076"
+    }
+  ],
+  "external_bindings": [
+    {
+      "original_path": "D:/cgfed-runs/uid_20261012_v2_r1/arms/U-FIT/child_record.json",
+      "bytes": 5357,
+      "sha256": "d8150ec1b8a1ff61ffee1c9e7bf42114060794894305b3c66cf24228faff3ecb",
+      "role": "reference: U-FIT record (initial state hash)",
+      "included": true,
+      "archive_path": "diagnostics/uformer_archive_20261013/raw_runs/uid_20261012_v2_r1/arms/U-FIT/child_record.json"
+    },
+    {
+      "original_path": "D:/cgfed-runs/urp_20261013_v1/arms/U-PATCH/child_record.json",
+      "bytes": 12541,
+      "sha256": "45640ed18111e03935e4b9451bb02f364bea14bdbb0ccec1bd31f1faa24b9583",
+      "role": "context: URP-v1 centre-tile record",
+      "included": true,
+      "archive_path": "diagnostics/uformer_archive_20261013/raw_runs/urp_20261013_v1/arms/U-PATCH/child_record.json"
+    },
+    {
+      "original_path": "D:/cgfed-runs/phase3_tierb_qwen15_1p8b_seed1/tgap_federated_state/index.jsonl",
+      "bytes": 182764,
+      "sha256": "b6834e476f21f3d6b07f6489b5113576e566ab3987a2f4593405664476d07240",
+      "role": "input source: index",
+      "included": false
+    },
+    {
+      "original_path": "D:/cgfed-runs/phase3_tierb_qwen15_1p8b_seed1/tgap_federated_state/snapshots/t0007_c0091.safetensors",
+      "bytes": 12612824,
+      "sha256": "09c95184a657fa778aef48e18196f95c568854476b75f2812d68dfd58126dd45",
+      "role": "input source: end state (read once by prepare_inputs.py)",
+      "included": false
+    },
+    {
+      "original_path": "D:/cgfed-runs/phase3_tierb_qwen15_1p8b_seed1/tgap_federated_state/starts/aa3ab51c854c3480985381da05543beb73cb0ea624fe000866b69d630093d580.safetensors",
+      "bytes": 12612736,
+      "sha256": "31b60754e8b55992c908e416f2652c8f2dbbbdee0030440fa2163a5528cd5a7a",
+      "role": "input source: start state (read once by prepare_inputs.py)",
+      "included": false
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-1/final_state.safetensors",
+      "bytes": 3168388,
+      "sha256": "37f4f0d8eceabe6b9b71a7c1ac438c9593801fe3ee667182ead4d603ad4bbe27",
+      "included": false,
+      "role": "UCOV saved model state"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-1/init_state.safetensors",
+      "bytes": 3168388,
+      "sha256": "c7583d368248c236b4a77ef4c860026dd73f2339b21e78359f9ea0c09f15b933",
+      "included": false,
+      "role": "UCOV saved model state"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-2/final_state.safetensors",
+      "bytes": 3168388,
+      "sha256": "7da259f3c6c6d9474946912a54a48d34653370bdea1eac1515eae0f03d36d5c7",
+      "included": false,
+      "role": "UCOV saved model state"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-2/init_state.safetensors",
+      "bytes": 3168388,
+      "sha256": "1d2bcb99cb6b28cb41b73d88c4540f6230fc0e3b01ffb71f2476691cdf3aee0b",
+      "included": false,
+      "role": "UCOV saved model state"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-3/final_state.safetensors",
+      "bytes": 3168388,
+      "sha256": "ba4b6991bc3c620516587d3e2f1f0927b979db349371b1b72eb537aefdade426",
+      "included": false,
+      "role": "UCOV saved model state"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-3/init_state.safetensors",
+      "bytes": 3168388,
+      "sha256": "c57d77465946bf91b0e97613dc722db8c3a684b78b2bf936a0ad5a89fa84823f",
+      "included": false,
+      "role": "UCOV saved model state"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-4/final_state.safetensors",
+      "bytes": 3168388,
+      "sha256": "c239c0d55d6299419bac3d3a0f16e9fc507b88227ee05c3a3091abfdb72960f7",
+      "included": false,
+      "role": "UCOV saved model state"
+    },
+    {
+      "original_path": "D:/cgfed-runs/ucov_20261013_v1/arms/U-TILE-4/init_state.safetensors",
+      "bytes": 3168388,
+      "sha256": "028f24e5b6881402c4afed3b55d61327feb7925714e707601c962eef586b9b30",
+      "included": false,
+      "role": "UCOV saved model state"
+    }
+  ],
+  "scope": "Frozen UPP-v1 policy and completed UCOV-v1 coverage study; no new scientific run.",
+  "limitations": [
+    "A fresh clone alone cannot run every historical verification or replay.",
+    "Frozen code retains original absolute paths; relocated records do not resolve those paths.",
+    "Eight saved states and three R3 source files are external; UHO is a proposal only."
+  ]
+}

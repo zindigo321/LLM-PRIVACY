@@ -1,0 +1,11 @@
+sha256 before run: manifest_ucov.json 3bc2ab302f6cd77b63b9bb8b77894041fd97cbdd63d5fa7f380a4dae080fe824
+sha256 before run: ucov_analyze.py 27966362c4ce1c11b174a75606784f6f8e6d1ccfd62b05a3caaf6e8a96943681
+sha256 before run: ucov_control.py 5ed24447aa022ce5c684884c57a814c041084fd46b7f621fc89884c7009bb848
+sha256 before run: ..\upp_20261013_v1\upp_classify.py 31904623223cc18b216b97bf2cfaa27734487c38a93ebe57efca5de84abecbb1
+sha256 before run: ..\upp_20261013_v1\upp_policy.json 74b277b952e0af68dee00692cde6b95f8ed747d641843bbe98517c70d98c5770
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\ucov_20261013_v1
+env: CUDA_VISIBLE_DEVICES=-1 HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=[]
+command: D:/conda_envs/cgfedllm/python.exe -B ucov_analyze.py --evidence-dir D:\projects-cd\cg-fedllm-reproduction\diagnostics\ucov_20261013_v1_execution\analysis
+start: 2026-10-13T21:57:11.662+08:00
+end: 2026-10-13T21:57:12.730+08:00
+exit_code: 0

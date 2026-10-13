@@ -1,0 +1,30 @@
+command: D:/conda_envs/cgfedllm/python.exe -B independent_verify.py (print-only re-run; the --write run at about 21:58 +08:00 created independent_verification.json 1894ca82...8240 and exited 0, its console copy was not saved because of a PowerShell argument error in the calling command)
+exit_code: 0
+
+{
+ "all_ok": true,
+ "aggregate": {
+  "policy_id": "UPP-20261013-v1",
+  "classes": {
+   "U-TILE-1": "P",
+   "U-TILE-2": "P",
+   "U-TILE-3": "P",
+   "U-TILE-4": "P"
+  },
+  "counts": {
+   "P": 4,
+   "F": 0,
+   "U": 0
+  },
+  "n_registered": 4,
+  "rule": "P >= 3: met; F >= 2: not met; otherwise inconclusive",
+  "decision": "COVERAGE_CRITERION_MET"
+ },
+ "arms": {
+  "U-TILE-1": "PASS",
+  "U-TILE-2": "PASS",
+  "U-TILE-3": "PASS",
+  "U-TILE-4": "PASS"
+ },
+ "global_problems": []
+}

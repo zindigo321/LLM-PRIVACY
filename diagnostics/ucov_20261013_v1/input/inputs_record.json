@@ -1,0 +1,1059 @@
+{
+  "builder_reuses": {
+    "path": "diagnostics/urp_20261013_v1/input/prepare_input.py",
+    "sha256": "4ccef2ca9dc7c871eb7b0d9046460d93d958f66986426a7ee8a3dd93b315604b"
+  },
+  "degenerate_arms": [],
+  "environment": {
+    "cg_fedllm_modules": [
+      {
+        "head_blob": "74ff949c1988c3c722ef05718adb0d7c9cc419ae",
+        "module": "cg_fedllm",
+        "p5a_execution_blob": "74ff949c1988c3c722ef05718adb0d7c9cc419ae",
+        "path": "src/cg_fedllm/__init__.py",
+        "sha256": "32df159a04bc7dd71c631cc9926127431b0d548151073458b30c74a7846ed8cf",
+        "worktree_blob": "74ff949c1988c3c722ef05718adb0d7c9cc419ae"
+      },
+      {
+        "head_blob": "3815e6bd6dba234308be5f86676083cf55007e4c",
+        "module": "cg_fedllm.compression",
+        "p5a_execution_blob": "3815e6bd6dba234308be5f86676083cf55007e4c",
+        "path": "src/cg_fedllm/compression/__init__.py",
+        "sha256": "87ca7de00860f16602392e2d63bc12baf5725396ab6ee49750386fbcc22fbdf8",
+        "worktree_blob": "3815e6bd6dba234308be5f86676083cf55007e4c"
+      },
+      {
+        "head_blob": "aed2dee70f3e102ad7a842b6c375e0189c1c36a4",
+        "module": "cg_fedllm.compression.gauge",
+        "p5a_execution_blob": "aed2dee70f3e102ad7a842b6c375e0189c1c36a4",
+        "path": "src/cg_fedllm/compression/gauge.py",
+        "sha256": "5da0b234dfe5d72d6001c4c0775e51624f7fab04ca631ae32dd6fe4cba618713",
+        "worktree_blob": "aed2dee70f3e102ad7a842b6c375e0189c1c36a4"
+      },
+      {
+        "head_blob": "7b7b95479a7887ac20a8fbbfdcfc8af65fbac535",
+        "module": "cg_fedllm.compression.layout",
+        "p5a_execution_blob": "7b7b95479a7887ac20a8fbbfdcfc8af65fbac535",
+        "path": "src/cg_fedllm/compression/layout.py",
+        "sha256": "3fa11571455a9abfc54589c1b6720aad274d3c16c82dbed002d3136e358bc82a",
+        "worktree_blob": "7b7b95479a7887ac20a8fbbfdcfc8af65fbac535"
+      },
+      {
+        "head_blob": "fe916cb3dd818aaac8b2e7eb8951858104c1adc5",
+        "module": "cg_fedllm.compression.normalization",
+        "p5a_execution_blob": "fe916cb3dd818aaac8b2e7eb8951858104c1adc5",
+        "path": "src/cg_fedllm/compression/normalization.py",
+        "sha256": "9d14fac2aef463ffe53e1966bc2464a3d924bf339608c3e5a7b925fd1c6d1f7a",
+        "worktree_blob": "fe916cb3dd818aaac8b2e7eb8951858104c1adc5"
+      },
+      {
+        "head_blob": "95658625005da93edd4c766bab3943068616f77a",
+        "module": "cg_fedllm.compression.representation",
+        "p5a_execution_blob": "95658625005da93edd4c766bab3943068616f77a",
+        "path": "src/cg_fedllm/compression/representation.py",
+        "sha256": "02e6a8e49d4ada5c373d0e01ed46a1c133c8dd7e535edd8a76e38079aadc024d",
+        "worktree_blob": "95658625005da93edd4c766bab3943068616f77a"
+      },
+      {
+        "head_blob": "ecc872c9858982fb11f82cd4fcc2ee7e344b151b",
+        "module": "cg_fedllm.forensics",
+        "p5a_execution_blob": "ecc872c9858982fb11f82cd4fcc2ee7e344b151b",
+        "path": "src/cg_fedllm/forensics/__init__.py",
+        "sha256": "6bad250e3e6f7f2788fdfdc6a7d76f9b4a59ef1018d67d4517b9d37fbc28d5a8",
+        "worktree_blob": "ecc872c9858982fb11f82cd4fcc2ee7e344b151b"
+      },
+      {
+        "head_blob": "bbd55e592c7ce50d3ee5bb136d872ea17c2e9cb1",
+        "module": "cg_fedllm.forensics.representations",
+        "p5a_execution_blob": "bbd55e592c7ce50d3ee5bb136d872ea17c2e9cb1",
+        "path": "src/cg_fedllm/forensics/representations.py",
+        "sha256": "4d3cbe1edc77f1fa654377feb42cf937b0fcafe0e9bc0857d9d71046ec7535ce",
+        "worktree_blob": "bbd55e592c7ce50d3ee5bb136d872ea17c2e9cb1"
+      },
+      {
+        "head_blob": "4b61fc6f7420b8d6d0f486074b519013f0eb6576",
+        "module": "cg_fedllm.models",
+        "p5a_execution_blob": "4b61fc6f7420b8d6d0f486074b519013f0eb6576",
+        "path": "src/cg_fedllm/models/__init__.py",
+        "sha256": "fe4e81137cfb6f007d44d5accf62e85165487383305dc470978f68d8536dc69e",
+        "worktree_blob": "4b61fc6f7420b8d6d0f486074b519013f0eb6576"
+      },
+      {
+        "head_blob": "7c013f5a1d5334d442ce2b4ef2c79f0ae8128ef4",
+        "module": "cg_fedllm.models.adapter",
+        "p5a_execution_blob": "7c013f5a1d5334d442ce2b4ef2c79f0ae8128ef4",
+        "path": "src/cg_fedllm/models/adapter.py",
+        "sha256": "a393729bc0f6732550b0cf1145361c1c9d6d4b7978c5fc257c82d5ef05a9c33e",
+        "worktree_blob": "7c013f5a1d5334d442ce2b4ef2c79f0ae8128ef4"
+      },
+      {
+        "head_blob": "3ac6c86c7f63b452354e442ea6ea557956b0052d",
+        "module": "cg_fedllm.tgap",
+        "p5a_execution_blob": "3ac6c86c7f63b452354e442ea6ea557956b0052d",
+        "path": "src/cg_fedllm/tgap/__init__.py",
+        "sha256": "ce9ebc35e4677d50904b4c25ecf11f86b2e7a7f66290363e2caf59a5b9d43e91",
+        "worktree_blob": "3ac6c86c7f63b452354e442ea6ea557956b0052d"
+      },
+      {
+        "head_blob": "694f20c7988c7dbc52164b0262351ce8bd942772",
+        "module": "cg_fedllm.tgap.snapshots",
+        "p5a_execution_blob": "694f20c7988c7dbc52164b0262351ce8bd942772",
+        "path": "src/cg_fedllm/tgap/snapshots.py",
+        "sha256": "700c0441342e9ecd4efbf43cca9e7de60c0e5f008ffc49195f1472eae7f07b8f",
+        "worktree_blob": "694f20c7988c7dbc52164b0262351ce8bd942772"
+      },
+      {
+        "head_blob": "fc6112cb65fff9706fb74cfbb83df66bd88b9e92",
+        "module": "cg_fedllm.utils",
+        "p5a_execution_blob": "fc6112cb65fff9706fb74cfbb83df66bd88b9e92",
+        "path": "src/cg_fedllm/utils/__init__.py",
+        "sha256": "47dd2e9975efc2eea06e7200ca50f1142795b1033cc01de85bd713bdc19fb8c8",
+        "worktree_blob": "fc6112cb65fff9706fb74cfbb83df66bd88b9e92"
+      },
+      {
+        "head_blob": "0e60c0b3891bf1a1bd90c8c1893416bb007aeb2a",
+        "module": "cg_fedllm.utils.hashing",
+        "p5a_execution_blob": "0e60c0b3891bf1a1bd90c8c1893416bb007aeb2a",
+        "path": "src/cg_fedllm/utils/hashing.py",
+        "sha256": "abfd214c6d13c9bafe3d928808a5eae930b38c20d7c0e3e93f8ef07d43f10fd7",
+        "worktree_blob": "0e60c0b3891bf1a1bd90c8c1893416bb007aeb2a"
+      },
+      {
+        "head_blob": "bc2e65176b6d872a9173d2c5712993094f2ad475",
+        "module": "cg_fedllm.utils.io",
+        "p5a_execution_blob": "bc2e65176b6d872a9173d2c5712993094f2ad475",
+        "path": "src/cg_fedllm/utils/io.py",
+        "sha256": "444ffe695df2dd6bf9c086b045a4ef0a09ba82642cb627950c341838e9443ed7",
+        "worktree_blob": "bc2e65176b6d872a9173d2c5712993094f2ad475"
+      }
+    ],
+    "cpu": {
+      "cuda_available": false,
+      "deterministic_algorithms": true,
+      "inter_op_threads": 24,
+      "intra_op_threads": 24,
+      "torch_version": "2.14.0+cu130"
+    },
+    "interpreter": "D:\\conda_envs\\cgfedllm\\python.exe",
+    "python": "3.11.16"
+  },
+  "label": "DERIVED: the registered inputs of UCOV-20261013-v1, built before any model evaluation",
+  "normalization": {
+    "arithmetic": "production Normalizer: x_n = x / float32(s); denormalize(y) = y * float32(s), fp32",
+    "mode": "global_exact_maxabs_train",
+    "refitted_on_tiles": false,
+    "scale_float32": 0.015751631930470467,
+    "scale_global": 0.015751632224572334
+  },
+  "protocol_id": "UCOV-20261013-v1",
+  "schema": "ucov-inputs-record-v1",
+  "selection_rule": {
+    "path": "input/SELECTION_RULE.md",
+    "sha256": "ddd58be9ec8ecae473a2ed48be749e8826f685470abf5c78d15d64f58bfe36f2"
+  },
+  "source": {
+    "archived_normalized_max_abs": 0.8891991972923279,
+    "archived_sig": 13.464593911708402,
+    "construction": "balanced_effective_delta(start, end, s=2.0, rank=8)[0] -> layout layer_major_qkvo_AtB",
+    "files_and_adapter_hashes_verified": "load_states(verify=True)",
+    "frozen_max_abs": 0.014964050613343716,
+    "geometry": {
+      "hidden": 2048,
+      "modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj"
+      ],
+      "num_layers": 24,
+      "rank": 8
+    },
+    "index_record_identity_equal": true,
+    "index_sha256": "b6834e476f21f3d6b07f6489b5113576e566ab3987a2f4593405664476d07240",
+    "index_sha256_observed": "b6834e476f21f3d6b07f6489b5113576e566ab3987a2f4593405664476d07240",
+    "input_root": "phase3_tierb_qwen15_1p8b_seed1/tgap_federated_state",
+    "n_train": 80,
+    "phi_dtype": "torch.float32",
+    "phi_normalized_max_abs_observed": 0.8891991972923279,
+    "phi_sha256_equal_archived": true,
+    "phi_sha256_observed": "485cbe5f3a450b43d7780fe9cd97afe5169ea81ce0bdaf21166938adfcac2546",
+    "phi_shape": [
+      1,
+      2048,
+      1536
+    ],
+    "phi_sig_equal_archived_reported_only": true,
+    "phi_sig_float64": 13.464593911708402,
+    "preflight": {
+      "entry": "representations[R3].evidence.records[39]",
+      "path": "results/phase5/p5a_v2/preflight/preflight_1.json",
+      "sha256": "b058eb1bf01d101e1800bdf05d7701b5ac3de515ea71cd542f70403ee5d48cee"
+    },
+    "record": {
+      "path": "results/phase5/p5a_v2/R3_balanced_effective_delta_r8_single_snapshot/p5a_record.json",
+      "sha256": "f60d3d15788b1945953d16394c39762b3a7a304e440d5bd63b96d87a23e97b2d"
+    },
+    "scale_global": 0.015751632224572334,
+    "scale_sources_equal": {
+      "p5a_inputs_source": 0.015751632224572334,
+      "preflight": 0.015751632224572334,
+      "record": 0.015751632224572334
+    },
+    "selected": {
+      "client_id": 91,
+      "end_adapter_hash": "ad7d949f5009d56ccdb461036233a540b708bf1236fca9096024445366e884d5",
+      "file": "snapshots/t0007_c0091.safetensors",
+      "file_sha256": "09c95184a657fa778aef48e18196f95c568854476b75f2812d68dfd58126dd45",
+      "phi_sha256": "485cbe5f3a450b43d7780fe9cd97afe5169ea81ce0bdaf21166938adfcac2546",
+      "position": 39,
+      "start_adapter_hash": "aa3ab51c854c3480985381da05543beb73cb0ea624fe000866b69d630093d580",
+      "start_file": "starts/aa3ab51c854c3480985381da05543beb73cb0ea624fe000866b69d630093d580.safetensors",
+      "start_file_sha256": "31b60754e8b55992c908e416f2652c8f2dbbbdee0030440fa2163a5528cd5a7a",
+      "time_index": 7
+    }
+  },
+  "tiles": [
+    {
+      "arm": "U-TILE-1",
+      "baselines": {
+        "normalized": {
+          "shared_scalar_mean": {
+            "cosine": 0.032665419860918504,
+            "dot": 0.021006632970430407,
+            "finite": true,
+            "max_abs_err": 0.42627048771828413,
+            "mse": 0.019205090252164537,
+            "n": 1024,
+            "norm_ratio": 0.03266541959685381,
+            "pred_energy": 0.021006632800614433,
+            "q_n": 0.9989329703453098,
+            "rse": 0.9989329703453098,
+            "sse": 19.666012418216486,
+            "target_energy": 19.687019051356735,
+            "z_n": 0.01922560454234056
+          },
+          "zero_prediction": {
+            "cosine": null,
+            "dot": 0.0,
+            "finite": true,
+            "max_abs_err": 0.42174121737480164,
+            "mse": 0.01922560454234056,
+            "n": 1024,
+            "norm_ratio": 0.0,
+            "pred_energy": 0.0,
+            "q_n": 1.0,
+            "rse": 1.0,
+            "sse": 19.687019051356735,
+            "target_energy": 19.687019051356735,
+            "z_n": 0.01922560454234056
+          }
+        },
+        "original": {
+          "shared_scalar_mean": {
+            "cosine": 0.0326654195610287,
+            "dot": 5.212037677143696e-06,
+            "finite": true,
+            "max_abs_err": 0.00671445568150375,
+            "mse": 4.765049991075275e-06,
+            "n": 1024,
+            "norm_ratio": 0.03266541915952524,
+            "pred_energy": 5.2120376130805005e-06,
+            "q_n": 0.9989329703649018,
+            "rse": 0.9989329703649018,
+            "sse": 0.0048794111908610814,
+            "target_energy": 0.004884623228602289,
+            "z_n": 4.770139871681923e-06
+          },
+          "zero_prediction": {
+            "cosine": null,
+            "dot": 0.0,
+            "finite": true,
+            "max_abs_err": 0.0066431122832000256,
+            "mse": 4.770139871681923e-06,
+            "n": 1024,
+            "norm_ratio": 0.0,
+            "pred_energy": 0.0,
+            "q_n": 1.0,
+            "rse": 1.0,
+            "sse": 0.004884623228602289,
+            "target_energy": 0.004884623228602289,
+            "z_n": 4.770139871681923e-06
+          }
+        }
+      },
+      "coordinates": {
+        "blocks": "q_proj A^T, q_proj B, k_proj A^T, k_proj B (8 columns each)",
+        "cols": [
+          384,
+          416
+        ],
+        "grid": [
+          64,
+          48
+        ],
+        "layer": 6,
+        "rows": [
+          512,
+          544
+        ],
+        "slice": "Phi[0, 512:544, 384:416]",
+        "tile": 32,
+        "tile_index": [
+          16,
+          12
+        ]
+      },
+      "degeneracy_checks": {
+        "all_finite": true,
+        "normalized_max_abs_below_1": true,
+        "scalar_mean_mse_positive": true,
+        "target_energy_positive": true
+      },
+      "normalized_equals_tile_of_normalized_phi": true,
+      "patch": {
+        "block_energies_original": [
+          {
+            "block": "q_proj A^T",
+            "layer": 6,
+            "max_abs": 0.006399683188647032,
+            "phi_cols": [
+              384,
+              392
+            ],
+            "sum_sq": 0.001257373416846122
+          },
+          {
+            "block": "q_proj B",
+            "layer": 6,
+            "max_abs": 0.006430225912481546,
+            "phi_cols": [
+              392,
+              400
+            ],
+            "sum_sq": 0.0012296787936657719
+          },
+          {
+            "block": "k_proj A^T",
+            "layer": 6,
+            "max_abs": 0.0066431122832000256,
+            "phi_cols": [
+              400,
+              408
+            ],
+            "sum_sq": 0.0011580587031243482
+          },
+          {
+            "block": "k_proj B",
+            "layer": 6,
+            "max_abs": 0.005886323284357786,
+            "phi_cols": [
+              408,
+              416
+            ],
+            "sum_sq": 0.0012395123149660464
+          }
+        ],
+        "dtype": "torch.float32",
+        "file": "input/tile_1.safetensors",
+        "file_bytes": 4408,
+        "file_round_trip_bit_identical": true,
+        "file_sha256": "b7d39da738313e83d6c36f5f1c73683b464257d27375017a6731b6b7be345a67",
+        "normalized": {
+          "dtype": "torch.float32",
+          "energy_sum_sq": 19.687019051356735,
+          "max": 0.42174121737480164,
+          "mean": -0.0045292703800967615,
+          "min": -0.37920862436294556,
+          "numel": 1024,
+          "sha256": "00d149198973aa2cf4b08614974aaa6dd3378032336b55e927e5991e940d3897",
+          "shape": [
+            1,
+            1,
+            32,
+            32
+          ],
+          "z_n": 0.01922560454234056
+        },
+        "original": {
+          "dtype": "torch.float32",
+          "energy_sum_sq": 0.004884623228602289,
+          "max": 0.0066431122832000256,
+          "mean": -7.134339918063448e-05,
+          "min": -0.005973154678940773,
+          "numel": 1024,
+          "sha256": "6c3b4b0958f72467560f384448612f805e00ecd5f413887c0f0c8f4cc726db5d",
+          "shape": [
+            1,
+            1,
+            32,
+            32
+          ],
+          "z_n": 4.770139871681923e-06
+        },
+        "shape": [
+          1,
+          1,
+          32,
+          32
+        ],
+        "std_float64": 0.0021828994459377363,
+        "tensor_name": "x",
+        "zero_elements": 0
+      },
+      "range_feasibility": {
+        "atanh_of_max": 0.4498080597766267,
+        "margin_to_tanh_bound": 0.5782587826251984,
+        "normalized_max_abs": 0.42174121737480164,
+        "tanh_range_ceiling_original": {
+          "cosine": 1.0,
+          "dot": 0.00488462322729958,
+          "finite": true,
+          "max_abs_err": 4.656612873077393e-10,
+          "mse": 7.312405861939476e-22,
+          "n": 1024,
+          "norm_ratio": 0.9999999997333039,
+          "pred_energy": 0.00488462322599687,
+          "q_n": 1.5329541813542596e-16,
+          "rse": 1.5329541813542596e-16,
+          "sse": 7.4879036026260235e-19,
+          "target_energy": 0.004884623228602289,
+          "z_n": 4.770139871681923e-06
+        }
+      },
+      "usable": true
+    },
+    {
+      "arm": "U-TILE-2",
+      "baselines": {
+        "normalized": {
+          "shared_scalar_mean": {
+            "cosine": 0.03462896963975422,
+            "dot": 0.02327401547867014,
+            "finite": true,
+            "max_abs_err": 0.5410413416102529,
+            "mse": 0.018930893574157934,
+            "n": 1024,
+            "norm_ratio": 0.034628970076823806,
+            "pred_energy": 0.023274015772423162,
+            "q_n": 0.998800834461689,
+            "rse": 0.998800834461689,
+            "sse": 19.385235019937724,
+            "target_energy": 19.40850903512264,
+            "z_n": 0.018953622104611954
+          },
+          "zero_prediction": {
+            "cosine": null,
+            "dot": 0.0,
+            "finite": true,
+            "max_abs_err": 0.5362738966941833,
+            "mse": 0.018953622104611954,
+            "n": 1024,
+            "norm_ratio": 0.0,
+            "pred_energy": 0.0,
+            "q_n": 1.0,
+            "rse": 1.0,
+            "sse": 19.40850903512264,
+            "target_energy": 19.40850903512264,
+            "z_n": 0.018953622104611954
+          }
+        },
+        "original": {
+          "shared_scalar_mean": {
+            "cosine": 0.03462897083847537,
+            "dot": 5.774607501103727e-06,
+            "finite": true,
+            "max_abs_err": 0.008522283926140517,
+            "mse": 4.697018002905532e-06,
+            "n": 1024,
+            "norm_ratio": 0.03462897214833267,
+            "pred_energy": 5.774607719531005e-06,
+            "q_n": 0.9988008343786678,
+            "rse": 0.9988008343786678,
+            "sse": 0.004809746434975265,
+            "target_energy": 0.0048155210422579425,
+            "z_n": 4.702657267830022e-06
+          },
+          "zero_prediction": {
+            "cosine": null,
+            "dot": 0.0,
+            "finite": true,
+            "max_abs_err": 0.008447188884019852,
+            "mse": 4.702657267830022e-06,
+            "n": 1024,
+            "norm_ratio": 0.0,
+            "pred_energy": 0.0,
+            "q_n": 1.0,
+            "rse": 1.0,
+            "sse": 0.0048155210422579425,
+            "target_energy": 0.0048155210422579425,
+            "z_n": 4.702657267830022e-06
+          }
+        }
+      },
+      "coordinates": {
+        "blocks": "q_proj A^T, q_proj B, k_proj A^T, k_proj B (8 columns each)",
+        "cols": [
+          1152,
+          1184
+        ],
+        "grid": [
+          64,
+          48
+        ],
+        "layer": 18,
+        "rows": [
+          512,
+          544
+        ],
+        "slice": "Phi[0, 512:544, 1152:1184]",
+        "tile": 32,
+        "tile_index": [
+          16,
+          36
+        ]
+      },
+      "degeneracy_checks": {
+        "all_finite": true,
+        "normalized_max_abs_below_1": true,
+        "scalar_mean_mse_positive": true,
+        "target_energy_positive": true
+      },
+      "normalized_equals_tile_of_normalized_phi": true,
+      "patch": {
+        "block_energies_original": [
+          {
+            "block": "q_proj A^T",
+            "layer": 18,
+            "max_abs": 0.006029448937624693,
+            "phi_cols": [
+              1152,
+              1160
+            ],
+            "sum_sq": 0.0010760776983797103
+          },
+          {
+            "block": "q_proj B",
+            "layer": 18,
+            "max_abs": 0.005820717196911573,
+            "phi_cols": [
+              1160,
+              1168
+            ],
+            "sum_sq": 0.0012209760305272321
+          },
+          {
+            "block": "k_proj A^T",
+            "layer": 18,
+            "max_abs": 0.008447188884019852,
+            "phi_cols": [
+              1168,
+              1176
+            ],
+            "sum_sq": 0.0012283717340580303
+          },
+          {
+            "block": "k_proj B",
+            "layer": 18,
+            "max_abs": 0.006347214803099632,
+            "phi_cols": [
+              1176,
+              1184
+            ],
+            "sum_sq": 0.0012900955792929688
+          }
+        ],
+        "dtype": "torch.float32",
+        "file": "input/tile_2.safetensors",
+        "file_bytes": 4408,
+        "file_round_trip_bit_identical": true,
+        "file_sha256": "db9ab2901b1a0e9f440ade425883f836b8d56f25a6cd4af16e7aaf147628ffb3",
+        "normalized": {
+          "dtype": "torch.float32",
+          "energy_sum_sq": 19.40850903512264,
+          "max": 0.4096553921699524,
+          "mean": 0.004767444855897196,
+          "min": -0.5362738966941833,
+          "numel": 1024,
+          "sha256": "541e9ebbc733e1c1ec1dfa7afef0bae9ddcd97507d0d045b03267834a6ce83cc",
+          "shape": [
+            1,
+            1,
+            32,
+            32
+          ],
+          "z_n": 0.018953622104611954
+        },
+        "original": {
+          "dtype": "torch.float32",
+          "energy_sum_sq": 0.0048155210422579425,
+          "max": 0.006452741101384163,
+          "mean": 7.50950392801597e-05,
+          "min": -0.008447188884019852,
+          "numel": 1024,
+          "sha256": "597f17f39490e1e20022498a933cdea253b1d5826a154f1fa818468c8c15f044",
+          "shape": [
+            1,
+            1,
+            32,
+            32
+          ],
+          "z_n": 4.702657267830022e-06
+        },
+        "shape": [
+          1,
+          1,
+          32,
+          32
+        ],
+        "std_float64": 0.002167260483399614,
+        "tensor_name": "x",
+        "zero_elements": 0
+      },
+      "range_feasibility": {
+        "atanh_of_max": 0.5989105663184137,
+        "margin_to_tanh_bound": 0.46372610330581665,
+        "normalized_max_abs": 0.5362738966941833,
+        "tanh_range_ceiling_original": {
+          "cosine": 1.0,
+          "dot": 0.004815521042664409,
+          "finite": true,
+          "max_abs_err": 2.3283064365386963e-10,
+          "mse": 1.2655863372061323e-22,
+          "n": 1024,
+          "norm_ratio": 1.0000000000844076,
+          "pred_energy": 0.004815521043070876,
+          "q_n": 2.6912153387485118e-17,
+          "rse": 2.6912153387485118e-17,
+          "sse": 1.2959604092990795e-19,
+          "target_energy": 0.0048155210422579425,
+          "z_n": 4.702657267830022e-06
+        }
+      },
+      "usable": true
+    },
+    {
+      "arm": "U-TILE-3",
+      "baselines": {
+        "normalized": {
+          "shared_scalar_mean": {
+            "cosine": 0.0061853389219304325,
+            "dot": 0.0007239189032314818,
+            "finite": true,
+            "max_abs_err": 0.46555734530556947,
+            "mse": 0.018477632574937022,
+            "n": 1024,
+            "norm_ratio": 0.006185339133182667,
+            "pred_energy": 0.0007239189279559938,
+            "q_n": 0.9999617415824209,
+            "rse": 0.9999617415824209,
+            "sse": 18.92109575673551,
+            "target_energy": 18.921819675614017,
+            "z_n": 0.018478339526966814
+          },
+          "zero_prediction": {
+            "cosine": null,
+            "dot": 0.0,
+            "finite": true,
+            "max_abs_err": 0.466398149728775,
+            "mse": 0.018478339526966814,
+            "n": 1024,
+            "norm_ratio": 0.0,
+            "pred_energy": 0.0,
+            "q_n": 1.0,
+            "rse": 1.0,
+            "sse": 18.921819675614017,
+            "target_energy": 18.921819675614017,
+            "z_n": 0.018478339526966814
+          }
+        },
+        "original": {
+          "shared_scalar_mean": {
+            "cosine": 0.006185338250614639,
+            "dot": 1.7961430467354122e-07,
+            "finite": true,
+            "max_abs_err": 0.00733328780188458,
+            "mse": 4.584557628161544e-06,
+            "n": 1024,
+            "norm_ratio": 0.006185338307961329,
+            "pred_energy": 1.7961430633881567e-07,
+            "q_n": 0.9999617415907255,
+            "rse": 0.9999617415907255,
+            "sse": 0.004694587011237421,
+            "target_energy": 0.004694766625540429,
+            "z_n": 4.584733032754325e-06
+          },
+          "zero_prediction": {
+            "cosine": null,
+            "dot": 0.0,
+            "finite": true,
+            "max_abs_err": 0.007346531841903925,
+            "mse": 4.584733032754325e-06,
+            "n": 1024,
+            "norm_ratio": 0.0,
+            "pred_energy": 0.0,
+            "q_n": 1.0,
+            "rse": 1.0,
+            "sse": 0.004694766625540429,
+            "target_energy": 0.004694766625540429,
+            "z_n": 4.584733032754325e-06
+          }
+        }
+      },
+      "coordinates": {
+        "blocks": "q_proj A^T, q_proj B, k_proj A^T, k_proj B (8 columns each)",
+        "cols": [
+          384,
+          416
+        ],
+        "grid": [
+          64,
+          48
+        ],
+        "layer": 6,
+        "rows": [
+          1536,
+          1568
+        ],
+        "slice": "Phi[0, 1536:1568, 384:416]",
+        "tile": 32,
+        "tile_index": [
+          48,
+          12
+        ]
+      },
+      "degeneracy_checks": {
+        "all_finite": true,
+        "normalized_max_abs_below_1": true,
+        "scalar_mean_mse_positive": true,
+        "target_energy_positive": true
+      },
+      "normalized_equals_tile_of_normalized_phi": true,
+      "patch": {
+        "block_energies_original": [
+          {
+            "block": "q_proj A^T",
+            "layer": 6,
+            "max_abs": 0.007346531841903925,
+            "phi_cols": [
+              384,
+              392
+            ],
+            "sum_sq": 0.0010541908819845804
+          },
+          {
+            "block": "q_proj B",
+            "layer": 6,
+            "max_abs": 0.00560900941491127,
+            "phi_cols": [
+              392,
+              400
+            ],
+            "sum_sq": 0.0012255820949688718
+          },
+          {
+            "block": "k_proj A^T",
+            "layer": 6,
+            "max_abs": 0.006930132396519184,
+            "phi_cols": [
+              400,
+              408
+            ],
+            "sum_sq": 0.001314270718806454
+          },
+          {
+            "block": "k_proj B",
+            "layer": 6,
+            "max_abs": 0.004985128995031118,
+            "phi_cols": [
+              408,
+              416
+            ],
+            "sum_sq": 0.0011007229297805227
+          }
+        ],
+        "dtype": "torch.float32",
+        "file": "input/tile_3.safetensors",
+        "file_bytes": 4408,
+        "file_round_trip_bit_identical": true,
+        "file_sha256": "858c5e4499c76ddf878ff22e10e0cf27cb69788663714181efc490946ee70552",
+        "normalized": {
+          "dtype": "torch.float32",
+          "energy_sum_sq": 18.921819675614017,
+          "max": 0.466398149728775,
+          "mean": 0.0008408043944889698,
+          "min": -0.4068331718444824,
+          "numel": 1024,
+          "sha256": "dda90a65b4e117c0087ea071e51bf090bd84e63236a4220811366bb9179f01cd",
+          "shape": [
+            1,
+            1,
+            32,
+            32
+          ],
+          "z_n": 0.018478339526966814
+        },
+        "original": {
+          "dtype": "torch.float32",
+          "energy_sum_sq": 0.004694766625540429,
+          "max": 0.007346531841903925,
+          "mean": 1.3244039896553872e-05,
+          "min": -0.006408286280930042,
+          "numel": 1024,
+          "sha256": "c8a53be70ed730c29bcd440d595c22c6acd839cf34fbfa4f7147c8073f30f2cc",
+          "shape": [
+            1,
+            1,
+            32,
+            32
+          ],
+          "z_n": 4.584733032754325e-06
+        },
+        "shape": [
+          1,
+          1,
+          32,
+          32
+        ],
+        "std_float64": 0.002141158011021501,
+        "tensor_name": "x",
+        "zero_elements": 0
+      },
+      "range_feasibility": {
+        "atanh_of_max": 0.505457236313268,
+        "margin_to_tanh_bound": 0.533601850271225,
+        "normalized_max_abs": 0.466398149728775,
+        "tanh_range_ceiling_original": {
+          "cosine": 1.0,
+          "dot": 0.00469476662430902,
+          "finite": true,
+          "max_abs_err": 2.3283064365386963e-10,
+          "mse": 2.158941398763402e-22,
+          "n": 1024,
+          "norm_ratio": 0.9999999997377059,
+          "pred_energy": 0.00469476662307761,
+          "q_n": 4.708979526920014e-17,
+          "rse": 4.708979526920014e-17,
+          "sse": 2.210755992333724e-19,
+          "target_energy": 0.004694766625540429,
+          "z_n": 4.584733032754325e-06
+        }
+      },
+      "usable": true
+    },
+    {
+      "arm": "U-TILE-4",
+      "baselines": {
+        "normalized": {
+          "shared_scalar_mean": {
+            "cosine": 0.01047924407100639,
+            "dot": 0.002079187143361674,
+            "finite": true,
+            "max_abs_err": 0.7016212665475905,
+            "mse": 0.01848783339877986,
+            "n": 1024,
+            "norm_ratio": 0.010479244067975636,
+            "pred_energy": 0.0020791871427603414,
+            "q_n": 0.9998901854437001,
+            "rse": 0.9998901854437001,
+            "sse": 18.931541400350575,
+            "target_energy": 18.93362058749454,
+            "z_n": 0.018489863854975138
+          },
+          "zero_prediction": {
+            "cosine": null,
+            "dot": 0.0,
+            "finite": true,
+            "max_abs_err": 0.7001963257789612,
+            "mse": 0.018489863854975138,
+            "n": 1024,
+            "norm_ratio": 0.0,
+            "pred_energy": 0.0,
+            "q_n": 1.0,
+            "rse": 1.0,
+            "sse": 18.93362058749454,
+            "target_energy": 18.93362058749454,
+            "z_n": 0.018489863854975138
+          }
+        },
+        "original": {
+          "shared_scalar_mean": {
+            "cosine": 0.010479244578342222,
+            "dot": 5.158752904337148e-07,
+            "finite": true,
+            "max_abs_err": 0.011051680230593774,
+            "mse": 4.587088597831726e-06,
+            "n": 1024,
+            "norm_ratio": 0.01047924442416089,
+            "pred_energy": 5.158752828436316e-07,
+            "q_n": 0.9998901854330673,
+            "rse": 0.9998901854330673,
+            "sse": 0.004697178724179687,
+            "target_energy": 0.004697694599477711,
+            "z_n": 4.587592382302452e-06
+          },
+          "zero_prediction": {
+            "cosine": null,
+            "dot": 0.0,
+            "finite": true,
+            "max_abs_err": 0.01102923508733511,
+            "mse": 4.587592382302452e-06,
+            "n": 1024,
+            "norm_ratio": 0.0,
+            "pred_energy": 0.0,
+            "q_n": 1.0,
+            "rse": 1.0,
+            "sse": 0.004697694599477711,
+            "target_energy": 0.004697694599477711,
+            "z_n": 4.587592382302452e-06
+          }
+        }
+      },
+      "coordinates": {
+        "blocks": "q_proj A^T, q_proj B, k_proj A^T, k_proj B (8 columns each)",
+        "cols": [
+          1152,
+          1184
+        ],
+        "grid": [
+          64,
+          48
+        ],
+        "layer": 18,
+        "rows": [
+          1536,
+          1568
+        ],
+        "slice": "Phi[0, 1536:1568, 1152:1184]",
+        "tile": 32,
+        "tile_index": [
+          48,
+          36
+        ]
+      },
+      "degeneracy_checks": {
+        "all_finite": true,
+        "normalized_max_abs_below_1": true,
+        "scalar_mean_mse_positive": true,
+        "target_energy_positive": true
+      },
+      "normalized_equals_tile_of_normalized_phi": true,
+      "patch": {
+        "block_energies_original": [
+          {
+            "block": "q_proj A^T",
+            "layer": 18,
+            "max_abs": 0.01102923508733511,
+            "phi_cols": [
+              1152,
+              1160
+            ],
+            "sum_sq": 0.0012305508435992295
+          },
+          {
+            "block": "q_proj B",
+            "layer": 18,
+            "max_abs": 0.005380252841860056,
+            "phi_cols": [
+              1160,
+              1168
+            ],
+            "sum_sq": 0.0011967361182422562
+          },
+          {
+            "block": "k_proj A^T",
+            "layer": 18,
+            "max_abs": 0.007335048634558916,
+            "phi_cols": [
+              1168,
+              1176
+            ],
+            "sum_sq": 0.0011974802706492013
+          },
+          {
+            "block": "k_proj B",
+            "layer": 18,
+            "max_abs": 0.004920049570500851,
+            "phi_cols": [
+              1176,
+              1184
+            ],
+            "sum_sq": 0.0010729273669870237
+          }
+        ],
+        "dtype": "torch.float32",
+        "file": "input/tile_4.safetensors",
+        "file_bytes": 4416,
+        "file_round_trip_bit_identical": true,
+        "file_sha256": "95a51e95b19ef89a7b42c41ba86374f58bdbb4f1864925ca4434a276be2afe9e",
+        "normalized": {
+          "dtype": "torch.float32",
+          "energy_sum_sq": 18.93362058749454,
+          "max": 0.7001963257789612,
+          "mean": -0.0014249407690414273,
+          "min": -0.4656691253185272,
+          "numel": 1024,
+          "sha256": "f3375a7fc886d6a835e5b68c613d95ae82507775ed2c8a345c1144fd8d97bef9",
+          "shape": [
+            1,
+            1,
+            32,
+            32
+          ],
+          "z_n": 0.018489863854975138
+        },
+        "original": {
+          "dtype": "torch.float32",
+          "energy_sum_sq": 0.004697694599477711,
+          "max": 0.01102923508733511,
+          "mean": -2.2445143588900596e-05,
+          "min": -0.007335048634558916,
+          "numel": 1024,
+          "sha256": "d14b3f35285352df89c0b53a462f5dbdd85931760722921d7961ae583667431d",
+          "shape": [
+            1,
+            1,
+            32,
+            32
+          ],
+          "z_n": 4.587592382302452e-06
+        },
+        "shape": [
+          1,
+          1,
+          32,
+          32
+        ],
+        "std_float64": 0.002141748957705296,
+        "tensor_name": "x",
+        "zero_elements": 0
+      },
+      "range_feasibility": {
+        "atanh_of_max": 0.8676855839807138,
+        "margin_to_tanh_bound": 0.2998036742210388,
+        "normalized_max_abs": 0.7001963257789612,
+        "tanh_range_ceiling_original": {
+          "cosine": 1.0,
+          "dot": 0.004697694603802687,
+          "finite": true,
+          "max_abs_err": 4.656612873077393e-10,
+          "mse": 3.8815450244050824e-22,
+          "n": 1024,
+          "norm_ratio": 1.0000000009206593,
+          "pred_energy": 0.004697694608127664,
+          "q_n": 8.460963182733742e-17,
+          "rse": 8.460963182733742e-17,
+          "sse": 3.9747021049908043e-19,
+          "target_energy": 0.004697694599477711,
+          "z_n": 4.587592382302452e-06
+        }
+      },
+      "usable": true
+    }
+  ],
+  "usable_arms": [
+    "U-TILE-1",
+    "U-TILE-2",
+    "U-TILE-3",
+    "U-TILE-4"
+  ]
+}

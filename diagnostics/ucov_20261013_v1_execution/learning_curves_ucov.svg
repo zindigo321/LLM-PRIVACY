@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="740" font-family="Arial, Helvetica, sans-serif"><rect width="100%" height="100%" fill="white"/>
+<text x="20" y="22" font-size="14" font-weight="bold">UCOV-20261013-v1: four tile arms (fresh Uformer each, seed 1, Adam 2e-4, 3,000 updates) and the URP-v1 centre tile for context</text>
+<text x="20" y="40" font-size="11">Lines: curve point k = train-mode forward on the arm's own tile BEFORE optimizer update k (k = 1 uses the initial state), normalized space; recorded at 1, 100, 200, ..., 3000.</text>
+<text x="20" y="56" font-size="11">Squares at x = 3000 in panel B: final eval-mode RSE of the final state, original space (the primary verdict basis, UPP-20261013-v1).</text>
+<rect x="90" y="80" width="580" height="220" fill="none" stroke="#444"/>
+<text x="90" y="70" font-size="13" font-weight="bold">A. Pre-update training loss (MSE, normalized space, train mode)</text>
+<text transform="translate(24,190.0) rotate(-90)" text-anchor="middle" font-size="11">MSE (log scale)</text>
+<line x1="86" x2="90" y1="300.0" y2="300.0" stroke="#444"/><text x="83" y="304.0" text-anchor="end" font-size="10">0.001</text>
+<line x1="86" x2="90" y1="261.1" y2="261.1" stroke="#444"/><text x="83" y="265.1" text-anchor="end" font-size="10">0.003</text>
+<line x1="86" x2="90" y1="218.5" y2="218.5" stroke="#444"/><text x="83" y="222.5" text-anchor="end" font-size="10">0.01</text>
+<line x1="86" x2="90" y1="179.6" y2="179.6" stroke="#444"/><text x="83" y="183.6" text-anchor="end" font-size="10">0.03</text>
+<line x1="86" x2="90" y1="137.0" y2="137.0" stroke="#444"/><text x="83" y="141.0" text-anchor="end" font-size="10">0.1</text>
+<line x1="86" x2="90" y1="98.1" y2="98.1" stroke="#444"/><text x="83" y="102.1" text-anchor="end" font-size="10">0.3</text>
+<line x1="90.0" x2="90.0" y1="300" y2="304" stroke="#444"/><text x="90.0" y="316" text-anchor="middle" font-size="10">0</text>
+<line x1="186.7" x2="186.7" y1="300" y2="304" stroke="#444"/><text x="186.7" y="316" text-anchor="middle" font-size="10">500</text>
+<line x1="283.3" x2="283.3" y1="300" y2="304" stroke="#444"/><text x="283.3" y="316" text-anchor="middle" font-size="10">1000</text>
+<line x1="380.0" x2="380.0" y1="300" y2="304" stroke="#444"/><text x="380.0" y="316" text-anchor="middle" font-size="10">1500</text>
+<line x1="476.7" x2="476.7" y1="300" y2="304" stroke="#444"/><text x="476.7" y="316" text-anchor="middle" font-size="10">2000</text>
+<line x1="573.3" x2="573.3" y1="300" y2="304" stroke="#444"/><text x="573.3" y="316" text-anchor="middle" font-size="10">2500</text>
+<line x1="670.0" x2="670.0" y1="300" y2="304" stroke="#444"/><text x="670.0" y="316" text-anchor="middle" font-size="10">3000</text>
+<line x1="90" x2="670" y1="200.5" y2="200.5" stroke="#b8860b" stroke-dasharray="6,4"/><text x="94" y="196.5" font-size="10" fill="#b8860b">about the best constant MSE of each tile (normalized)</text>
+<polyline points="90.2,110.5 109.3,206.7 128.7,226.3 148.0,232.4 167.3,233.8 186.7,235.3 206.0,235.8 225.3,236.6 244.7,237.3 264.0,237.8 283.3,237.3 302.7,239.1 322.0,238.6 341.3,240.3 360.7,240.7 380.0,240.8 399.3,242.1 418.7,241.9 438.0,243.3 457.3,244.1 476.7,244.9 496.0,245.3 515.3,244.6 534.7,246.4 554.0,246.5 573.3,247.2 592.7,247.7 612.0,247.8 631.3,248.1 650.7,248.8 670.0,247.6" fill="none" stroke="#1f5fa8" stroke-width="1.5"/>
+<polyline points="90.2,111.6 109.3,204.1 128.7,223.1 148.0,232.1 167.3,234.3 186.7,235.7 206.0,236.5 225.3,237.6 244.7,238.1 264.0,239.0 283.3,239.6 302.7,242.0 322.0,242.7 341.3,243.2 360.7,243.8 380.0,243.7 399.3,245.1 418.7,245.3 438.0,245.9 457.3,246.1 476.7,247.0 496.0,247.0 515.3,247.2 534.7,247.9 554.0,248.2 573.3,248.2 592.7,248.8 612.0,249.2 631.3,248.7 650.7,250.2 670.0,250.4" fill="none" stroke="#2e7d32" stroke-width="1.5"/>
+<polyline points="90.2,112.0 109.3,209.0 128.7,227.3 148.0,236.0 167.3,237.7 186.7,238.9 206.0,239.7 225.3,241.5 244.7,241.4 264.0,241.4 283.3,244.0 302.7,244.3 322.0,244.1 341.3,245.8 360.7,245.5 380.0,247.0 399.3,247.4 418.7,247.1 438.0,248.0 457.3,247.9 476.7,248.6 496.0,248.7 515.3,248.8 534.7,249.2 554.0,249.4 573.3,249.6 592.7,249.9 612.0,251.7 631.3,252.5 650.7,253.1 670.0,252.7" fill="none" stroke="#c62828" stroke-width="1.5"/>
+<polyline points="90.2,110.3 109.3,205.9 128.7,221.1 148.0,231.1 167.3,233.8 186.7,235.3 206.0,236.2 225.3,237.7 244.7,239.3 264.0,241.2 283.3,242.5 302.7,243.8 322.0,243.9 341.3,244.5 360.7,247.5 380.0,249.0 399.3,250.4 418.7,251.1 438.0,251.4 457.3,251.9 476.7,251.6 496.0,252.6 515.3,252.6 534.7,253.2 554.0,253.4 573.3,253.3 592.7,254.1 612.0,254.2 631.3,254.3 650.7,254.4 670.0,254.5" fill="none" stroke="#6a1b9a" stroke-width="1.5"/>
+<polyline points="90.2,110.1 109.3,212.3 128.7,228.1 148.0,237.8 167.3,240.2 186.7,241.2 206.0,243.4 225.3,244.7 244.7,245.6 264.0,246.7 283.3,247.2 302.7,247.6 322.0,248.3 341.3,248.8 360.7,249.3 380.0,249.7 399.3,250.6 418.7,251.1 438.0,252.6 457.3,253.3 476.7,253.9 496.0,254.4 515.3,254.8 534.7,255.6 554.0,256.0 573.3,256.6 592.7,256.9 612.0,257.5 631.3,258.2 650.7,258.8 670.0,258.9" fill="none" stroke="#888888" stroke-width="1.5" stroke-dasharray="3,3"/>
+<rect x="666.0" y="243.6" width="8" height="8" fill="#1f5fa8"/><text x="678" y="94" font-size="10" fill="#1f5fa8">U-TILE-1: loss@3000 0.00439 (const 0.01921)</text>
+<rect x="666.0" y="246.4" width="8" height="8" fill="#2e7d32"/><text x="678" y="109" font-size="10" fill="#2e7d32">U-TILE-2: loss@3000 0.00406 (const 0.01893)</text>
+<rect x="666.0" y="248.7" width="8" height="8" fill="#c62828"/><text x="678" y="124" font-size="10" fill="#c62828">U-TILE-3: loss@3000 0.00380 (const 0.01848)</text>
+<rect x="666.0" y="250.5" width="8" height="8" fill="#6a1b9a"/><text x="678" y="139" font-size="10" fill="#6a1b9a">U-TILE-4: loss@3000 0.00362 (const 0.01849)</text>
+<rect x="666.0" y="254.9" width="8" height="8" fill="#888888"/><text x="678" y="154" font-size="10" fill="#888888">URP-v1 centre (context): loss@3000 0.00320 (const 0.01665)</text>
+<rect x="90" y="380" width="580" height="220" fill="none" stroke="#444"/>
+<text x="90" y="370" font-size="13" font-weight="bold">B. Relative squared error RSE = SSE / sum(x^2)</text>
+<text transform="translate(24,490.0) rotate(-90)" text-anchor="middle" font-size="11">RSE (log scale)</text>
+<line x1="86" x2="90" y1="600.0" y2="600.0" stroke="#444"/><text x="83" y="604.0" text-anchor="end" font-size="10">0.05</text>
+<line x1="86" x2="90" y1="574.5" y2="574.5" stroke="#444"/><text x="83" y="578.5" text-anchor="end" font-size="10">0.1</text>
+<line x1="86" x2="90" y1="549.1" y2="549.1" stroke="#444"/><text x="83" y="553.1" text-anchor="end" font-size="10">0.2</text>
+<line x1="86" x2="90" y1="515.5" y2="515.5" stroke="#444"/><text x="83" y="519.5" text-anchor="end" font-size="10">0.5</text>
+<line x1="86" x2="90" y1="490.0" y2="490.0" stroke="#444"/><text x="83" y="494.0" text-anchor="end" font-size="10">1</text>
+<line x1="86" x2="90" y1="464.5" y2="464.5" stroke="#444"/><text x="83" y="468.5" text-anchor="end" font-size="10">2</text>
+<line x1="86" x2="90" y1="430.9" y2="430.9" stroke="#444"/><text x="83" y="434.9" text-anchor="end" font-size="10">5</text>
+<line x1="86" x2="90" y1="405.5" y2="405.5" stroke="#444"/><text x="83" y="409.5" text-anchor="end" font-size="10">10</text>
+<line x1="90.0" x2="90.0" y1="600" y2="604" stroke="#444"/><text x="90.0" y="616" text-anchor="middle" font-size="10">0</text>
+<line x1="186.7" x2="186.7" y1="600" y2="604" stroke="#444"/><text x="186.7" y="616" text-anchor="middle" font-size="10">500</text>
+<line x1="283.3" x2="283.3" y1="600" y2="604" stroke="#444"/><text x="283.3" y="616" text-anchor="middle" font-size="10">1000</text>
+<line x1="380.0" x2="380.0" y1="600" y2="604" stroke="#444"/><text x="380.0" y="616" text-anchor="middle" font-size="10">1500</text>
+<line x1="476.7" x2="476.7" y1="600" y2="604" stroke="#444"/><text x="476.7" y="616" text-anchor="middle" font-size="10">2000</text>
+<line x1="573.3" x2="573.3" y1="600" y2="604" stroke="#444"/><text x="573.3" y="616" text-anchor="middle" font-size="10">2500</text>
+<line x1="670.0" x2="670.0" y1="600" y2="604" stroke="#444"/><text x="670.0" y="616" text-anchor="middle" font-size="10">3000</text>
+<line x1="90" x2="670" y1="515.5" y2="515.5" stroke="#2e7d32" stroke-dasharray="6,4"/><text x="94" y="511.5" font-size="10" fill="#2e7d32">primary bound RSE &lt;= 0.50 (UPP-20261013-v1)</text>
+<line x1="90" x2="670" y1="490.0" y2="490.0" stroke="#b8860b" stroke-dasharray="6,4"/><text x="94" y="486.0" font-size="10" fill="#b8860b">RSE of a zero or near-constant prediction (about 1)</text>
+<polyline points="90.2,402.0 109.3,501.8 128.7,522.1 148.0,528.4 167.3,529.8 186.7,531.4 206.0,532.0 225.3,532.8 244.7,533.5 264.0,534.1 283.3,533.5 302.7,535.4 322.0,534.8 341.3,536.6 360.7,537.1 380.0,537.1 399.3,538.5 418.7,538.3 438.0,539.7 457.3,540.6 476.7,541.4 496.0,541.9 515.3,541.1 534.7,543.0 554.0,543.1 573.3,543.8 592.7,544.3 612.0,544.4 631.3,544.7 650.7,545.5 670.0,544.2" fill="none" stroke="#1f5fa8" stroke-width="1.5"/>
+<polyline points="90.2,402.7 109.3,498.6 128.7,518.3 148.0,527.6 167.3,529.9 186.7,531.3 206.0,532.2 225.3,533.3 244.7,533.9 264.0,534.7 283.3,535.3 302.7,537.9 322.0,538.6 341.3,539.1 360.7,539.7 380.0,539.6 399.3,541.1 418.7,541.3 438.0,542.0 457.3,542.1 476.7,543.0 496.0,543.0 515.3,543.2 534.7,544.0 554.0,544.3 573.3,544.3 592.7,544.9 612.0,545.3 631.3,544.8 650.7,546.3 670.0,546.6" fill="none" stroke="#2e7d32" stroke-width="1.5"/>
+<polyline points="90.2,402.0 109.3,502.8 128.7,521.6 148.0,530.7 167.3,532.5 186.7,533.7 206.0,534.6 225.3,536.4 244.7,536.4 264.0,536.4 283.3,539.0 302.7,539.4 322.0,539.1 341.3,540.8 360.7,540.6 380.0,542.1 399.3,542.6 418.7,542.2 438.0,543.2 457.3,543.0 476.7,543.8 496.0,543.9 515.3,544.0 534.7,544.4 554.0,544.6 573.3,544.8 592.7,545.1 612.0,547.0 631.3,547.8 650.7,548.5 670.0,548.1" fill="none" stroke="#c62828" stroke-width="1.5"/>
+<polyline points="90.2,400.3 109.3,499.5 128.7,515.3 148.0,525.6 167.3,528.5 186.7,530.0 206.0,530.9 225.3,532.5 244.7,534.2 264.0,536.1 283.3,537.5 302.7,538.8 322.0,538.9 341.3,539.6 360.7,542.7 380.0,544.2 399.3,545.7 418.7,546.4 438.0,546.7 457.3,547.2 476.7,546.9 496.0,548.0 515.3,548.0 534.7,548.5 554.0,548.8 573.3,548.7 592.7,549.5 612.0,549.7 631.3,549.7 650.7,549.8 670.0,549.9" fill="none" stroke="#6a1b9a" stroke-width="1.5"/>
+<polyline points="90.2,396.3 109.3,502.3 128.7,518.7 148.0,528.8 167.3,531.3 186.7,532.2 206.0,534.6 225.3,535.9 244.7,536.8 264.0,538.0 283.3,538.5 302.7,538.9 322.0,539.7 341.3,540.2 360.7,540.7 380.0,541.1 399.3,542.0 418.7,542.6 438.0,544.1 457.3,544.8 476.7,545.5 496.0,546.0 515.3,546.3 534.7,547.2 554.0,547.6 573.3,548.2 592.7,548.5 612.0,549.2 631.3,549.9 650.7,550.6 670.0,550.6" fill="none" stroke="#888888" stroke-width="1.5" stroke-dasharray="3,3"/>
+<rect x="666.0" y="540.5" width="8" height="8" fill="#1f5fa8"/><text x="678" y="394" font-size="10" fill="#1f5fa8">U-TILE-1: final eval RSE 0.2267, cos 0.8794, PASS</text>
+<rect x="666.0" y="542.3" width="8" height="8" fill="#2e7d32"/><text x="678" y="409" font-size="10" fill="#2e7d32">U-TILE-2: final eval RSE 0.2160, cos 0.8855, PASS</text>
+<rect x="666.0" y="542.5" width="8" height="8" fill="#c62828"/><text x="678" y="424" font-size="10" fill="#c62828">U-TILE-3: final eval RSE 0.2148, cos 0.8861, PASS</text>
+<rect x="666.0" y="545.5" width="8" height="8" fill="#6a1b9a"/><text x="678" y="439" font-size="10" fill="#6a1b9a">U-TILE-4: final eval RSE 0.1980, cos 0.8956, PASS</text>
+<rect x="666.0" y="546.3" width="8" height="8" fill="#888888"/><text x="678" y="454" font-size="10" fill="#888888">URP-v1 centre (context): final eval RSE 0.1935, cos 0.8981, n/a (other protocol)</text>
+<text x="380.0" y="650" text-anchor="middle" font-size="11">optimizer update k</text>
+<text x="20" y="674" font-size="10">Curve values are reported only; no best point is selected. Each arm fits its own tile: this is input-coverage fitting, not held-out evaluation or compression.</text>
+<text x="20" y="688" font-size="10">The URP-v1 centre tile is a separate, closed experiment shown for context only (dashed); its verdicts are its own.</text>
+</svg>

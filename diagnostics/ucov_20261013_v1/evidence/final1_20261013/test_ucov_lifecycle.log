@@ -1,0 +1,21 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA --basetemp=C:\Users\acc04\AppData\Local\Temp\ucov_lc_final1_20261013 checks/test_ucov_lifecycle.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\ucov_20261013_v1
+start: 2026-10-13T21:10:59+08:00
+end: 2026-10-13T21:13:00+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+...........                                                              [100%]
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_ucov_lifecycle.py::test_four_arms_run_serially_with_the_primary_policy
+PASSED checks/test_ucov_lifecycle.py::test_later_arms_continue_after_an_execution_error_in_an_earlier_arm
+PASSED checks/test_ucov_lifecycle.py::test_later_arms_continue_after_an_ordinary_primary_fit_fail
+PASSED checks/test_ucov_lifecycle.py::test_second_invocation_is_refused_and_writes_nothing
+PASSED checks/test_ucov_lifecycle.py::test_duplicate_or_closed_arm_plans_are_refused_before_any_record
+PASSED checks/test_ucov_lifecycle.py::test_rss_guard_is_a_global_stop_and_later_arms_are_not_run
+PASSED checks/test_ucov_lifecycle.py::test_exhausted_aggregate_budget_stops_safely_and_refuses_the_remaining_arms
+PASSED checks/test_ucov_lifecycle.py::test_supervisor_interrupt_records_incomplete_and_not_run
+PASSED checks/test_ucov_lifecycle.py::test_killed_supervisor_leaves_an_unfinished_start_that_blocks_reentry
+PASSED checks/test_ucov_lifecycle.py::test_child_refuses_a_module_with_an_unapproved_hash
+PASSED checks/test_ucov_lifecycle.py::test_a_degenerate_registered_arm_gets_no_start
+11 passed in 119.54s (0:01:59)

@@ -1,0 +1,59 @@
+{
+  "policy_id": "UPP-20261013-v1",
+  "title": "Primary policy for Uformer reconstruction diagnostics",
+  "status": "Prospective from UCOV-20261013-v1. Chosen on 2026-10-13 by the user, with knowledge of the URP-20261013-v1 result. Applying it to an earlier result is retrospective and never replaces that result's recorded verdict.",
+  "basis": {
+    "state": "the final registered state of the arm, never a best intermediate point",
+    "mode": "eval",
+    "space": "original (unnormalized) space of the tested input"
+  },
+  "quantities": {
+    "sums": "SSE = sum((x_hat - x)^2), T = sum(x^2), P = sum(x_hat^2), D = sum(x_hat * x), N = number of elements; float64 reductions of the recorded final eval reconstruction",
+    "rse": "SSE / T; undefined if T <= 0",
+    "cosine": "D / sqrt(P * T); undefined if P <= 0 or T <= 0",
+    "mse": "SSE / N",
+    "zero_prediction_mse": "the recorded MSE of the all-zero prediction (equal to T / N)",
+    "scalar_mean_mse": "the recorded MSE of one scalar, the mean of all N input elements, broadcast to the input shape",
+    "best_baseline_mse": "min(zero_prediction_mse, scalar_mean_mse)"
+  },
+  "thresholds": {
+    "max_rse": 0.5,
+    "min_cosine": 0.65,
+    "baseline_factor": 0.8
+  },
+  "comparisons": "inclusive, in float64, against the literal thresholds above, with no epsilon or tolerance",
+  "degenerate_input": "a registered input with a non-finite element, T = 0, all elements equal (scalar-mean MSE = 0), or normalized max |x_n| >= 1 (out of the Tanh output range)",
+  "outcome_order": [
+    "UNVERIFIED",
+    "DEGENERATE_INPUT",
+    "NOT_RUN",
+    "NOT_ELIGIBLE",
+    "FIT_FAIL",
+    "NONINFORMATIVE",
+    "PASS"
+  ],
+  "outcome_classes": {
+    "PASS": "P",
+    "FIT_FAIL": "F",
+    "NONINFORMATIVE": "F",
+    "DEGENERATE_INPUT": "F",
+    "UNVERIFIED": "U",
+    "NOT_ELIGIBLE": "U",
+    "NOT_RUN": "U"
+  },
+  "secondary_references": {
+    "historical_strict": {
+      "source": "diagnostics/uid_20261012_v2/config.json criteria",
+      "max_rse": 0.01,
+      "min_cosine": 0.99,
+      "role": "reported only; cannot veto a primary PASS"
+    },
+    "EP-20261012-v1": {
+      "source": "diagnostics/exploratory_progression_20261012/ep_classify.py",
+      "max_rse": 0.5,
+      "min_cosine": 0.8,
+      "baseline_factor": 0.8,
+      "role": "reported only; cannot veto a primary PASS"
+    }
+  }
+}

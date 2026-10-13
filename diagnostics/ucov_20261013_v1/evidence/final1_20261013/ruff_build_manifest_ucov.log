@@ -1,0 +1,7 @@
+command: ruff check + ruff format --check checks/build_manifest_ucov.py
+time: 2026-10-13T21:18:05+08:00
+check exit_code: 0
+All checks passed!
+
+format exit_code: 0
+1 file already formatted

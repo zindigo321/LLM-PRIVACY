@@ -1,0 +1,214 @@
+{
+  "arms": [
+    "U-TILE-1",
+    "U-TILE-2",
+    "U-TILE-3",
+    "U-TILE-4"
+  ],
+  "inputs": {
+    "normalization": {
+      "mode": "global_exact_maxabs_train",
+      "scale_global": 0.0125
+    },
+    "tensor_name": "x",
+    "tiles": {
+      "U-TILE-1": {
+        "patch_file": "checks/fixture_tile_1.safetensors",
+        "patch_file_sha256": "a5e3d0b82206920fb6c03a2ccc0df65370bd36f9c0c201fa1c8a175c09e32129",
+        "slice": "fixture 1"
+      },
+      "U-TILE-2": {
+        "patch_file": "checks/fixture_tile_2.safetensors",
+        "patch_file_sha256": "fcc03c4f4e1bcee686d50cd89ee085f14c73e9c0f8b9db6f76a63d5036b61726",
+        "slice": "fixture 2"
+      },
+      "U-TILE-3": {
+        "patch_file": "checks/fixture_tile_3.safetensors",
+        "patch_file_sha256": "2b990b7156cab14c3dfb7ae1d0ae7d22dad07429513f591cb227d3f713ac9e56",
+        "slice": "fixture 3"
+      },
+      "U-TILE-4": {
+        "patch_file": "checks/fixture_tile_4.safetensors",
+        "patch_file_sha256": "9183468cadd55c385f82fa867d1e79fab15ec5ab64b5786bbe01021582d64c48",
+        "slice": "fixture 4"
+      }
+    }
+  },
+  "inputs_expected": {
+    "U-TILE-1": {
+      "degeneracy_checks": {
+        "all_finite": true,
+        "normalized_max_abs_below_1": true,
+        "scalar_mean_mse_positive": true,
+        "target_energy_positive": true
+      },
+      "dtype": "torch.float32",
+      "normalized_max_abs": 0.7987619042396545,
+      "normalized_scalar_mean_mse": 0.20708662200209885,
+      "normalized_sha256": "cff233042598b68bb5bdcbbe0631a4f97c2d3259db45ae71e3b86beec7cdfe2a",
+      "normalized_target_energy": 53.29571109873106,
+      "normalized_zero_prediction_mse": 0.2081863714794182,
+      "original_scalar_mean_mse": 3.235728549353196e-05,
+      "original_sha256": "691a5a925effe1464cc2909839db1628153227bd7605642d56edadaca58249cd",
+      "original_target_energy": 0.008327455063733757,
+      "original_zero_prediction_mse": 3.252912134270999e-05,
+      "shape": [
+        1,
+        1,
+        16,
+        16
+      ],
+      "slice": "fixture 1",
+      "usable": true
+    },
+    "U-TILE-2": {
+      "degeneracy_checks": {
+        "all_finite": true,
+        "normalized_max_abs_below_1": true,
+        "scalar_mean_mse_positive": true,
+        "target_energy_positive": true
+      },
+      "dtype": "torch.float32",
+      "normalized_max_abs": 0.7938864827156067,
+      "normalized_scalar_mean_mse": 0.21814247638639025,
+      "normalized_sha256": "63b438c3fc967470e4b68da66dc124fd942ae2e593c0a9717193aa7841f41de8",
+      "normalized_target_energy": 56.70830295059703,
+      "normalized_zero_prediction_mse": 0.22151680840076965,
+      "original_scalar_mean_mse": 3.40847628639815e-05,
+      "original_sha256": "de11a5ce4ec8dfe6385ec88ac2f69dc16be587f4692026afd43064df82721aac",
+      "original_target_energy": 0.008860672578227235,
+      "original_zero_prediction_mse": 3.461200225870014e-05,
+      "shape": [
+        1,
+        1,
+        16,
+        16
+      ],
+      "slice": "fixture 2",
+      "usable": true
+    },
+    "U-TILE-3": {
+      "degeneracy_checks": {
+        "all_finite": true,
+        "normalized_max_abs_below_1": true,
+        "scalar_mean_mse_positive": true,
+        "target_energy_positive": true
+      },
+      "dtype": "torch.float32",
+      "normalized_max_abs": 0.7998078465461731,
+      "normalized_scalar_mean_mse": 0.21323075382872955,
+      "normalized_sha256": "4e1f525998cac043b736e022a977b49246286174ec205d7ee332d54b02cad211",
+      "normalized_target_energy": 54.614036941946146,
+      "normalized_zero_prediction_mse": 0.21333608180447713,
+      "original_scalar_mean_mse": 3.3317305980285474e-05,
+      "original_sha256": "99340970af6143c69d5ddd130e284c213d7fac391f2d7b1af272a1e2b3038f17",
+      "original_target_energy": 0.008533443449466249,
+      "original_zero_prediction_mse": 3.3333763474477535e-05,
+      "shape": [
+        1,
+        1,
+        16,
+        16
+      ],
+      "slice": "fixture 3",
+      "usable": true
+    },
+    "U-TILE-4": {
+      "degeneracy_checks": {
+        "all_finite": true,
+        "normalized_max_abs_below_1": true,
+        "scalar_mean_mse_positive": true,
+        "target_energy_positive": true
+      },
+      "dtype": "torch.float32",
+      "normalized_max_abs": 0.7982250452041626,
+      "normalized_scalar_mean_mse": 0.20473223511289546,
+      "normalized_sha256": "2a9c787605ea041d61a4960a85314c8a08e25edd68a97ce5abd5f3f7e6637cea",
+      "normalized_target_energy": 52.4310696844027,
+      "normalized_zero_prediction_mse": 0.20480886595469805,
+      "original_scalar_mean_mse": 3.198941252286754e-05,
+      "original_sha256": "a7902bbe286dbe8fd502ec52390b7b1d2c9a91a1b9d05a86ee2902482ff9ef2f",
+      "original_target_energy": 0.008192354839903986,
+      "original_zero_prediction_mse": 3.2001386093374944e-05,
+      "shape": [
+        1,
+        1,
+        16,
+        16
+      ],
+      "slice": "fixture 4",
+      "usable": true
+    }
+  },
+  "max_seconds": 120.0,
+  "max_updates": 6,
+  "model_init_seed": 7,
+  "note": "ENGINEERING FIXTURE ONLY: model seed 7, four unregistered seeded 16x16 toy tiles, a fixture scale and a small Uformer AE. Optimizer updates are made only on these fixtures. The primary policy is the real pinned UPP-20261013-v1.",
+  "optimizer": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "lr": 0.001,
+    "name": "Adam",
+    "weight_decay": 0
+  },
+  "primary_policy": {
+    "basis": {
+      "mode": "eval",
+      "space": "original (unnormalized) space of the tested input",
+      "state": "the final registered state of the arm, never a best intermediate point"
+    },
+    "classifier_file": "../upp_20261013_v1/upp_classify.py",
+    "classifier_sha256": "31904623223cc18b216b97bf2cfaa27734487c38a93ebe57efca5de84abecbb1",
+    "loaded_policy_sha256": "74b277b952e0af68dee00692cde6b95f8ed747d641843bbe98517c70d98c5770",
+    "policy_file": "../upp_20261013_v1/upp_policy.json",
+    "policy_id": "UPP-20261013-v1",
+    "policy_sha256": "74b277b952e0af68dee00692cde6b95f8ed747d641843bbe98517c70d98c5770",
+    "thresholds": {
+      "baseline_factor": 0.8,
+      "max_rse": 0.5,
+      "min_cosine": 0.65
+    },
+    "thresholds_expected": {
+      "baseline_factor": 0.8,
+      "max_rse": 0.5,
+      "min_cosine": 0.65
+    }
+  },
+  "protocol_id": "UCOV-V1-ENGINEERING-FIXTURE",
+  "reference": {
+    "model_state_sha256_init": "fixture: not compared"
+  },
+  "u_fit": {
+    "model": {
+      "core_depth": 2,
+      "core_layers": 1,
+      "down_channels": [
+        2,
+        4,
+        8
+      ],
+      "down_strides": [
+        1,
+        1,
+        2
+      ],
+      "final_kernel": 7,
+      "in_channels": 1,
+      "input_hw": [
+        16,
+        16
+      ],
+      "mlp_ratio": 2.0,
+      "num_heads": 2,
+      "qkv_bias": true,
+      "shift_flag": true,
+      "stem_channels": 1,
+      "stem_kernel": 3,
+      "win_size": 4
+    }
+  },
+  "variant": "uformer_uid_20261012_v2_u_fit (fixture geometry)"
+}

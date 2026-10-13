@@ -33,6 +33,10 @@ The archive includes frozen source, configurations, manifests, selected input an
 
 U-FIT's final weights were never saved; its recorded state hash cannot recover them. R-FIT and U-PATCH saved states externally. The [synthetic summary](../diagnostics/synthetic_comparison_summary_20261013/STAGE_SUMMARY.md#wording-clarification-no-record-changed) also documents the distinction between the URC analysis file's stored CRLF byte hash and the LF text hash quoted in its original report.
 
-## Future primary gate
+## Primary-policy follow-up
 
-The requested future primary reconstruction thresholds are **RSE <= 0.50 and cosine >= 0.65**. **They are not implemented by this archive commit** and do not replace any archived configuration, classifier or recorded outcome. A subsequent change must define the complete future policy, wire it into the new runner and analyzer, and update its tests and documentation before further scientific starts. The [four-tile proposal](../diagnostics/urp_20261013_v1_execution/NEXT_EXPERIMENT_PROPOSAL.md) is a historical draft; its older EP-based decision rules are not an implementation of the requested new primary gate.
+This document records the historical archive introduced by PR #13. That archive preserved the original strict and EP-v1 criteria; it did not introduce a new primary policy.
+
+[UPP-20261013-v1](../diagnostics/upp_20261013_v1/POLICY.md) is now implemented for UCOV-v1 reconstruction diagnostics: valid completed arms must meet **RSE <= 0.50, cosine >= 0.65, and MSE <= 0.80 times the best constant baseline**, using the final registered state in eval mode and original space. Strict and EP-v1 results are secondary references and cannot veto a primary PASS. See the [four-tile publication note](uformer_coverage_publication.md).
+
+The policy was chosen with knowledge of the earlier URP-v1 result and was specified before UCOV-v1 ran. Any application to older results is retrospective and does not replace their recorded verdicts. The [earlier four-tile proposal](../diagnostics/urp_20261013_v1_execution/NEXT_EXPERIMENT_PROPOSAL.md) remains an unchanged historical draft; the executed study is documented in the [UCOV-v1 report](../diagnostics/ucov_20261013_v1_execution/REPORT.md).

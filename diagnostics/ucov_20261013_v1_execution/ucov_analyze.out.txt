@@ -1,0 +1,2 @@
+analysis.json 40080 bytes sha256=ed717404ead2a6fe158634ceda2f78f81ee2204936f4413471bdf60345f0ce6d (file bytes)
+{"aggregate": "COVERAGE_CRITERION_MET", "arms": {"U-TILE-1": "PASS", "U-TILE-2": "PASS", "U-TILE-3": "PASS", "U-TILE-4": "PASS"}, "counts": {"F": 0, "P": 4, "U": 0}}

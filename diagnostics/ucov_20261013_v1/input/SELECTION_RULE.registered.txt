@@ -1,0 +1,1 @@
+SELECTION_RULE.md registered: sha256=ddd58be9ec8ecae473a2ed48be749e8826f685470abf5c78d15d64f58bfe36f2 bytes=4930 crlf=False at 2026-10-13T20:23:39.610+08:00 (before prepare_inputs.py exists; no payload of t0007_c0091 opened by this study)
