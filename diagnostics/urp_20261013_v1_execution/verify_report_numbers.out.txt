@@ -1,0 +1,67 @@
+command: D:/conda_envs/cgfedllm/python.exe -B verify_report_numbers.py
+exit_code: 0
+
+ok  rse/bound: 19.345271823265605 -> '19.3 times the bound' (in report: True)
+ok  cos shortfall: 0.0918954419555511 -> '0.0919 short' (in report: True)
+ok  removed share: 0.8065164672792847 -> 'removed 80.7%' (in report: True)
+ok  mse/best: 0.19348353272071525 -> '19.3% of the best' (in report: True)
+ok  wrapper: 535.223 -> '535.223' (in report: True)
+ok  command: 528.635 -> '528.635' (in report: True)
+ok  aggregate: 528.2809999999881 -> '528.281' (in report: True)
+ok  arm: 528.1399999999994 -> '528.140' (in report: True)
+ok  child: 525.593000000008 -> '525.593' (in report: True)
+ok  loop: 522.0160000000033 -> '522.016' (in report: True)
+ok  s/update: 0.1740633544514849 -> '0.174 s per update' (in report: True)
+ok  final phase: 0.8899999999994179 -> '0.890' (in report: True)
+ok  ratio 1000: 0.8702509367706883 -> '0.870' (in report: True)
+ok  ratio 500: 0.9370185302487783 -> '0.937' (in report: True)
+ok  drop min: 0.001398353790273421 -> '0.14%' (in report: True)
+ok  drop max: 0.02224219040501141 -> '2.2%' (in report: True)
+ok  drop min is last: 9 -> 'The smallest was the last\n    interval, 2,900 to 3,000' (in report: True)
+ok  slope: -0.34261036904044423 -> 'is −0.34' (in report: True)
+ok  grad fall: [24.106097379912093, 48.675526882288715] -> '24 to 49 times' (in report: True)
+ok  rel change: [0.030278171032295232, 0.05162105375722283] -> '3.0% to 5.2%' (in report: True)
+ok  tm/eval: 0.010852948830109732 -> '1.1% of the eval SSE' (in report: True)
+ok  norm vs orig: 6.051983431372046e-09 -> 'relative 6e-9' (in report: True)
+ok  identity: 1.8543402597255115e-15 -> 'within 1.9e-15' (in report: True)
+ok  margin M1: -0.3065472817673439 -> '−0.3065' (in report: True)
+ok  margin M2: 0.09810455804444884 -> '+0.0981' (in report: True)
+ok  mean: -2.5653257379382177e-05 -> '−2.5653e-05' (in report: True)
+ok  curve 1/100/1000/2000/3000: [0.21381643414497375, 0.011917349882423878, 0.004447938874363899, 0.003673137631267309, 0.003196551464498043] -> 'MSE: 0.2138 at update 1, 0.01192 at 100, 0.004448 at 1,000, 0.003673 at 2,000 and 0.003197 at 3,000' (in report: True)
+ok  rse 1/100/1000/2000/3000: [12.83861210739981, 0.7155775422607347, 0.2670765968550774, 0.22055362983182597, 0.19193700535079647] -> 'Pre-update RSE: 12.84, 0.716, 0.267, 0.2206 and 0.1919' (in report: True)
+ok  full-run max drop (not quoted as the range): 0.36028867885881677 -> 'Over the last 1,000 updates' (in report: True)
+ok  ufit ctx: (0.2727411031905583, 0.8540472264633736) -> '0.2727 / 0.8540' (in report: True)
+ok  exact 0.19345271823265606 in report: True
+ok  exact 0.8981045580444489 in report: True
+ok  exact 0.1911437869245869 in report: True
+ok  exact 0.8993734990926799 in report: True
+ok  exact 7.99371986840454e-07 in report: True
+ok  exact 7.898311800527734e-07 in report: True
+ok  exact 0.8914325708689224 in report: True
+ok  exact 0.8953142140820148 in report: True
+ok  exact 0.005559624172747135 in report: True
+ok  exact 0.005500545725226402 in report: True
+ok  exact 0.1934527170618834 in report: True
+ok  exact 0.8981045587115517 in report: True
+ok  exact 0.1911437841892307 in report: True
+ok  exact 0.899373500622392 in report: True
+ok  exact 3.305178381229214e-06 in report: True
+ok  exact 0.19348353272071525 in report: True
+ok  exact 1.0455234343895818 in report: True
+ok  exact 0.012247414211391543 in report: True
+ok  exact 4.132131066150689e-06 in report: True
+ok  exact 4.131472976536517e-06 in report: True
+ok  exact 0.016654169372344353 in report: True
+ok  exact 0.016651517003540468 in report: True
+ok  823,758,848 == 823758848
+ok  828,366,848 == 828366848
+ok  828,628,992 == 828628992
+ok  4,294,967,296 == 4294967296
+ok  9,453,146,112 == 9453146112
+ok  6,416,844 == 6416844
+ok  536,870,912 == 536870912
+ok  1,930 == 1930
+ok  7,150 == 7150
+ok  16,432 == 16432
+ok  analysis.json sha256 as quoted: True
+0 problem(s)

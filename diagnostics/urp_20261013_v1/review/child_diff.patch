@@ -1,0 +1,286 @@
+diff --git a/urc_20261013_v1/urc_child.py b/urp_20261013_v1/urp_child.py
+index f845b8f..b6ddb01 100644
+--- a/urc_20261013_v1/urc_child.py
++++ b/urp_20261013_v1/urp_child.py
+@@ -1,15 +1,17 @@
+-"""URC-20261013-v1 child: the R-FIT arm in one fresh process (adapted from the r1 ``uid_r1_child.py``).
++"""URP-20261013-v1 child: the U-PATCH arm in one fresh process (adapted from the URC ``urc_child.py``).
+ 
+-``python -B urc_child.py <job.json>``. The job file (written by the supervisor) names the arm, the resolved config,
++``python -B urp_child.py <job.json>``. The job file (written by the supervisor) names the arm, the resolved config,
+ the arm's output directory and the soft stop on the supervisor's ``time.monotonic()`` clock (system-wide on Windows).
+ The CPU configuration is applied, and observed, before the model, the input or any other tensor is created. The child
+ writes ``child_record.json``, ``curve.jsonl``, ``init_state.safetensors`` and ``final_state.safetensors``; a process
+ that is killed writes nothing more, and its arm is closed by the supervisor from the start record.
+ 
+-Changes from r1 (``review/child_diff.patch``): the model is the stride-1 ResNet-3 variant; the input and both baselines
+-are asserted equal to the U-FIT reference before any update; the encoder/decoder sampling layers' initial tensors are
+-hashed; the initial and final states (parameters and buffers) are saved and read back. Measurements, training loop,
+-step-0 isolation and the final train/eval procedure are the r1 code, unchanged.
++Changes from URC (``review/child_diff.patch``): the model is the frozen U-FIT Uformer, built only by the frozen
++``uid_common.build_model(cfg, "U-FIT")``, and its initial state must equal the U-FIT record's (scientific mode); the
++input is the registered real patch file, normalized with the frozen R3 scale. The loss and the curve sums are in
++normalized space; the verdict sums are in the original (Phi) space after ``denormalize``; the final evaluation also
++records the normalized-space sums. Measurements, training loop, step-0 isolation, the final train/eval procedure and
++the state files are the URC code, unchanged.
+ """
+ 
+ from __future__ import annotations
+@@ -21,7 +23,7 @@ import time
+ import traceback
+ from pathlib import Path
+ 
+-URC_DIR = Path(__file__).resolve().parent
++URP_DIR = Path(__file__).resolve().parent
+ 
+ 
+ class SoftStop(Exception):
+@@ -32,7 +34,7 @@ def main(job_path: str) -> int:
+     job = json.loads(Path(job_path).read_text(encoding="utf-8"))
+     out = Path(job["out_dir"])
+     start_watchdog(job)  # first: also covers imports and setup; exits at once if the supervisor is gone
+-    sys.path[:0] = [str(Path(p)) for p in job["sys_path"]]  # URC package first, then frozen UID, then r1
++    sys.path[:0] = [str(Path(p)) for p in job["sys_path"]]  # URP package first, then frozen UID, then r1
+     import signal
+ 
+     if hasattr(signal, "SIGBREAK"):  # Ctrl+Break in a shared console: an interrupt, not an abrupt exit
+@@ -41,7 +43,7 @@ def main(job_path: str) -> int:
+     import uid_common as C  # frozen UID module, unchanged
+     import uid_r1_control as K  # r1 module, unchanged
+     import uid_r1_measure as M  # r1 module, unchanged
+-    import urc_control as U
++    import urp_control as U
+ 
+     rec: dict = {"arm": job["arm"], "mode": job["mode"], "pid": os.getpid(), "status": "EXECUTION_ERROR"}
+     curve = (out / "curve.jsonl").open("x", encoding="utf-8")
+@@ -93,17 +95,18 @@ def main(job_path: str) -> int:
+     return K.CHILD_EXIT[rec["status"]]
+ 
+ 
+-FIXTURE_PROTOCOL_ID = "URC-V1-ENGINEERING-FIXTURE"
++FIXTURE_PROTOCOL_ID = "URP-V1-ENGINEERING-FIXTURE"
+ ENV_KEYS = ("CUDA_VISIBLE_DEVICES", "HF_HUB_OFFLINE", "PYTHONDONTWRITEBYTECODE", "PYTHONPATH")
+-MODULES = ("uid_common", "uid_r1_control", "uid_r1_measure", "urc_control", "resnet3_s1")
+-FORBIDDEN_MODULES = ("cg_fedllm", "uformer_ae", "uformer_blocks")
++MODULES = ("uid_common", "uformer_ae", "uformer_blocks", "uid_r1_control", "uid_r1_measure", "urp_control")
++FORBIDDEN_MODULES = ("cg_fedllm", "resnet3_s1", "urc_control", "ep_classify")
+ 
+ 
+ def imported_modules(job: dict, K) -> dict:
+     """Files and SHA-256 of the diagnostic modules actually imported; in scientific mode each must have its approved
+-    hash. ``cg_fedllm`` (the package, with uncommitted SSBD work) and the Uformer modules must not be imported."""
++    hash. ``cg_fedllm`` (the package, with uncommitted SSBD work), the URC ResNet modules and the EP classifier (a
++    post-run analysis module) must not be imported."""
+     files = {n: str(Path(sys.modules[n].__file__).resolve()) for n in MODULES if n in sys.modules}
+-    files["urc_child"] = str(Path(__file__).resolve())
++    files["urp_child"] = str(Path(__file__).resolve())
+     sha = {n: K.sha256_file(p) for n, p in files.items()}
+     expected = job.get("expected_module_sha256")
+     if expected is not None:
+@@ -112,10 +115,10 @@ def imported_modules(job: dict, K) -> dict:
+             raise RuntimeError(f"imported module(s) without the approved SHA-256: {bad}")
+     present = [m for m in FORBIDDEN_MODULES if m in sys.modules]
+     if present:
+-        raise RuntimeError(f"module(s) {present} must not be imported by the URC diagnostic")
++        raise RuntimeError(f"module(s) {present} must not be imported by the URP diagnostic")
+     # coverage: every imported module whose file lies under the repository (diagnostics or src) must be listed.
+-    # __main__ / __mp_main__ are this file (hashed above as urc_child); relative pseudo-paths (torch.ops) are skipped
+-    repo = URC_DIR.parents[1]
++    # __main__ / __mp_main__ are this file (hashed above as urp_child); relative pseudo-paths (torch.ops) are skipped
++    repo = URP_DIR.parents[1]
+     local = sorted(
+         n
+         for n, m in list(sys.modules.items())
+@@ -138,7 +141,7 @@ def load_job_config(job: dict, K, U) -> tuple[dict, str, str]:
+     cfg = json.loads(data.decode("utf-8"))
+     raw, canon = K.hashlib.sha256(data).hexdigest(), K.sha256_canonical(cfg)
+     if job["mode"] == "scientific":
+-        if Path(job["config_path"]).resolve() != (U.URC_DIR / U.RESOLVED_NAME).resolve():
++        if Path(job["config_path"]).resolve() != (U.URP_DIR / U.RESOLVED_NAME).resolve():
+             raise RuntimeError("scientific job with a config other than the frozen resolved_config.json")
+         if raw != job.get("expected_config_sha256") or cfg != U.load_resolved():
+             raise RuntimeError("resolved_config.json is not the approved, freshly re-resolved configuration")
+@@ -149,28 +152,13 @@ def load_job_config(job: dict, K, U) -> tuple[dict, str, str]:
+         raise RuntimeError(f"unknown mode {job['mode']!r}")
+     if cfg.get("protocol_id") != FIXTURE_PROTOCOL_ID or raw == job.get("expected_config_sha256"):
+         raise RuntimeError("engineering jobs accept only fixture configs")
+-    if int(cfg["input"]["data_seed"]) == 20261012 or int(cfg["model_init_seed"]) == 1:
+-        raise RuntimeError("fixture configs must not use the registered seeds")
++    if int(cfg["model_init_seed"]) == 1:
++        raise RuntimeError("fixture configs must not use the registered model seed")
++    if cfg["input"]["patch_file_sha256"] == U.load_urp_config()["input"]["patch_file_sha256"]:
++        raise RuntimeError("fixture configs must not use the registered input patch")
+     return cfg, raw, canon
+ 
+ 
+-def reference_checks(rec: dict, cfg: dict) -> dict:
+-    """Shared-condition checks of the input and baselines against the values the resolved config expects (the
+-    U-FIT record's values). Any difference is a NOT_MATCHED shared condition; the run refuses before any update."""
+-    exp, inp, base = cfg["expected"], rec["input"], rec["baselines"]
+-    checks = {
+-        "input_sha256": (inp["sha256"], exp["input_sha256"]),
+-        "input_shape": (inp["shape"], list(exp["input_shape"])),
+-        "input_dtype": (inp["dtype"], exp["input_dtype"]),
+-        "target_energy": (inp["energy_sum_sq"], exp["target_energy"]),
+-        "zero_prediction_mse": (base["zero_prediction"]["mse"], exp["zero_prediction_mse"]),
+-        "shared_scalar_mean_mse": (base["shared_scalar_mean"]["mse"], exp["shared_scalar_mean_mse"]),
+-    }
+-    out = {k: {"observed": a, "expected": b, "equal": a == b} for k, (a, b) in checks.items()}
+-    out["all_equal"] = all(v["equal"] for v in out.values())
+-    return out
+-
+-
+ def precision_checks(model, x, torch) -> dict:
+     """CPU fp32 for the input and every parameter and buffer of the model (the shared precision condition)."""
+     float_tensors = [t for t in (*model.parameters(), *model.buffers()) if t.is_floating_point()]
+@@ -183,14 +171,10 @@ def precision_checks(model, x, torch) -> dict:
+     }
+ 
+ 
+-def sampling_init(model, C) -> dict:
+-    """Tensor-level SHA-256 (``uid_common.tensor_sha256``) of every parameter and buffer of the sampling stacks at
+-    initialization, keyed by state-dict name; compared with the Uformer layers by ``checks/check_init_comparison.py``."""
+-    out = {}
+-    for side in ("encoder", "decoder"):
+-        stack = getattr(model, side).sampling
+-        out[f"{side}.sampling"] = {k: C.tensor_sha256(v, k) for k, v in sorted(stack.state_dict().items())}
+-    return out
++def spaces(y_n, x, x_n, scale: float, C, U) -> dict:
++    """One output in both spaces: original-space sums of ``denormalize(y_n)`` against the patch ``x`` (the verdict
++    basis) and normalized-space sums of ``y_n`` against ``x_n`` (the training coordinates)."""
++    return {"original": C.metrics(U.denormalize(y_n, scale), x), "normalized": C.metrics(y_n, x_n)}
+ 
+ 
+ def start_watchdog(job: dict) -> None:
+@@ -202,7 +186,7 @@ def start_watchdog(job: dict) -> None:
+     import psutil
+ 
+     def gone(why: str) -> None:
+-        sys.stderr.write(f"urc_child: {why}; exiting without a child record\n")
++        sys.stderr.write(f"urp_child: {why}; exiting without a child record\n")
+         sys.stderr.flush()
+         os._exit(137)  # the supervisor (or, if it is dead, the start record) closes the arm
+ 
+@@ -264,8 +248,9 @@ def write_point(curve, line: dict, K) -> None:
+ 
+ 
+ def run_arm(job: dict, cfg: dict, rec: dict, curve, torch, C, M, U) -> None:
+-    """Shared settings throughout: ``C.make_input`` / ``C.reconstruct`` / ``C.metrics`` / ``C.baselines`` (frozen UID)
+-    and the resolved optimizer and update count; ``U.build_model`` builds the stride-1 ResNet-3 variant."""
++    """Frozen settings throughout: ``C.reconstruct`` / ``C.metrics`` / ``C.baselines`` / ``C.describe_input`` (frozen
++    UID), the resolved optimizer and update count, and ``U.build_model`` = the frozen ``C.build_model(cfg, "U-FIT")``.
++    The model sees only ``x_n`` (normalized space); the loss is normalized-space MSE, as in the production loop."""
+     import uid_r1_control as K
+     from torch import nn
+ 
+@@ -273,19 +258,32 @@ def run_arm(job: dict, cfg: dict, rec: dict, curve, torch, C, M, U) -> None:
+     if int(cfg["max_updates"]) != int(job["max_updates"]):
+         raise RuntimeError(f"job max_updates {job['max_updates']} != config {cfg['max_updates']}")
+     model = U.build_model(cfg)
+-    rec["modules"] = imported_modules(job, K)  # after build_model, which imports resnet3_s1
++    rec["modules"] = imported_modules(job, K)  # after build_model, which imports uformer_ae / uformer_blocks
+     rec["model"] = {"config": model.cfg.to_dict(), "parameters": model.num_parameters()}
+     rec["model"]["buffer_elements"] = sum(b.numel() for b in model.buffers())
+-    x = C.make_input(cfg).requires_grad_(False)
+-    rec["input"] = C.describe_input(x)
+-    rec["baselines"] = C.baselines(x)
+-    rec["reference_checks"] = reference_checks(rec, cfg)
+-    rec["precision"] = precision_checks(model, x, torch)
++    rec["model_state_sha256_init"] = C.state_sha256(model)
++    if (
++        job["mode"] == "scientific"
++        and rec["model_state_sha256_init"] != cfg["reference"]["model_state_sha256_init"]
++    ):
++        # the registered model binding: the U-FIT initial state, refused before any input, optimizer or update
++        raise RuntimeError(f"initial state {rec['model_state_sha256_init']} is not the U-FIT initial state")
++    scale = float(cfg["input"]["normalization"]["scale_global"])
++    x, x_n, patch_sha = U.load_input(cfg)
++    x, x_n = x.requires_grad_(False), x_n.requires_grad_(False)
++    rec["input"] = {
++        "patch_file_sha256": patch_sha,
++        "original": C.describe_input(x),
++        "normalized": C.describe_input(x_n),
++    }
++    rec["baselines"] = {"original": C.baselines(x), "normalized": C.baselines(x_n)}
++    rec["input_checks"] = U.input_checks(rec, cfg, float(x_n.abs().max()))
++    rec["precision"] = precision_checks(model, x_n, torch)
+     if not (rec["precision"]["input_dtype_cpu"] and rec["precision"]["model_float_tensors_fp32_cpu"]):
+-        raise RuntimeError(f"NOT_MATCHED shared condition (CPU fp32): {rec['precision']}")
+-    if job["mode"] == "scientific" and not rec["reference_checks"]["all_equal"]:
+-        # a violated shared condition: refused before the optimizer exists, so no update is made on another input
+-        raise RuntimeError(f"NOT_MATCHED shared condition (input/baselines): {rec['reference_checks']}")
++        raise RuntimeError(f"precision condition (CPU fp32) not met: {rec['precision']}")
++    if job["mode"] == "scientific" and not rec["input_checks"]["all_equal"]:
++        # the registered input differs from its record: refused before the optimizer exists, so no update is made
++        raise RuntimeError(f"registered input check failed: {rec['input_checks']}")
+     o = cfg["optimizer"]
+     if o["name"] != "Adam":
+         raise RuntimeError(f"unsupported optimizer {o['name']!r}")
+@@ -299,10 +297,10 @@ def run_arm(job: dict, cfg: dict, rec: dict, curve, torch, C, M, U) -> None:
+     rec["optimizer_defaults"] = {
+         k: v for k, v in opt.defaults.items() if isinstance(v, (int, float, tuple, bool))
+     }
+-    rec["model_state_sha256_init"] = C.state_sha256(model)
+-    rec["sampling_init_tensor_sha256"] = sampling_init(model, C)
+-    meta = {"protocol_id": cfg["protocol_id"], "arm": job["arm"], "variant": model.cfg.to_dict()["variant"]}
++    meta = {"protocol_id": cfg["protocol_id"], "arm": job["arm"], "variant": cfg["variant"]}
+     rec["init_state_file"] = U.save_state(out / "init_state.safetensors", model, {**meta, "point": "init"})
++    if rec["init_state_file"]["state_sha256"] != rec["model_state_sha256_init"]:
++        raise RuntimeError("initial state file hash differs from the initial model state")
+     rec["trainable"] = M.trainable_coverage(model, opt)
+     theta0 = M.snapshot(model)
+     # step 0 on disposable copies: the training model, its BN buffers and the RNG state are left untouched
+@@ -310,7 +308,7 @@ def run_arm(job: dict, cfg: dict, rec: dict, curve, torch, C, M, U) -> None:
+     step0 = {}
+     for mode in ("eval", "train"):
+         with M.isolated(model, mode) as twin, torch.no_grad():
+-            step0[mode] = C.metrics(C.reconstruct(twin, x), x)
++            step0[mode] = spaces(C.reconstruct(twin, x_n), x, x_n, scale, C, U)
+     fp_after = M.state_fingerprint(model)
+     rec["step0"] = {"post_init": step0, "isolation_verified": fp_before == fp_after}
+     if fp_before != fp_after:
+@@ -322,15 +320,17 @@ def run_arm(job: dict, cfg: dict, rec: dict, curve, torch, C, M, U) -> None:
+             raise SoftStop(f"soft stop before update {k}: {done} update(s) done")
+         fixture_hook(job, "update", k)
+         opt.zero_grad(set_to_none=True)
+-        x_hat = C.reconstruct(model, x)  # train-mode forward of update k (pre-update for update k)
+-        loss = nn.functional.mse_loss(x_hat, x)
++        y_n = C.reconstruct(
++            model, x_n
++        )  # train-mode forward of update k (pre-update for update k), normalized space
++        loss = nn.functional.mse_loss(y_n, x_n)
+         loss.backward()
+         point = None
+         if k == 1 or k % every == 0 or k == max_updates:
+             point = {
+                 "update": k,
+                 "pre_update_train_loss": float(loss.detach()),
+-                "pre_update_train": C.metrics(x_hat, x),
++                "pre_update_train": C.metrics(y_n, x_n),  # normalized space, the loss coordinates
+                 "grad": M.grad_stats(model),
+             }
+             prev = M.snapshot(model)
+@@ -361,17 +361,19 @@ def run_arm(job: dict, cfg: dict, rec: dict, curve, torch, C, M, U) -> None:
+         twin.train(mode == "train")
+         torch.set_rng_state(rng)
+         with torch.no_grad():
+-            outputs[mode] = C.reconstruct(twin, x)
+-        final[f"{mode}_mode"] = C.metrics(outputs[mode], x)
++            outputs[mode] = C.reconstruct(twin, x_n)
++        both = spaces(outputs[mode], x, x_n, scale, C, U)
++        final[f"{mode}_mode"] = both["original"]  # the verdict basis (eval mode), original space
++        final[f"{mode}_mode_normalized"] = both["normalized"]  # reported only
+         loaded.append(C.state_sha256(twin))
+     rec["modules_at_end"] = imported_modules(job, K)  # nothing unlisted was imported during the run
+     final["copies_loaded_identical_state"] = len(set(loaded_before)) == 1
+     final["train_copy_state_changed_by_forward"] = loaded[1] != loaded_before[1]
+-    final["train_minus_eval_output_sse"] = float(
++    final["train_minus_eval_output_sse_normalized"] = float(
+         (outputs["train"].double() - outputs["eval"].double()).square().sum()
+     )
+     rec["final"] = final
+-    rec["verdict_basis"] = "eval_mode"
++    rec["verdict_basis"] = "eval_mode, original space"
+     rec["status"] = (
+         "COMPLETED_PASS" if C.passes(final["eval_mode"], cfg["criteria"]) else "COMPLETED_FIT_FAIL"
+     )

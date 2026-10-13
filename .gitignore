@@ -236,3 +236,10 @@ wandb/
 lm_eval_output/
 # local scratch
 /scratch/
+
+# Include reviewed diagnostic evidence and tiny patch fixtures (20261013).
+!diagnostics/uid_20261012_v2_r1/evidence/**/*.log
+!diagnostics/urc_20261013_v1/evidence/**/*.log
+!diagnostics/urp_20261013_v1/evidence/**/*.log
+!diagnostics/urp_20261013_v1/checks/fixture_patch.safetensors
+!diagnostics/urp_20261013_v1/input/patch_x.safetensors

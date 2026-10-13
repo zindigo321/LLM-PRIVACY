@@ -1,0 +1,66 @@
+{
+  "protocol_id": "URP-20261013-v1",
+  "description": "One CPU arm, U-PATCH: the frozen UID-20261012-v2 Uformer encoder-decoder (the U-FIT model, seed 1) trained to reconstruct one real LoRA-derived 32x32 patch of the archived R3 training snapshot (t 7, client 91), in the frozen R3 normalized space. The protocol is protocol.md. Shared settings are read at resolution time from the frozen UID config named in 'reference' and must equal 'shared_expected'; the input is the registered patch file named in 'input', whose values must equal 'input_expected'.",
+  "arm": "U-PATCH",
+  "variant": "uformer_uid_20261012_v2_u_fit",
+  "reference": {
+    "protocol_id": "UID-20261012-v2",
+    "revision_id": "UID-20261012-v2-r1",
+    "arm": "U-FIT",
+    "frozen_config": "../uid_20261012_v2/config.json",
+    "frozen_config_raw_sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd",
+    "frozen_config_canonical_sha256": "bb0111fab6310ab5430d931b781fc3c97cdb928da773d0cf8e71ea532fb4e5b3",
+    "frozen_manifest_sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca",
+    "r1_manifest_sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044",
+    "execution": "../uid_20261012_v2_r1/execution_r1.json",
+    "execution_sha256": "7aa1ef61e2f231d19a7a0fff3483f480de6611215f6c027aed10014d23cfc52f",
+    "child_record": "D:/cgfed-runs/uid_20261012_v2_r1/arms/U-FIT/child_record.json",
+    "child_record_sha256": "d8150ec1b8a1ff61ffee1c9e7bf42114060794894305b3c66cf24228faff3ecb",
+    "model_state_sha256_init": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7",
+    "final_artifacts_list": "../uid_20261012_v2_r1_execution/FINAL_ARTIFACTS_SHA256.txt"
+  },
+  "shared_expected": {
+    "model_init_seed": 1,
+    "optimizer": {"name": "Adam", "lr": 0.0002, "betas": [0.9, 0.999], "eps": 1e-08, "weight_decay": 0},
+    "max_updates": 3000,
+    "max_seconds": 1800,
+    "cpu_config": {"intra_op_threads": 24, "inter_op_threads": 24},
+    "torch_version": "2.14.0+cu130",
+    "input_shape": [1, 1, 32, 32]
+  },
+  "input": {
+    "patch_file": "input/patch_x.safetensors",
+    "patch_file_sha256": "957704bf86fcce6d0b9c90b715e1a62435bbb96df65864d961cf23a3c8ae75fd",
+    "tensor_name": "x",
+    "input_record": "input/input_record.json",
+    "input_record_sha256": "bec71fdac597a6b340457e5330349da9f47f2d4d777757fbfe948126ba67b6c1",
+    "selection_rule": "input/SELECTION_RULE.md",
+    "selection_rule_sha256": "e0b1df83a9ca79ac8e4682d25b6b56d1a8c76b17bd7d373684f48f2a31d7362d",
+    "source": "R3 balanced_effective_delta_r8, t 7, client 91 (P5-A position 39), Phi sha256 485cbe5f3a450b43d7780fe9cd97afe5169ea81ce0bdaf21166938adfcac2546, Phi[0, 1024:1056, 768:800]",
+    "normalization": {"mode": "global_exact_maxabs_train", "scale_global": 0.015751632224572334}
+  },
+  "input_expected": {
+    "original_sha256": "92707ff85a521c92164bf90d2bb927d81eabbb9b3b2f107271ca2fafd75db98a",
+    "normalized_sha256": "1d2f65aad35b9eb25e445d4b864ae1b1a894e4107ee358e61c602ffc898812bb",
+    "shape": [1, 1, 32, 32],
+    "dtype": "torch.float32",
+    "original_target_energy": 0.004231302211738306,
+    "original_zero_prediction_mse": 4.132131066150689e-06,
+    "original_scalar_mean_mse": 4.131472976536517e-06,
+    "normalized_target_energy": 17.053869437280618,
+    "normalized_zero_prediction_mse": 0.016654169372344353,
+    "normalized_scalar_mean_mse": 0.016651517003540468,
+    "normalized_max_abs": 0.8495237827301025
+  },
+  "limits": {
+    "max_training_starts": 1,
+    "max_invocations": 1,
+    "aggregate_seconds": 7200
+  },
+  "execution": {
+    "run_root": "D:/cgfed-runs/urp_20261013_v1",
+    "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/urp_20261013_v1/scientific_ledger_mirror",
+    "python_executable": "D:/conda_envs/cgfedllm/python.exe"
+  },
+  "strict_criteria_note": "the strict near-identity criteria (RSE <= 0.01, cosine >= 0.99, eval mode) are read from the frozen UID config and applied in the original (Phi) space; the exploratory criterion is EP-20261012-v1, pre-specified here and applied after the run by urp_analyze.py, also in the original space"
+}

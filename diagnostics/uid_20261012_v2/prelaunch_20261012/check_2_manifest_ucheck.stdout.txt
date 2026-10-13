@@ -1,0 +1,22 @@
+=== UID-20261012-v2 engineering check 2: manifest verification and U-CHECK ===
+
+Manifest verification: 7 files match
+  ✓ config.json (2633 bytes)
+  ✓ uformer_blocks.py (10213 bytes)
+  ✓ uformer_ae.py (8544 bytes)
+  ✓ uid_common.py (9691 bytes)
+  ✓ uid_runner.py (7172 bytes)
+  ✓ third_party/uformer_65fc970/model.py (54011 bytes)
+  ✓ third_party/uformer_65fc970/LICENSE (1070 bytes)
+
+config.json raw SHA-256:       d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd
+config.json canonical SHA-256: bb0111fab6310ab5430d931b781fc3c97cdb928da773d0cf8e71ea532fb4e5b3
+
+U-CHECK model: Conv2d(1, 1, kernel_size=(1, 1), stride=(1, 1))
+  parameters: 2
+  input: torch.Size([1, 1, 32, 32]), SHA-256: fc5e1283d1a44cb3...
+  output: torch.Size([1, 1, 32, 32]), range [-0.8531, -0.0294]
+  MSE loss: 0.250398
+  weight gradient: norm 2.222793e-01, finite True
+
+CHECK 2 PASS: manifest verified, U-CHECK sanity complete

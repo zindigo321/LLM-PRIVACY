@@ -1,0 +1,216 @@
+command: D:/conda_envs/cgfedllm/python.exe -B checks/check_upstream_correspondence.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1
+start: 2026-10-12T19:07:51+08:00
+end: 2026-10-12T19:07:55+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+D:\conda_envs\cgfedllm\Lib\site-packages\torch\functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\native\TensorShape.cpp:4223.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1\checks\check_upstream_correspondence.py:64: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:821.)
+  rel = float((a - b).norm() / b.norm()) if float(b.norm()) > 0 else float(d.max())
+{
+  "all_ok": true,
+  "cases": [
+    {
+      "case": "window_partition",
+      "forward": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "ok": true
+    },
+    {
+      "case": "window_reverse",
+      "forward": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "ok": true,
+      "roundtrip_exact": true
+    },
+    {
+      "case": "shift_attention_mask",
+      "exact": true,
+      "forward": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "ok": true
+    },
+    {
+      "case": "relative_position_index",
+      "exact": true,
+      "ok": true
+    },
+    {
+      "case": "LinearProjection q/k/v",
+      "forward": {
+        "k": {
+          "max_abs": 0.0,
+          "ok": true,
+          "rel_l2": 0.0
+        },
+        "q": {
+          "max_abs": 0.0,
+          "ok": true,
+          "rel_l2": 0.0
+        },
+        "v": {
+          "max_abs": 0.0,
+          "ok": true,
+          "rel_l2": 0.0
+        }
+      },
+      "ok": true
+    },
+    {
+      "case": "attention scale (dim/heads)^-0.5",
+      "ok": true,
+      "upstream": 0.1767766952966369,
+      "vendored": 0.1767766952966369
+    },
+    {
+      "case": "WindowAttention (W-MSA)",
+      "forward": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "input_grad": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "ok": true,
+      "param_grads": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0,
+        "worst_param": "proj.bias"
+      },
+      "state_keys": 8
+    },
+    {
+      "case": "WindowAttention (SW-MSA mask)",
+      "forward": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "input_grad": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "ok": true,
+      "param_grads": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0,
+        "worst_param": "proj.bias"
+      },
+      "state_keys": 8
+    },
+    {
+      "case": "LeFF",
+      "forward": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "input_grad": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "ok": true,
+      "param_grads": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0,
+        "worst_param": "linear2.0.bias"
+      },
+      "state_keys": 6
+    },
+    {
+      "case": "LeWinTransformerBlock shift=0",
+      "forward": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "input_grad": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "ok": true,
+      "param_grads": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0,
+        "worst_param": "mlp.linear2.0.bias"
+      },
+      "state_keys": 18
+    },
+    {
+      "case": "LeWinTransformerBlock shift=4",
+      "forward": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "input_grad": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "ok": true,
+      "param_grads": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0,
+        "worst_param": "mlp.linear2.0.bias"
+      },
+      "state_keys": 18
+    },
+    {
+      "case": "BasicUformerLayer depth=2 shift_flag",
+      "forward": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "input_grad": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0
+      },
+      "ok": true,
+      "param_grads": {
+        "max_abs": 0.0,
+        "ok": true,
+        "rel_l2": 0.0,
+        "worst_param": "blocks.1.mlp.linear2.0.bias"
+      },
+      "state_keys": 36
+    }
+  ],
+  "einops": {
+    "file": "C:\\Users\\acc04\\AppData\\Local\\Temp\\uid_20261012_v2\\wheels\\einops-0.8.1-py3-none-any.whl\\einops\\__init__.py",
+    "version": "0.8.1",
+    "wheel_sha256": "919387eb55330f5757c6bea9165c5ff5cfe63a642682ea788a6d472576d81737"
+  },
+  "tolerances_declared_before_run": {
+    "dtype": "float64",
+    "max_abs": 1e-12,
+    "max_rel_l2": 1e-12
+  },
+  "upstream_sha256": "03a2c6e50b4342e03a457dd10537c14d0f832ce186da49c781fbd9d7027904a9",
+  "vendored_file": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\uid_20261012_v2\\uformer_blocks.py",
+  "vendored_sha256": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747"
+}

@@ -1,0 +1,131 @@
+diff --git a/uid_20261012_v2_r1/uid_r1_supervise.py b/urc_20261013_v1/urc_supervise.py
+index 2d2c95b..64fe53c 100644
+--- a/uid_20261012_v2_r1/uid_r1_supervise.py
++++ b/urc_20261013_v1/urc_supervise.py
+@@ -1,7 +1,12 @@
+-"""UID-20261012-v2 r1 supervisor: one invocation, arms in order, one fresh child process per arm.
++"""URC-20261013-v1 supervisor: one invocation, the single arm R-FIT, one fresh child process (adapted from r1).
+ 
+-Scientific use (only after the r1 package is approved):
+-    python -B uid_r1_supervise.py --scientific --approved-r1-manifest-sha256 <sha256>
++Scientific use (only after the URC package is approved):
++    python -B urc_supervise.py --scientific --approved-urc-manifest-sha256 <sha256>
++Read-only:
++    python -B urc_supervise.py --status
++
++The plan comes only from ``urc_control.registered_plan``, which refuses anything but one R-FIT start; there is no
++option that selects an arm, so U-CHECK or U-FIT cannot be launched from here.
+ 
+ The supervisor imports no torch. Before each arm it writes the start record (both ledger roots) and only then spawns
+ the child. It enforces, on one ``time.monotonic()`` clock: the arm limit from the arm's start record, the aggregate
+@@ -27,10 +32,12 @@ import psutil
+ 
+ # the aggregate clock starts here, at import, before package verification, ledger reads and any arm
+ T_START = time.monotonic()
+-R1_DIR = Path(__file__).resolve().parent
+-sys.path.insert(0, str(R1_DIR))
++URC_DIR = Path(__file__).resolve().parent
++sys.path.insert(0, str(URC_DIR))
++
++import urc_control as U  # noqa: E402
+ 
+-import uid_r1_control as K  # noqa: E402
++K = U.K  # the r1 ledger / start accounting / deadline module, unchanged and hash-pinned
+ 
+ 
+ def dir_bytes(root: Path) -> int:
+@@ -100,6 +107,7 @@ def run_one(
+         "stop_file": str(stop_file),
+         "fixture_hooks": hooks,
+         "expected_module_sha256": plan.get("expected_module_sha256"),
++        "expected_config_sha256": plan.get("expected_config_sha256"),
+     }
+     K.create_exclusive(out / "job.json", job)
+     env = {k: v for k, v in os.environ.items() if k != "PYTHONPATH"}
+@@ -111,11 +119,11 @@ def run_one(
+             "PYTHONIOENCODING": "utf-8",
+         }
+     )
+-    cmd = [plan["python_executable"], "-B", str(R1_DIR / "uid_r1_child.py"), str(out / "job.json")]
++    cmd = [plan["python_executable"], "-B", str(URC_DIR / "urc_child.py"), str(out / "job.json")]
+     with (out / "child.stdout.txt").open("xb") as so, (out / "child.stderr.txt").open("xb") as se:
+         popen = subprocess.Popen(
+             cmd,
+-            cwd=str(R1_DIR),
++            cwd=str(URC_DIR),
+             env=env,
+             stdout=so,
+             stderr=se,
+@@ -217,7 +225,7 @@ def invoke(
+ 
+     if hasattr(signal, "SIGBREAK"):  # Ctrl+Break would otherwise end the process without the end records
+         signal.signal(signal.SIGBREAK, signal.default_int_handler)
+-    K.validate_plan(plan)
++    U.check_plan(plan)  # one R-FIT start in scientific mode; no UID arm in any mode; r1 timing invariants
+     run_root = Path(plan["run_root"])
+     ledger = K.Ledger(run_root / "ledger", plan["ledger_mirror"])
+     K.check_can_open(ledger.read(), plan)  # an unfinished prior start or a used invocation refuses here
+@@ -231,15 +239,14 @@ def invoke(
+     ledger.write(
+         "invocation_001.json",
+         {
+-            "revision_id": K.REVISION_ID,
+-            "protocol_id": K.REGISTERED_PROTOCOL_ID,
++            "protocol_id": U.PROTOCOL_ID,
+             "mode": plan["mode"],
+             "identity": identity,
+             "plan": plan,
+             "available_ram_bytes_at_launch": avail,
+             "rss_limit_bytes": rss_limit,
+             "monotonic_t0": t0,
+-            "aggregate_clock_start": "import of uid_r1_supervise (before package verification)",
++            "aggregate_clock_start": "import of urc_supervise (before package verification)",
+             "monotonic_at_record": time.monotonic(),
+             "wall_clock_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+             "supervisor_pid": os.getpid(),
+@@ -311,28 +318,32 @@ def main() -> int:
+     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+     mode = ap.add_mutually_exclusive_group(required=True)
+     mode.add_argument("--status", action="store_true", help="read-only: print the scientific ledger state")
+-    mode.add_argument("--scientific", action="store_true", help="run the registered invocation")
+-    ap.add_argument("--approved-r1-manifest-sha256")
++    mode.add_argument("--scientific", action="store_true", help="run the registered R-FIT invocation")
++    ap.add_argument("--approved-urc-manifest-sha256")
+     args = ap.parse_args()
+     if args.status:
+-        execution = K.load_json(R1_DIR / "execution_r1.json")
++        execution = U.load_urc_config()["execution"]
+         primary = Path(execution["run_root"]) / "ledger"
+-        s = K.ledger_status(primary, execution["ledger_mirror"], list(K.REGISTERED_ARMS))
++        s = K.ledger_status(primary, execution["ledger_mirror"], list(U.REGISTERED_ARMS))
+         s["ledger_primary"], s["ledger_mirror"] = str(primary), execution["ledger_mirror"]
+         s["run_root_exists"] = Path(execution["run_root"]).exists()
++        s["protocol_id"] = U.PROTOCOL_ID
+         print(json.dumps(s, indent=2, sort_keys=True))
+         return 0
+-    if not args.approved_r1_manifest_sha256:
+-        raise K.ControlError("--scientific requires --approved-r1-manifest-sha256")
++    if not args.approved_urc_manifest_sha256:
++        raise K.ControlError("--scientific requires --approved-urc-manifest-sha256")
+     if os.environ.get("PYTHONPATH"):
+         raise K.ControlError("PYTHONPATH is set; the scientific invocation runs only without it")
+-    identity, cfg, execution = K.verify_package(args.approved_r1_manifest_sha256)
+-    if Path(sys.executable).resolve() != Path(execution["python_executable"]).resolve():
+-        raise K.ControlError(f"interpreter {sys.executable} is not {execution['python_executable']}")
+-    plan = K.registered_plan(cfg, execution)
+-    plan["expected_module_sha256"] = K.expected_module_hashes(K.load_json(R1_DIR / "manifest_r1.json"))
+-    sys_path = [str(K.FROZEN_DIR), str(R1_DIR)]
+-    summary = invoke(plan, K.FROZEN_DIR / "config.json", sys_path, identity)
++    identity, resolved = U.verify_package(args.approved_urc_manifest_sha256)
++    if Path(sys.executable).resolve() != Path(resolved["execution"]["python_executable"]).resolve():
++        raise K.ControlError(
++            f"interpreter {sys.executable} is not {resolved['execution']['python_executable']}"
++        )
++    plan = U.registered_plan(resolved)
++    plan["expected_module_sha256"] = U.expected_module_hashes(K.load_json(URC_DIR / U.MANIFEST_NAME))
++    plan["expected_config_sha256"] = identity["resolved_config_sha256"]
++    sys_path = [str(URC_DIR), str(U.FROZEN_DIR), str(U.R1_DIR)]
++    summary = invoke(plan, URC_DIR / U.RESOLVED_NAME, sys_path, identity)
+     print(json.dumps(K.json_safe(summary), indent=2, sort_keys=True))
+     return (
+         0

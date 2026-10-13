@@ -1,0 +1,29 @@
+{
+  "protocol_id": "URC-V1-ENGINEERING-FIXTURE",
+  "note": "ENGINEERING FIXTURE ONLY. Not a scientific configuration: other seeds, other input, a 16x16 grid and narrow channels; used to test the URC-v1 execution machinery. Optimizer updates are made only on this fixture.",
+  "arm": "FX-RFIT",
+  "variant": "resnet3_stride1_diagnostic",
+  "model_init_seed": 7,
+  "input": {"data_seed": 4242, "shape": [1, 1, 16, 16], "scale": 1.0, "offset": -0.5},
+  "criteria": {"max_rse": 0.01, "min_cosine": 0.99},
+  "optimizer": {"name": "Adam", "lr": 0.001, "betas": [0.9, 0.999], "eps": 1e-08, "weight_decay": 0},
+  "max_updates": 6,
+  "max_seconds": 120.0,
+  "model": {
+    "input_hw": [16, 16],
+    "in_channels": 1,
+    "stem_kernel": 3,
+    "stem_channels": 1,
+    "down_channels": [2, 2, 4, 4, 8, 8],
+    "num_res_blocks": 1,
+    "final_kernel": 7
+  },
+  "expected": {
+    "input_sha256": "fixture: not compared",
+    "input_shape": [1, 1, 16, 16],
+    "input_dtype": "torch.float32",
+    "target_energy": null,
+    "zero_prediction_mse": null,
+    "shared_scalar_mean_mse": null
+  }
+}

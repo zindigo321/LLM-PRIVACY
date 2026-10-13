@@ -1,0 +1,8 @@
+command: D:/conda_envs/cgfedllm/python.exe -B urc_analyze.py --evidence-dir D:\projects-cd\cg-fedllm-reproduction\diagnostics\urc_20261013_v1_execution\analysis
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\urc_20261013_v1
+start: 2026-10-13T09:35:11.730+08:00
+end: 2026-10-13T09:35:11.911+08:00
+exit_code: 0
+--- output ---
+analysis.json sha256=728f7934f07966fd06bdabbea8bbcfdf529fa51899ced1c8736d7e8db1c59cf6
+{"status_recorded": "COMPLETED_FIT_FAIL", "strict_near_identity": {"criteria": {"max_rse": 0.01, "min_cosine": 0.99}, "matches_record": true, "rederived_status": "COMPLETED_FIT_FAIL"}}

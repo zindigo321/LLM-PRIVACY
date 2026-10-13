@@ -1,0 +1,5 @@
+D:\conda_envs\cgfedllm\Lib\site-packages\torch\functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\native\TensorShape.cpp:4223.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+D:\projects-cd\cg-fedllm-reproduction\diagnostics\uid_20261012_v2_r1\checks\check_upstream_correspondence.py:64: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:821.)
+  rel = float((a - b).norm() / b.norm()) if float(b.norm()) > 0 else float(d.max())

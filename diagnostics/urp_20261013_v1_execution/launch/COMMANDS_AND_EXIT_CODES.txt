@@ -1,0 +1,23 @@
+launch wrapper: powershell pid=66508 started 2026-10-13T17:03:38.420+08:00
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\urp_20261013_v1
+env: CUDA_VISIBLE_DEVICES=-1 HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=[]
+before: cpu_load_percent=4 free_physical_bytes=9543323648 at 2026-10-13T17:03:40.806+08:00
+
+command status_before: D:/conda_envs/cgfedllm/python.exe -B urp_supervise.py --status
+start: 2026-10-13T17:03:40.811+08:00
+end: 2026-10-13T17:03:41.883+08:00
+exit_code: 0
+
+command scientific: D:/conda_envs/cgfedllm/python.exe -B urp_supervise.py --scientific --approved-urp-manifest-sha256 1df7af08c8b5897ad23fac88ab94e4ad36212a47cd542bb584e85ca07df91bd1
+start: 2026-10-13T17:03:41.913+08:00
+end: 2026-10-13T17:12:30.548+08:00
+exit_code: 0
+
+after: cpu_load_percent=26 free_physical_bytes=9287077888 at 2026-10-13T17:12:32.562+08:00
+
+command status_after: D:/conda_envs/cgfedllm/python.exe -B urp_supervise.py --status
+start: 2026-10-13T17:12:32.564+08:00
+end: 2026-10-13T17:12:33.641+08:00
+exit_code: 0
+
+LAUNCH_SCRIPT_END scientific_exit_code=0 at 2026-10-13T17:12:33.643+08:00

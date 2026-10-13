@@ -1,0 +1,6 @@
+command: D:/conda_envs/cgfedllm/python.exe -B verify_report_numbers.py
+time: 2026-10-12T20:11:13+08:00
+exit_code: 0
+U-FIT s/update between curve points 1 and 3000: 0.16740480160053306
+U-FIT child wall s / 3000: 0.16797933333333398
+U-CHECK P+T-2D: 0.0 recorded SSE: 1.6263032587282567e-17 ulp(P+T): 5.684341886080802e-14

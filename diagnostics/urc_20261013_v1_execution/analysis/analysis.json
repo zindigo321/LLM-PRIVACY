@@ -1,0 +1,486 @@
+{
+  "comparison": {
+    "cosine_difference_r_minus_u": 0.02948609068752228,
+    "label": "descriptive, one seed per architecture; no significance or superiority claim",
+    "r_fit_final_eval": {
+      "cosine": 0.8835333171508959,
+      "recorded_equal": true,
+      "rse": 0.22426682990470648
+    },
+    "r_fit_final_train": {
+      "cosine": 0.8843358254149193,
+      "recorded_equal": true,
+      "rse": 0.2232009591742592
+    },
+    "rse_difference_r_minus_u": -0.0484742732858518,
+    "u_fit_final_eval": {
+      "cosine": 0.8540472264633736,
+      "recorded_equal": true,
+      "rse": 0.2727411031905583
+    },
+    "u_fit_final_train": {
+      "cosine": 0.8544958598853383,
+      "recorded_equal": true,
+      "rse": 0.2720868857639887
+    },
+    "valid_as_matched_comparison": true
+  },
+  "evidence": {
+    "problems": [],
+    "sealed_list": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\urc_20261013_v1_execution\\analysis\\FINAL_ARTIFACTS_SHA256.txt",
+    "verified": true
+  },
+  "exploratory_ep": {
+    "checks": {
+      "M0": {
+        "pass": true,
+        "problems": []
+      },
+      "M1": {
+        "margin": -0.2757331700952935,
+        "operator": "<=",
+        "pass": true,
+        "threshold": 0.5,
+        "value": 0.22426682990470648
+      },
+      "M2": {
+        "margin": 0.08353331715089585,
+        "operator": ">=",
+        "pass": true,
+        "threshold": 0.8,
+        "value": 0.8835333171508959
+      },
+      "M3": {
+        "margin": -0.12776312831415565,
+        "operator": "<=",
+        "pass": true,
+        "threshold": 0.17755092669610384,
+        "value": 0.04978779838194819
+      },
+      "V1": {
+        "pass": true,
+        "problems": []
+      },
+      "V2": {
+        "pass": true,
+        "problems": []
+      }
+    },
+    "outcome": "PASS",
+    "policy_id": "EP-20261012-v1",
+    "quantities": {
+      "best_baseline": "scalar_mean",
+      "best_baseline_mse": 0.22193865837012977,
+      "cosine": 0.8835333171508959,
+      "mse": 0.04978779838194819,
+      "mse_over_best_baseline": 0.22433134789395942,
+      "rse": 0.22426682990470648,
+      "scalar_mean_mse": 0.22193865837012977,
+      "zero_mse": 0.22200250658157333
+    },
+    "reasons": [],
+    "thresholds": {
+      "baseline_factor": 0.8,
+      "max_rse": 0.5,
+      "min_cosine": 0.8
+    }
+  },
+  "matching": {
+    "permitted_differences": [
+      "core block architecture: 3 + 3 ResNet residual blocks (conv, BatchNorm) instead of 3 + 3 BasicUformer layers",
+      "parameter count: 493,483 instead of 685,507 (sampling-layer shapes identical, 24,833 + 24,746)",
+      "core normalization layers: BatchNorm2d in the residual blocks instead of LayerNorm in the LeWin blocks",
+      "architecture-dependent initialization: PyTorch defaults only; the Uformer cores add trunc-normal(0.02) init; the RNG stream after the encoder sampling layers differs, so decoder sampling-layer initial values differ"
+    ],
+    "shared_conditions": [
+      {
+        "condition": "plan.aggregate_seconds",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 7200.0,
+        "u_fit": 7200.0
+      },
+      {
+        "condition": "plan.cpu",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": {
+          "inter_op_threads": 24,
+          "intra_op_threads": 24
+        },
+        "u_fit": {
+          "inter_op_threads": 24,
+          "intra_op_threads": 24
+        }
+      },
+      {
+        "condition": "plan.curve_every",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 100,
+        "u_fit": 100
+      },
+      {
+        "condition": "plan.end_margin_s",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 20,
+        "u_fit": 20
+      },
+      {
+        "condition": "plan.eval_reserve_s",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 60,
+        "u_fit": 60
+      },
+      {
+        "condition": "plan.evidence_cap_bytes",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 536870912,
+        "u_fit": 536870912
+      },
+      {
+        "condition": "plan.interrupt_grace_s",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 20,
+        "u_fit": 20
+      },
+      {
+        "condition": "plan.kill_wait_s",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 10,
+        "u_fit": 10
+      },
+      {
+        "condition": "plan.poll_interval_s",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 0.25,
+        "u_fit": 0.25
+      },
+      {
+        "condition": "plan.python_executable",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": "D:/conda_envs/cgfedllm/python.exe",
+        "u_fit": "D:/conda_envs/cgfedllm/python.exe"
+      },
+      {
+        "condition": "plan.rss_available_fraction",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 0.5,
+        "u_fit": 0.5
+      },
+      {
+        "condition": "plan.rss_cap_bytes",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 4294967296,
+        "u_fit": 4294967296
+      },
+      {
+        "condition": "plan.torch_version",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": "2.14.0+cu130",
+        "u_fit": "2.14.0+cu130"
+      },
+      {
+        "condition": "arm max_updates",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 3000,
+        "u_fit": 3000
+      },
+      {
+        "condition": "arm max_seconds",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": 1800.0,
+        "u_fit": 1800.0
+      },
+      {
+        "condition": "curve-point schedule",
+        "equal": true,
+        "field": "invocation plan / curve",
+        "r_fit": [
+          1,
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900,
+          1000,
+          1100,
+          1200,
+          1300,
+          1400,
+          1500,
+          1600,
+          1700,
+          1800,
+          1900,
+          2000,
+          2100,
+          2200,
+          2300,
+          2400,
+          2500,
+          2600,
+          2700,
+          2800,
+          2900,
+          3000
+        ],
+        "u_fit": [
+          1,
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900,
+          1000,
+          1100,
+          1200,
+          1300,
+          1400,
+          1500,
+          1600,
+          1700,
+          1800,
+          1900,
+          2000,
+          2100,
+          2200,
+          2300,
+          2400,
+          2500,
+          2600,
+          2700,
+          2800,
+          2900,
+          3000
+        ]
+      },
+      {
+        "condition": "input bytes",
+        "equal": true,
+        "field": "input.sha256",
+        "r_fit": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722",
+        "u_fit": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722"
+      },
+      {
+        "condition": "input shape",
+        "equal": true,
+        "field": "input.shape",
+        "r_fit": [
+          1,
+          1,
+          32,
+          32
+        ],
+        "u_fit": [
+          1,
+          1,
+          32,
+          32
+        ]
+      },
+      {
+        "condition": "input dtype",
+        "equal": true,
+        "field": "input.dtype",
+        "r_fit": "torch.float32",
+        "u_fit": "torch.float32"
+      },
+      {
+        "condition": "target energy",
+        "equal": true,
+        "field": "input.energy_sum_sq",
+        "r_fit": 227.3305667395311,
+        "u_fit": 227.3305667395311
+      },
+      {
+        "condition": "zero-prediction MSE",
+        "equal": true,
+        "field": "baselines.zero_prediction.mse",
+        "r_fit": 0.22200250658157333,
+        "u_fit": 0.22200250658157333
+      },
+      {
+        "condition": "scalar-mean MSE",
+        "equal": true,
+        "field": "baselines.shared_scalar_mean.mse",
+        "r_fit": 0.22193865837012977,
+        "u_fit": 0.22193865837012977
+      },
+      {
+        "condition": "intra-op threads",
+        "equal": true,
+        "field": "cpu.intra_op_threads",
+        "r_fit": 24,
+        "u_fit": 24
+      },
+      {
+        "condition": "inter-op threads",
+        "equal": true,
+        "field": "cpu.inter_op_threads",
+        "r_fit": 24,
+        "u_fit": 24
+      },
+      {
+        "condition": "deterministic algorithms",
+        "equal": true,
+        "field": "cpu.deterministic_algorithms",
+        "r_fit": true,
+        "u_fit": true
+      },
+      {
+        "condition": "CUDA available (must be false)",
+        "equal": true,
+        "field": "cpu.cuda_available",
+        "r_fit": false,
+        "u_fit": false
+      },
+      {
+        "condition": "torch version",
+        "equal": true,
+        "field": "cpu.torch_version",
+        "r_fit": "2.14.0+cu130",
+        "u_fit": "2.14.0+cu130"
+      },
+      {
+        "condition": "updates done",
+        "equal": true,
+        "field": "updates_done",
+        "r_fit": 3000,
+        "u_fit": 3000
+      },
+      {
+        "condition": "verdict basis",
+        "equal": true,
+        "field": "verdict_basis",
+        "r_fit": "eval_mode",
+        "u_fit": "eval_mode"
+      },
+      {
+        "condition": "final copies loaded one state",
+        "equal": true,
+        "field": "final.copies_loaded_identical_state",
+        "r_fit": true,
+        "u_fit": true
+      },
+      {
+        "condition": "step-0 isolation verified",
+        "equal": true,
+        "field": "step0.isolation_verified",
+        "r_fit": true,
+        "u_fit": true
+      },
+      {
+        "condition": "CUDA_VISIBLE_DEVICES",
+        "equal": true,
+        "field": "env.CUDA_VISIBLE_DEVICES",
+        "r_fit": "-1",
+        "u_fit": "-1"
+      },
+      {
+        "condition": "PYTHONPATH (must be unset)",
+        "equal": true,
+        "field": "env.PYTHONPATH",
+        "r_fit": null,
+        "u_fit": null
+      },
+      {
+        "condition": "optimizer (complete settings)",
+        "equal": true,
+        "field": "resolved optimizer vs frozen U-FIT optimizer",
+        "r_fit": {
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "lr": 0.0002,
+          "name": "Adam",
+          "weight_decay": 0
+        },
+        "u_fit": {
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "lr": 0.0002,
+          "name": "Adam",
+          "weight_decay": 0
+        }
+      },
+      {
+        "condition": "measurement groups",
+        "equal": true,
+        "field": "param_change_total keys",
+        "r_fit": [
+          "decoder.core",
+          "decoder.sampling",
+          "encoder.core",
+          "encoder.sampling"
+        ],
+        "u_fit": [
+          "decoder.core",
+          "decoder.sampling",
+          "encoder.core",
+          "encoder.sampling"
+        ]
+      }
+    ],
+    "status": "MATCHED",
+    "violations": []
+  },
+  "protocol_id": "URC-20261013-v1",
+  "resources": {
+    "r_fit": {
+      "aggregate_wall_s": 87.63999999999942,
+      "arm_wall_s": 87.53100000000268,
+      "child_sampled_max_rss_bytes": 694231040,
+      "evidence_bytes_run_root": 4075460,
+      "guard_sampled_max_rss_bytes": 694231040,
+      "os_peak_wset_bytes": 698499072,
+      "seconds_per_update": 0.029177000000000893,
+      "updates_done": 3000
+    },
+    "u_fit_reference": {
+      "aggregate_wall_s": 510.515999999996,
+      "arm_wall_s": 506.3440000000046,
+      "child_sampled_max_rss_bytes": 819458048,
+      "evidence_bytes_run_root": 83280,
+      "guard_sampled_max_rss_bytes": 822517760,
+      "os_peak_wset_bytes": 824033280,
+      "seconds_per_update": 0.16878133333333487,
+      "updates_done": 3000
+    }
+  },
+  "schema": "urc-v1-analysis",
+  "status_recorded": "COMPLETED_FIT_FAIL",
+  "strict_near_identity": {
+    "criteria": {
+      "max_rse": 0.01,
+      "min_cosine": 0.99
+    },
+    "matches_record": true,
+    "rederived_status": "COMPLETED_FIT_FAIL"
+  }
+}

@@ -1,0 +1,7 @@
+command: D:/conda_envs/cgfedllm/python.exe -B extract_summary.py --out stage_summary.json
+cwd: D:/projects-cd/cg-fedllm-reproduction/diagnostics/synthetic_comparison_summary_20261013
+start: 2026-10-13T11:35:32+0800
+end: 2026-10-13T11:35:32+0800
+exit_code: 0
+--- output ---
+wrote stage_summary.json (6495 bytes) sha256=f07039a5ca8c120bd9cc10f188fac58890127061508b680bb879189ea43b7858

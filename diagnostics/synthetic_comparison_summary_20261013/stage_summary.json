@@ -1,0 +1,152 @@
+{
+  "clarifications": {
+    "urc_analysis_json_hash": {
+      "cited_in_report": "728f7934f07966fd06bdabbea8bbcfdf529fa51899ced1c8736d7e8db1c59cf6",
+      "cited_value_present_in_report": true,
+      "crlf_line_endings": 486,
+      "file_bytes": 12735,
+      "file_sha256": "744ae6c4d1d4be10ec2f3133cb347a7767daae1c6c671c2f785bf949ed810d45",
+      "lf_normalized_equals_cited": true,
+      "lf_normalized_sha256": "728f7934f07966fd06bdabbea8bbcfdf529fa51899ced1c8736d7e8db1c59cf6"
+    }
+  },
+  "exploratory_ep_20261012_v1": {
+    "r_fit": "PASS",
+    "r_fit_basis": "pre-specified in URC-20261013-v1",
+    "u_fit_basis": "post hoc (policy selected after the U-FIT result was seen)",
+    "u_fit_recomputed": "PASS",
+    "u_fit_stored_assessment": "PASS",
+    "u_fit_stored_assessment_sha256": "a3537886aa6d6f475605f818bf65347180beaaf2d47226dce4221d6e502da145"
+  },
+  "label": "DERIVED from sealed records; no run reopened, nothing recomputed by a model",
+  "matched_comparison": {
+    "analysis_script_deltas": [
+      -0.0484742732858518,
+      0.02948609068752228
+    ],
+    "delta_cosine_r_minus_u": 0.02948609068752228,
+    "delta_rse_r_minus_u": -0.0484742732858518,
+    "matching": "MATCHED",
+    "permitted_differences": [
+      "core block architecture: 3 + 3 ResNet residual blocks (conv, BatchNorm) instead of 3 + 3 BasicUformer layers",
+      "parameter count: 493,483 instead of 685,507 (sampling-layer shapes identical, 24,833 + 24,746)",
+      "core normalization layers: BatchNorm2d in the residual blocks instead of LayerNorm in the LeWin blocks",
+      "architecture-dependent initialization: PyTorch defaults only; the Uformer cores add trunc-normal(0.02) init; the RNG stream after the encoder sampling layers differs, so decoder sampling-layer initial values differ"
+    ],
+    "seeds_per_architecture": 1,
+    "shared_conditions_checked": 35,
+    "violations": []
+  },
+  "not_established": [
+    "statistical significance (one seed per architecture; seed-to-seed variation never measured)",
+    "general architectural superiority (the permitted differences remain confounds)",
+    "compression (latent [64, 32, 32] is a 64:1 element expansion)",
+    "generalization, real-LoRA behaviour or downstream utility"
+  ],
+  "r_fit": {
+    "baselines": {
+      "scalar_mean_mse": 0.22193865837012977,
+      "zero_mse": 0.22200250658157333
+    },
+    "final_eval": {
+      "cosine": 0.8835333171508959,
+      "mse": 0.04978779838194819,
+      "norm_ratio": 0.9535186900538957,
+      "recomputed_from_sums_equal": true,
+      "rse": 0.22426682990470648
+    },
+    "final_train": {
+      "cosine": 0.8843358254149193,
+      "rse": 0.2232009591742592
+    },
+    "input_sha256": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722",
+    "memory": {
+      "os_peak_wset_bytes": 698499072,
+      "supervisor_sampled_max_rss_bytes": 694231040
+    },
+    "parameters": 493483,
+    "status": "COMPLETED_FIT_FAIL",
+    "status_end_record": "COMPLETED_FIT_FAIL",
+    "timing": {
+      "arm_wall_s": 87.53100000000268,
+      "child_process_s": 85.28099999998813,
+      "invocation_aggregate_wall_s": 87.63999999999942,
+      "invocation_record_wall_clock_utc": "2026-10-13T01:33:09Z",
+      "state_files_saved": true,
+      "threads_intra_inter": [
+        24,
+        24
+      ]
+    },
+    "updates_done": 3000
+  },
+  "schema": "synthetic-comparison-stage-summary-v1",
+  "strict_near_identity": {
+    "criteria": "eval mode, finite, RSE <= 0.01 and cosine >= 0.99 (frozen UID config)",
+    "r_fit": "COMPLETED_FIT_FAIL",
+    "u_fit": "COMPLETED_FIT_FAIL"
+  },
+  "timing": {
+    "arm_wall_ratio_u_over_r": 5.784739120997008,
+    "background_load": "not controlled and not recorded; same machine, interpreter, torch build and 24/24 threads; the two invocations started at the UTC times recorded above (different calendar days)",
+    "scope": "arm_wall_s = supervisor time.monotonic() from immediately before the arm's start record is written until the child process has exited (popen.wait). It includes the child's interpreter start, imports, CPU setup, model build, input and baselines, the step-0 measurement, the 3,000 updates with curve-point measurements, the final evaluation and the child record; for R-FIT also writing and reading back two state files. It excludes package verification (charged to the invocation aggregate) and the end record."
+  },
+  "u_fit": {
+    "baselines": {
+      "scalar_mean_mse": 0.22193865837012977,
+      "zero_mse": 0.22200250658157333
+    },
+    "final_eval": {
+      "cosine": 0.8540472264633736,
+      "mse": 0.06054920855612749,
+      "norm_ratio": 0.9002832321336198,
+      "recomputed_from_sums_equal": true,
+      "rse": 0.2727411031905583
+    },
+    "final_train": {
+      "cosine": 0.8544958598853383,
+      "rse": 0.2720868857639887
+    },
+    "input_sha256": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722",
+    "memory": {
+      "os_peak_wset_bytes": 824033280,
+      "supervisor_sampled_max_rss_bytes": 822517760
+    },
+    "parameters": 685507,
+    "status": "COMPLETED_FIT_FAIL",
+    "status_end_record": "COMPLETED_FIT_FAIL",
+    "timing": {
+      "arm_wall_s": 506.3440000000046,
+      "child_process_s": 503.9380000000019,
+      "invocation_aggregate_wall_s": 510.515999999996,
+      "invocation_record_wall_clock_utc": "2026-10-12T11:53:29Z",
+      "state_files_saved": false,
+      "threads_intra_inter": [
+        24,
+        24
+      ]
+    },
+    "updates_done": 3000
+  },
+  "verified": {
+    "frozen_ep_files": {
+      "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\exploratory_progression_20261012\\POLICY.md": "fe14a225d16fed0373314eb89291035a2c8175bb17f37a7a03cf21c8e7fca592",
+      "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\exploratory_progression_20261012\\ep_classify.py": "f7efd10029e8e50071b9a5013b23eefb1d2e3707d07d05e80fda4a690e160cd1"
+    },
+    "r1_final_list": {
+      "entries": 42,
+      "mismatching": 0,
+      "path": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\uid_20261012_v2_r1_execution\\FINAL_ARTIFACTS_SHA256.txt"
+    },
+    "urc_evidence_inventory": {
+      "entries": 38,
+      "mismatching": 0,
+      "path": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\urc_20261013_v1_execution\\EVIDENCE_INVENTORY_SHA256.txt"
+    },
+    "urc_sealed_list": {
+      "entries": 15,
+      "mismatching": 0,
+      "path": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\urc_20261013_v1_execution\\analysis\\FINAL_ARTIFACTS_SHA256.txt"
+    }
+  }
+}

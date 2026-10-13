@@ -1,0 +1,285 @@
+{
+  "arms": {
+    "U-CHECK": {
+      "arm_wall_s": 4.014999999999418,
+      "baseline_shared_mean_rse": 0.9997123986912279,
+      "baseline_zero_rse": 1.0,
+      "child_sampled_max_rss_bytes": 636383232,
+      "child_wall_s": 1.360000000000582,
+      "curve_points": [
+        1,
+        100,
+        200,
+        300,
+        400,
+        500
+      ],
+      "curve_summary": {
+        "1": {
+          "pre_update_train_cosine": 0.4704701860004529,
+          "pre_update_train_loss": 0.25039780139923096,
+          "pre_update_train_rse": 1.1279052762379642
+        },
+        "100": {
+          "pre_update_train_cosine": 0.9999510111582268,
+          "pre_update_train_loss": 2.62354951701127e-05,
+          "pre_update_train_rse": 0.00011817657492411193
+        },
+        "500": {
+          "pre_update_train_cosine": 1.0000000000000002,
+          "pre_update_train_loss": 1.588186776101813e-20,
+          "pre_update_train_rse": 7.15391371276362e-20
+        }
+      },
+      "final_eval": {
+        "cosine": 1.0000000000000002,
+        "max_rel_diff_vs_recorded": 0.0,
+        "norm_ratio": 1.0000000000000366,
+        "passes_frozen_criteria": true,
+        "q_n": 7.15391371276362e-20,
+        "rse": 7.15391371276362e-20,
+        "sse_identity_rel_diff": 1.0
+      },
+      "final_train": {
+        "cosine": 1.0000000000000002,
+        "max_rel_diff_vs_recorded": 0.0,
+        "norm_ratio": 1.0000000000000366,
+        "passes_frozen_criteria": true,
+        "q_n": 7.15391371276362e-20,
+        "rse": 7.15391371276362e-20,
+        "sse_identity_rel_diff": 1.0
+      },
+      "grad_l2_first_last": {
+        "all": [
+          0.9178255527884724,
+          3.592504440368002e-11
+        ]
+      },
+      "grad_nonfinite_total": 0,
+      "grad_zero_groups": [],
+      "guard_sampled_max_rss_bytes": 638971904,
+      "guard_samples": 15,
+      "os_peak_wset_bytes": 637665280,
+      "param_change_total": {
+        "all": {
+          "delta_l2": 0.6555795236352046,
+          "numel": 2,
+          "numel_changed": 2,
+          "ref_l2": 0.6784621670568123
+        }
+      },
+      "status_child": "COMPLETED_PASS",
+      "status_ledger": "COMPLETED_PASS",
+      "step0_eval": {
+        "cosine": 0.4704701860004529,
+        "max_rel_diff_vs_recorded": 0.0,
+        "norm_ratio": 1.0614418199671476,
+        "passes_frozen_criteria": false,
+        "q_n": 1.1279052762379642,
+        "rse": 1.1279052762379642,
+        "sse_identity_rel_diff": 2.2169185017306908e-16
+      },
+      "step0_train": {
+        "cosine": 0.4704701860004529,
+        "max_rel_diff_vs_recorded": 0.0,
+        "norm_ratio": 1.0614418199671476,
+        "passes_frozen_criteria": false,
+        "q_n": 1.1279052762379642,
+        "rse": 1.1279052762379642,
+        "sse_identity_rel_diff": 2.2169185017306908e-16
+      },
+      "train_minus_eval_output_sse": 0.0,
+      "updates_done": 500,
+      "verdict_matches_record": true,
+      "verdict_rederived": "COMPLETED_PASS"
+    },
+    "U-FIT": {
+      "arm_wall_s": 506.3440000000046,
+      "baseline_shared_mean_rse": 0.9997123986912279,
+      "baseline_zero_rse": 1.0,
+      "child_sampled_max_rss_bytes": 819458048,
+      "child_wall_s": 503.9380000000019,
+      "curve_min_pre_update_loss": {
+        "loss": 0.060382165014743805,
+        "note": "reported only; the protocol uses the final state, never the best point",
+        "update": 3000
+      },
+      "curve_points": [
+        1,
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000,
+        1100,
+        1200,
+        1300,
+        1400,
+        1500,
+        1600,
+        1700,
+        1800,
+        1900,
+        2000,
+        2100,
+        2200,
+        2300,
+        2400,
+        2500,
+        2600,
+        2700,
+        2800,
+        2900,
+        3000
+      ],
+      "curve_summary": {
+        "1": {
+          "pre_update_train_cosine": -0.02574710927985225,
+          "pre_update_train_loss": 0.4168676733970642,
+          "pre_update_train_rse": 1.8777610933333893
+        },
+        "100": {
+          "pre_update_train_cosine": 0.6929797069847312,
+          "pre_update_train_loss": 0.11740496754646301,
+          "pre_update_train_rse": 0.5288452200511666
+        },
+        "500": {
+          "pre_update_train_cosine": 0.778388645544622,
+          "pre_update_train_loss": 0.0889991819858551,
+          "pre_update_train_rse": 0.40089268264817396
+        },
+        "1000": {
+          "pre_update_train_cosine": 0.806213943429695,
+          "pre_update_train_loss": 0.07788446545600891,
+          "pre_update_train_rse": 0.3508269683728274
+        },
+        "1500": {
+          "pre_update_train_cosine": 0.818321153128173,
+          "pre_update_train_loss": 0.07334090024232864,
+          "pre_update_train_rse": 0.33036070025562314
+        },
+        "2000": {
+          "pre_update_train_cosine": 0.8258562837556419,
+          "pre_update_train_loss": 0.07074879854917526,
+          "pre_update_train_rse": 0.3186847269764734
+        },
+        "2500": {
+          "pre_update_train_cosine": 0.8481512696465731,
+          "pre_update_train_loss": 0.06246159225702286,
+          "pre_update_train_rse": 0.28135533307177235
+        },
+        "3000": {
+          "pre_update_train_cosine": 0.8544620782938966,
+          "pre_update_train_loss": 0.060382165014743805,
+          "pre_update_train_rse": 0.2719886690109984
+        }
+      },
+      "final_eval": {
+        "cosine": 0.8540472264633736,
+        "max_rel_diff_vs_recorded": 0.0,
+        "norm_ratio": 0.9002832321336198,
+        "passes_frozen_criteria": false,
+        "q_n": 0.2727411031905583,
+        "rse": 0.2727411031905583,
+        "sse_identity_rel_diff": 8.021947517666629e-16
+      },
+      "final_train": {
+        "cosine": 0.8544958598853383,
+        "max_rel_diff_vs_recorded": 0.0,
+        "norm_ratio": 0.9019306606667524,
+        "passes_frozen_criteria": false,
+        "q_n": 0.2720868857639887,
+        "rse": 0.2720868857639887,
+        "sse_identity_rel_diff": 6.892487857519936e-16
+      },
+      "grad_l2_first_last": {
+        "decoder.core": [
+          0.08623067867087392,
+          0.007838025755297724
+        ],
+        "decoder.sampling": [
+          1.8455009320057383,
+          0.1286985623630821
+        ],
+        "encoder.core": [
+          0.08666662988347744,
+          0.008524293357126287
+        ],
+        "encoder.sampling": [
+          1.8197436098705368,
+          0.19083370773635894
+        ]
+      },
+      "grad_nonfinite_total": 0,
+      "grad_zero_groups": [],
+      "guard_sampled_max_rss_bytes": 822517760,
+      "guard_samples": 1879,
+      "os_peak_wset_bytes": 824033280,
+      "param_change_total": {
+        "decoder.core": {
+          "delta_l2": 1.9415592383886289,
+          "numel": 317964,
+          "numel_changed": 317963,
+          "ref_l2": 38.05845453793808
+        },
+        "decoder.sampling": {
+          "delta_l2": 0.9142036105285546,
+          "numel": 24746,
+          "numel_changed": 24746,
+          "ref_l2": 10.273858941296906
+        },
+        "encoder.core": {
+          "delta_l2": 2.0162137597311984,
+          "numel": 317964,
+          "numel_changed": 317963,
+          "ref_l2": 38.015203922513685
+        },
+        "encoder.sampling": {
+          "delta_l2": 0.5232767688934256,
+          "numel": 24833,
+          "numel_changed": 24833,
+          "ref_l2": 12.999809210476185
+        }
+      },
+      "status_child": "COMPLETED_FIT_FAIL",
+      "status_ledger": "COMPLETED_FIT_FAIL",
+      "step0_eval": {
+        "cosine": -0.017032150079659105,
+        "max_rel_diff_vs_recorded": 0.0,
+        "norm_ratio": 0.06188428979420408,
+        "passes_frozen_criteria": false,
+        "q_n": 1.0059377103460292,
+        "rse": 1.0059377103460292,
+        "sse_identity_rel_diff": 0.0
+      },
+      "step0_train": {
+        "cosine": -0.02574710927985225,
+        "max_rel_diff_vs_recorded": 0.0,
+        "norm_ratio": 0.9114956591476551,
+        "passes_frozen_criteria": false,
+        "q_n": 1.8777610933333893,
+        "rse": 1.8777610933333893,
+        "sse_identity_rel_diff": 0.0
+      },
+      "train_minus_eval_output_sse": 0.10907171718453804,
+      "updates_done": 3000,
+      "verdict_matches_record": true,
+      "verdict_rederived": "COMPLETED_FIT_FAIL"
+    }
+  },
+  "criteria": {
+    "max_rse": 0.01,
+    "min_cosine": 0.99
+  },
+  "invocation": {
+    "aggregate_wall_s": 510.515999999996,
+    "evidence_bytes": 83280,
+    "evidence_within_cap": true,
+    "interrupted": false
+  }
+}

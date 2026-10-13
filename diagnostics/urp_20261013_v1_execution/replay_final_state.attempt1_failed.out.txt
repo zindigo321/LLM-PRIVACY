@@ -1,0 +1,35 @@
+command: D:/conda_envs/cgfedllm/python.exe -B replay_final_state.py
+start: 2026-10-13T18:59:40.414+08:00
+end: 2026-10-13T19:00:00.166+08:00
+exit_code: 1
+
+python.exe : Traceback (most recent call last):
+At line:1 char:611
++ ... zzz'); $o = & 'D:/conda_envs/cgfedllm/python.exe' -B replay_final_sta ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "D:\projects-cd\cg-fedllm-reproduction\diagnostics\urp_20261013_v1_execution\replay_final_state.py", line 118, i
+n <module>
+    sys.exit(main())
+             ^^^^^^
+  File "D:\projects-cd\cg-fedllm-reproduction\diagnostics\urp_20261013_v1_execution\replay_final_state.py", line 100, i
+n main
+    report["module_sha256"] = {n: sha(Path(sys.modules[n].__file__)) for n in local}
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects-cd\cg-fedllm-reproduction\diagnostics\urp_20261013_v1_execution\replay_final_state.py", line 100, i
+n <dictcomp>
+    report["module_sha256"] = {n: sha(Path(sys.modules[n].__file__)) for n in local}
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects-cd\cg-fedllm-reproduction\diagnostics\urp_20261013_v1_execution\replay_final_state.py", line 30, in
+ sha
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^
+  File "D:\conda_envs\cgfedllm\Lib\pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "D:\conda_envs\cgfedllm\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '_classes.py'

@@ -1,0 +1,22 @@
+command: D:/conda_envs/cgfedllm/python.exe -B urc_supervise.py --status
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\urc_20261013_v1
+start: 2026-10-13T09:11:27+08:00
+end: 2026-10-13T09:11:27+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+{
+  "arms": {
+    "R-FIT": "NOT_STARTED"
+  },
+  "invocations": 0,
+  "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/urc_20261013_v1/scientific_ledger_mirror",
+  "ledger_primary": "D:\\cgfed-runs\\urc_20261013_v1\\ledger",
+  "protocol_id": "URC-20261013-v1",
+  "records": [],
+  "roots_exist": {
+    "mirror": false,
+    "primary": false
+  },
+  "run_root_exists": false,
+  "starts": 0
+}

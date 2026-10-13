@@ -1,0 +1,40 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA checks/test_r1_metrics.py
+exit_code: 1
+.....F......                                                             [100%]
+================================== FAILURES ===================================
+________________________ test_scaled_prediction[1.05] _________________________
+
+x = tensor([[[[ 0.4248, -0.0745, -0.3985, -0.4851,  0.4557, -0.7524,  0.3413,
+            0.5322],
+          [ 0.4625, -0....
+           -0.4880],
+          [-0.7363,  0.2348,  0.2330, -0.2920,  0.0076, -0.1846,  0.3610,
+           -0.2319]]]])
+a = 1.05
+
+    @pytest.mark.parametrize("a", [0.0, 0.5, 0.95, 1.05, 2.0, -1.0])
+    def test_scaled_prediction(x, a):
+        m = C.metrics(a * x, x)
+>       assert m["rse"] == pytest.approx((a - 1.0) ** 2, rel=1e-6, abs=1e-12)
+E       assert 0.0024999955567738775 == 0.00250000000...0044 ± 2.5e-09
+E         
+E         comparison failed
+E         Obtained: 0.0024999955567738775
+E         Expected: 0.0025000000000000044 ± 2.5e-09
+
+checks\test_r1_metrics.py:42: AssertionError
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_r1_metrics.py::test_identity_prediction
+PASSED checks/test_r1_metrics.py::test_zero_prediction
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[0.0]
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[0.5]
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[0.95]
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[2.0]
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[-1.0]
+PASSED checks/test_r1_metrics.py::test_threshold_edges
+PASSED checks/test_r1_metrics.py::test_nonfinite_prediction_fails
+PASSED checks/test_r1_metrics.py::test_independent_recomputation_from_recorded_reductions
+PASSED checks/test_r1_metrics.py::test_shared_scalar_mean_baseline_is_one_scalar
+FAILED checks/test_r1_metrics.py::test_scaled_prediction[1.05] - assert 0.002...
+1 failed, 11 passed in 1.64s

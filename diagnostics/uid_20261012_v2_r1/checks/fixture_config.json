@@ -1,0 +1,22 @@
+{
+  "protocol_id": "UID-R1-ENGINEERING-FIXTURE",
+  "note": "ENGINEERING FIXTURE ONLY. Not a scientific configuration: other seeds, other input, a 16x16 grid and a much smaller Uformer AE; used to test the r1 execution machinery.",
+  "model_init_seed": 7,
+  "input": {"data_seed": 4242, "shape": [1, 1, 16, 16], "scale": 1.0, "offset": -0.5},
+  "criteria": {"max_rse": 0.01, "min_cosine": 0.99},
+  "u_check": {
+    "model": {"in_channels": 1, "out_channels": 1},
+    "optimizer": {"name": "Adam", "lr": 0.05, "betas": [0.9, 0.999], "eps": 1e-08, "weight_decay": 0},
+    "max_updates": 40
+  },
+  "u_fit": {
+    "model": {
+      "input_hw": [16, 16], "in_channels": 1, "stem_kernel": 3, "stem_channels": 1,
+      "down_channels": [2, 4, 8], "down_strides": [1, 1, 2], "final_kernel": 7,
+      "core_layers": 1, "core_depth": 2, "num_heads": 2, "win_size": 4, "mlp_ratio": 2.0,
+      "qkv_bias": true, "shift_flag": true
+    },
+    "optimizer": {"name": "Adam", "lr": 0.001, "betas": [0.9, 0.999], "eps": 1e-08, "weight_decay": 0},
+    "max_updates": 6
+  }
+}

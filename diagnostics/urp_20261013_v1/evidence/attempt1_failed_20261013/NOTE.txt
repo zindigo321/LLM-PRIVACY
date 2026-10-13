@@ -1,0 +1,12 @@
+Attempt 1 of the final check run (13:48:48-13:49:28 +08:00), preserved unchanged except for this note and the
+directory name (originally evidence/final_20261013). 7 of 8 steps exit 0; test_urp_lifecycle exit 1: 5 passed, 1
+failed with ModuleNotFoundError: No module named 'uid_common' in
+test_completed_arm_records_both_spaces_states_and_measurements.
+
+Cause (test-only): the test imported uid_common after inserting only the URP directory into sys.path. In the earlier
+dev run (pytest with test_urp_lifecycle.py and test_urp_analyze.py in one process) test_urp_analyze.py had already
+imported urp_control at collection time, which appends the frozen UID and r1 directories; alone, as here, it did not.
+
+Fix: test_urp_lifecycle.py imports urp_control at module level (as test_urp_analyze.py does) and calls configure_cpu
+before torch work; test_urp_control.py asserts that cg_fedllm.compression.normalization comes from this repository's
+src. No runtime file (urp_*.py, configs, input) changed. The full check set was rerun as evidence/final2_20261013.

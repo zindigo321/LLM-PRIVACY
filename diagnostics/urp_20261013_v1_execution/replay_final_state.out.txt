@@ -1,0 +1,128 @@
+{
+  "all_bit_identical": true,
+  "cg_fedllm_imported": false,
+  "cpu": {
+    "cuda_available": false,
+    "deterministic_algorithms": true,
+    "inter_op_threads": 24,
+    "intra_op_threads": 24,
+    "torch_version": "2.14.0+cu130"
+  },
+  "eval_copy_unchanged_by_forward": true,
+  "final_state_file_sha256": "f8a51b668e8890fc8012e582474802b036acf056f25618cb63a4e2c79f1f3f3a",
+  "grad_enabled_during_forwards": false,
+  "input": {
+    "normalized_sha256_equal": true,
+    "original_sha256_equal": true,
+    "patch_file_sha256_equal": true
+  },
+  "loaded_state_equals_recorded_final": true,
+  "modes": {
+    "eval": {
+      "file_metadata_point": "final",
+      "loaded_state_sha256": "a3f1bf91f46faf09b0f461bf9641d4cf87a2748235f9c37abcc8a2d9fa907d3b",
+      "normalized": {
+        "bit_identical": true,
+        "differences": {},
+        "replayed": {
+          "cosine": 0.8981045587115517,
+          "dot": 13.65332197819296,
+          "finite": true,
+          "max_abs_err": 0.3529554307460785,
+          "mse": 0.0032217943154888165,
+          "n": 1024,
+          "norm_ratio": 0.8914325694763806,
+          "pred_energy": 13.551891898165847,
+          "rse": 0.1934527170618834,
+          "sse": 3.299117379060548,
+          "target_energy": 17.053869437280618
+        }
+      },
+      "original": {
+        "bit_identical": true,
+        "differences": {},
+        "replayed": {
+          "cosine": 0.8981045580444489,
+          "dot": 0.0033875790912851105,
+          "finite": true,
+          "max_abs_err": 0.005559624172747135,
+          "mse": 7.99371986840454e-07,
+          "n": 1024,
+          "norm_ratio": 0.8914325708689224,
+          "pred_energy": 0.0033624128853565385,
+          "rse": 0.19345271823265606,
+          "sse": 0.0008185569145246249,
+          "target_energy": 0.004231302211738306
+        }
+      },
+      "state_changed_by_forward": false,
+      "state_sha256_after_forward": "a3f1bf91f46faf09b0f461bf9641d4cf87a2748235f9c37abcc8a2d9fa907d3b"
+    },
+    "train": {
+      "file_metadata_point": "final",
+      "loaded_state_sha256": "a3f1bf91f46faf09b0f461bf9641d4cf87a2748235f9c37abcc8a2d9fa907d3b",
+      "normalized": {
+        "bit_identical": true,
+        "differences": {},
+        "replayed": {
+          "cosine": 0.899373500622392,
+          "dot": 13.73214878323337,
+          "finite": true,
+          "max_abs_err": 0.34920477867126465,
+          "mse": 0.003183340956358285,
+          "n": 1024,
+          "norm_ratio": 0.8953142136152933,
+          "pred_energy": 13.670169268497002,
+          "rse": 0.1911437841892307,
+          "sse": 3.2597411393108837,
+          "target_energy": 17.053869437280618
+        }
+      },
+      "original": {
+        "bit_identical": true,
+        "differences": {},
+        "replayed": {
+          "cosine": 0.8993734990926799,
+          "dot": 0.0034071371112327086,
+          "finite": true,
+          "max_abs_err": 0.005500545725226402,
+          "mse": 7.898311800527734e-07,
+          "n": 1024,
+          "norm_ratio": 0.8953142140820148,
+          "pred_energy": 0.003391759139101152,
+          "rse": 0.1911437869245869,
+          "sse": 0.00080878712837404,
+          "target_energy": 0.004231302211738306
+        }
+      },
+      "state_changed_by_forward": true,
+      "state_sha256_after_forward": "b13cfcd4d2e2ed27974ce10a9426470a550f9ff82a31235ed2de68913a8835b6"
+    }
+  },
+  "module_sha256": {
+    "__mp_main__": "5d4242e14b4c1642349aacd48ab16613648c6668f7fc7b84cb65fdf3acdcbccb",
+    "uformer_ae": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606",
+    "uformer_blocks": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747",
+    "uid_common": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230",
+    "uid_r1_control": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074",
+    "urp_control": "6d3dba01015dd2edf09717d6b7856f03ef0683083d872ff486f9a0eef1ffd076"
+  },
+  "optimizer_created": false,
+  "recorded_local": "2026-10-13T19:01:38+0800",
+  "repository_modules_imported": [
+    "__mp_main__",
+    "uformer_ae",
+    "uformer_blocks",
+    "uid_common",
+    "uid_r1_control",
+    "urp_control"
+  ],
+  "run_root_arm_files_unchanged": true,
+  "train_copy_changed_as_recorded": true,
+  "train_minus_eval_output_sse_normalized": {
+    "bit_identical": true,
+    "recorded": 0.03580515209946986,
+    "replayed": 0.03580515209946986
+  }
+}
+replay_final_state.json 4397 bytes sha256=8e1b10306902c4256482c539c2c1c5b59e9e8a32ac5b22ccfaed08adae03683f

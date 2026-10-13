@@ -1,0 +1,11 @@
+command: D:/conda_envs/cgfedllm/python.exe -B input/prepare_input.py
+cwd: D:/projects-cd/cg-fedllm-reproduction/diagnostics/urp_20261013_v1
+env: CUDA_VISIBLE_DEVICES=-1 HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH unset
+prepare_input.py sha256: 4ccef2ca9dc7c871eb7b0d9046460d93d958f66986426a7ee8a3dd93b315604b
+start: 2026-10-13T11:54:52+0800
+end: 2026-10-13T11:54:57+0800
+exit_code: 0
+--- output (stdout+stderr) ---
+input_record.json 14943 bytes sha256=bec71fdac597a6b340457e5330349da9f47f2d4d777757fbfe948126ba67b6c1
+patch_x.safetensors 4552 bytes sha256=957704bf86fcce6d0b9c90b715e1a62435bbb96df65864d961cf23a3c8ae75fd
+{"usable": true, "degeneracy_checks": {"all_finite": true, "target_energy_positive": true, "scalar_mean_mse_positive": true, "normalized_max_abs_below_1": true}, "coordinates": {"tile": 32, "grid": [64, 48], "tile_index": [32, 24], "rows": [1024, 1056], "cols": [768, 800]}}

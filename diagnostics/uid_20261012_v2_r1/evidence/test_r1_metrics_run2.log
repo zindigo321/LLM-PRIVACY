@@ -1,0 +1,18 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA checks/test_r1_metrics.py
+exit_code: 0
+............                                                             [100%]
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_r1_metrics.py::test_identity_prediction
+PASSED checks/test_r1_metrics.py::test_zero_prediction
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[0.0]
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[0.5]
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[0.95]
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[1.05]
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[2.0]
+PASSED checks/test_r1_metrics.py::test_scaled_prediction[-1.0]
+PASSED checks/test_r1_metrics.py::test_threshold_edges
+PASSED checks/test_r1_metrics.py::test_nonfinite_prediction_fails
+PASSED checks/test_r1_metrics.py::test_independent_recomputation_from_recorded_reductions
+PASSED checks/test_r1_metrics.py::test_shared_scalar_mean_baseline_is_one_scalar
+12 passed in 1.76s

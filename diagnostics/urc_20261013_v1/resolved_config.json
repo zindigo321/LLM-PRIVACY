@@ -1,0 +1,125 @@
+{
+  "arm": "R-FIT",
+  "cpu": {
+    "inter_op_threads": 24,
+    "intra_op_threads": 24
+  },
+  "criteria": {
+    "max_rse": 0.01,
+    "min_cosine": 0.99
+  },
+  "execution": {
+    "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/urc_20261013_v1/scientific_ledger_mirror",
+    "python_executable": "D:/conda_envs/cgfedllm/python.exe",
+    "run_root": "D:/cgfed-runs/urc_20261013_v1"
+  },
+  "expected": {
+    "cpu_config": {
+      "inter_op_threads": 24,
+      "intra_op_threads": 24
+    },
+    "input_dtype": "torch.float32",
+    "input_sha256": "fc5e1283d1a44cb3bedaf89cff96818b1db0116e036e7cfad75c4a121138d722",
+    "input_shape": [
+      1,
+      1,
+      32,
+      32
+    ],
+    "max_seconds": 1800,
+    "max_updates": 3000,
+    "model_init_seed": 1,
+    "optimizer": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "lr": 0.0002,
+      "name": "Adam",
+      "weight_decay": 0
+    },
+    "shared_scalar_mean_mse": 0.22193865837012977,
+    "target_energy": 227.3305667395311,
+    "torch_version": "2.14.0+cu130",
+    "zero_prediction_mse": 0.22200250658157333
+  },
+  "input": {
+    "data_seed": 20261012,
+    "note": "x = scale * rand(shape) + offset, range [-0.8, 0.8]",
+    "offset": -0.8,
+    "scale": 1.6,
+    "shape": [
+      1,
+      1,
+      32,
+      32
+    ]
+  },
+  "limits": {
+    "aggregate_seconds": 7200.0,
+    "curve_every": 100,
+    "evidence_cap_bytes": 536870912,
+    "max_invocations": 1,
+    "max_training_starts": 1,
+    "rss_available_fraction": 0.5,
+    "rss_cap_bytes": 4294967296
+  },
+  "max_seconds": 1800.0,
+  "max_updates": 3000,
+  "mechanics": {
+    "end_margin_s": 20,
+    "eval_reserve_s": 60,
+    "interrupt_grace_s": 20,
+    "kill_wait_s": 10,
+    "poll_interval_s": 0.25,
+    "torch_version": "2.14.0+cu130"
+  },
+  "model": {
+    "down_channels": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "final_kernel": 7,
+    "in_channels": 1,
+    "input_hw": [
+      32,
+      32
+    ],
+    "num_res_blocks": 3,
+    "stem_channels": 1,
+    "stem_kernel": 3
+  },
+  "model_init_seed": 1,
+  "optimizer": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "lr": 0.0002,
+    "name": "Adam",
+    "weight_decay": 0
+  },
+  "protocol_id": "URC-20261013-v1",
+  "reference": {
+    "arm": "U-FIT",
+    "child_record": "D:/cgfed-runs/uid_20261012_v2_r1/arms/U-FIT/child_record.json",
+    "child_record_sha256": "d8150ec1b8a1ff61ffee1c9e7bf42114060794894305b3c66cf24228faff3ecb",
+    "execution": "../uid_20261012_v2_r1/execution_r1.json",
+    "execution_sha256": "7aa1ef61e2f231d19a7a0fff3483f480de6611215f6c027aed10014d23cfc52f",
+    "final_artifacts_list": "../uid_20261012_v2_r1_execution/FINAL_ARTIFACTS_SHA256.txt",
+    "frozen_config": "../uid_20261012_v2/config.json",
+    "frozen_config_canonical_sha256": "bb0111fab6310ab5430d931b781fc3c97cdb928da773d0cf8e71ea532fb4e5b3",
+    "frozen_config_raw_sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd",
+    "frozen_manifest_sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca",
+    "protocol_id": "UID-20261012-v2",
+    "r1_manifest_sha256": "9d3aba9a8d5d1157325959a3efeec15c2f872a8e8267cc8f14668b42f01a8044",
+    "revision_id": "UID-20261012-v2-r1"
+  },
+  "variant": "resnet3_stride1_diagnostic"
+}

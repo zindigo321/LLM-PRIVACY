@@ -1,0 +1,193 @@
+{
+  "built_utc": "2026-10-12T11:25:09Z",
+  "dependencies": {
+    "check-only": {
+      "einops-wheel (zipimport)": "0.8.1",
+      "pytest": "9.1.1",
+      "ruff": "0.16.9"
+    },
+    "numpy": "2.4.6",
+    "psutil": "7.2.2",
+    "torch": "2.14.0+cu130"
+  },
+  "files": [
+    {
+      "bytes": 14141,
+      "path": "uid_r1_supervise.py",
+      "role": "runtime: scientific entry point (supervisor)",
+      "sha256": "7ca45964773ce1f3199dbc98d3a010e136e9e26736a14d6b461900aea3efc2aa"
+    },
+    {
+      "bytes": 14072,
+      "path": "uid_r1_child.py",
+      "role": "runtime: per-arm child process",
+      "sha256": "9fec077c56467442cd556dc37ea257f379150dc7f80a685a0b29fc76c78e6dbe"
+    },
+    {
+      "bytes": 15959,
+      "path": "uid_r1_control.py",
+      "role": "runtime: ledger, limits, plan, package identity",
+      "sha256": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074"
+    },
+    {
+      "bytes": 5965,
+      "path": "uid_r1_measure.py",
+      "role": "runtime: isolated measurements, gradient / parameter evidence, RSS sampler",
+      "sha256": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760"
+    },
+    {
+      "bytes": 644,
+      "path": "execution_r1.json",
+      "role": "runtime: execution mechanics only (no scientific field)",
+      "sha256": "7aa1ef61e2f231d19a7a0fff3483f480de6611215f6c027aed10014d23cfc52f"
+    },
+    {
+      "bytes": 2633,
+      "path": "../uid_20261012_v2/config.json",
+      "role": "runtime: frozen scientific config (unchanged)",
+      "sha256": "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd"
+    },
+    {
+      "bytes": 9691,
+      "path": "../uid_20261012_v2/uid_common.py",
+      "role": "runtime: frozen helpers (unchanged)",
+      "sha256": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230"
+    },
+    {
+      "bytes": 8544,
+      "path": "../uid_20261012_v2/uformer_ae.py",
+      "role": "runtime: frozen model (unchanged)",
+      "sha256": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606"
+    },
+    {
+      "bytes": 10213,
+      "path": "../uid_20261012_v2/uformer_blocks.py",
+      "role": "runtime: frozen vendored blocks (unchanged)",
+      "sha256": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747"
+    },
+    {
+      "bytes": 2172,
+      "path": "../uid_20261012_v2/manifest.json",
+      "role": "runtime: frozen parent manifest (verified at launch)",
+      "sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca"
+    },
+    {
+      "bytes": 8988,
+      "path": "../uid_20261012_v2/protocol.md",
+      "role": "parent protocol (unchanged)",
+      "sha256": "de24e62ffc32fc72bfb79b3d32e32bda5f9d21d1b2b1432c735d6ba4f3c6dae0"
+    },
+    {
+      "bytes": 4732,
+      "path": "checks/check_resnet_sampling.py",
+      "role": "engineering check (fixtures only)",
+      "sha256": "368db0569294b4fd637a33eeedc6b2110635c49945b4abd6c1cafb7e34634957"
+    },
+    {
+      "bytes": 11155,
+      "path": "checks/check_upstream_correspondence.py",
+      "role": "engineering check (fixtures only)",
+      "sha256": "4f7c3713361e765cbe7058798452f84d0d5a7de27f9d825adf1638d2050aa7d6"
+    },
+    {
+      "bytes": 2084,
+      "path": "checks/check_upstream_negative_control.py",
+      "role": "engineering check (fixtures only)",
+      "sha256": "9d720f0472cc1dda9c7b4ccf96832d87d892d8e43f4245db99b786f4db6902d1"
+    },
+    {
+      "bytes": 1055,
+      "path": "checks/fixture_config.json",
+      "role": "engineering check (fixtures only)",
+      "sha256": "301481fa8ef7269e993d9293cc6ad0527427a8b5ce69ba6ee3b1e1ccf26c7feb"
+    },
+    {
+      "bytes": 1478,
+      "path": "checks/fixture_run.py",
+      "role": "engineering check (fixtures only)",
+      "sha256": "14436f2d378a44ab8c985b52d1a1fdedf466023be6a68dd9ead45c00415f9574"
+    },
+    {
+      "bytes": 3045,
+      "path": "checks/probe_cpu_cost.py",
+      "role": "engineering check (fixtures only)",
+      "sha256": "94c98f6d551f64cfdf00efe841e4fc277029a6ba7aa0c47d365f06166b32fe14"
+    },
+    {
+      "bytes": 2777,
+      "path": "checks/run_all_checks.ps1",
+      "role": "engineering check (fixtures only)",
+      "sha256": "50ab21fbd0b678fae6f9189f146afa0923404e0ef7903ea621e38054976be10d"
+    },
+    {
+      "bytes": 941,
+      "path": "checks/summarize_correspondence.py",
+      "role": "engineering check (fixtures only)",
+      "sha256": "66cb61db0b27f6d303b27300ca0a59b660ad252e1101d614aa1b303acdae37cb"
+    },
+    {
+      "bytes": 6852,
+      "path": "checks/test_r1_control.py",
+      "role": "engineering check (fixtures only)",
+      "sha256": "37526fddfa7437c8cba357f84bc5522e85929a828068a62d94e2c933fb2fbe5a"
+    },
+    {
+      "bytes": 11820,
+      "path": "checks/test_r1_lifecycle.py",
+      "role": "engineering check (fixtures only)",
+      "sha256": "f97e04dfafeb83029d58580e563ab420e61638a735a79c317b2d1b781cc23ab8"
+    },
+    {
+      "bytes": 4777,
+      "path": "checks/test_r1_measure.py",
+      "role": "engineering check (fixtures only)",
+      "sha256": "15d4183c63d2d87912c3182417d258b7a59af03e2bd46e89c9c833867b0a88b1"
+    },
+    {
+      "bytes": 3442,
+      "path": "checks/test_r1_metrics.py",
+      "role": "engineering check (fixtures only)",
+      "sha256": "686a924e894f9e765155d204837027a60e7874d7089d3b4685229f1050dc0cb3"
+    },
+    {
+      "bytes": 3329,
+      "path": "checks/build_manifest_r1.py",
+      "role": "manifest builder",
+      "sha256": "5a5de9f421276423610baded05b7cebe55f7ba15d806c23169aebdd81c5b66f7"
+    },
+    {
+      "bytes": 8307,
+      "path": "review_package/REVISION_NOTE.md",
+      "role": "review document",
+      "sha256": "56e964232e04e0875e0be218c8279bc396682319477b8986a6736a478cd62360"
+    },
+    {
+      "bytes": 3793,
+      "path": "review_package/CHANGELOG.md",
+      "role": "review document",
+      "sha256": "cd31486dffcb7a16d68290c1ed073f86596776320ae414fb423dfc69edb9cf1c"
+    },
+    {
+      "bytes": 4151,
+      "path": "review_package/protocol_addendum_r1.md",
+      "role": "review document",
+      "sha256": "56daf102790d2a35045396bc6175ab5715b85bc44fb10824a340c893f3bf77d1"
+    },
+    {
+      "bytes": 2760,
+      "path": "review_package/week_plan.md",
+      "role": "review document",
+      "sha256": "86cbcfcc8511cfaadddbb3a229c2c9980d92899829ea462c8f44b19b6eefa07d"
+    },
+    {
+      "bytes": 73537,
+      "path": "review_package/runner_diff.patch",
+      "role": "review document",
+      "sha256": "e3a228e6ef23c1e0e01cd685caf24bfd7235117cd2fe4e4a391bebe2fa2b2866"
+    }
+  ],
+  "parent_manifest_sha256": "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca",
+  "parent_protocol_id": "UID-20261012-v2",
+  "python": "D:\\conda_envs\\cgfedllm\\python.exe",
+  "revision_id": "UID-20261012-v2-r1"
+}

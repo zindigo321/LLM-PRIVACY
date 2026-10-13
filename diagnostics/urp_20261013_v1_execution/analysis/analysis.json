@@ -1,0 +1,244 @@
+{
+  "does_not_establish": [
+    "compression (latent [64, 32, 32] is a 64:1 element expansion of the 32 x 32 patch)",
+    "generalization to other patches, other snapshots or unseen snapshots",
+    "reconstruction of the whole snapshot, or any property of the Phi tensor outside the patch",
+    "statistical significance or seed stability (one seed, one start)",
+    "superiority of Uformer or of any architecture; downstream or FAF utility"
+  ],
+  "evidence": {
+    "problems": [],
+    "sealed_list": "D:\\projects-cd\\cg-fedllm-reproduction\\diagnostics\\urp_20261013_v1_execution\\analysis\\FINAL_ARTIFACTS_SHA256.txt",
+    "verified": true
+  },
+  "exploratory_ep": {
+    "checks": {
+      "M0": {
+        "pass": true,
+        "problems": []
+      },
+      "M1": {
+        "margin": -0.3065472817673439,
+        "operator": "<=",
+        "pass": true,
+        "threshold": 0.5,
+        "value": 0.19345271823265606
+      },
+      "M2": {
+        "margin": 0.09810455804444884,
+        "operator": ">=",
+        "pass": true,
+        "threshold": 0.8,
+        "value": 0.8981045580444489
+      },
+      "M3": {
+        "margin": -2.50580639438876e-06,
+        "operator": "<=",
+        "pass": true,
+        "threshold": 3.305178381229214e-06,
+        "value": 7.99371986840454e-07
+      },
+      "V1": {
+        "pass": true,
+        "problems": []
+      },
+      "V2": {
+        "pass": true,
+        "problems": []
+      }
+    },
+    "outcome": "PASS",
+    "policy_id": "EP-20261012-v1",
+    "quantities": {
+      "best_baseline": "scalar_mean",
+      "best_baseline_mse": 4.131472976536517e-06,
+      "cosine": 0.8981045580444489,
+      "mse": 7.99371986840454e-07,
+      "mse_over_best_baseline": 0.19348353272071525,
+      "rse": 0.19345271823265606,
+      "scalar_mean_mse": 4.131472976536517e-06,
+      "zero_mse": 4.132131066150689e-06
+    },
+    "reasons": [],
+    "space": "original (Phi values); baselines of the patch itself",
+    "thresholds": {
+      "baseline_factor": 0.8,
+      "max_rse": 0.5,
+      "min_cosine": 0.8
+    }
+  },
+  "protocol_id": "URP-20261013-v1",
+  "reported_only": {
+    "baselines_mse": {
+      "normalized": {
+        "shared_scalar_mean": 0.016651517003540468,
+        "zero_prediction": 0.016654169372344353
+      },
+      "original": {
+        "shared_scalar_mean": 4.131472976536517e-06,
+        "zero_prediction": 4.132131066150689e-06
+      }
+    },
+    "curve": {
+      "all_finite": true,
+      "grad_nonfinite_total": 0,
+      "min_pre_update_loss": [
+        0.003196551464498043,
+        3000
+      ],
+      "points": 31,
+      "pre_update_train_loss_normalized": {
+        "1": 0.21381643414497375,
+        "100": 0.011917349882423878,
+        "1000": 0.004447938874363899,
+        "1100": 0.004393031820654869,
+        "1200": 0.004303205758333206,
+        "1300": 0.00424149539321661,
+        "1400": 0.004189521074295044,
+        "1500": 0.004138926509767771,
+        "1600": 0.0040421555750072,
+        "1700": 0.00397859700024128,
+        "1800": 0.0038119822274893522,
+        "1900": 0.0037447104696184397,
+        "200": 0.007623663637787104,
+        "2000": 0.003673137631267309,
+        "2100": 0.0036276301834732294,
+        "2200": 0.003589750500395894,
+        "2300": 0.0035099065862596035,
+        "2400": 0.0034685544669628143,
+        "2500": 0.003411406883969903,
+        "2600": 0.0033814425114542246,
+        "2700": 0.003325076075270772,
+        "2800": 0.003256212454289198,
+        "2900": 0.0032010276336222887,
+        "300": 0.005791911855340004,
+        "3000": 0.003196551464498043,
+        "400": 0.005415414460003376,
+        "500": 0.005271771922707558,
+        "600": 0.004940894898027182,
+        "700": 0.004767961800098419,
+        "800": 0.0046518705785274506,
+        "900": 0.004511323757469654
+      },
+      "pre_update_train_rse_normalized": {
+        "1": 12.83861210739981,
+        "100": 0.7155775422607347,
+        "1000": 0.2670765968550774,
+        "1100": 0.263779713184698,
+        "1200": 0.2583861008422476,
+        "1300": 0.2546806671487224,
+        "1400": 0.2515599153420087,
+        "1500": 0.24852193464590597,
+        "1600": 0.24271134509352205,
+        "1700": 0.23889494122982707,
+        "1800": 0.228890559195912,
+        "1900": 0.22485122907086377,
+        "200": 0.4577630445637963,
+        "2000": 0.22055362983182597,
+        "2100": 0.2178211496980006,
+        "2200": 0.21554664870008816,
+        "2300": 0.2107524229325624,
+        "2400": 0.20826942185460964,
+        "2500": 0.2048380136117612,
+        "2600": 0.20303879652875925,
+        "2700": 0.199654279320786,
+        "2800": 0.1955193673993524,
+        "2900": 0.19220577069002273,
+        "300": 0.34777548882762593,
+        "3000": 0.19193700535079647,
+        "400": 0.32516868143439187,
+        "500": 0.3165436659628188,
+        "600": 0.2966761551110653,
+        "700": 0.2862923721492611,
+        "800": 0.27932168556145065,
+        "900": 0.27088253741403406
+      },
+      "updates": [
+        1,
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000,
+        1100,
+        1200,
+        1300,
+        1400,
+        1500,
+        1600,
+        1700,
+        1800,
+        1900,
+        2000,
+        2100,
+        2200,
+        2300,
+        2400,
+        2500,
+        2600,
+        2700,
+        2800,
+        2900,
+        3000
+      ]
+    },
+    "final_eval_normalized": {
+      "cosine": 0.8981045587115517,
+      "recorded_equal": true,
+      "rse": 0.1934527170618834
+    },
+    "final_eval_original": {
+      "cosine": 0.8981045580444489,
+      "mse": 7.99371986840454e-07,
+      "norm_ratio": 0.8914325708689224,
+      "recorded_equal": true,
+      "rse": 0.19345271823265606
+    },
+    "final_train_normalized": {
+      "cosine": 0.899373500622392,
+      "recorded_equal": true,
+      "rse": 0.1911437841892307
+    },
+    "final_train_original": {
+      "cosine": 0.8993734990926799,
+      "recorded_equal": true,
+      "rse": 0.1911437869245869
+    },
+    "step0_eval_rse": {
+      "normalized": 1.0455234336755197,
+      "original": 1.0455234343895818
+    },
+    "train_minus_eval_output_sse_normalized": 0.03580515209946986,
+    "u_fit_synthetic_context": {
+      "label": "not matched: other input (synthetic), other scale; listed for orientation only",
+      "u_fit_final_eval_cosine": 0.8540472264633736,
+      "u_fit_final_eval_rse": 0.2727411031905583
+    }
+  },
+  "resources": {
+    "aggregate_wall_s": 528.2809999999881,
+    "arm_wall_s": 528.1399999999994,
+    "arm_wall_scope": "supervisor monotonic clock, from just before the start record to the child's exit",
+    "child_process_s": 525.593000000008,
+    "evidence_bytes_run_root": 6416844,
+    "guard_sampled_max_rss_bytes": 823758848,
+    "os_peak_wset_bytes": 828628992,
+    "rss_limit_bytes": 4294967296
+  },
+  "schema": "urp-v1-analysis",
+  "status_recorded": "COMPLETED_FIT_FAIL",
+  "strict_near_identity": {
+    "criteria": {
+      "max_rse": 0.01,
+      "min_cosine": 0.99
+    },
+    "matches_record": true,
+    "rederived_status": "COMPLETED_FIT_FAIL",
+    "space": "original (Phi values)"
+  }
+}

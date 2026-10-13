@@ -1,0 +1,13 @@
+{
+  "revision_id": "UID-20261012-v2-r1",
+  "note": "Execution mechanics only. Scientific settings (input, seeds, model, optimizer, updates, per-arm and aggregate limits, RSS cap, criteria) are read from the frozen uid_20261012_v2/config.json and protocol.md.",
+  "run_root": "D:/cgfed-runs/uid_20261012_v2_r1",
+  "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/uid_20261012_v2_r1/scientific_ledger_mirror",
+  "python_executable": "D:/conda_envs/cgfedllm/python.exe",
+  "torch_version": "2.14.0+cu130",
+  "end_margin_s": 20,
+  "eval_reserve_s": 60,
+  "poll_interval_s": 0.25,
+  "interrupt_grace_s": 20,
+  "kill_wait_s": 10
+}

@@ -1,0 +1,1590 @@
+Diff of the r1 execution path against the original approved runner (uid_20261012_v2/uid_runner.py, SHA-256 a4ae1ed06948cd33996f06ccddf02bb0ef43c9ec1eb2dd0dfc9302f0026d9e6c). Generated from the final r1 bytes.
+
+=== uid_20261012_v2/uid_runner.py -> uid_20261012_v2_r1/uid_r1_supervise.py ===
+git : warning: in the working copy of 'uid_20261012_v2/uid_runner.py', LF will be replaced by CRLF the next time Git to
+uches it
+At line:1 char:901
++ ... irs) { $d = git diff --no-index --no-color --stat=110 -- $p[0] $p[1]  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: in the... Git touches it:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+warning: in the working copy of 'uid_20261012_v2_r1/uid_r1_supervise.py', LF will be replaced by CRLF the next time Git
+ touches it
+ .../uid_runner.py => uid_20261012_v2_r1/uid_r1_supervise.py           | 483 ++++++++++++++++++++++----------
+ 1 file changed, 333 insertions(+), 150 deletions(-)
+
+git : warning: in the working copy of 'uid_20261012_v2/uid_runner.py', LF will be replaced by CRLF the next time Git to
+uches it
+At line:1 char:982
++ ... tring; $f = git diff --no-index --no-color -- $p[0] $p[1] 2>&1 | Out- ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: in the... Git touches it:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+warning: in the working copy of 'uid_20261012_v2_r1/uid_r1_supervise.py', LF will be replaced by CRLF the next time Git
+ touches it
+diff --git a/uid_20261012_v2/uid_runner.py b/uid_20261012_v2_r1/uid_r1_supervise.py
+index 08433be..2d2c95b 100644
+--- a/uid_20261012_v2/uid_runner.py
++++ b/uid_20261012_v2_r1/uid_r1_supervise.py
+@@ -1,166 +1,349 @@
+-"""UID-20261012-v2 runner: single-invocation training and final evaluation under resource limits.
++"""UID-20261012-v2 r1 supervisor: one invocation, arms in order, one fresh child process per arm.
+ 
+-One training start per arm (U-CHECK and U-FIT); step-zero, per-100, and final metrics; train/eval mode pair
+-at the end; structured JSON evidence; graceful resource stop. No automatic retries or epoch restarts.
++Scientific use (only after the r1 package is approved):
++    python -B uid_r1_supervise.py --scientific --approved-r1-manifest-sha256 <sha256>
++
++The supervisor imports no torch. Before each arm it writes the start record (both ledger roots) and only then spawns
++the child. It enforces, on one ``time.monotonic()`` clock: the arm limit from the arm's start record, the aggregate
++limit from the invocation record, and the RSS cap (sampled every ``poll_interval_s``). A soft stop is given to the
++child; at the hard deadline, or when the RSS cap is exceeded, the child is killed. Ctrl+C asks the child to stop
++(stop file -> KeyboardInterrupt in the child) and kills it after ``interrupt_grace_s``. Every arm that was started gets
++an end record; if the supervisor itself dies, the start record without an end record marks the arm INCOMPLETE and
++every later invocation is refused.
+ """
+ 
+ from __future__ import annotations
+ 
+-import gc
++import argparse
+ import json
+-import logging
+-import math
++import os
++import subprocess
++import sys
+ import time
+ from pathlib import Path
+ from typing import Any
+ 
+ import psutil
+-import torch
+-from torch import nn, optim
+-
+-import uid_common as C
+-
+-log = logging.getLogger(__name__)
+-
+-
+-class Runner:
+-    def __init__(self, cfg: dict[str, Any], arm: str, root: Path) -> None:
+-        self.cfg = cfg
+-        self.arm = arm
+-        self.arm_cfg = cfg[arm.lower().replace("-", "_")]
+-        self.root = Path(root)
+-        self.model: nn.Module | None = None
+-        self.optimizer: optim.Optimizer | None = None
+-        self.x: torch.Tensor | None = None
+-        self.results: dict[str, Any] = {"arm": arm, "status": "NOT_RUN"}
+-        self.start_t = time.time()
+-        self.last_gc_t = self.start_t
+-        self.steps_done = 0
+-        self.stop_reason: str | None = None
+-        self.process = psutil.Process()
+-
+-    def check_resources(self) -> None:
+-        """Check wall time and RSS; raise ResourceStop if a limit is exceeded."""
+-        now = time.time()
+-        elapsed = now - self.start_t
+-        if elapsed > float(self.cfg["global_limits"]["max_scientific_seconds"]):
+-            raise ResourceStop(f"wall time {elapsed:.1f}s > limit")
+-        rss_bytes = self.process.memory_info().rss
+-        limit_bytes = int(self.cfg["global_limits"]["max_rss_bytes"])
+-        if rss_bytes > limit_bytes:
+-            raise ResourceStop(f"RSS {rss_bytes / (1 << 30):.2f} GiB > {limit_bytes / (1 << 30):.2f} GiB")
+-        if now - self.last_gc_t > 30:
+-            gc.collect()
+-            self.last_gc_t = now
+-
+-    def record_step(self, step: int, x_hat: torch.Tensor, loss_value: float) -> None:
+-        m = C.metrics(x_hat.detach(), self.x)
+-        self.results.setdefault("steps", []).append({"step": step, "loss": loss_value, "metrics": m})
+-
+-    def train_loop(self) -> None:
+-        """Train from step 1 to ``max_updates``, record every 100 updates plus the final."""
+-        self.model.train()
+-        max_updates = int(self.arm_cfg["max_updates"])
+-        log_every = 100
+-        for step in range(1, max_updates + 1):
+-            self.check_resources()
+-            self.optimizer.zero_grad()
+-            x_hat = C.reconstruct(self.model, self.x)
+-            loss = nn.functional.mse_loss(x_hat, self.x)
+-            loss.backward()
+-            self.optimizer.step()
+-            self.steps_done = step
+-            if step % log_every == 0 or step == max_updates:
+-                self.record_step(step, x_hat, float(loss))
+-
+-    def final_evaluation(self) -> dict[str, Any]:
+-        """Paired train/eval reconstruction after the last optimizer update, using independent model copies."""
+-        state = {k: v.clone() for k, v in self.model.state_dict().items()}
+-        train_model = C.build_model(self.cfg, self.arm)
+-        train_model.load_state_dict(state)
+-        train_model.train()
+-        eval_model = C.build_model(self.cfg, self.arm)
+-        eval_model.load_state_dict(state)
+-        eval_model.eval()
+-        with torch.no_grad():
+-            train_hat = C.reconstruct(train_model, self.x)
+-            eval_hat = C.reconstruct(eval_model, self.x)
+-        return {
+-            "train_mode": C.metrics(train_hat, self.x),
+-            "eval_mode": C.metrics(eval_hat, self.x),
+-            "train_eval_sse_delta": float((train_hat - eval_hat).square().sum()),
+-        }
+ 
+-    def run(self) -> dict[str, Any]:
+-        """The main entry: build model, input and optimizer; train; final eval; save evidence."""
++# the aggregate clock starts here, at import, before package verification, ledger reads and any arm
++T_START = time.monotonic()
++R1_DIR = Path(__file__).resolve().parent
++sys.path.insert(0, str(R1_DIR))
++
++import uid_r1_control as K  # noqa: E402
++
++
++def dir_bytes(root: Path) -> int:
++    return sum(p.stat().st_size for p in root.rglob("*") if p.is_file()) if root.exists() else 0
++
++
++def kill_tree(proc: psutil.Process, wait_s: float) -> None:
++    try:
++        procs = [proc, *proc.children(recursive=True)]
++    except psutil.NoSuchProcess:  # the child exited between the poll and the kill
++        procs = [proc]
++    for p in procs:
+         try:
+-            self.check_resources()
+-            self.model = C.build_model(self.cfg, self.arm)
+-            self.x = C.make_input(self.cfg).requires_grad_(False)
+-            lr = float(self.arm_cfg["optimizer"]["lr"])
+-            betas = tuple(float(v) for v in self.arm_cfg["optimizer"]["betas"])
+-            self.optimizer = optim.Adam(self.model.parameters(), lr=lr, betas=betas, eps=1e-8, weight_decay=0)
+-            self.results["model_params"] = self.model.num_parameters() if hasattr(self.model, "num_parameters") else {}
+-            self.results["model_state_sha256_init"] = C.state_sha256(self.model)
+-            self.results["input"] = C.describe_input(self.x)
+-            self.results["baselines"] = C.baselines(self.x)
+-            with torch.no_grad():
+-                x_hat_init = C.reconstruct(self.model, self.x)
+-            self.record_step(0, x_hat_init, float(nn.functional.mse_loss(x_hat_init, self.x)))
+-            log.info(f"{self.arm} step 0 recorded")
+-            self.train_loop()
+-            self.results["model_state_sha256_final"] = C.state_sha256(self.model)
+-            self.results["final"] = self.final_evaluation()
+-            self.results["status"] = self._verdict()
+-            self.results["wall_seconds"] = time.time() - self.start_t
+-            log.info(f"{self.arm} {self.results['status']} in {self.results['wall_seconds']:.1f}s")
+-        except ResourceStop as e:
+-            self.stop_reason = str(e)
+-            self.results["status"] = "RESOURCE_STOP"
+-            self.results["stop_reason"] = self.stop_reason
+-            self.results["wall_seconds"] = time.time() - self.start_t
+-            log.warning(f"{self.arm} stopped: {self.stop_reason}")
+-        except Exception as e:
+-            self.results["status"] = "EXECUTION_ERROR"
+-            self.results["error"] = {"type": type(e).__name__, "message": str(e)}
+-            self.results["wall_seconds"] = time.time() - self.start_t
+-            log.exception(f"{self.arm} error")
+-        finally:
+-            self.results["steps_done"] = self.steps_done
+-        out = self.root / f"{self.arm.lower().replace('-', '_')}.json"
+-        C.write_json_durable(out, self.results)
+-        return self.results
+-
+-    def _verdict(self) -> str:
+-        """PASS / FIT_FAIL from the final eval-mode metrics."""
+-        m = self.results["final"]["eval_mode"]
+-        criteria = self.cfg["criteria"]
+-        if not m["finite"]:
+-            return "COMPLETED_FIT_FAIL"
+-        if C.passes(m, criteria):
+-            return "COMPLETED_PASS"
+-        return "COMPLETED_FIT_FAIL"
+-
+-
+-class ResourceStop(RuntimeError):
+-    """A resource limit was reached; training stops gracefully with RESOURCE_STOP."""
+-
+-
+-def main() -> None:
+-    import argparse
+-    import sys
+-
+-    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+-    parser = argparse.ArgumentParser()
+-    parser.add_argument("config", help="approved config.json")
+-    parser.add_argument("--arm", required=True, choices=["U-CHECK", "U-FIT"])
+-    parser.add_argument("--root", required=True, help="output directory")
+-    args = parser.parse_args()
+-    cfg, _, _ = C.load_config(args.config)
+-    runner = Runner(cfg, args.arm, Path(args.root))
+-    result = runner.run()
+-    sys.exit(0 if result["status"] in ("COMPLETED_PASS", "COMPLETED_FIT_FAIL") else 1)
++            p.kill()
++        except psutil.NoSuchProcess:
++            pass
++    psutil.wait_procs(procs, timeout=wait_s)
++
++
++def read_child_record(path: Path) -> dict[str, Any] | None:
++    try:
++        return K.load_json(path) if path.is_file() else None
++    except (OSError, ValueError):
++        return None
++
++
++def run_one(
++    plan: dict,
++    arm_spec: dict,
++    t0: float,
++    t_start: float,
++    config_path: Path,
++    sys_path: list[str],
++    hooks: dict | None,
++    rss_limit: int,
++    stop_requested: list,
++) -> dict[str, Any]:
++    """Run one arm whose start record is already written; returns the end-record fields."""
++    arm, run_root = arm_spec["arm"], Path(plan["run_root"])
++    out = run_root / "arms" / arm
++    out.mkdir(parents=True, exist_ok=False)
++    soft_at, kill_at = K.arm_deadlines(
++        t0,
++        t_start,
++        arm_spec["max_seconds"],
++        plan["aggregate_seconds"],
++        plan["end_margin_s"],
++        plan["eval_reserve_s"],
++    )
++    stop_file = out / "STOP_REQUEST"
++    job = {
++        "arm": arm,
++        "model_arm": arm_spec.get("model_arm", arm),
++        "max_updates": arm_spec["max_updates"],
++        "expected_torch_version": plan["torch_version"],
++        "mode": plan["mode"],
++        "config_path": str(config_path),
++        "out_dir": str(out),
++        "sys_path": sys_path,
++        "cpu": plan["cpu"],
++        "curve_every": plan["curve_every"],
++        "soft_stop_monotonic": soft_at,
++        "hard_stop_monotonic": kill_at + plan["kill_wait_s"],
++        "poll_interval_s": plan["poll_interval_s"],
++        "supervisor_pid": os.getpid(),
++        "supervisor_create_time": psutil.Process(os.getpid()).create_time(),
++        "stop_file": str(stop_file),
++        "fixture_hooks": hooks,
++        "expected_module_sha256": plan.get("expected_module_sha256"),
++    }
++    K.create_exclusive(out / "job.json", job)
++    env = {k: v for k, v in os.environ.items() if k != "PYTHONPATH"}
++    env.update(
++        {
++            "CUDA_VISIBLE_DEVICES": "-1",
++            "HF_HUB_OFFLINE": "1",
++            "PYTHONDONTWRITEBYTECODE": "1",
++            "PYTHONIOENCODING": "utf-8",
++        }
++    )
++    cmd = [plan["python_executable"], "-B", str(R1_DIR / "uid_r1_child.py"), str(out / "job.json")]
++    with (out / "child.stdout.txt").open("xb") as so, (out / "child.stderr.txt").open("xb") as se:
++        popen = subprocess.Popen(
++            cmd,
++            cwd=str(R1_DIR),
++            env=env,
++            stdout=so,
++            stderr=se,
++            creationflags=getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0),
++        )
++        try:
++            proc = psutil.Process(popen.pid)
++        except psutil.NoSuchProcess:  # the child already exited; its exit code and record decide the status
++            proc = None
++        guard = {
++            "rss_limit_bytes": rss_limit,
++            "poll_interval_s": plan["poll_interval_s"],
++            "samples": 0,
++            "sampled_max_rss_bytes": 0,
++            "action": None,
++            "action_monotonic_s": None,
++        }
++        interrupt_at = None
++        while True:
++            try:
++                if not supervise_step(
++                    popen, proc, guard, plan, kill_at, rss_limit, stop_file, stop_requested, interrupt_at
++                ):
++                    break
++                if stop_requested and interrupt_at is None:
++                    interrupt_at = guard["action_monotonic_s"]
++                time.sleep(plan["poll_interval_s"])
++            except KeyboardInterrupt:  # Ctrl+C / Ctrl+Break: ask the child to stop, keep supervising
++                stop_requested.append(True)
++        popen.wait()
++    t_end = time.monotonic()
++    rc = popen.returncode
++    child = read_child_record(out / "child_record.json")
++    killed = guard["action"] is not None and guard["action"].startswith("killed")
++    if child is not None and not killed and K.CHILD_EXIT.get(child.get("status")) == rc:
++        status = child["status"]
++    elif guard["action"] in ("killed: RSS limit", "killed: hard deadline"):
++        status = "RESOURCE_STOP"
++    elif stop_requested:
++        status = "INCOMPLETE"
++    else:
++        status = "EXECUTION_ERROR"
++    return {
++        "arm": arm,
++        "status": status,
++        "child_exit_code": rc,
++        "child_status": None if child is None else child.get("status"),
++        "child_record_present": child is not None,
++        "guard": guard,
++        "monotonic_s": {
++            "invocation_t0": t0,
++            "start": t_start,
++            "end": t_end,
++            "soft_stop": soft_at,
++            "kill_at": kill_at,
++        },
++        "arm_wall_s": t_end - t_start,
++        "aggregate_wall_s": t_end - t0,
++        "updates_done": None if child is None else child.get("updates_done"),
++    }
++
++
++def supervise_step(
++    popen, proc, guard, plan, kill_at, rss_limit, stop_file, stop_requested, interrupt_at
++) -> bool:
++    """One poll of the child. Returns False when supervision of this child is over (exited or killed)."""
++    if popen.poll() is not None or proc is None:
++        return False
++    now = time.monotonic()
++    try:
++        rss = sum(p.memory_info().rss for p in [proc, *proc.children(recursive=True)])
++        guard["samples"] += 1
++        guard["sampled_max_rss_bytes"] = max(guard["sampled_max_rss_bytes"], rss)
++    except psutil.NoSuchProcess:
++        rss = 0
++    if rss > rss_limit:
++        guard.update(action="killed: RSS limit", action_monotonic_s=now)
++        kill_tree(proc, plan["kill_wait_s"])
++        return False
++    if now >= kill_at:
++        guard.update(action="killed: hard deadline", action_monotonic_s=now)
++        kill_tree(proc, plan["kill_wait_s"])
++        return False
++    if stop_requested and interrupt_at is None:
++        stop_file.write_text("stop\n", encoding="utf-8")
++        guard.update(action="stop requested (interrupt)", action_monotonic_s=now)
++    if interrupt_at is not None and now >= interrupt_at + plan["interrupt_grace_s"]:
++        guard.update(action="killed: interrupt grace expired", action_monotonic_s=now)
++        kill_tree(proc, plan["kill_wait_s"])
++        return False
++    return True
++
++
++def invoke(
++    plan: dict, config_path: Path, sys_path: list[str], identity: dict, hooks: dict | None = None
++) -> dict[str, Any]:
++    """The whole invocation. Refuses (raises ControlError) before writing anything if the ledger forbids it."""
++    import signal
++
++    if hasattr(signal, "SIGBREAK"):  # Ctrl+Break would otherwise end the process without the end records
++        signal.signal(signal.SIGBREAK, signal.default_int_handler)
++    K.validate_plan(plan)
++    run_root = Path(plan["run_root"])
++    ledger = K.Ledger(run_root / "ledger", plan["ledger_mirror"])
++    K.check_can_open(ledger.read(), plan)  # an unfinished prior start or a used invocation refuses here
++    if (run_root / "arms").exists():
++        raise K.ControlError(f"{run_root / 'arms'} exists: earlier arm output without a usable ledger state")
++    t0 = (
++        T_START  # supervisor import: setup, verification and ledger reads are charged to the aggregate budget
++    )
++    avail = psutil.virtual_memory().available
++    rss_limit = min(int(plan["rss_cap_bytes"]), int(avail * plan["rss_available_fraction"]))
++    ledger.write(
++        "invocation_001.json",
++        {
++            "revision_id": K.REVISION_ID,
++            "protocol_id": K.REGISTERED_PROTOCOL_ID,
++            "mode": plan["mode"],
++            "identity": identity,
++            "plan": plan,
++            "available_ram_bytes_at_launch": avail,
++            "rss_limit_bytes": rss_limit,
++            "monotonic_t0": t0,
++            "aggregate_clock_start": "import of uid_r1_supervise (before package verification)",
++            "monotonic_at_record": time.monotonic(),
++            "wall_clock_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
++            "supervisor_pid": os.getpid(),
++            "python": sys.executable,
++        },
++    )
++    stop_requested: list = []
++    results = []
++    try:
++        for spec in plan["arms"]:
++            records = ledger.read()
++            try:
++                K.check_can_start(records, plan, spec["arm"])
++            except K.ControlError as exc:
++                results.append({"arm": spec["arm"], "status": "NOT_RUN", "reason": str(exc)})
++                continue
++            if (
++                time.monotonic() + plan["eval_reserve_s"] + plan["end_margin_s"]
++                >= t0 + plan["aggregate_seconds"]
++            ):
++                results.append(
++                    {"arm": spec["arm"], "status": "NOT_RUN", "reason": "aggregate budget exhausted"}
++                )
++                continue
++            t_start = time.monotonic()  # the arm limit runs from this, the time stored in the start record
++            ledger.write(
++                f"start_{spec['arm']}.json",
++                {
++                    "arm": spec["arm"],
++                    "monotonic_s": t_start,
++                    "max_updates": spec["max_updates"],
++                    "max_seconds": spec["max_seconds"],
++                },
++            )
++            end = None
++            try:
++                end = run_one(
++                    plan, spec, t0, t_start, config_path, sys_path, hooks, rss_limit, stop_requested
++                )
++            except KeyboardInterrupt:
++                stop_requested.append(True)
++                end = {"arm": spec["arm"], "status": "INCOMPLETE", "reason": "supervisor interrupted"}
++            except Exception as exc:
++                end = {
++                    "arm": spec["arm"],
++                    "status": "EXECUTION_ERROR",
++                    "reason": f"{type(exc).__name__}: {exc}",
++                }
++            end["evidence_bytes_run_root"] = dir_bytes(run_root)
++            ledger.write(f"end_{spec['arm']}.json", end)
++            results.append(end)
++            if stop_requested:
++                break
++    except KeyboardInterrupt:
++        stop_requested.append(True)
++    summary = {
++        "t0": t0,
++        "aggregate_wall_s": time.monotonic() - t0,
++        "arms": results,
++        "evidence_bytes_run_root": dir_bytes(run_root),
++        "evidence_within_cap": dir_bytes(run_root) <= plan["evidence_cap_bytes"],
++        "interrupted": bool(stop_requested),
++    }
++    ledger.write("invocation_001_end.json", summary)
++    return summary
++
++
++def main() -> int:
++    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
++    mode = ap.add_mutually_exclusive_group(required=True)
++    mode.add_argument("--status", action="store_true", help="read-only: print the scientific ledger state")
++    mode.add_argument("--scientific", action="store_true", help="run the registered invocation")
++    ap.add_argument("--approved-r1-manifest-sha256")
++    args = ap.parse_args()
++    if args.status:
++        execution = K.load_json(R1_DIR / "execution_r1.json")
++        primary = Path(execution["run_root"]) / "ledger"
++        s = K.ledger_status(primary, execution["ledger_mirror"], list(K.REGISTERED_ARMS))
++        s["ledger_primary"], s["ledger_mirror"] = str(primary), execution["ledger_mirror"]
++        s["run_root_exists"] = Path(execution["run_root"]).exists()
++        print(json.dumps(s, indent=2, sort_keys=True))
++        return 0
++    if not args.approved_r1_manifest_sha256:
++        raise K.ControlError("--scientific requires --approved-r1-manifest-sha256")
++    if os.environ.get("PYTHONPATH"):
++        raise K.ControlError("PYTHONPATH is set; the scientific invocation runs only without it")
++    identity, cfg, execution = K.verify_package(args.approved_r1_manifest_sha256)
++    if Path(sys.executable).resolve() != Path(execution["python_executable"]).resolve():
++        raise K.ControlError(f"interpreter {sys.executable} is not {execution['python_executable']}")
++    plan = K.registered_plan(cfg, execution)
++    plan["expected_module_sha256"] = K.expected_module_hashes(K.load_json(R1_DIR / "manifest_r1.json"))
++    sys_path = [str(K.FROZEN_DIR), str(R1_DIR)]
++    summary = invoke(plan, K.FROZEN_DIR / "config.json", sys_path, identity)
++    print(json.dumps(K.json_safe(summary), indent=2, sort_keys=True))
++    return (
++        0
++        if all(a["status"] in ("COMPLETED_PASS", "COMPLETED_FIT_FAIL", "NOT_RUN") for a in summary["arms"])
++        else 1
++    )
+ 
+ 
+ if __name__ == "__main__":
+-    main()
++    try:
++        sys.exit(main())
++    except K.ControlError as exc:
++        print(f"REFUSED: {exc}", file=sys.stderr)
++        sys.exit(2)
+
+=== uid_20261012_v2/uid_runner.py -> uid_20261012_v2_r1/uid_r1_child.py ===
+git : warning: in the working copy of 'uid_20261012_v2/uid_runner.py', LF will be replaced by CRLF the next time Git to
+uches it
+At line:1 char:901
++ ... irs) { $d = git diff --no-index --no-color --stat=110 -- $p[0] $p[1]  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: in the... Git touches it:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+warning: in the working copy of 'uid_20261012_v2_r1/uid_r1_child.py', LF will be replaced by CRLF the next time Git tou
+ches it
+ uid_20261012_v2/uid_runner.py => uid_20261012_v2_r1/uid_r1_child.py | 442 ++++++++++++++++++++++------------
+ 1 file changed, 288 insertions(+), 154 deletions(-)
+
+git : warning: in the working copy of 'uid_20261012_v2/uid_runner.py', LF will be replaced by CRLF the next time Git to
+uches it
+At line:1 char:982
++ ... tring; $f = git diff --no-index --no-color -- $p[0] $p[1] 2>&1 | Out- ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: in the... Git touches it:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+warning: in the working copy of 'uid_20261012_v2_r1/uid_r1_child.py', LF will be replaced by CRLF the next time Git tou
+ches it
+diff --git a/uid_20261012_v2/uid_runner.py b/uid_20261012_v2_r1/uid_r1_child.py
+index 08433be..4111fde 100644
+--- a/uid_20261012_v2/uid_runner.py
++++ b/uid_20261012_v2_r1/uid_r1_child.py
+@@ -1,166 +1,300 @@
+-"""UID-20261012-v2 runner: single-invocation training and final evaluation under resource limits.
++"""UID-20261012-v2 r1 child: one arm in one fresh process.
+ 
+-One training start per arm (U-CHECK and U-FIT); step-zero, per-100, and final metrics; train/eval mode pair
+-at the end; structured JSON evidence; graceful resource stop. No automatic retries or epoch restarts.
++``python -B uid_r1_child.py <job.json>``. The job file (written by the supervisor) names the arm, the frozen config,
++the arm's output directory and the soft stop on the supervisor's ``time.monotonic()`` clock (system-wide on Windows).
++The CPU configuration is applied, and observed, before the model, the input or any other tensor is created. The child
++writes ``child_record.json`` and ``curve.jsonl``; a process that is killed writes nothing more, and its arm is closed
++by the supervisor from the start record.
+ """
+ 
+ from __future__ import annotations
+ 
+-import gc
+ import json
+-import logging
+-import math
++import os
++import sys
+ import time
++import traceback
+ from pathlib import Path
+-from typing import Any
+-
+-import psutil
+-import torch
+-from torch import nn, optim
+-
+-import uid_common as C
+-
+-log = logging.getLogger(__name__)
+-
+-
+-class Runner:
+-    def __init__(self, cfg: dict[str, Any], arm: str, root: Path) -> None:
+-        self.cfg = cfg
+-        self.arm = arm
+-        self.arm_cfg = cfg[arm.lower().replace("-", "_")]
+-        self.root = Path(root)
+-        self.model: nn.Module | None = None
+-        self.optimizer: optim.Optimizer | None = None
+-        self.x: torch.Tensor | None = None
+-        self.results: dict[str, Any] = {"arm": arm, "status": "NOT_RUN"}
+-        self.start_t = time.time()
+-        self.last_gc_t = self.start_t
+-        self.steps_done = 0
+-        self.stop_reason: str | None = None
+-        self.process = psutil.Process()
+-
+-    def check_resources(self) -> None:
+-        """Check wall time and RSS; raise ResourceStop if a limit is exceeded."""
+-        now = time.time()
+-        elapsed = now - self.start_t
+-        if elapsed > float(self.cfg["global_limits"]["max_scientific_seconds"]):
+-            raise ResourceStop(f"wall time {elapsed:.1f}s > limit")
+-        rss_bytes = self.process.memory_info().rss
+-        limit_bytes = int(self.cfg["global_limits"]["max_rss_bytes"])
+-        if rss_bytes > limit_bytes:
+-            raise ResourceStop(f"RSS {rss_bytes / (1 << 30):.2f} GiB > {limit_bytes / (1 << 30):.2f} GiB")
+-        if now - self.last_gc_t > 30:
+-            gc.collect()
+-            self.last_gc_t = now
+-
+-    def record_step(self, step: int, x_hat: torch.Tensor, loss_value: float) -> None:
+-        m = C.metrics(x_hat.detach(), self.x)
+-        self.results.setdefault("steps", []).append({"step": step, "loss": loss_value, "metrics": m})
+-
+-    def train_loop(self) -> None:
+-        """Train from step 1 to ``max_updates``, record every 100 updates plus the final."""
+-        self.model.train()
+-        max_updates = int(self.arm_cfg["max_updates"])
+-        log_every = 100
+-        for step in range(1, max_updates + 1):
+-            self.check_resources()
+-            self.optimizer.zero_grad()
+-            x_hat = C.reconstruct(self.model, self.x)
+-            loss = nn.functional.mse_loss(x_hat, self.x)
+-            loss.backward()
+-            self.optimizer.step()
+-            self.steps_done = step
+-            if step % log_every == 0 or step == max_updates:
+-                self.record_step(step, x_hat, float(loss))
+-
+-    def final_evaluation(self) -> dict[str, Any]:
+-        """Paired train/eval reconstruction after the last optimizer update, using independent model copies."""
+-        state = {k: v.clone() for k, v in self.model.state_dict().items()}
+-        train_model = C.build_model(self.cfg, self.arm)
+-        train_model.load_state_dict(state)
+-        train_model.train()
+-        eval_model = C.build_model(self.cfg, self.arm)
+-        eval_model.load_state_dict(state)
+-        eval_model.eval()
+-        with torch.no_grad():
+-            train_hat = C.reconstruct(train_model, self.x)
+-            eval_hat = C.reconstruct(eval_model, self.x)
+-        return {
+-            "train_mode": C.metrics(train_hat, self.x),
+-            "eval_mode": C.metrics(eval_hat, self.x),
+-            "train_eval_sse_delta": float((train_hat - eval_hat).square().sum()),
+-        }
+-
+-    def run(self) -> dict[str, Any]:
+-        """The main entry: build model, input and optimizer; train; final eval; save evidence."""
++
++R1_DIR = Path(__file__).resolve().parent
++FROZEN_DIR = R1_DIR.parent / "uid_20261012_v2"
++
++
++class SoftStop(Exception):
++    """The soft stop of this arm arrived before training finished."""
++
++
++def main(job_path: str) -> int:
++    job = json.loads(Path(job_path).read_text(encoding="utf-8"))
++    out = Path(job["out_dir"])
++    start_watchdog(job)  # first: also covers imports and setup; exits at once if the supervisor is gone
++    sys.path[:0] = [str(Path(p)) for p in job["sys_path"]]  # frozen package first, then r1
++    import signal
++
++    if hasattr(signal, "SIGBREAK"):  # Ctrl+Break in a shared console: an interrupt, not an abrupt exit
++        signal.signal(signal.SIGBREAK, signal.default_int_handler)
++    import torch
++    import uid_common as C  # frozen package module
++    import uid_r1_control as K
++    import uid_r1_measure as M
++
++    rec: dict = {"arm": job["arm"], "mode": job["mode"], "pid": os.getpid(), "status": "EXECUTION_ERROR"}
++    curve = (out / "curve.jsonl").open("x", encoding="utf-8")
++    sampler = M.RSSSampler(job["poll_interval_s"]).start()
++    job["_sampler"] = sampler
++    t_begin = time.monotonic()
++    try:
++        if job["mode"] == "scientific" and job.get("fixture_hooks"):
++            raise RuntimeError("fixture hooks are refused in scientific mode")
++        rec["env"] = {k: os.environ.get(k) for k in ENV_KEYS}
++        if rec["env"]["CUDA_VISIBLE_DEVICES"] != "-1" or rec["env"]["PYTHONPATH"] is not None:
++            raise RuntimeError(f"child environment not as set by the supervisor: {rec['env']}")
++        cpu = job["cpu"]
+         try:
+-            self.check_resources()
+-            self.model = C.build_model(self.cfg, self.arm)
+-            self.x = C.make_input(self.cfg).requires_grad_(False)
+-            lr = float(self.arm_cfg["optimizer"]["lr"])
+-            betas = tuple(float(v) for v in self.arm_cfg["optimizer"]["betas"])
+-            self.optimizer = optim.Adam(self.model.parameters(), lr=lr, betas=betas, eps=1e-8, weight_decay=0)
+-            self.results["model_params"] = self.model.num_parameters() if hasattr(self.model, "num_parameters") else {}
+-            self.results["model_state_sha256_init"] = C.state_sha256(self.model)
+-            self.results["input"] = C.describe_input(self.x)
+-            self.results["baselines"] = C.baselines(self.x)
+-            with torch.no_grad():
+-                x_hat_init = C.reconstruct(self.model, self.x)
+-            self.record_step(0, x_hat_init, float(nn.functional.mse_loss(x_hat_init, self.x)))
+-            log.info(f"{self.arm} step 0 recorded")
+-            self.train_loop()
+-            self.results["model_state_sha256_final"] = C.state_sha256(self.model)
+-            self.results["final"] = self.final_evaluation()
+-            self.results["status"] = self._verdict()
+-            self.results["wall_seconds"] = time.time() - self.start_t
+-            log.info(f"{self.arm} {self.results['status']} in {self.results['wall_seconds']:.1f}s")
+-        except ResourceStop as e:
+-            self.stop_reason = str(e)
+-            self.results["status"] = "RESOURCE_STOP"
+-            self.results["stop_reason"] = self.stop_reason
+-            self.results["wall_seconds"] = time.time() - self.start_t
+-            log.warning(f"{self.arm} stopped: {self.stop_reason}")
+-        except Exception as e:
+-            self.results["status"] = "EXECUTION_ERROR"
+-            self.results["error"] = {"type": type(e).__name__, "message": str(e)}
+-            self.results["wall_seconds"] = time.time() - self.start_t
+-            log.exception(f"{self.arm} error")
+-        finally:
+-            self.results["steps_done"] = self.steps_done
+-        out = self.root / f"{self.arm.lower().replace('-', '_')}.json"
+-        C.write_json_durable(out, self.results)
+-        return self.results
+-
+-    def _verdict(self) -> str:
+-        """PASS / FIT_FAIL from the final eval-mode metrics."""
+-        m = self.results["final"]["eval_mode"]
+-        criteria = self.cfg["criteria"]
+-        if not m["finite"]:
+-            return "COMPLETED_FIT_FAIL"
+-        if C.passes(m, criteria):
+-            return "COMPLETED_PASS"
+-        return "COMPLETED_FIT_FAIL"
+-
+-
+-class ResourceStop(RuntimeError):
+-    """A resource limit was reached; training stops gracefully with RESOURCE_STOP."""
+-
+-
+-def main() -> None:
+-    import argparse
+-    import sys
+-
+-    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+-    parser = argparse.ArgumentParser()
+-    parser.add_argument("config", help="approved config.json")
+-    parser.add_argument("--arm", required=True, choices=["U-CHECK", "U-FIT"])
+-    parser.add_argument("--root", required=True, help="output directory")
+-    args = parser.parse_args()
+-    cfg, _, _ = C.load_config(args.config)
+-    runner = Runner(cfg, args.arm, Path(args.root))
+-    result = runner.run()
+-    sys.exit(0 if result["status"] in ("COMPLETED_PASS", "COMPLETED_FIT_FAIL") else 1)
++            rec["cpu"] = C.configure_cpu(cpu["intra_op_threads"], cpu["inter_op_threads"])
++        except Exception as exc:  # report, never claim
++            rec["cpu"] = {"error": f"{type(exc).__name__}: {exc}"}
++            raise
++        rec["cpu"]["requested"] = cpu
++        rec["cpu"]["applied_as_requested"] = (
++            rec["cpu"]["intra_op_threads"] == cpu["intra_op_threads"]
++            and rec["cpu"]["inter_op_threads"] == cpu["inter_op_threads"]
++            and rec["cpu"]["deterministic_algorithms"] is True
++            and rec["cpu"]["cuda_available"] is False
++        )
++        if not rec["cpu"]["applied_as_requested"]:
++            raise RuntimeError(f"CPU configuration not applied as requested: {rec['cpu']}")
++        if rec["cpu"]["torch_version"] != job["expected_torch_version"]:
++            raise RuntimeError(f"torch {rec['cpu']['torch_version']} is not {job['expected_torch_version']}")
++        cfg, raw_sha, canon_sha = load_job_config(job, C, K)
++        rec["config_sha256"] = {"raw": raw_sha, "canonical": canon_sha}
++        run_arm(job, cfg, rec, curve, torch, C, M)
++    except SoftStop as exc:
++        rec["status"] = "RESOURCE_STOP"
++        rec["stop_reason"] = str(exc)
++    except KeyboardInterrupt:
++        rec["status"] = "INCOMPLETE"
++        # a stop request reaches the main thread at its next Python bytecode; a main thread blocked in one long
++        # native call is not woken and is ended by the supervisor's kill instead (no child record then)
++        rec["stop_reason"] = "interrupted (stop request or Ctrl+C -> KeyboardInterrupt)"
++    except Exception as exc:
++        rec["status"] = "EXECUTION_ERROR"
++        rec["error"] = {"type": type(exc).__name__, "message": str(exc), "traceback": traceback.format_exc()}
++    finally:
++        curve.close()
++        rec["rss"] = sampler.stop()
++        rec["child_monotonic_s"] = {"begin": t_begin, "end": time.monotonic()}
++        K.create_exclusive(out / "child_record.json", K.json_safe(rec))
++    return K.CHILD_EXIT[rec["status"]]
++
++
++FIXTURE_PROTOCOL_ID = "UID-R1-ENGINEERING-FIXTURE"
++ENV_KEYS = ("CUDA_VISIBLE_DEVICES", "HF_HUB_OFFLINE", "PYTHONDONTWRITEBYTECODE", "PYTHONPATH")
++MODULES = ("uid_common", "uformer_ae", "uformer_blocks", "uid_r1_control", "uid_r1_measure")
++
++
++def imported_modules(job: dict, K) -> dict:
++    """Files and SHA-256 of the diagnostic modules actually imported; in scientific mode each must have its approved
++    hash, and ``cg_fedllm`` (the package, with uncommitted SSBD work) must not be imported at all."""
++    files = {n: str(Path(sys.modules[n].__file__).resolve()) for n in MODULES if n in sys.modules}
++    files["uid_r1_child"] = str(Path(__file__).resolve())
++    sha = {n: K.sha256_file(p) for n, p in files.items()}
++    expected = job.get("expected_module_sha256")
++    if expected is not None:
++        bad = {n: sha[n] for n in sha if expected.get(n) != sha[n]}
++        if bad:
++            raise RuntimeError(f"imported module(s) without the approved SHA-256: {bad}")
++    if "cg_fedllm" in sys.modules:
++        raise RuntimeError("cg_fedllm must not be imported by the diagnostic")
++    return {"files": files, "sha256": sha, "checked_against_approved": expected is not None}
++
++
++def load_job_config(job: dict, C, K) -> tuple[dict, str, str]:
++    """Scientific: the frozen loader and the frozen hashes only. Engineering: a fixture config only, which can never
++    be the registered one (own protocol id, other bytes, other seeds)."""
++    if job["mode"] == "scientific":
++        cfg, raw, canon = C.load_config(job["config_path"])
++        if (raw, canon) != (K.FROZEN_CONFIG_RAW_SHA256, K.FROZEN_CONFIG_CANONICAL_SHA256):
++            raise RuntimeError("scientific job with a config other than the frozen one")
++        if job["model_arm"] != job["arm"]:
++            raise RuntimeError("scientific arm label and model arm differ")
++        return cfg, raw, canon
++    if job["mode"] != "engineering":
++        raise RuntimeError(f"unknown mode {job['mode']!r}")
++    data = Path(job["config_path"]).read_bytes()
++    cfg = json.loads(data.decode("utf-8"))
++    raw, canon = K.hashlib.sha256(data).hexdigest(), K.sha256_canonical(cfg)
++    if cfg.get("protocol_id") != FIXTURE_PROTOCOL_ID or raw == K.FROZEN_CONFIG_RAW_SHA256:
++        raise RuntimeError("engineering jobs accept only fixture configs")
++    if int(cfg["input"]["data_seed"]) == 20261012 or int(cfg["model_init_seed"]) == 1:
++        raise RuntimeError("fixture configs must not use the registered seeds")
++    return cfg, raw, canon
++
++
++def start_watchdog(job: dict) -> None:
++    """Exit (no record) if the supervisor is gone or the hard deadline passes; turn a stop request into
++    KeyboardInterrupt. The supervisor is identified by PID and creation time, so a reused PID is not mistaken for it."""
++    import _thread
++    import threading
++
++    import psutil
++
++    def gone(why: str) -> None:
++        sys.stderr.write(f"uid_r1_child: {why}; exiting without a child record\n")
++        sys.stderr.flush()
++        os._exit(137)  # the supervisor (or, if it is dead, the start record) closes the arm
++
++    try:
++        parent = psutil.Process(int(job["supervisor_pid"]))
++        same = abs(parent.create_time() - float(job["supervisor_create_time"])) < 0.01
++    except psutil.Error:
++        same = False
++    if not same:
++        gone("supervisor not running at child start")
++    hard_at, poll, stop_file = (
++        float(job["hard_stop_monotonic"]),
++        float(job["poll_interval_s"]),
++        Path(job["stop_file"]),
++    )
++    hooks = job.get("fixture_hooks") or {}
++    ignore_stop = job["mode"] == "engineering" and bool(hooks.get("ignore_stop_request"))
++
++    def run() -> None:
++        interrupted = False
++        while True:
++            time.sleep(poll)
++            if time.monotonic() >= hard_at:
++                gone("hard deadline passed")
++            if not parent.is_running():
++                gone("supervisor ended")
++            if not interrupted and not ignore_stop and stop_file.exists():
++                interrupted = True
++                _thread.interrupt_main()
++
++    threading.Thread(target=run, name="watchdog", daemon=True).start()
++
++
++def fixture_hook(job: dict, where: str, k: int = 0) -> None:
++    """Engineering-only behaviours; ``run_arm`` refuses any hook in scientific mode before the watchdog starts."""
++    h = job.get("fixture_hooks") or {}
++    if not h:
++        return
++    if where == "update":
++        if h.get("sleep_each_update_s"):
++            time.sleep(float(h["sleep_each_update_s"]))
++        if h.get("hang_at_update") == k:
++            time.sleep(10**6)
++        if h.get("raise_at_update") == k:
++            raise RuntimeError(f"fixture error at update {k}")
++        if h.get("alloc_mib_at_update", [None])[0] == k:
++            import torch
++
++            job["_ballast"] = torch.ones(int(h["alloc_mib_at_update"][1]) * 2**18)  # touched float32 pages
++            time.sleep(10**6)
++    elif where == "final_eval" and h.get("hang_in_final_eval"):
++        time.sleep(10**6)
++
++
++def write_point(curve, line: dict, K) -> None:
++    curve.write(json.dumps(K.json_safe(line), sort_keys=True, allow_nan=False) + "\n")
++    curve.flush()
++    os.fsync(curve.fileno())
++
++
++def run_arm(job: dict, cfg: dict, rec: dict, curve, torch, C, M) -> None:
++    """Frozen settings throughout: ``C.build_model`` / ``C.make_input`` / ``C.reconstruct`` / ``C.metrics`` and the
++    arm's frozen optimizer and update count; only the measurement and stop mechanics are new."""
++    import uid_r1_control as K
++    from torch import nn
++
++    arm, soft_at, every = job["model_arm"], float(job["soft_stop_monotonic"]), int(job["curve_every"])
++    acfg = cfg[arm.lower().replace("-", "_")]
++    if int(acfg["max_updates"]) != int(job["max_updates"]):
++        raise RuntimeError(f"job max_updates {job['max_updates']} != config {acfg['max_updates']}")
++    model = C.build_model(cfg, arm)
++    rec["modules"] = imported_modules(job, K)  # after build_model, which imports uformer_ae / uformer_blocks
++    x = C.make_input(cfg).requires_grad_(False)
++    o = acfg["optimizer"]
++    if o["name"] != "Adam":
++        raise RuntimeError(f"unsupported optimizer {o['name']!r}")
++    opt = torch.optim.Adam(
++        model.parameters(),
++        lr=float(o["lr"]),
++        betas=tuple(float(b) for b in o["betas"]),
++        eps=float(o["eps"]),
++        weight_decay=float(o["weight_decay"]),
++    )
++    rec["input"] = C.describe_input(x)
++    rec["baselines"] = C.baselines(x)
++    rec["model_state_sha256_init"] = C.state_sha256(model)
++    rec["trainable"] = M.trainable_coverage(model, opt)
++    theta0 = M.snapshot(model)
++    # step 0 on disposable copies: the training model, its BN buffers and the RNG state are left untouched
++    fp_before = M.state_fingerprint(model)
++    step0 = {}
++    for mode in ("eval", "train"):
++        with M.isolated(model, mode) as twin, torch.no_grad():
++            step0[mode] = C.metrics(C.reconstruct(twin, x), x)
++    fp_after = M.state_fingerprint(model)
++    rec["step0"] = {"post_init": step0, "isolation_verified": fp_before == fp_after}
++    if fp_before != fp_after:
++        raise RuntimeError("step-0 measurement changed the training model or the RNG state")
++    model.train()
++    max_updates, done, prev = int(acfg["max_updates"]), 0, None
++    for k in range(1, max_updates + 1):
++        if time.monotonic() >= soft_at:
++            raise SoftStop(f"soft stop before update {k}: {done} update(s) done")
++        fixture_hook(job, "update", k)
++        opt.zero_grad(set_to_none=True)
++        x_hat = C.reconstruct(model, x)  # train-mode forward of update k (pre-update for update k)
++        loss = nn.functional.mse_loss(x_hat, x)
++        loss.backward()
++        point = None
++        if k == 1 or k % every == 0 or k == max_updates:
++            point = {
++                "update": k,
++                "pre_update_train_loss": float(loss.detach()),
++                "pre_update_train": C.metrics(x_hat, x),
++                "grad": M.grad_stats(model),
++            }
++            prev = M.snapshot(model)
++        opt.step()
++        done = k
++        if point is not None:
++            point["param_change_this_update"] = M.param_change(model, prev)
++            point["param_change_from_init"] = M.param_change(model, theta0)
++            point["monotonic_s"] = time.monotonic()
++            point["rss_bytes_at_point"] = job["_sampler"].poll()
++            write_point(curve, point, K)
++    rec["updates_done"] = done
++    rec["model_state_sha256_final"] = C.state_sha256(model)
++    rec["param_change_total"] = M.param_change(model, theta0)
++    fixture_hook(job, "final_eval")
++    # final: two independent copies of the same final state; each starts from the same CPU RNG state
++    final_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
++    rng = torch.get_rng_state()
++    final, outputs, loaded, loaded_before = {}, {}, [], []
++    for mode in ("eval", "train"):
++        twin = C.build_model(cfg, arm)
++        twin.load_state_dict(final_state, strict=True)
++        loaded_before.append(C.state_sha256(twin))
++        twin.train(mode == "train")
++        torch.set_rng_state(rng)
++        with torch.no_grad():
++            outputs[mode] = C.reconstruct(twin, x)
++        final[f"{mode}_mode"] = C.metrics(outputs[mode], x)
++        loaded.append(C.state_sha256(twin))
++    final["copies_loaded_identical_state"] = len(set(loaded_before)) == 1
++    final["train_copy_state_changed_by_forward"] = loaded[1] != loaded_before[1]
++    final["train_minus_eval_output_sse"] = float(
++        (outputs["train"].double() - outputs["eval"].double()).square().sum()
++    )
++    rec["final"] = final
++    rec["verdict_basis"] = "eval_mode"
++    rec["status"] = (
++        "COMPLETED_PASS" if C.passes(final["eval_mode"], cfg["criteria"]) else "COMPLETED_FIT_FAIL"
++    )
+ 
+ 
+ if __name__ == "__main__":
+-    main()
++    sys.exit(main(sys.argv[1]))
+
+=== (new) uid_20261012_v2_r1/uid_r1_control.py ===
+git : warning: in the working copy of 'uid_20261012_v2_r1/uid_r1_control.py', LF will be replaced by CRLF the next time
+ Git touches it
+At line:1 char:1187
++ ... n')) { $f = git diff --no-index --no-color -- NUL "uid_20261012_v2_r1 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: in the... Git touches it:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+diff --git a/uid_20261012_v2_r1/uid_r1_control.py b/uid_20261012_v2_r1/uid_r1_control.py
+new file mode 100644
+index 0000000..7784ec8
+--- /dev/null
++++ b/uid_20261012_v2_r1/uid_r1_control.py
+@@ -0,0 +1,351 @@
++"""UID-20261012-v2 r1: start accounting, deadlines, plans and package checks (imports no torch).
++
++Engineering revision r1 of the frozen UID-20261012-v2 package (execution machinery only). Every start is a record
++created with O_CREAT | O_EXCL and fsync in two ledger roots, a primary under the run root and a mirror outside it, which
++must stay byte-identical: a record is written once, a crash mid-write leaves a record that blocks re-entry, and changing
++or deleting the run root does not reset the count. An arm starts only after every earlier arm has an end record and its
++prerequisite ended COMPLETED_PASS; a start without an end record is INCOMPLETE and is never re-entered automatically.
++"""
++
++from __future__ import annotations
++
++import hashlib
++import json
++import os
++import re
++from pathlib import Path
++from typing import Any
++
++R1_DIR = Path(__file__).resolve().parent
++DIAG_ROOT = R1_DIR.parent
++FROZEN_DIR = DIAG_ROOT / "uid_20261012_v2"
++REGISTERED_PROTOCOL_ID = "UID-20261012-v2"
++REVISION_ID = "UID-20261012-v2-r1"
++TERMINAL = ("COMPLETED_PASS", "COMPLETED_FIT_FAIL", "RESOURCE_STOP", "EXECUTION_ERROR", "INCOMPLETE")
++INVOCATION_RE = re.compile(r"^invocation_(\d{1,4})\.json$")
++
++
++class ControlError(RuntimeError):
++    """A ledger, plan or package precondition does not hold; no start may be made."""
++
++
++def canonical_bytes(obj: Any) -> bytes:
++    text = json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
++    return (text + "\n").encode("utf-8")
++
++
++def sha256_canonical(obj: Any) -> str:
++    return hashlib.sha256(canonical_bytes(obj)).hexdigest()
++
++
++def sha256_file(path: str | Path) -> str:
++    h = hashlib.sha256()
++    with Path(path).open("rb") as fh:
++        for chunk in iter(lambda: fh.read(1 << 20), b""):
++            h.update(chunk)
++    return h.hexdigest()
++
++
++def create_exclusive(path: Path, obj: Any) -> str:
++    """Create ``path`` (never overwrite), write canonical JSON, fsync; returns the SHA-256 of the written bytes."""
++    data = canonical_bytes(obj)
++    path.parent.mkdir(parents=True, exist_ok=True)
++    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_BINARY", 0), 0o644)
++    try:
++        view = memoryview(data)
++        while view:
++            view = view[os.write(fd, view) :]
++        os.fsync(fd)
++    finally:
++        os.close(fd)
++    return hashlib.sha256(data).hexdigest()
++
++
++def load_json(path: str | Path) -> Any:
++    return json.loads(Path(path).read_text(encoding="utf-8"))
++
++
++def json_safe(obj: Any) -> Any:
++    """Non-finite floats become "nan" / "inf" / "-inf" (the frozen ``uid_common.json_safe`` rule)."""
++    if isinstance(obj, float) and obj != obj:
++        return "nan"
++    if isinstance(obj, float) and obj in (float("inf"), float("-inf")):
++        return "inf" if obj > 0 else "-inf"
++    if isinstance(obj, dict):
++        return {k: json_safe(v) for k, v in obj.items()}
++    if isinstance(obj, (list, tuple)):
++        return [json_safe(v) for v in obj]
++    return obj
++
++
++# child exit codes; the supervisor accepts a child record only when its status matches the exit code
++CHILD_EXIT = {
++    "COMPLETED_PASS": 0,
++    "COMPLETED_FIT_FAIL": 0,
++    "RESOURCE_STOP": 3,
++    "INCOMPLETE": 130,
++    "EXECUTION_ERROR": 1,
++}
++
++
++# ---- ledger ---------------------------------------------------------------------------------------------
++LEDGER_NAME_RE = re.compile(r"^(invocation_\d{3}(_end)?|start_[A-Za-z0-9-]+|end_[A-Za-z0-9-]+)\.json$")
++
++
++class Ledger:
++    """Two roots holding byte-identical, write-once records; any disagreement or unreadable record refuses."""
++
++    def __init__(self, primary: str | Path, mirror: str | Path) -> None:
++        self.roots = (Path(primary), Path(mirror))
++        if self.roots[0].resolve() == self.roots[1].resolve():
++            raise ControlError("ledger primary and mirror must be different directories")
++
++    def read(self) -> dict[str, Any]:
++        listings = []
++        for root in self.roots:
++            files: dict[str, bytes] = {}
++            if root.exists():
++                for p in root.iterdir():
++                    if not p.is_file() or not LEDGER_NAME_RE.match(p.name):
++                        raise ControlError(f"unexpected entry in ledger root {root}: {p.name}")
++                    files[p.name] = p.read_bytes()
++            listings.append(files)
++        if listings[0] != listings[1]:
++            raise ControlError(f"ledger roots disagree: {sorted(listings[0])} vs {sorted(listings[1])}")
++        records = {}
++        for name, data in listings[0].items():
++            try:
++                records[name] = json.loads(data.decode("utf-8"))
++            except (UnicodeDecodeError, json.JSONDecodeError) as exc:
++                raise ControlError(f"unreadable ledger record {name}: {exc}") from exc
++        return records
++
++    def write(self, name: str, obj: Any) -> str:
++        """Primary first, then mirror. A failure between the two leaves the roots disagreeing, which blocks."""
++        if not LEDGER_NAME_RE.match(name):
++            raise ControlError(f"invalid ledger record name {name!r}")
++        digests = [create_exclusive(root / name, obj) for root in self.roots]
++        return digests[0]
++
++
++def summarize(records: dict[str, Any], arms: list[str]) -> dict[str, Any]:
++    starts = sorted(n for n in records if n.startswith("start_"))
++    opened = sorted(n for n in records if INVOCATION_RE.match(n))
++    state = {}
++    for arm in arms:
++        start, end = records.get(f"start_{arm}.json"), records.get(f"end_{arm}.json")
++        if end is not None and start is None:
++            raise ControlError(f"end record without start record for {arm}")
++        state[arm] = (
++            "NOT_STARTED" if start is None else ("STARTED_UNFINISHED" if end is None else end["status"])
++        )
++    for name in starts:
++        arm = name[len("start_") : -len(".json")]
++        if arm not in state:
++            state[arm] = (
++                "STARTED_UNFINISHED"
++                if f"end_{arm}.json" not in records
++                else records[f"end_{arm}.json"]["status"]
++            )
++    return {"invocations": len(opened), "starts": len(starts), "arms": state}
++
++
++def check_can_open(records: dict[str, Any], plan: dict[str, Any]) -> dict[str, Any]:
++    s = summarize(records, [a["arm"] for a in plan["arms"]])
++    unfinished = [a for a, v in s["arms"].items() if v == "STARTED_UNFINISHED"]
++    if unfinished:
++        raise ControlError(f"INCOMPLETE prior start(s) {unfinished}: never re-entered automatically")
++    if s["invocations"] >= plan["max_invocations"]:
++        raise ControlError(
++            f"{s['invocations']} invocation(s) already recorded; max {plan['max_invocations']}"
++        )
++    return s
++
++
++def check_can_start(records: dict[str, Any], plan: dict[str, Any], arm: str) -> None:
++    s = summarize(records, [a["arm"] for a in plan["arms"]])
++    if f"start_{arm}.json" in records:
++        raise ControlError(f"{arm} already has a start record; a second start is refused")
++    if [a for a, v in s["arms"].items() if v == "STARTED_UNFINISHED"]:
++        raise ControlError("an unfinished start exists; refusing a new start")
++    if s["starts"] >= plan["max_training_starts"]:
++        raise ControlError(f"{s['starts']} start(s) recorded; max {plan['max_training_starts']}")
++    pre = plan["prerequisite"].get(arm)
++    if pre is not None and s["arms"].get(pre) != "COMPLETED_PASS":
++        raise ControlError(f"{arm} requires {pre} COMPLETED_PASS, found {s['arms'].get(pre)}")
++
++
++def validate_plan(plan: dict[str, Any]) -> None:
++    """Timing invariants. The kill is issued ``end_margin_s`` before a limit and may wait ``kill_wait_s`` for the
++    process to exit, so the end record fits inside the limit only if the margin exceeds that wait."""
++    if not plan["end_margin_s"] > plan["kill_wait_s"] > 0:
++        raise ControlError("end_margin_s must exceed kill_wait_s (> 0)")
++    if not (plan["eval_reserve_s"] > 0 and plan["poll_interval_s"] > 0 and plan["interrupt_grace_s"] > 0):
++        raise ControlError("eval_reserve_s, poll_interval_s and interrupt_grace_s must be positive")
++    for a in plan["arms"]:
++        if a["max_seconds"] <= plan["end_margin_s"] + plan["eval_reserve_s"]:
++            raise ControlError(f"{a['arm']}: max_seconds leaves no time to train")
++
++
++def arm_deadlines(
++    t0: float, t_start: float, arm_limit: float, aggregate_limit: float, margin: float, reserve: float
++) -> tuple[float, float]:
++    """(soft stop, hard kill) on one clock. The kill leaves ``margin`` for the end record inside both the arm limit
++    (from the start record) and the aggregate limit (from the invocation record); training stops ``reserve`` earlier
++    so that the final evaluation and the arm's records fit before the kill."""
++    kill_at = min(t_start + arm_limit, t0 + aggregate_limit) - margin
++    return kill_at - reserve, kill_at
++
++
++# ---- package identity and the registered plan ---------------------------------------------------------
++FROZEN_MANIFEST_SHA256 = "a80bebd414cad4aaf55c48cc5ca665ff658cf1388d687056db0c2ccc3cf286ca"
++FROZEN_CONFIG_RAW_SHA256 = "d7ae76052d50776705f386655b0b501d403104d7d4ca118865a2b6ff3b71b0bd"
++FROZEN_CONFIG_CANONICAL_SHA256 = "bb0111fab6310ab5430d931b781fc3c97cdb928da773d0cf8e71ea532fb4e5b3"
++REGISTERED_ARMS = ("U-CHECK", "U-FIT")
++REGISTERED_PREREQUISITE = {"U-FIT": "U-CHECK"}  # protocol.md: U-FIT only after U-CHECK passes
++REGISTERED_CURVE_EVERY = 100  # protocol.md: step 0, step 1, every 100 updates and the final state
++REGISTERED_EVIDENCE_CAP_BYTES = 512 * 2**20  # protocol.md: new retained evidence at most 512 MiB
++REGISTERED_RSS_AVAILABLE_FRACTION = 0.5  # protocol.md: RSS limit min(4 GiB, 50% of available RAM at launch)
++EXECUTION_KEYS = (
++    "run_root",
++    "ledger_mirror",
++    "python_executable",
++    "torch_version",
++    "end_margin_s",
++    "eval_reserve_s",
++    "poll_interval_s",
++    "interrupt_grace_s",
++    "kill_wait_s",
++)
++
++
++# modules the scientific child may import, by import name -> path relative to R1_DIR (as listed in manifest_r1.json)
++MODULE_PATHS = {
++    "uid_common": "../uid_20261012_v2/uid_common.py",
++    "uformer_ae": "../uid_20261012_v2/uformer_ae.py",
++    "uformer_blocks": "../uid_20261012_v2/uformer_blocks.py",
++    "uid_r1_control": "uid_r1_control.py",
++    "uid_r1_measure": "uid_r1_measure.py",
++    "uid_r1_child": "uid_r1_child.py",
++}
++
++
++def expected_module_hashes(r1_manifest: dict[str, Any]) -> dict[str, str]:
++    """Approved SHA-256 of every module the child imports, taken from the (already verified) r1 manifest."""
++    by_path = {e["path"]: e["sha256"] for e in r1_manifest["files"]}
++    missing = [p for p in MODULE_PATHS.values() if p not in by_path]
++    if missing:
++        raise ControlError(f"manifest_r1.json does not list runtime module(s) {missing}")
++    return {name: by_path[path] for name, path in MODULE_PATHS.items()}
++
++
++def ledger_status(primary: str | Path, mirror: str | Path, arms: list[str]) -> dict[str, Any]:
++    """Read-only view of a ledger (no directory is created); absent roots read as an empty ledger."""
++    records = Ledger(primary, mirror).read()
++    s = summarize(records, arms)
++    s["records"] = sorted(records)
++    s["roots_exist"] = {"primary": Path(primary).exists(), "mirror": Path(mirror).exists()}
++    return s
++
++
++def verify_entries(manifest: dict[str, Any], root: Path) -> list[dict[str, Any]]:
++    bad = []
++    for entry in manifest["files"]:
++        p = root / entry["path"]
++        actual = sha256_file(p) if p.is_file() else None
++        if actual != entry["sha256"]:
++            bad.append({"path": entry["path"], "expected": entry["sha256"], "actual": actual})
++    return bad
++
++
++def verify_package(approved_r1_manifest_sha256: str) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
++    """Identity of the frozen package and of revision r1, bound to the approved r1 manifest hash."""
++    frozen_manifest, r1_manifest = FROZEN_DIR / "manifest.json", R1_DIR / "manifest_r1.json"
++    cfg_raw = (FROZEN_DIR / "config.json").read_bytes()
++    cfg = json.loads(cfg_raw.decode("utf-8"))
++    ident = {
++        "frozen_manifest_sha256": sha256_file(frozen_manifest),
++        "r1_manifest_sha256": sha256_file(r1_manifest) if r1_manifest.is_file() else None,
++        "config_raw_sha256": hashlib.sha256(cfg_raw).hexdigest(),
++        "config_canonical_sha256": sha256_canonical(cfg),
++    }
++    problems = []
++    if ident["frozen_manifest_sha256"] != FROZEN_MANIFEST_SHA256:
++        problems.append("frozen manifest.json changed")
++    if ident["r1_manifest_sha256"] != approved_r1_manifest_sha256:
++        problems.append("manifest_r1.json does not have the approved SHA-256")
++    if ident["config_raw_sha256"] != FROZEN_CONFIG_RAW_SHA256:
++        problems.append("config.json raw bytes changed")
++    if ident["config_canonical_sha256"] != FROZEN_CONFIG_CANONICAL_SHA256:
++        problems.append("config.json canonical content changed")
++    problems += [f"frozen file mismatch: {b}" for b in verify_entries(load_json(frozen_manifest), FROZEN_DIR)]
++    if ident["r1_manifest_sha256"] is not None:
++        problems += [f"r1 file mismatch: {b}" for b in verify_entries(load_json(r1_manifest), R1_DIR)]
++    if problems:
++        raise ControlError(f"package identity check failed: {problems}")
++    execution = load_json(R1_DIR / "execution_r1.json")
++    return ident, cfg, execution
++
++
++def registered_plan(cfg: dict[str, Any], execution: dict[str, Any]) -> dict[str, Any]:
++    """Limits from the frozen config and protocol; only execution mechanics come from execution_r1.json."""
++    if cfg.get("protocol_id") != REGISTERED_PROTOCOL_ID:
++        raise ControlError(f"config protocol_id {cfg.get('protocol_id')!r} is not {REGISTERED_PROTOCOL_ID}")
++    g = cfg["global_limits"]
++    arms = []
++    for arm in REGISTERED_ARMS:
++        a = cfg[arm.lower().replace("-", "_")]
++        arms.append(
++            {"arm": arm, "max_updates": int(a["max_updates"]), "max_seconds": float(a["max_seconds"])}
++        )
++    plan = {
++        "mode": "scientific",
++        "arms": arms,
++        "prerequisite": dict(REGISTERED_PREREQUISITE),
++        "max_training_starts": int(g["max_training_starts"]),
++        "max_invocations": 1,
++        "aggregate_seconds": float(g["max_scientific_seconds"]),
++        "rss_cap_bytes": int(g["max_rss_bytes"]),
++        "rss_available_fraction": REGISTERED_RSS_AVAILABLE_FRACTION,
++        "evidence_cap_bytes": REGISTERED_EVIDENCE_CAP_BYTES,
++        "curve_every": REGISTERED_CURVE_EVERY,
++        "cpu": {k: int(cfg["cpu_config"][k]) for k in ("intra_op_threads", "inter_op_threads")},
++    }
++    missing = [k for k in EXECUTION_KEYS if k not in execution]
++    if missing:
++        raise ControlError(f"execution_r1.json lacks {missing}")
++    plan.update({k: execution[k] for k in EXECUTION_KEYS})
++    return plan
++
++
++def fixture_plan(
++    fixture_cfg: dict[str, Any], tmp_root: Path, arms: list[dict[str, Any]], **over: Any
++) -> dict[str, Any]:
++    """An engineering plan: fixture config, fixture limits, ledgers and run root under ``tmp_root`` only."""
++    if fixture_cfg.get("protocol_id") == REGISTERED_PROTOCOL_ID:
++        raise ControlError("fixture plans cannot use the registered config")
++    execution = load_json(R1_DIR / "execution_r1.json")
++    plan = {
++        "mode": "engineering",
++        "arms": arms,
++        "prerequisite": {},
++        "max_training_starts": 2,
++        "max_invocations": 1,
++        "aggregate_seconds": 600.0,
++        "rss_cap_bytes": 4 * 2**30,
++        "rss_available_fraction": 0.5,
++        "evidence_cap_bytes": 64 * 2**20,
++        "curve_every": 2,
++        "cpu": {"intra_op_threads": 2, "inter_op_threads": 1},
++        "run_root": str(tmp_root / "run"),
++        "ledger_mirror": str(tmp_root / "mirror"),
++        "python_executable": execution["python_executable"],
++        "torch_version": execution["torch_version"],
++        "end_margin_s": 1.0,
++        "eval_reserve_s": 2.0,
++        "poll_interval_s": 0.1,
++        "interrupt_grace_s": 8.0,
++        "kill_wait_s": 0.5,
++    }
++    plan.update(over)
++    return plan
+
+=== (new) uid_20261012_v2_r1/uid_r1_measure.py ===
+git : warning: in the working copy of 'uid_20261012_v2_r1/uid_r1_measure.py', LF will be replaced by CRLF the next time
+ Git touches it
+At line:1 char:1187
++ ... n')) { $f = git diff --no-index --no-color -- NUL "uid_20261012_v2_r1 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: in the... Git touches it:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+diff --git a/uid_20261012_v2_r1/uid_r1_measure.py b/uid_20261012_v2_r1/uid_r1_measure.py
+new file mode 100644
+index 0000000..5033485
+--- /dev/null
++++ b/uid_20261012_v2_r1/uid_r1_measure.py
+@@ -0,0 +1,163 @@
++"""UID-20261012-v2 r1: non-mutating measurements, gradient / parameter-change evidence and sampled RSS.
++
++Every pure measurement runs on a deep copy of the training model, under the RNG fork of ``isolated``, so it changes
++neither the training model's parameters or BatchNorm buffers nor the global RNG state; ``check_r1_measure.py`` verifies
++this. Gradient statistics are read from the ``.grad`` tensors left by the training step's own backward: no extra pass.
++"""
++
++from __future__ import annotations
++
++import contextlib
++import copy
++import math
++import os
++import threading
++import time
++from typing import Any
++
++import psutil
++import torch
++from torch import nn
++
++
++@contextlib.contextmanager
++def isolated(model: nn.Module, mode: str):
++    """A deep copy of ``model`` in ``mode`` ("train"/"eval") with the CPU RNG state restored on exit."""
++    with torch.random.fork_rng(devices=[]):
++        twin = copy.deepcopy(model)
++        twin.train(mode == "train")
++        yield twin
++    del twin
++
++
++def state_fingerprint(module: nn.Module) -> dict[str, Any]:
++    """Exact digest of every state tensor plus the global CPU RNG state (used by the isolation check)."""
++    import hashlib
++
++    h = hashlib.sha256()
++    for key, value in sorted(module.state_dict().items()):
++        t = value.detach().cpu().contiguous()
++        h.update(key.encode())
++        h.update(str(t.dtype).encode())
++        h.update(t.reshape(-1).view(torch.uint8).numpy().tobytes())
++    return {
++        "state_sha256": h.hexdigest(),
++        "rng_sha256": hashlib.sha256(torch.get_rng_state().numpy().tobytes()).hexdigest(),
++    }
++
++
++def groups(model: nn.Module) -> dict[str, list[tuple[str, nn.Parameter]]]:
++    """Encoder/decoder sampling and core groups for the AE; one group for a model without encode/decode."""
++    named = list(model.named_parameters())
++    if not (hasattr(model, "encoder") and hasattr(model, "decoder")):
++        return {"all": named}
++    out: dict[str, list[tuple[str, nn.Parameter]]] = {
++        "encoder.sampling": [],
++        "encoder.core": [],
++        "decoder.core": [],
++        "decoder.sampling": [],
++    }
++    for name, p in named:
++        side, part = name.split(".")[0], name.split(".")[1]
++        out[f"{side}.{part}"].append((name, p))
++    return out
++
++
++def grad_stats(model: nn.Module) -> dict[str, Any]:
++    """Per group: L2 norm of the existing gradients, how many parameters got a gradient, non-finite count."""
++    res = {}
++    for g, params in groups(model).items():
++        sq, with_grad, nonfinite, numel = 0.0, 0, 0, 0
++        for _, p in params:
++            numel += p.numel()
++            if p.grad is not None:
++                gd = p.grad.detach().double()
++                with_grad += p.numel()
++                nonfinite += int((~torch.isfinite(gd)).sum())
++                sq += float(gd.square().sum())
++        res[g] = {
++            "grad_l2": math.sqrt(sq),
++            "numel": numel,
++            "numel_with_grad": with_grad,
++            "nonfinite": nonfinite,
++        }
++    return res
++
++
++def snapshot(model: nn.Module) -> dict[str, torch.Tensor]:
++    return {n: p.detach().clone() for n, p in model.named_parameters()}
++
++
++def param_change(model: nn.Module, ref: dict[str, torch.Tensor]) -> dict[str, Any]:
++    """Per group: ||theta - theta_ref||_2, ||theta_ref||_2 and the number of elements that moved."""
++    res = {}
++    for g, params in groups(model).items():
++        d2, r2, changed, numel = 0.0, 0.0, 0, 0
++        for name, p in params:
++            d = p.detach().double() - ref[name].double()
++            d2 += float(d.square().sum())
++            r2 += float(ref[name].double().square().sum())
++            changed += int((d != 0).sum())
++            numel += p.numel()
++        res[g] = {
++            "delta_l2": math.sqrt(d2),
++            "ref_l2": math.sqrt(r2),
++            "numel_changed": changed,
++            "numel": numel,
++        }
++    return res
++
++
++def trainable_coverage(model: nn.Module, optimizer: torch.optim.Optimizer) -> dict[str, Any]:
++    in_opt = {id(p) for grp in optimizer.param_groups for p in grp["params"]}
++    params = list(model.parameters())
++    return {
++        "parameters": sum(p.numel() for p in params),
++        "requires_grad": sum(p.numel() for p in params if p.requires_grad),
++        "in_optimizer": sum(p.numel() for p in params if id(p) in in_opt),
++        "tensors_missing_from_optimizer": sum(1 for p in params if id(p) not in in_opt),
++    }
++
++
++class RSSSampler:
++    """Polls the RSS of this process every ``interval_s``. The maximum is a sampled peak: a spike shorter than the
++    interval can be missed. ``limit`` is enforced by the supervisor (which kills the child); this only reports."""
++
++    def __init__(self, interval_s: float) -> None:
++        self.interval_s = float(interval_s)
++        self.proc = psutil.Process(os.getpid())
++        self.samples = 0
++        self.max_rss = self.proc.memory_info().rss
++        self._stop = threading.Event()
++        self._t = threading.Thread(target=self._run, name="rss-sampler", daemon=True)
++
++    def _run(self) -> None:
++        while not self._stop.wait(self.interval_s):
++            self.poll()
++
++    def poll(self) -> int:
++        rss = self.proc.memory_info().rss
++        self.samples += 1
++        self.max_rss = max(self.max_rss, rss)
++        return rss
++
++    def start(self) -> RSSSampler:
++        self._t.start()
++        return self
++
++    def stop(self) -> dict[str, Any]:
++        self._stop.set()
++        self._t.join(timeout=5)
++        self.poll()
++        return {
++            "sampled_max_rss_bytes": self.max_rss,
++            "samples": self.samples,
++            "interval_s": self.interval_s,
++            "label": "sampled maximum of the working set; spikes shorter than the interval can be missed",
++            # Windows keeps its own peak working-set counter; reported separately, None where unavailable
++            "os_peak_wset_bytes": getattr(self.proc.memory_info(), "peak_wset", None),
++        }
++
++
++def monotonic() -> float:
++    return time.monotonic()
+
+=== (new) uid_20261012_v2_r1/execution_r1.json ===
+git : warning: in the working copy of 'uid_20261012_v2_r1/execution_r1.json', LF will be replaced by CRLF the next time
+ Git touches it
+At line:1 char:1187
++ ... n')) { $f = git diff --no-index --no-color -- NUL "uid_20261012_v2_r1 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: in the... Git touches it:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+diff --git a/uid_20261012_v2_r1/execution_r1.json b/uid_20261012_v2_r1/execution_r1.json
+new file mode 100644
+index 0000000..de7a040
+--- /dev/null
++++ b/uid_20261012_v2_r1/execution_r1.json
+@@ -0,0 +1,13 @@
++{
++  "revision_id": "UID-20261012-v2-r1",
++  "note": "Execution mechanics only. Scientific settings (input, seeds, model, optimizer, updates, per-arm and aggregate limits, RSS cap, criteria) are read from the frozen uid_20261012_v2/config.json and protocol.md.",
++  "run_root": "D:/cgfed-runs/uid_20261012_v2_r1",
++  "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/uid_20261012_v2_r1/scientific_ledger_mirror",
++  "python_executable": "D:/conda_envs/cgfedllm/python.exe",
++  "torch_version": "2.14.0+cu130",
++  "end_margin_s": 20,
++  "eval_reserve_s": 60,
++  "poll_interval_s": 0.25,
++  "interrupt_grace_s": 20,
++  "kill_wait_s": 10
++}
+
