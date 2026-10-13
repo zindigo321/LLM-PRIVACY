@@ -1,0 +1,1430 @@
+{
+  "aggregate": {
+    "all_agree": true,
+    "analysis": {
+      "classes": {
+        "U-TILE-1": "P",
+        "U-TILE-2": "P",
+        "U-TILE-3": "P",
+        "U-TILE-4": "P"
+      },
+      "counts": {
+        "F": 0,
+        "P": 4,
+        "U": 0
+      },
+      "decision": "COVERAGE_CRITERION_MET",
+      "n_registered": 4,
+      "policy_id": "UPP-20261013-v1",
+      "rule": "P >= 3: met; F >= 2: not met; otherwise inconclusive"
+    },
+    "classifier": {
+      "classes": {
+        "U-TILE-1": "P",
+        "U-TILE-2": "P",
+        "U-TILE-3": "P",
+        "U-TILE-4": "P"
+      },
+      "counts": {
+        "F": 0,
+        "P": 4,
+        "U": 0
+      },
+      "decision": "COVERAGE_CRITERION_MET",
+      "n_registered": 4,
+      "policy_id": "UPP-20261013-v1",
+      "rule": "P >= 3: met; F >= 2: not met; otherwise inconclusive"
+    },
+    "reimplemented": {
+      "counts": {
+        "F": 0,
+        "P": 4,
+        "U": 0
+      },
+      "decision": "COVERAGE_CRITERION_MET"
+    }
+  },
+  "all_ok": true,
+  "arms": {
+    "U-TILE-1": {
+      "agreement": {
+        "child_eq_classifier": true,
+        "child_status_matches_verdict": true,
+        "child_verdict": "PASS",
+        "classifier_eq_analysis": true,
+        "reimplemented_eq_classifier": true
+      },
+      "curve": {
+        "all_losses_finite": true,
+        "drop_per_100_last_1000_min_max": [
+          -0.0343780450086717,
+          0.04982238743274581
+        ],
+        "every_parameter_had_a_gradient": true,
+        "grad_nonfinite_total": 0,
+        "increases": [
+          [
+            900,
+            1000
+          ],
+          [
+            1100,
+            1200
+          ],
+          [
+            1600,
+            1700
+          ],
+          [
+            2100,
+            2200
+          ],
+          [
+            2900,
+            3000
+          ]
+        ],
+        "loss": {
+          "1": 0.2109997272491455,
+          "100": 0.013952265493571758,
+          "1000": 0.005877422168850899,
+          "2000": 0.0047376579605042934,
+          "2500": 0.0044410633854568005,
+          "3000": 0.004388600587844849,
+          "500": 0.0062255579978227615
+        },
+        "loss_ratio_3000_over_2000": 0.9263228000903869,
+        "loss_ratio_3000_over_2500": 0.9881868838477397,
+        "loss_strictly_decreasing": false,
+        "mean_s_per_update": 0.16224174724908125,
+        "points": 31,
+        "pre_update_rse": {
+          "1": 10.974933514261002,
+          "100": 0.725712683884786,
+          "1000": 0.3057080566679355,
+          "2000": 0.24642436413554114,
+          "2500": 0.23099733315506882,
+          "3000": 0.22826854398733243,
+          "500": 0.3238159658448868
+        },
+        "relative_change_from_init_at_end": {
+          "decoder.core": 0.042488096173183644,
+          "decoder.sampling": 0.058410961361343154,
+          "encoder.core": 0.044296010845931245,
+          "encoder.sampling": 0.03327711666227926
+        },
+        "rss_at_points_min_max": [
+          693952512,
+          777936896
+        ],
+        "schedule_as_registered": true,
+        "train_loop_s": 486.56299999999464
+      },
+      "evidence": {
+        "problems": [],
+        "verified": true
+      },
+      "input": {
+        "all_finite": true,
+        "child_baselines_equal_registered": true,
+        "dtype": "F32",
+        "file_equals_pinned": true,
+        "file_sha256": "b7d39da738313e83d6c36f5f1c73683b464257d27375017a6731b6b7be345a67",
+        "hashes_equal_registered": true,
+        "keys": [
+          "x"
+        ],
+        "normalized_max_abs": 0.42174121737480164,
+        "normalized_max_abs_equal_registered": true,
+        "original": {
+          "scalar_mean_mse": 4.765049991075276e-06,
+          "target_energy": 0.004884623228602289,
+          "ulps_vs_registered": {
+            "T": 0.0,
+            "mean": 1.0,
+            "zero": 0.0
+          },
+          "zero_mse": 4.770139871681923e-06
+        },
+        "shape": [
+          1,
+          1,
+          32,
+          32
+        ],
+        "tensor_sha256_normalized": "00d149198973aa2cf4b08614974aaa6dd3378032336b55e927e5991e940d3897",
+        "tensor_sha256_original": "6c3b4b0958f72467560f384448612f805e00ecd5f413887c0f0c8f4cc726db5d",
+        "zero_elements": 0
+      },
+      "metrics": {
+        "eval_mode": {
+          "cosine": 0.8793984223679437,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 1.0813471091002034e-06,
+          "norm_ratio": 0.8850944832739451,
+          "rse": 0.22669085984661635,
+          "sse_identity_rel_err": 3.916563609066854e-16,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "eval_mode_normalized": {
+          "cosine": 0.879398422340856,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 0.0043582688255902995,
+          "norm_ratio": 0.8850944827909968,
+          "rse": 0.22669085988906518,
+          "sse_identity_rel_err": 7.960607963377982e-16,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "train_mode": {
+          "cosine": 0.8810283663876022,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 1.067617934526169e-06,
+          "norm_ratio": 0.8858959078061406,
+          "rse": 0.2238127105798542,
+          "sse_identity_rel_err": 1.5867716715160487e-15,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "train_mode_normalized": {
+          "cosine": 0.8810283669346918,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 0.00430293464631416,
+          "norm_ratio": 0.8858959066974582,
+          "rse": 0.22381270959973218,
+          "sse_identity_rel_err": 8.062978495212562e-16,
+          "ulps_rse_float64_vs_exact": 0.0
+        }
+      },
+      "resources": {
+        "arm_wall_s": 491.88999999998487,
+        "child_process_s": 489.4220000000205,
+        "guard_action": null,
+        "guard_sampled_max_rss_bytes": 829927424,
+        "limits_ok": true,
+        "rss_used_max": 830124032,
+        "updates_done": 3000
+      },
+      "secondary": {
+        "analysis_agrees": true,
+        "ep_v1": "PASS",
+        "historical_strict": "FAIL"
+      },
+      "started": true,
+      "states": {
+        "change": {
+          "decoder.core": {
+            "numel": 317964,
+            "numel_changed": 317964,
+            "relative_change": 0.042488096173183644
+          },
+          "decoder.sampling": {
+            "numel": 24746,
+            "numel_changed": 24746,
+            "relative_change": 0.05841096136134317
+          },
+          "encoder.core": {
+            "numel": 317964,
+            "numel_changed": 317962,
+            "relative_change": 0.044296010845931245
+          },
+          "encoder.sampling": {
+            "numel": 24833,
+            "numel_changed": 24833,
+            "relative_change": 0.03327711666227926
+          }
+        },
+        "final": {
+          "all_float_finite": true,
+          "buffer_elements": 49545,
+          "bytes": 3168388,
+          "counts_equal_record": true,
+          "file_equals_record": true,
+          "file_sha256": "37f4f0d8eceabe6b9b71a7c1ac438c9593801fe3ee667182ead4d603ad4bbe27",
+          "metadata_arm": "U-TILE-1",
+          "metadata_point": "final",
+          "num_batches_tracked": [
+            3000
+          ],
+          "parameter_elements": 685507,
+          "running_var_nonnegative": true,
+          "state_hash_agrees": true,
+          "state_sha256_recomputed": "3ef02dd4bea636eb948729637348c8105f0ded55d35a121d94b0e45c8d6fa5d1",
+          "tensors": 296
+        },
+        "index_buffers_unchanged": true,
+        "init": {
+          "all_float_finite": true,
+          "buffer_elements": 49545,
+          "bytes": 3168388,
+          "counts_equal_record": true,
+          "file_equals_record": true,
+          "file_sha256": "c7583d368248c236b4a77ef4c860026dd73f2339b21e78359f9ea0c09f15b933",
+          "metadata_arm": "U-TILE-1",
+          "metadata_point": "init",
+          "num_batches_tracked": [
+            0
+          ],
+          "parameter_elements": 685507,
+          "running_var_nonnegative": true,
+          "state_hash_agrees": true,
+          "state_sha256_recomputed": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7",
+          "tensors": 296
+        }
+      },
+      "status_agreement": [
+        "COMPLETED_PASS",
+        "COMPLETED_PASS",
+        "COMPLETED_PASS",
+        "COMPLETED_PASS"
+      ],
+      "summary_status": "COMPLETED_PASS",
+      "upp_frozen_classifier": {
+        "checks": {
+          "baseline": {
+            "margin": -2.7306928837600165e-06,
+            "operator": "<=",
+            "pass": true,
+            "threshold": 3.81203999286022e-06,
+            "value": 1.0813471091002034e-06
+          },
+          "cosine": {
+            "margin": 0.22939842236794372,
+            "operator": ">=",
+            "pass": true,
+            "threshold": 0.65,
+            "value": 0.8793984223679437
+          },
+          "defined": {
+            "pass": true,
+            "problems": []
+          },
+          "evidence": {
+            "pass": true,
+            "problems": []
+          },
+          "input": {
+            "pass": true,
+            "problems": []
+          },
+          "rse": {
+            "margin": -0.27330914015338365,
+            "operator": "<=",
+            "pass": true,
+            "threshold": 0.5,
+            "value": 0.22669085984661635
+          },
+          "run": {
+            "pass": true,
+            "problems": []
+          }
+        },
+        "class": "P",
+        "outcome": "PASS",
+        "quantities": {
+          "baseline_improvement": 0.7730669959128408,
+          "best_baseline": "scalar_mean",
+          "best_baseline_mse": 4.765049991075275e-06,
+          "cosine": 0.8793984223679437,
+          "mse": 1.0813471091002034e-06,
+          "mse_over_best_baseline": 0.22693300408715922,
+          "rse": 0.22669085984661635,
+          "scalar_mean_mse": 4.765049991075275e-06,
+          "zero_mse": 4.770139871681923e-06
+        },
+        "reasons": []
+      },
+      "upp_reimplemented": {
+        "baseline_improvement": 0.7730669959128408,
+        "cosine": [
+          0.8793984223679437,
+          0.65,
+          true
+        ],
+        "mse": [
+          1.0813471091002034e-06,
+          3.81203999286022e-06,
+          true
+        ],
+        "mse_over_best": 0.22693300408715922,
+        "outcome": "PASS",
+        "rse": [
+          0.22669085984661635,
+          0.5,
+          true
+        ]
+      }
+    },
+    "U-TILE-2": {
+      "agreement": {
+        "child_eq_classifier": true,
+        "child_status_matches_verdict": true,
+        "child_verdict": "PASS",
+        "classifier_eq_analysis": true,
+        "reimplemented_eq_classifier": true
+      },
+      "curve": {
+        "all_losses_finite": true,
+        "drop_per_100_last_1000_min_max": [
+          -0.013650264337079498,
+          0.0401498313331029
+        ],
+        "every_parameter_had_a_gradient": true,
+        "grad_nonfinite_total": 0,
+        "increases": [
+          [
+            1400,
+            1500
+          ],
+          [
+            2700,
+            2800
+          ]
+        ],
+        "loss": {
+          "1": 0.20454928278923035,
+          "100": 0.01501433365046978,
+          "1000": 0.005514892749488354,
+          "2000": 0.004475236404687166,
+          "2500": 0.00431923009455204,
+          "3000": 0.004056388512253761,
+          "500": 0.006156758405268192
+        },
+        "loss_ratio_3000_over_2000": 0.9064076498853285,
+        "loss_ratio_3000_over_2500": 0.9391461958394373,
+        "loss_strictly_decreasing": false,
+        "mean_s_per_update": 0.16423174391463424,
+        "points": 31,
+        "pre_update_rse": {
+          "1": 10.792093854992356,
+          "100": 0.792161664902023,
+          "1000": 0.29096774454782454,
+          "2000": 0.2361150912129248,
+          "2500": 0.22788414287597553,
+          "3000": 0.21401652178462988,
+          "500": 0.3248328281839422
+        },
+        "relative_change_from_init_at_end": {
+          "decoder.core": 0.041921231166275066,
+          "decoder.sampling": 0.05461127327232556,
+          "encoder.core": 0.04394682174321672,
+          "encoder.sampling": 0.03213446893279999
+        },
+        "rss_at_points_min_max": [
+          704593920,
+          778563584
+        ],
+        "schedule_as_registered": true,
+        "train_loop_s": 492.5309999999881
+      },
+      "evidence": {
+        "problems": [],
+        "verified": true
+      },
+      "input": {
+        "all_finite": true,
+        "child_baselines_equal_registered": true,
+        "dtype": "F32",
+        "file_equals_pinned": true,
+        "file_sha256": "db9ab2901b1a0e9f440ade425883f836b8d56f25a6cd4af16e7aaf147628ffb3",
+        "hashes_equal_registered": true,
+        "keys": [
+          "x"
+        ],
+        "normalized_max_abs": 0.5362738966941833,
+        "normalized_max_abs_equal_registered": true,
+        "original": {
+          "scalar_mean_mse": 4.697018002905532e-06,
+          "target_energy": 0.004815521042257942,
+          "ulps_vs_registered": {
+            "T": 1.0,
+            "mean": 0.0,
+            "zero": 1.0
+          },
+          "zero_mse": 4.702657267830021e-06
+        },
+        "shape": [
+          1,
+          1,
+          32,
+          32
+        ],
+        "tensor_sha256_normalized": "541e9ebbc733e1c1ec1dfa7afef0bae9ddcd97507d0d045b03267834a6ce83cc",
+        "tensor_sha256_original": "597f17f39490e1e20022498a933cdea253b1d5826a154f1fa818468c8c15f044",
+        "zero_elements": 0
+      },
+      "metrics": {
+        "eval_mode": {
+          "cosine": 0.8854614089826964,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 1.0155889661240686e-06,
+          "norm_ratio": 0.8838593651288014,
+          "rse": 0.21596065974688783,
+          "sse_identity_rel_err": 2.0850781554051052e-16,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "eval_mode_normalized": {
+          "cosine": 0.8854614090528841,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 0.004093236731941932,
+          "norm_ratio": 0.8838593653206278,
+          "rse": 0.21596065962220123,
+          "sse_identity_rel_err": 2.1190119086440083e-16,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "train_mode": {
+          "cosine": 0.8865629506729347,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 1.0063979383253504e-06,
+          "norm_ratio": 0.8868669456680516,
+          "rse": 0.21400622690705656,
+          "sse_identity_rel_err": 1.8937083023972344e-15,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "train_mode_normalized": {
+          "cosine": 0.8865629510817864,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 0.004056193139108425,
+          "norm_ratio": 0.8868669476894754,
+          "rse": 0.2140062261830913,
+          "sse_identity_rel_err": 2.1383639985620969e-16,
+          "ulps_rse_float64_vs_exact": 0.0
+        }
+      },
+      "resources": {
+        "arm_wall_s": 497.5779999999795,
+        "child_process_s": 495.34399999998277,
+        "guard_action": null,
+        "guard_sampled_max_rss_bytes": 823713792,
+        "limits_ok": true,
+        "rss_used_max": 827572224,
+        "updates_done": 3000
+      },
+      "secondary": {
+        "analysis_agrees": true,
+        "ep_v1": "PASS",
+        "historical_strict": "FAIL"
+      },
+      "started": true,
+      "states": {
+        "change": {
+          "decoder.core": {
+            "numel": 317964,
+            "numel_changed": 317964,
+            "relative_change": 0.04192123116627505
+          },
+          "decoder.sampling": {
+            "numel": 24746,
+            "numel_changed": 24746,
+            "relative_change": 0.05461127327232555
+          },
+          "encoder.core": {
+            "numel": 317964,
+            "numel_changed": 317964,
+            "relative_change": 0.04394682174321672
+          },
+          "encoder.sampling": {
+            "numel": 24833,
+            "numel_changed": 24833,
+            "relative_change": 0.032134468932799996
+          }
+        },
+        "final": {
+          "all_float_finite": true,
+          "buffer_elements": 49545,
+          "bytes": 3168388,
+          "counts_equal_record": true,
+          "file_equals_record": true,
+          "file_sha256": "7da259f3c6c6d9474946912a54a48d34653370bdea1eac1515eae0f03d36d5c7",
+          "metadata_arm": "U-TILE-2",
+          "metadata_point": "final",
+          "num_batches_tracked": [
+            3000
+          ],
+          "parameter_elements": 685507,
+          "running_var_nonnegative": true,
+          "state_hash_agrees": true,
+          "state_sha256_recomputed": "8593ef2734a000084dea82cdae3b36baebc8159b7a01274ca0f9a0766213cb55",
+          "tensors": 296
+        },
+        "index_buffers_unchanged": true,
+        "init": {
+          "all_float_finite": true,
+          "buffer_elements": 49545,
+          "bytes": 3168388,
+          "counts_equal_record": true,
+          "file_equals_record": true,
+          "file_sha256": "1d2bcb99cb6b28cb41b73d88c4540f6230fc0e3b01ffb71f2476691cdf3aee0b",
+          "metadata_arm": "U-TILE-2",
+          "metadata_point": "init",
+          "num_batches_tracked": [
+            0
+          ],
+          "parameter_elements": 685507,
+          "running_var_nonnegative": true,
+          "state_hash_agrees": true,
+          "state_sha256_recomputed": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7",
+          "tensors": 296
+        }
+      },
+      "status_agreement": [
+        "COMPLETED_PASS",
+        "COMPLETED_PASS",
+        "COMPLETED_PASS",
+        "COMPLETED_PASS"
+      ],
+      "summary_status": "COMPLETED_PASS",
+      "upp_frozen_classifier": {
+        "checks": {
+          "baseline": {
+            "margin": -2.7420254362003577e-06,
+            "operator": "<=",
+            "pass": true,
+            "threshold": 3.757614402324426e-06,
+            "value": 1.0155889661240686e-06
+          },
+          "cosine": {
+            "margin": 0.2354614089826964,
+            "operator": ">=",
+            "pass": true,
+            "threshold": 0.65,
+            "value": 0.8854614089826964
+          },
+          "defined": {
+            "pass": true,
+            "problems": []
+          },
+          "evidence": {
+            "pass": true,
+            "problems": []
+          },
+          "input": {
+            "pass": true,
+            "problems": []
+          },
+          "rse": {
+            "margin": -0.28403934025311217,
+            "operator": "<=",
+            "pass": true,
+            "threshold": 0.5,
+            "value": 0.21596065974688783
+          },
+          "run": {
+            "pass": true,
+            "problems": []
+          }
+        },
+        "class": "P",
+        "outcome": "PASS",
+        "quantities": {
+          "baseline_improvement": 0.783780056730497,
+          "best_baseline": "scalar_mean",
+          "best_baseline_mse": 4.697018002905532e-06,
+          "cosine": 0.8854614089826964,
+          "mse": 1.0155889661240686e-06,
+          "mse_over_best_baseline": 0.21621994326950303,
+          "rse": 0.21596065974688783,
+          "scalar_mean_mse": 4.697018002905532e-06,
+          "zero_mse": 4.702657267830022e-06
+        },
+        "reasons": []
+      },
+      "upp_reimplemented": {
+        "baseline_improvement": 0.783780056730497,
+        "cosine": [
+          0.8854614089826964,
+          0.65,
+          true
+        ],
+        "mse": [
+          1.0155889661240686e-06,
+          3.757614402324426e-06,
+          true
+        ],
+        "mse_over_best": 0.21621994326950303,
+        "outcome": "PASS",
+        "rse": [
+          0.21596065974688783,
+          0.5,
+          true
+        ]
+      }
+    },
+    "U-TILE-3": {
+      "agreement": {
+        "child_eq_classifier": true,
+        "child_status_matches_verdict": true,
+        "child_verdict": "PASS",
+        "classifier_eq_analysis": true,
+        "reimplemented_eq_classifier": true
+      },
+      "curve": {
+        "all_losses_finite": true,
+        "drop_per_100_last_1000_min_max": [
+          -0.011405524224491925,
+          0.050830520132503776
+        ],
+        "every_parameter_had_a_gradient": true,
+        "grad_nonfinite_total": 0,
+        "increases": [
+          [
+            700,
+            800
+          ],
+          [
+            1100,
+            1200
+          ],
+          [
+            1300,
+            1400
+          ],
+          [
+            1600,
+            1700
+          ],
+          [
+            1800,
+            1900
+          ],
+          [
+            2900,
+            3000
+          ]
+        ],
+        "loss": {
+          "1": 0.20274832844734192,
+          "100": 0.013057490810751915,
+          "1000": 0.004868089221417904,
+          "2000": 0.0042737931944429874,
+          "2500": 0.004149205982685089,
+          "3000": 0.003802333725616336,
+          "500": 0.005616605281829834
+        },
+        "loss_ratio_3000_over_2000": 0.8896859423521783,
+        "loss_ratio_3000_over_2500": 0.9164003285167635,
+        "loss_strictly_decreasing": false,
+        "mean_s_per_update": 0.16457052350783308,
+        "points": 31,
+        "pre_update_rse": {
+          "1": 10.972215803937402,
+          "100": 0.7066376286722409,
+          "1000": 0.26344839836007106,
+          "2000": 0.2312866394246057,
+          "2500": 0.22454430093770048,
+          "3000": 0.20577248570716913,
+          "500": 0.3039561647166693
+        },
+        "relative_change_from_init_at_end": {
+          "decoder.core": 0.04566461507746326,
+          "decoder.sampling": 0.05725554484364525,
+          "encoder.core": 0.04741197054039676,
+          "encoder.sampling": 0.03487953411996596
+        },
+        "rss_at_points_min_max": [
+          695136256,
+          789569536
+        ],
+        "schedule_as_registered": true,
+        "train_loop_s": 493.5469999999914
+      },
+      "evidence": {
+        "problems": [],
+        "verified": true
+      },
+      "input": {
+        "all_finite": true,
+        "child_baselines_equal_registered": true,
+        "dtype": "F32",
+        "file_equals_pinned": true,
+        "file_sha256": "858c5e4499c76ddf878ff22e10e0cf27cb69788663714181efc490946ee70552",
+        "hashes_equal_registered": true,
+        "keys": [
+          "x"
+        ],
+        "normalized_max_abs": 0.466398149728775,
+        "normalized_max_abs_equal_registered": true,
+        "original": {
+          "scalar_mean_mse": 4.584557628161544e-06,
+          "target_energy": 0.004694766625540429,
+          "ulps_vs_registered": {
+            "T": 0.0,
+            "mean": 0.0,
+            "zero": 0.0
+          },
+          "zero_mse": 4.584733032754325e-06
+        },
+        "shape": [
+          1,
+          1,
+          32,
+          32
+        ],
+        "tensor_sha256_normalized": "dda90a65b4e117c0087ea071e51bf090bd84e63236a4220811366bb9179f01cd",
+        "tensor_sha256_original": "c8a53be70ed730c29bcd440d595c22c6acd839cf34fbfa4f7147c8073f30f2cc",
+        "zero_elements": 0
+      },
+      "metrics": {
+        "eval_mode": {
+          "cosine": 0.886126391490147,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 9.847091580070404e-07,
+          "norm_ratio": 0.885969182513286,
+          "rse": 0.21478004301931325,
+          "sse_identity_rel_err": 1.0752323926902134e-15,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "eval_mode_normalized": {
+          "cosine": 0.8861263922589651,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 0.003968778533373208,
+          "norm_ratio": 0.8859691792766122,
+          "rse": 0.21478004165803286,
+          "sse_identity_rel_err": 2.185462682522629e-15,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "train_mode": {
+          "cosine": 0.8913678144888614,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 9.421082071614207e-07,
+          "norm_ratio": 0.8863970537249666,
+          "rse": 0.20548812775592293,
+          "sse_identity_rel_err": 1.236238357357934e-15,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "train_mode_normalized": {
+          "cosine": 0.8913678149208003,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 0.0037970793791502052,
+          "norm_ratio": 0.8863970544592602,
+          "rse": 0.2054881269828842,
+          "sse_identity_rel_err": 1.5990005895735704e-15,
+          "ulps_rse_float64_vs_exact": 0.0
+        }
+      },
+      "resources": {
+        "arm_wall_s": 499.0,
+        "child_process_s": 496.5469999999914,
+        "guard_action": null,
+        "guard_sampled_max_rss_bytes": 827088896,
+        "limits_ok": true,
+        "rss_used_max": 827088896,
+        "updates_done": 3000
+      },
+      "secondary": {
+        "analysis_agrees": true,
+        "ep_v1": "PASS",
+        "historical_strict": "FAIL"
+      },
+      "started": true,
+      "states": {
+        "change": {
+          "decoder.core": {
+            "numel": 317964,
+            "numel_changed": 317964,
+            "relative_change": 0.04566461507746326
+          },
+          "decoder.sampling": {
+            "numel": 24746,
+            "numel_changed": 24746,
+            "relative_change": 0.05725554484364527
+          },
+          "encoder.core": {
+            "numel": 317964,
+            "numel_changed": 317964,
+            "relative_change": 0.04741197054039676
+          },
+          "encoder.sampling": {
+            "numel": 24833,
+            "numel_changed": 24833,
+            "relative_change": 0.03487953411996596
+          }
+        },
+        "final": {
+          "all_float_finite": true,
+          "buffer_elements": 49545,
+          "bytes": 3168388,
+          "counts_equal_record": true,
+          "file_equals_record": true,
+          "file_sha256": "ba4b6991bc3c620516587d3e2f1f0927b979db349371b1b72eb537aefdade426",
+          "metadata_arm": "U-TILE-3",
+          "metadata_point": "final",
+          "num_batches_tracked": [
+            3000
+          ],
+          "parameter_elements": 685507,
+          "running_var_nonnegative": true,
+          "state_hash_agrees": true,
+          "state_sha256_recomputed": "11684dbc465ef7b34424fd65186f5858e459e51853d390e2fb23486bff449dbb",
+          "tensors": 296
+        },
+        "index_buffers_unchanged": true,
+        "init": {
+          "all_float_finite": true,
+          "buffer_elements": 49545,
+          "bytes": 3168388,
+          "counts_equal_record": true,
+          "file_equals_record": true,
+          "file_sha256": "c57d77465946bf91b0e97613dc722db8c3a684b78b2bf936a0ad5a89fa84823f",
+          "metadata_arm": "U-TILE-3",
+          "metadata_point": "init",
+          "num_batches_tracked": [
+            0
+          ],
+          "parameter_elements": 685507,
+          "running_var_nonnegative": true,
+          "state_hash_agrees": true,
+          "state_sha256_recomputed": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7",
+          "tensors": 296
+        }
+      },
+      "status_agreement": [
+        "COMPLETED_PASS",
+        "COMPLETED_PASS",
+        "COMPLETED_PASS",
+        "COMPLETED_PASS"
+      ],
+      "summary_status": "COMPLETED_PASS",
+      "upp_frozen_classifier": {
+        "checks": {
+          "baseline": {
+            "margin": -2.6829369445221945e-06,
+            "operator": "<=",
+            "pass": true,
+            "threshold": 3.667646102529235e-06,
+            "value": 9.847091580070404e-07
+          },
+          "cosine": {
+            "margin": 0.23612639149014703,
+            "operator": ">=",
+            "pass": true,
+            "threshold": 0.65,
+            "value": 0.886126391490147
+          },
+          "defined": {
+            "pass": true,
+            "problems": []
+          },
+          "evidence": {
+            "pass": true,
+            "problems": []
+          },
+          "input": {
+            "pass": true,
+            "problems": []
+          },
+          "rse": {
+            "margin": -0.28521995698068675,
+            "operator": "<=",
+            "pass": true,
+            "threshold": 0.5,
+            "value": 0.21478004301931325
+          },
+          "run": {
+            "pass": true,
+            "problems": []
+          }
+        },
+        "class": "P",
+        "outcome": "PASS",
+        "quantities": {
+          "baseline_improvement": 0.7852117395235101,
+          "best_baseline": "scalar_mean",
+          "best_baseline_mse": 4.584557628161544e-06,
+          "cosine": 0.886126391490147,
+          "mse": 9.847091580070404e-07,
+          "mse_over_best_baseline": 0.2147882604764899,
+          "rse": 0.21478004301931325,
+          "scalar_mean_mse": 4.584557628161544e-06,
+          "zero_mse": 4.584733032754325e-06
+        },
+        "reasons": []
+      },
+      "upp_reimplemented": {
+        "baseline_improvement": 0.7852117395235101,
+        "cosine": [
+          0.886126391490147,
+          0.65,
+          true
+        ],
+        "mse": [
+          9.847091580070404e-07,
+          3.667646102529235e-06,
+          true
+        ],
+        "mse_over_best": 0.2147882604764899,
+        "outcome": "PASS",
+        "rse": [
+          0.21478004301931325,
+          0.5,
+          true
+        ]
+      }
+    },
+    "U-TILE-4": {
+      "agreement": {
+        "child_eq_classifier": true,
+        "child_status_matches_verdict": true,
+        "child_verdict": "PASS",
+        "classifier_eq_analysis": true,
+        "reimplemented_eq_classifier": true
+      },
+      "curve": {
+        "all_losses_finite": true,
+        "drop_per_100_last_1000_min_max": [
+          -0.0036607517273195,
+          0.0278444219454842
+        ],
+        "every_parameter_had_a_gradient": true,
+        "grad_nonfinite_total": 0,
+        "increases": [
+          [
+            1900,
+            2000
+          ],
+          [
+            2100,
+            2200
+          ],
+          [
+            2400,
+            2500
+          ]
+        ],
+        "loss": {
+          "1": 0.21272991597652435,
+          "100": 0.014255780726671219,
+          "1000": 0.005074680782854557,
+          "2000": 0.003922773990780115,
+          "2500": 0.00374141545034945,
+          "3000": 0.0036175288259983063,
+          "500": 0.006216762587428093
+        },
+        "loss_ratio_3000_over_2000": 0.9221864003638136,
+        "loss_ratio_3000_over_2500": 0.966887765874925,
+        "loss_strictly_decreasing": false,
+        "mean_s_per_update": 0.16441413804600852,
+        "points": 31,
+        "pre_update_rse": {
+          "1": 11.505218235448767,
+          "100": 0.7710052006844346,
+          "1000": 0.2744574896141645,
+          "2000": 0.21215807930308625,
+          "2500": 0.2023495309316336,
+          "3000": 0.19564927426730228,
+          "500": 0.33622544541706095
+        },
+        "relative_change_from_init_at_end": {
+          "decoder.core": 0.03922297015708244,
+          "decoder.sampling": 0.05587126699210336,
+          "encoder.core": 0.04076384157988518,
+          "encoder.sampling": 0.032355697101823545
+        },
+        "rss_at_points_min_max": [
+          703176704,
+          775237632
+        ],
+        "schedule_as_registered": true,
+        "train_loop_s": 493.0779999999795
+      },
+      "evidence": {
+        "problems": [],
+        "verified": true
+      },
+      "input": {
+        "all_finite": true,
+        "child_baselines_equal_registered": true,
+        "dtype": "F32",
+        "file_equals_pinned": true,
+        "file_sha256": "95a51e95b19ef89a7b42c41ba86374f58bdbb4f1864925ca4434a276be2afe9e",
+        "hashes_equal_registered": true,
+        "keys": [
+          "x"
+        ],
+        "normalized_max_abs": 0.7001963257789612,
+        "normalized_max_abs_equal_registered": true,
+        "original": {
+          "scalar_mean_mse": 4.587088597831726e-06,
+          "target_energy": 0.004697694599477711,
+          "ulps_vs_registered": {
+            "T": 0.0,
+            "mean": 0.0,
+            "zero": 0.0
+          },
+          "zero_mse": 4.587592382302452e-06
+        },
+        "shape": [
+          1,
+          1,
+          32,
+          32
+        ],
+        "tensor_sha256_normalized": "f3375a7fc886d6a835e5b68c613d95ae82507775ed2c8a345c1144fd8d97bef9",
+        "tensor_sha256_original": "d14b3f35285352df89c0b53a462f5dbdd85931760722921d7961ae583667431d",
+        "zero_elements": 0
+      },
+      "metrics": {
+        "eval_mode": {
+          "cosine": 0.8955692574091673,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 9.081486858385055e-07,
+          "norm_ratio": 0.8969384817564431,
+          "rse": 0.19795757995890595,
+          "sse_identity_rel_err": 3.4976360168058156e-16,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "eval_mode_normalized": {
+          "cosine": 0.8955692576032611,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 0.0036602086958981233,
+          "norm_ratio": 0.8969384785057903,
+          "rse": 0.19795757960182367,
+          "sse_identity_rel_err": 5.924264229526226e-16,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "train_mode": {
+          "cosine": 0.8970678080448686,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 8.958315228939313e-07,
+          "norm_ratio": 0.8952385716717047,
+          "rse": 0.19527269387528395,
+          "sse_identity_rel_err": 1.0637179439530787e-15,
+          "ulps_rse_float64_vs_exact": 0.0
+        },
+        "train_mode_normalized": {
+          "cosine": 0.897067808380323,
+          "equal_recorded": {
+            "cosine": true,
+            "mse": true,
+            "norm_ratio": true,
+            "rse": true
+          },
+          "mse": 0.003610565513315028,
+          "norm_ratio": 0.8952385706037443,
+          "rse": 0.1952726932785673,
+          "sse_identity_rel_err": 1.2011438856181263e-15,
+          "ulps_rse_float64_vs_exact": 0.0
+        }
+      },
+      "resources": {
+        "arm_wall_s": 498.31299999999464,
+        "child_process_s": 495.85899999999674,
+        "guard_action": null,
+        "guard_sampled_max_rss_bytes": 830214144,
+        "limits_ok": true,
+        "rss_used_max": 830541824,
+        "updates_done": 3000
+      },
+      "secondary": {
+        "analysis_agrees": true,
+        "ep_v1": "PASS",
+        "historical_strict": "FAIL"
+      },
+      "started": true,
+      "states": {
+        "change": {
+          "decoder.core": {
+            "numel": 317964,
+            "numel_changed": 317964,
+            "relative_change": 0.03922297015708244
+          },
+          "decoder.sampling": {
+            "numel": 24746,
+            "numel_changed": 24746,
+            "relative_change": 0.05587126699210337
+          },
+          "encoder.core": {
+            "numel": 317964,
+            "numel_changed": 317964,
+            "relative_change": 0.04076384157988518
+          },
+          "encoder.sampling": {
+            "numel": 24833,
+            "numel_changed": 24833,
+            "relative_change": 0.03235569710182354
+          }
+        },
+        "final": {
+          "all_float_finite": true,
+          "buffer_elements": 49545,
+          "bytes": 3168388,
+          "counts_equal_record": true,
+          "file_equals_record": true,
+          "file_sha256": "c239c0d55d6299419bac3d3a0f16e9fc507b88227ee05c3a3091abfdb72960f7",
+          "metadata_arm": "U-TILE-4",
+          "metadata_point": "final",
+          "num_batches_tracked": [
+            3000
+          ],
+          "parameter_elements": 685507,
+          "running_var_nonnegative": true,
+          "state_hash_agrees": true,
+          "state_sha256_recomputed": "21ec2a7bb18afe88d0f0896ae9b0f579e0d3378ba970506bb9c177c752ad8f77",
+          "tensors": 296
+        },
+        "index_buffers_unchanged": true,
+        "init": {
+          "all_float_finite": true,
+          "buffer_elements": 49545,
+          "bytes": 3168388,
+          "counts_equal_record": true,
+          "file_equals_record": true,
+          "file_sha256": "028f24e5b6881402c4afed3b55d61327feb7925714e707601c962eef586b9b30",
+          "metadata_arm": "U-TILE-4",
+          "metadata_point": "init",
+          "num_batches_tracked": [
+            0
+          ],
+          "parameter_elements": 685507,
+          "running_var_nonnegative": true,
+          "state_hash_agrees": true,
+          "state_sha256_recomputed": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7",
+          "tensors": 296
+        }
+      },
+      "status_agreement": [
+        "COMPLETED_PASS",
+        "COMPLETED_PASS",
+        "COMPLETED_PASS",
+        "COMPLETED_PASS"
+      ],
+      "summary_status": "COMPLETED_PASS",
+      "upp_frozen_classifier": {
+        "checks": {
+          "baseline": {
+            "margin": -2.761522192426875e-06,
+            "operator": "<=",
+            "pass": true,
+            "threshold": 3.6696708782653807e-06,
+            "value": 9.081486858385055e-07
+          },
+          "cosine": {
+            "margin": 0.24556925740916724,
+            "operator": ">=",
+            "pass": true,
+            "threshold": 0.65,
+            "value": 0.8955692574091673
+          },
+          "defined": {
+            "pass": true,
+            "problems": []
+          },
+          "evidence": {
+            "pass": true,
+            "problems": []
+          },
+          "input": {
+            "pass": true,
+            "problems": []
+          },
+          "rse": {
+            "margin": -0.30204242004109405,
+            "operator": "<=",
+            "pass": true,
+            "threshold": 0.5,
+            "value": 0.19795757995890595
+          },
+          "run": {
+            "pass": true,
+            "problems": []
+          }
+        },
+        "class": "P",
+        "outcome": "PASS",
+        "quantities": {
+          "baseline_improvement": 0.8020206790276998,
+          "best_baseline": "scalar_mean",
+          "best_baseline_mse": 4.587088597831726e-06,
+          "cosine": 0.8955692574091673,
+          "mse": 9.081486858385055e-07,
+          "mse_over_best_baseline": 0.19797932097230014,
+          "rse": 0.19795757995890595,
+          "scalar_mean_mse": 4.587088597831726e-06,
+          "zero_mse": 4.587592382302452e-06
+        },
+        "reasons": []
+      },
+      "upp_reimplemented": {
+        "baseline_improvement": 0.8020206790276998,
+        "cosine": [
+          0.8955692574091673,
+          0.65,
+          true
+        ],
+        "mse": [
+          9.081486858385055e-07,
+          3.6696708782653807e-06,
+          true
+        ],
+        "mse_over_best": 0.19797932097230014,
+        "outcome": "PASS",
+        "rse": [
+          0.19795757995890595,
+          0.5,
+          true
+        ]
+      }
+    }
+  },
+  "global_problems": [],
+  "init_states_identical": true,
+  "integrity": {
+    "entries": 65,
+    "entries_mismatching": [],
+    "external": 5,
+    "external_mismatching": [],
+    "manifest_is_frozen": true,
+    "manifest_sha256": "3bc2ab302f6cd77b63b9bb8b77894041fd97cbdd63d5fa7f380a4dae080fe824",
+    "module_sha256_from_manifest": {
+      "ucov_child": "74e10c78f297a689bd6ee63721824853f4817120aa4f36ca5156944b0db19f93",
+      "ucov_control": "5ed24447aa022ce5c684884c57a814c041084fd46b7f621fc89884c7009bb848",
+      "uformer_ae": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606",
+      "uformer_blocks": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747",
+      "uid_common": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230",
+      "uid_r1_control": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074",
+      "uid_r1_measure": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760",
+      "upp_classify": "31904623223cc18b216b97bf2cfaa27734487c38a93ebe57efca5de84abecbb1",
+      "urp_control": "6d3dba01015dd2edf09717d6b7856f03ef0683083d872ff486f9a0eef1ffd076"
+    },
+    "policy_files": {
+      "ep_classify.py": true,
+      "upp_classify.py": true,
+      "upp_policy.json": true
+    },
+    "unlisted": [
+      "manifest_ucov.json",
+      "scientific_ledger_mirror/end_U-TILE-1.json",
+      "scientific_ledger_mirror/end_U-TILE-2.json",
+      "scientific_ledger_mirror/end_U-TILE-3.json",
+      "scientific_ledger_mirror/end_U-TILE-4.json",
+      "scientific_ledger_mirror/invocation_001.json",
+      "scientific_ledger_mirror/invocation_001_end.json",
+      "scientific_ledger_mirror/start_U-TILE-1.json",
+      "scientific_ledger_mirror/start_U-TILE-2.json",
+      "scientific_ledger_mirror/start_U-TILE-3.json",
+      "scientific_ledger_mirror/start_U-TILE-4.json"
+    ]
+  },
+  "ledger": {
+    "global_stop": null,
+    "invocations": 1,
+    "records": [
+      "end_U-TILE-1.json",
+      "end_U-TILE-2.json",
+      "end_U-TILE-3.json",
+      "end_U-TILE-4.json",
+      "invocation_001.json",
+      "invocation_001_end.json",
+      "start_U-TILE-1.json",
+      "start_U-TILE-2.json",
+      "start_U-TILE-3.json",
+      "start_U-TILE-4.json"
+    ],
+    "starts": 4,
+    "status_after": {
+      "arms": {
+        "U-TILE-1": "COMPLETED_PASS",
+        "U-TILE-2": "COMPLETED_PASS",
+        "U-TILE-3": "COMPLETED_PASS",
+        "U-TILE-4": "COMPLETED_PASS"
+      },
+      "invocations": 1,
+      "starts": 4
+    }
+  },
+  "recorded_local": "2026-10-13T21:57:46+0800",
+  "sealed": {
+    "entries": 48,
+    "entries_mismatching": [],
+    "ledger_records": [
+      "end_U-TILE-1.json",
+      "end_U-TILE-2.json",
+      "end_U-TILE-3.json",
+      "end_U-TILE-4.json",
+      "invocation_001.json",
+      "invocation_001_end.json",
+      "start_U-TILE-1.json",
+      "start_U-TILE-2.json",
+      "start_U-TILE-3.json",
+      "start_U-TILE-4.json"
+    ],
+    "listing_has_crlf": false,
+    "listing_sha256": "e2de275dc81f392120d0fa5fe876535fb5554edc9de1d508f690efb5d7aa56f6",
+    "mirror_byte_identical": true,
+    "present_not_listed": []
+  },
+  "torch_imported": false
+}

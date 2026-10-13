@@ -1,0 +1,16 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA --basetemp=C:\Users\acc04\AppData\Local\Temp\ucov_in_final1_20261013 checks/test_ucov_input_rule.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\ucov_20261013_v1
+start: 2026-10-13T21:10:54+08:00
+end: 2026-10-13T21:10:56+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+......                                                                   [100%]
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_ucov_input_rule.py::test_rule_file_is_the_pinned_registered_rule
+PASSED checks/test_ucov_input_rule.py::test_quarter_rule_gives_the_four_registered_half_open_slices_in_order
+PASSED checks/test_ucov_input_rule.py::test_the_centre_tile_of_urp_v1_is_not_registered
+PASSED checks/test_ucov_input_rule.py::test_tiles_do_not_overlap_and_lie_inside_phi
+PASSED checks/test_ucov_input_rule.py::test_layout_interpretation_from_the_committed_block_order
+PASSED checks/test_ucov_input_rule.py::test_a_grid_that_is_not_divisible_is_refused
+6 passed in 1.75s

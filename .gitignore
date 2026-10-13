@@ -243,3 +243,15 @@ lm_eval_output/
 !diagnostics/urp_20261013_v1/evidence/**/*.log
 !diagnostics/urp_20261013_v1/checks/fixture_patch.safetensors
 !diagnostics/urp_20261013_v1/input/patch_x.safetensors
+
+# Include reviewed UCOV input fixtures and verification logs (20261013).
+!diagnostics/ucov_20261013_v1/evidence/final1_20261013/*.log
+!diagnostics/ucov_20261013_v1_execution/repo_gates_20261013/*.log
+!diagnostics/ucov_20261013_v1/input/tile_1.safetensors
+!diagnostics/ucov_20261013_v1/checks/fixture_tile_1.safetensors
+!diagnostics/ucov_20261013_v1/input/tile_2.safetensors
+!diagnostics/ucov_20261013_v1/checks/fixture_tile_2.safetensors
+!diagnostics/ucov_20261013_v1/input/tile_3.safetensors
+!diagnostics/ucov_20261013_v1/checks/fixture_tile_3.safetensors
+!diagnostics/ucov_20261013_v1/input/tile_4.safetensors
+!diagnostics/ucov_20261013_v1/checks/fixture_tile_4.safetensors

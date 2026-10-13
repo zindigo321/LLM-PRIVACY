@@ -248,12 +248,16 @@ experimental claims.
   stated limits. See `docs/phase5_p5a_v2_findings.md` and
   `results/phase5/p5a_v2/`; v1 remains historical and was never executed.
 
-### Uformer diagnostic archive
+### Uformer reconstruction diagnostics
 
-[Results and evidence limits](docs/uformer_publication_note.md) cover U-CHECK, U-FIT, R-FIT and U-PATCH.
-The three fit arms failed the original strict criterion and passed EP-v1; U-FIT's EP assessment was post hoc.
-These single-input, single-seed fit diagnostics use a 64:1 expanded latent and establish neither compression nor generalization.
-The future primary gate (RSE <= 0.50, cosine >= 0.65) is not implemented in this archive commit.
+[Historical results](docs/uformer_publication_note.md) cover U-CHECK, U-FIT, R-FIT and U-PATCH;
+their original strict and EP-v1 verdicts are preserved.
+[UPP-20261013-v1](diagnostics/upp_20261013_v1/POLICY.md) is the primary policy from UCOV-v1:
+valid final eval results in original space must have RSE <= 0.50, cosine >= 0.65,
+and MSE <= 0.80 times the best constant baseline.
+[UCOV-v1 coverage results](docs/uformer_coverage_publication.md): all four registered tile fits passed (4/4; at least 3 required).
+Each arm trained a fresh model on its own tile. These one-seed fits use a 64:1 expanded latent;
+they establish neither compression nor held-out generalization. Strict and EP-v1 results are secondary references.
 
 The remaining project-level goals are to determine whether a viable operational
 compressed FAF path can be established, and to reproduce the

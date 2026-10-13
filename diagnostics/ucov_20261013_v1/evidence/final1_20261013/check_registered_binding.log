@@ -1,0 +1,108 @@
+command: D:/conda_envs/cgfedllm/python.exe -B checks/check_registered_binding.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\ucov_20261013_v1
+start: 2026-10-13T21:13:51+08:00
+end: 2026-10-13T21:13:55+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+{
+  "all_ok": true,
+  "arms": {
+    "U-TILE-1": {
+      "input_checks_all_equal": true,
+      "latent_shape": [
+        1,
+        64,
+        32,
+        32
+      ],
+      "output_finite": true,
+      "output_shape": [
+        1,
+        1,
+        32,
+        32
+      ],
+      "output_within_tanh_range": true,
+      "tile_file_sha256": "b7d39da738313e83d6c36f5f1c73683b464257d27375017a6731b6b7be345a67"
+    },
+    "U-TILE-2": {
+      "input_checks_all_equal": true,
+      "latent_shape": [
+        1,
+        64,
+        32,
+        32
+      ],
+      "output_finite": true,
+      "output_shape": [
+        1,
+        1,
+        32,
+        32
+      ],
+      "output_within_tanh_range": true,
+      "tile_file_sha256": "db9ab2901b1a0e9f440ade425883f836b8d56f25a6cd4af16e7aaf147628ffb3"
+    },
+    "U-TILE-3": {
+      "input_checks_all_equal": true,
+      "latent_shape": [
+        1,
+        64,
+        32,
+        32
+      ],
+      "output_finite": true,
+      "output_shape": [
+        1,
+        1,
+        32,
+        32
+      ],
+      "output_within_tanh_range": true,
+      "tile_file_sha256": "858c5e4499c76ddf878ff22e10e0cf27cb69788663714181efc490946ee70552"
+    },
+    "U-TILE-4": {
+      "input_checks_all_equal": true,
+      "latent_shape": [
+        1,
+        64,
+        32,
+        32
+      ],
+      "output_finite": true,
+      "output_shape": [
+        1,
+        1,
+        32,
+        32
+      ],
+      "output_within_tanh_range": true,
+      "tile_file_sha256": "95a51e95b19ef89a7b42c41ba86374f58bdbb4f1864925ca4434a276be2afe9e"
+    }
+  },
+  "cpu": {
+    "cuda_available": false,
+    "deterministic_algorithms": true,
+    "inter_op_threads": 24,
+    "intra_op_threads": 24,
+    "torch_version": "2.14.0+cu130"
+  },
+  "init_equals_u_fit_record": true,
+  "optimizer_created": false,
+  "parameters": {
+    "decoder": 342710,
+    "decoder_core": 317964,
+    "decoder_sampling": 24746,
+    "encoder": 342797,
+    "encoder_core": 317964,
+    "encoder_sampling": 24833,
+    "total": 685507
+  },
+  "primary_policy": {
+    "policy_id": "UPP-20261013-v1",
+    "policy_sha256": "74b277b952e0af68dee00692cde6b95f8ed747d641843bbe98517c70d98c5770"
+  },
+  "procedure": "fresh registered model; one forward per tile on a disposable copy; no optimizer, no metric",
+  "state_and_rng_unchanged": true,
+  "state_sha256_init": "7a36411bbfb83197a433ca23b099e9429dc5699fb5af765a1d6f1c2f5a35e6f7"
+}

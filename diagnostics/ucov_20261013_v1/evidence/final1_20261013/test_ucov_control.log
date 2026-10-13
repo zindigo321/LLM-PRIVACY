@@ -1,0 +1,49 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider --rootdir=. -rA --basetemp=C:\Users\acc04\AppData\Local\Temp\ucov_ctl_final1_20261013 checks/test_ucov_control.py
+cwd: D:\projects-cd\cg-fedllm-reproduction\diagnostics\ucov_20261013_v1
+start: 2026-10-13T21:10:56+08:00
+end: 2026-10-13T21:10:59+08:00
+exit_code: 0
+--- output (stdout+stderr) ---
+.......................................                                  [100%]
+=================================== PASSES ====================================
+=========================== short test summary info ===========================
+PASSED checks/test_ucov_control.py::test_resolution_reads_the_frozen_uid_settings_and_the_new_primary_policy
+PASSED checks/test_ucov_control.py::test_frozen_resolved_config_equals_a_fresh_resolution
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path0-2999]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path1-0.001]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path2-2]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path3-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path4-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path5-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path6-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path7-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path8-0.0157]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path9-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path10-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path11-Phi[0, 1024:1056, 768:800]]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path12-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path13-0000000000000000000000000000000000000000000000000000000000000000]
+PASSED checks/test_ucov_control.py::test_any_setting_input_or_policy_difference_refuses[path14-0.8]
+PASSED checks/test_ucov_control.py::test_scientific_plan_is_the_four_arms_in_registered_order
+PASSED checks/test_ucov_control.py::test_closed_reordered_duplicate_or_partial_plans_are_refused[arms0]
+PASSED checks/test_ucov_control.py::test_closed_reordered_duplicate_or_partial_plans_are_refused[arms1]
+PASSED checks/test_ucov_control.py::test_closed_reordered_duplicate_or_partial_plans_are_refused[arms2]
+PASSED checks/test_ucov_control.py::test_closed_reordered_duplicate_or_partial_plans_are_refused[arms3]
+PASSED checks/test_ucov_control.py::test_closed_reordered_duplicate_or_partial_plans_are_refused[arms4]
+PASSED checks/test_ucov_control.py::test_closed_reordered_duplicate_or_partial_plans_are_refused[arms5]
+PASSED checks/test_ucov_control.py::test_wrong_manifest_hash_refuses_before_anything
+PASSED checks/test_ucov_control.py::test_supervisor_cli_offers_no_arm_selection[argv0]
+PASSED checks/test_ucov_control.py::test_supervisor_cli_offers_no_arm_selection[argv1]
+PASSED checks/test_ucov_control.py::test_supervisor_cli_offers_no_arm_selection[argv2]
+PASSED checks/test_ucov_control.py::test_scientific_without_the_frozen_hash_is_refused
+PASSED checks/test_ucov_control.py::test_scientific_with_pythonpath_set_is_refused
+PASSED checks/test_ucov_control.py::test_registered_tiles_load_with_their_recorded_values[U-TILE-1]
+PASSED checks/test_ucov_control.py::test_registered_tiles_load_with_their_recorded_values[U-TILE-2]
+PASSED checks/test_ucov_control.py::test_registered_tiles_load_with_their_recorded_values[U-TILE-3]
+PASSED checks/test_ucov_control.py::test_registered_tiles_load_with_their_recorded_values[U-TILE-4]
+PASSED checks/test_ucov_control.py::test_tiles_are_the_registered_slices_and_differ_from_each_other_and_from_urp
+PASSED checks/test_ucov_control.py::test_normalization_equals_the_production_normalizer_bit_for_bit
+PASSED checks/test_ucov_control.py::test_pinned_files_are_checked
+PASSED checks/test_ucov_control.py::test_four_start_accounting_refuses_a_duplicate_and_a_fifth_start
+PASSED checks/test_ucov_control.py::test_config_and_resolved_config_are_lf_json
+39 passed in 2.71s

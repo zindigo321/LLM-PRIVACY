@@ -1,0 +1,19 @@
+{
+  "arms": {
+    "U-TILE-1": "NOT_STARTED",
+    "U-TILE-2": "NOT_STARTED",
+    "U-TILE-3": "NOT_STARTED",
+    "U-TILE-4": "NOT_STARTED"
+  },
+  "invocations": 0,
+  "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror",
+  "ledger_primary": "D:\\cgfed-runs\\ucov_20261013_v1\\ledger",
+  "protocol_id": "UCOV-20261013-v1",
+  "records": [],
+  "roots_exist": {
+    "mirror": false,
+    "primary": false
+  },
+  "run_root_exists": false,
+  "starts": 0
+}

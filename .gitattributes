@@ -23,3 +23,9 @@ diagnostics/urp_20261013_v1_execution/** -text !eol
 
 # Preserve copied scientific run records byte for byte.
 diagnostics/uformer_archive_20261013/raw_runs/** -text !eol
+
+# Preserve the frozen UPP/UCOV publication bytes (20261013).
+diagnostics/upp_20261013_v1/** -text !eol
+diagnostics/ucov_20261013_v1/** -text !eol
+diagnostics/ucov_20261013_v1_execution/** -text !eol
+diagnostics/uformer_coverage_archive_20261013/raw_runs/** -text !eol

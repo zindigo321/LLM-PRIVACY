@@ -1,0 +1,30 @@
+{
+  "arms": {
+    "U-TILE-1": "COMPLETED_PASS",
+    "U-TILE-2": "COMPLETED_PASS",
+    "U-TILE-3": "COMPLETED_PASS",
+    "U-TILE-4": "COMPLETED_PASS"
+  },
+  "invocations": 1,
+  "ledger_mirror": "D:/projects-cd/cg-fedllm-reproduction/diagnostics/ucov_20261013_v1/scientific_ledger_mirror",
+  "ledger_primary": "D:\\cgfed-runs\\ucov_20261013_v1\\ledger",
+  "protocol_id": "UCOV-20261013-v1",
+  "records": [
+    "end_U-TILE-1.json",
+    "end_U-TILE-2.json",
+    "end_U-TILE-3.json",
+    "end_U-TILE-4.json",
+    "invocation_001.json",
+    "invocation_001_end.json",
+    "start_U-TILE-1.json",
+    "start_U-TILE-2.json",
+    "start_U-TILE-3.json",
+    "start_U-TILE-4.json"
+  ],
+  "roots_exist": {
+    "mirror": true,
+    "primary": true
+  },
+  "run_root_exists": true,
+  "starts": 4
+}

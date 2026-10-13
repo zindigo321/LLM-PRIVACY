@@ -1,0 +1,119 @@
+{
+  "aggregate_wall_s": 1987.265000000014,
+  "arms": [
+    {
+      "aggregate_wall_s": 492.18700000000536,
+      "arm": "U-TILE-1",
+      "arm_wall_s": 491.88999999998487,
+      "child_exit_code": 0,
+      "child_record_present": true,
+      "child_status": "COMPLETED_PASS",
+      "evidence_bytes_run_root": 6419754,
+      "guard": {
+        "action": null,
+        "action_monotonic_s": null,
+        "poll_interval_s": 0.25,
+        "rss_limit_bytes": 4294967296,
+        "sampled_max_rss_bytes": 829927424,
+        "samples": 1798
+      },
+      "monotonic_s": {
+        "end": 136406.093,
+        "invocation_t0": 135913.906,
+        "kill_at": 137694.203,
+        "soft_stop": 137634.203,
+        "start": 135914.203
+      },
+      "primary_outcome": "PASS",
+      "status": "COMPLETED_PASS",
+      "updates_done": 3000
+    },
+    {
+      "aggregate_wall_s": 989.8120000000054,
+      "arm": "U-TILE-2",
+      "arm_wall_s": 497.5779999999795,
+      "child_exit_code": 0,
+      "child_record_present": true,
+      "child_status": "COMPLETED_PASS",
+      "evidence_bytes_run_root": 12836056,
+      "guard": {
+        "action": null,
+        "action_monotonic_s": null,
+        "poll_interval_s": 0.25,
+        "rss_limit_bytes": 4294967296,
+        "sampled_max_rss_bytes": 823713792,
+        "samples": 1818
+      },
+      "monotonic_s": {
+        "end": 136903.718,
+        "invocation_t0": 135913.906,
+        "kill_at": 138186.14,
+        "soft_stop": 138126.14,
+        "start": 136406.14
+      },
+      "primary_outcome": "PASS",
+      "status": "COMPLETED_PASS",
+      "updates_done": 3000
+    },
+    {
+      "aggregate_wall_s": 1488.8440000000119,
+      "arm": "U-TILE-3",
+      "arm_wall_s": 499.0,
+      "child_exit_code": 0,
+      "child_record_present": true,
+      "child_status": "COMPLETED_PASS",
+      "evidence_bytes_run_root": 19252387,
+      "guard": {
+        "action": null,
+        "action_monotonic_s": null,
+        "poll_interval_s": 0.25,
+        "rss_limit_bytes": 4294967296,
+        "sampled_max_rss_bytes": 827088896,
+        "samples": 1823
+      },
+      "monotonic_s": {
+        "end": 137402.75,
+        "invocation_t0": 135913.906,
+        "kill_at": 138683.75,
+        "soft_stop": 138623.75,
+        "start": 136903.75
+      },
+      "primary_outcome": "PASS",
+      "status": "COMPLETED_PASS",
+      "updates_done": 3000
+    },
+    {
+      "aggregate_wall_s": 1987.2190000000119,
+      "arm": "U-TILE-4",
+      "arm_wall_s": 498.31299999999464,
+      "child_exit_code": 0,
+      "child_record_present": true,
+      "child_status": "COMPLETED_PASS",
+      "evidence_bytes_run_root": 25668686,
+      "guard": {
+        "action": null,
+        "action_monotonic_s": null,
+        "poll_interval_s": 0.25,
+        "rss_limit_bytes": 4294967296,
+        "sampled_max_rss_bytes": 830214144,
+        "samples": 1820
+      },
+      "monotonic_s": {
+        "end": 137901.125,
+        "invocation_t0": 135913.906,
+        "kill_at": 139182.812,
+        "soft_stop": 139122.812,
+        "start": 137402.812
+      },
+      "primary_outcome": "PASS",
+      "status": "COMPLETED_PASS",
+      "updates_done": 3000
+    }
+  ],
+  "evidence_bytes_run_root": 25669235,
+  "evidence_within_cap": true,
+  "global_stop": null,
+  "interrupted": false,
+  "starts": 4,
+  "t0": 135913.906
+}

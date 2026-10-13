@@ -1,0 +1,189 @@
+{
+  "all_bit_identical": true,
+  "arms": {
+    "U-TILE-1": {
+      "all_bit_identical": true,
+      "eval_copy_unchanged": true,
+      "modes": {
+        "eval": {
+          "loaded_state_equals_recorded_final": true,
+          "metadata_point": "final",
+          "normalized": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "original": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "state_changed_by_forward": false
+        },
+        "train": {
+          "loaded_state_equals_recorded_final": true,
+          "metadata_point": "final",
+          "normalized": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "original": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "state_changed_by_forward": true
+        }
+      },
+      "normalized_sha256_equal": true,
+      "original_sha256_equal": true,
+      "replayed": true,
+      "tile_sha256_equal": true,
+      "train_copy_changed_as_recorded": true,
+      "train_minus_eval_bit_identical": true
+    },
+    "U-TILE-2": {
+      "all_bit_identical": true,
+      "eval_copy_unchanged": true,
+      "modes": {
+        "eval": {
+          "loaded_state_equals_recorded_final": true,
+          "metadata_point": "final",
+          "normalized": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "original": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "state_changed_by_forward": false
+        },
+        "train": {
+          "loaded_state_equals_recorded_final": true,
+          "metadata_point": "final",
+          "normalized": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "original": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "state_changed_by_forward": true
+        }
+      },
+      "normalized_sha256_equal": true,
+      "original_sha256_equal": true,
+      "replayed": true,
+      "tile_sha256_equal": true,
+      "train_copy_changed_as_recorded": true,
+      "train_minus_eval_bit_identical": true
+    },
+    "U-TILE-3": {
+      "all_bit_identical": true,
+      "eval_copy_unchanged": true,
+      "modes": {
+        "eval": {
+          "loaded_state_equals_recorded_final": true,
+          "metadata_point": "final",
+          "normalized": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "original": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "state_changed_by_forward": false
+        },
+        "train": {
+          "loaded_state_equals_recorded_final": true,
+          "metadata_point": "final",
+          "normalized": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "original": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "state_changed_by_forward": true
+        }
+      },
+      "normalized_sha256_equal": true,
+      "original_sha256_equal": true,
+      "replayed": true,
+      "tile_sha256_equal": true,
+      "train_copy_changed_as_recorded": true,
+      "train_minus_eval_bit_identical": true
+    },
+    "U-TILE-4": {
+      "all_bit_identical": true,
+      "eval_copy_unchanged": true,
+      "modes": {
+        "eval": {
+          "loaded_state_equals_recorded_final": true,
+          "metadata_point": "final",
+          "normalized": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "original": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "state_changed_by_forward": false
+        },
+        "train": {
+          "loaded_state_equals_recorded_final": true,
+          "metadata_point": "final",
+          "normalized": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "original": {
+            "bit_identical": true,
+            "differences": {}
+          },
+          "state_changed_by_forward": true
+        }
+      },
+      "normalized_sha256_equal": true,
+      "original_sha256_equal": true,
+      "replayed": true,
+      "tile_sha256_equal": true,
+      "train_copy_changed_as_recorded": true,
+      "train_minus_eval_bit_identical": true
+    }
+  },
+  "cg_fedllm_imported": false,
+  "cpu": {
+    "cuda_available": false,
+    "deterministic_algorithms": true,
+    "inter_op_threads": 24,
+    "intra_op_threads": 24,
+    "torch_version": "2.14.0+cu130"
+  },
+  "grad_enabled_during_forwards": false,
+  "module_sha256": {
+    "__mp_main__": "7e169d948669dd1d9e6c982b9669b6abfc3434b66212b3cd3970350aaf8993e8",
+    "ucov_control": "5ed24447aa022ce5c684884c57a814c041084fd46b7f621fc89884c7009bb848",
+    "uformer_ae": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606",
+    "uformer_blocks": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747",
+    "uid_common": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230",
+    "uid_r1_control": "bdd8aff7dbccc5f5b33a6da3b6314e35beef5a53501c5c0de9a3a1a65800c074",
+    "upp_classify": "31904623223cc18b216b97bf2cfaa27734487c38a93ebe57efca5de84abecbb1",
+    "urp_control": "6d3dba01015dd2edf09717d6b7856f03ef0683083d872ff486f9a0eef1ffd076"
+  },
+  "optimizer_created": false,
+  "recorded_local": "2026-10-13T21:59:27+0800",
+  "repository_modules_imported": [
+    "__mp_main__",
+    "ucov_control",
+    "uformer_ae",
+    "uformer_blocks",
+    "uid_common",
+    "uid_r1_control",
+    "upp_classify",
+    "urp_control"
+  ],
+  "run_root_files_unchanged": true
+}
