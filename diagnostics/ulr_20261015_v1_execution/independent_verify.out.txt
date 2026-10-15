@@ -1,0 +1,1 @@
+﻿{"all_ok": true, "problems": [], "bad_sums": 0, "bytes_ok": true, "agree": "21/21", "sha256": "b05c68e95a398d7c0795d3a1d18a71beccdf7617f7ca211ba4ecc0f1060d43e6"}

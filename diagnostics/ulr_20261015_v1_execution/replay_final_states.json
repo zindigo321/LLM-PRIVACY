@@ -1,0 +1,178 @@
+{
+  "all_bit_identical": true,
+  "cg_fedllm_imported": false,
+  "checks": {
+    "C1-REDUCED:FINAL.receiver_tensors": true,
+    "C1-REDUCED:FINAL.state_file_unchanged": true,
+    "C1-REDUCED:STEP0.receiver_tensors": true,
+    "C1-REDUCED:STEP0.state_file_unchanged": true,
+    "C16-CONTROL:FINAL.receiver_tensors": true,
+    "C16-CONTROL:FINAL.state_file_unchanged": true,
+    "C16-CONTROL:STEP0.receiver_tensors": true,
+    "C16-CONTROL:STEP0.state_file_unchanged": true,
+    "C4-REDUCED:FINAL.receiver_tensors": true,
+    "C4-REDUCED:FINAL.state_file_unchanged": true,
+    "C4-REDUCED:STEP0.receiver_tensors": true,
+    "C4-REDUCED:STEP0.state_file_unchanged": true,
+    "EARLY.C1-REDUCED:FINAL": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "EARLY.C1-REDUCED:STEP0": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "EARLY.C16-CONTROL:FINAL": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "EARLY.C16-CONTROL:STEP0": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "EARLY.C4-REDUCED:FINAL": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "EARLY.C4-REDUCED:STEP0": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "EARLY.SOURCE-LEAKY": {
+      "float_y_equal": true,
+      "int8_y_equal": true
+    },
+    "LATE.C1-REDUCED:FINAL": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "LATE.C1-REDUCED:STEP0": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "LATE.C16-CONTROL:FINAL": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "LATE.C16-CONTROL:STEP0": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "LATE.C4-REDUCED:FINAL": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "LATE.C4-REDUCED:STEP0": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "LATE.SOURCE-LEAKY": {
+      "float_y_equal": true,
+      "int8_y_equal": true
+    },
+    "TRAIN.C1-REDUCED:FINAL": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "TRAIN.C1-REDUCED:STEP0": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "TRAIN.C16-CONTROL:FINAL": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "TRAIN.C16-CONTROL:STEP0": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "TRAIN.C4-REDUCED:FINAL": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "TRAIN.C4-REDUCED:STEP0": {
+      "payload_lengths": true,
+      "receiver_y_equal_saved": true,
+      "receiver_y_n_equal_saved": true,
+      "sender_bytes_equal_saved": true,
+      "wrong_payload_sums_equal": true,
+      "zero_wire_sums_equal": true
+    },
+    "TRAIN.SOURCE-LEAKY": {
+      "float_y_equal": true,
+      "int8_y_equal": true
+    }
+  },
+  "global_rng_unchanged": true,
+  "grad_enabled": false,
+  "imports_only_from_package": true,
+  "wall_s": 238.81199999999808
+}

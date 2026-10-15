@@ -1,0 +1,51 @@
+﻿{
+ "sha256": "16e2ebdf1cc88a7fb757540081d577193ce84ec79d789919d2953d7a50ae0f4a",
+ "checkouts": {
+  "original_repository": [
+   "0ad2795c7d03f6d0ea76992ee83864a00efd6b03",
+   348,
+   347
+  ],
+  "ucx_worktree": [
+   "0238e3b774e0f97f171bc5cbc53f1ec06aa49c7e",
+   99,
+   99
+  ],
+  "uho_worktree": [
+   "0238e3b774e0f97f171bc5cbc53f1ec06aa49c7e",
+   88,
+   88
+  ],
+  "publish_ucov_worktree": [
+   "e8594140054495e575d5a995594d611295bdb0eb",
+   0,
+   0
+  ],
+  "publish_uformer_worktree": [
+   "eec6a79aa16a5350a47b26ac73597c5d2e7c001f",
+   0,
+   0
+  ],
+  "uoa_worktree": [
+   "0238e3b774e0f97f171bc5cbc53f1ec06aa49c7e",
+   116,
+   116
+  ]
+ },
+ "trees": {
+  "D:/projects-cd/cg-fedllm-reproduction/diagnostics": 409,
+  "D:/projects-cd/cg-fedllm-reproduction/.claude": 491,
+  "D:/projects-cd/cg-fedllm-ucx/diagnostics": 583,
+  "D:/projects-cd/cg-fedllm-uho/diagnostics": 602,
+  "D:/projects-cd/cg-fedllm-uoa/diagnostics": 603
+ },
+ "run_roots": {
+  "D:/cgfed-runs/uoa_20261014_v1": 72,
+  "D:/cgfed-runs/ucx_20261014_v1": 41,
+  "D:/cgfed-runs/uho_20261014_v1": 16,
+  "D:/cgfed-runs/ucov_20261013_v1": 38,
+  "D:/cgfed-runs/urp_20261013_v1": 11,
+  "D:/cgfed-runs/urc_20261013_v1": 11,
+  "D:/cgfed-runs/uid_20261012_v2_r1": 16
+ }
+}

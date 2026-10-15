@@ -252,12 +252,18 @@ experimental claims.
 
 [Historical results](docs/uformer_publication_note.md) cover U-CHECK, U-FIT, R-FIT and U-PATCH;
 their original strict and EP-v1 verdicts are preserved.
-[UPP-20261013-v1](diagnostics/upp_20261013_v1/POLICY.md) is the primary policy from UCOV-v1:
+[UPP-20261013-v1](diagnostics/upp_20261013_v1/POLICY.md) is UCOV-v1's historical primary policy:
 valid final eval results in original space must have RSE <= 0.50, cosine >= 0.65,
 and MSE <= 0.80 times the best constant baseline.
 [UCOV-v1 coverage results](docs/uformer_coverage_publication.md): all four registered tile fits passed (4/4; at least 3 required).
 Each arm trained a fresh model on its own tile. These one-seed fits use a 64:1 expanded latent;
 they establish neither compression nor held-out generalization. Strict and EP-v1 results are secondary references.
+
+**Latest published result — ULR-20261015-v1:** [latent-reduction results and evidence](docs/uformer_latent_reduction_publication.md).
+Independent receivers reconstructed from exactly 256 / 64 / 16 fp32 values per tile (1,024 / 256 / 64 B).
+All three adapted arms passed the more permissive UPP-20261014-v1 screen, but lost to input PCA at matched element counts;
+none reached normalized MSE 1e-4. This establishes element reduction, not a learned-compression advantage or FAF utility.
+The archive preserves completed results; follow-up research and SSBD remain paused. External tensors are required for full replay.
 
 The remaining project-level goals are to determine whether a viable operational
 compressed FAF path can be established, and to reproduce the

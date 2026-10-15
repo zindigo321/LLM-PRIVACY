@@ -29,3 +29,8 @@ diagnostics/upp_20261013_v1/** -text !eol
 diagnostics/ucov_20261013_v1/** -text !eol
 diagnostics/ucov_20261013_v1_execution/** -text !eol
 diagnostics/uformer_coverage_archive_20261013/raw_runs/** -text !eol
+
+# Preserve the closed ULR evidence and original run-record bytes (20261015).
+diagnostics/ulr_20261015_v1/** -text !eol
+diagnostics/ulr_20261015_v1_execution/** -text !eol
+diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/** -text !eol

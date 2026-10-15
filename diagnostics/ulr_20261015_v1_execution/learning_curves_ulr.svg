@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="440" font-family="sans-serif" font-size="11">
+<rect width="100%" height="100%" fill="white"/>
+<text x="320.0" y="18" text-anchor="middle" font-size="13">Adaptation: minibatch loss (lines) and full-TRAIN eval (dots), normalized MSE</text>
+<line x1="70" y1="390" x2="570" y2="390" stroke="black"/><line x1="70" y1="30" x2="70" y2="390" stroke="black"/>
+<text x="320.0" y="428" text-anchor="middle">adaptation updates (after 12,000 inherited source updates)</text>
+<text x="16" y="210.0" transform="rotate(-90 16 210.0)" text-anchor="middle">normalized MSE (log)</text>
+<line x1="70" y1="367.1" x2="570" y2="367.1" stroke="#eee"/><text x="64" y="371.1" text-anchor="end">1e-4</text>
+<line x1="70" y1="237.1" x2="570" y2="237.1" stroke="#eee"/><text x="64" y="241.1" text-anchor="end">1e-3</text>
+<line x1="70" y1="107.2" x2="570" y2="107.2" stroke="#eee"/><text x="64" y="111.2" text-anchor="end">1e-2</text>
+<text x="70.0" y="406" text-anchor="middle">0</text>
+<text x="153.3" y="406" text-anchor="middle">1000</text>
+<text x="236.7" y="406" text-anchor="middle">2000</text>
+<text x="320.0" y="406" text-anchor="middle">3000</text>
+<text x="403.3" y="406" text-anchor="middle">4000</text>
+<text x="486.7" y="406" text-anchor="middle">5000</text>
+<text x="570.0" y="406" text-anchor="middle">6000</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="1.2" points="70.1,82.6 78.3,81.7 86.7,75.4 95.0,82.1 103.3,83.9 111.7,80.5 120.0,84.8 128.3,80.4 136.7,79.6 145.0,73.5 153.3,83.3 161.7,84.5 170.0,84.0 178.3,85.4 186.7,79.3 195.0,84.4 203.3,83.3 211.7,86.0 220.0,87.8 228.3,74.7 236.7,86.3 245.0,90.0 253.3,85.6 261.7,83.0 270.0,85.7 278.3,86.8 286.7,81.5 295.0,82.8 303.3,80.9 311.7,89.1 320.0,89.9 328.3,80.1 336.7,89.7 345.0,80.9 353.3,82.1 361.7,87.4 370.0,84.1 378.3,88.8 386.7,84.5 395.0,82.1 403.3,83.6 411.7,87.8 420.0,84.6 428.3,90.2 436.7,82.0 445.0,84.4 453.3,81.6 461.7,80.7 470.0,81.9 478.3,85.1 486.7,84.1 495.0,87.7 503.3,84.2 511.7,82.7 520.0,87.8 528.3,85.1 536.7,88.1 545.0,80.8 553.3,79.7 561.7,81.0 570.0,83.0"/>
+<circle cx="70.0" cy="83.2" r="4" fill="#1f77b4" stroke="black"/>
+<circle cx="153.3" cy="83.7" r="4" fill="#1f77b4" stroke="black"/>
+<circle cx="320.0" cy="84.7" r="4" fill="#1f77b4" stroke="black"/>
+<circle cx="570.0" cy="85.7" r="4" fill="#1f77b4" stroke="black"/>
+<polyline fill="none" stroke="#2ca02c" stroke-width="1.2" points="70.1,65.5 78.3,66.1 86.7,60.0 95.0,66.3 103.3,68.0 111.7,65.1 120.0,70.4 128.3,63.9 136.7,63.9 145.0,58.3 153.3,67.7 161.7,69.1 170.0,68.4 178.3,68.9 186.7,64.7 195.0,68.5 203.3,66.4 211.7,71.1 220.0,72.2 228.3,59.6 236.7,70.7 245.0,74.9 253.3,68.1 261.7,67.7 270.0,68.7 278.3,71.3 286.7,66.9 295.0,66.1 303.3,65.1 311.7,73.5 320.0,73.6 328.3,65.1 336.7,74.1 345.0,65.2 353.3,65.8 361.7,71.4 370.0,68.7 378.3,72.8 386.7,68.5 395.0,66.7 403.3,67.9 411.7,70.4 420.0,68.1 428.3,72.9 436.7,65.5 445.0,68.6 453.3,66.1 461.7,65.2 470.0,66.3 478.3,68.7 486.7,67.5 495.0,70.9 503.3,67.5 511.7,67.8 520.0,71.3 528.3,68.2 536.7,70.6 545.0,65.1 553.3,63.0 561.7,64.8 570.0,66.9"/>
+<circle cx="70.0" cy="66.2" r="4" fill="#2ca02c" stroke="black"/>
+<circle cx="153.3" cy="68.0" r="4" fill="#2ca02c" stroke="black"/>
+<circle cx="320.0" cy="68.8" r="4" fill="#2ca02c" stroke="black"/>
+<circle cx="570.0" cy="69.5" r="4" fill="#2ca02c" stroke="black"/>
+<polyline fill="none" stroke="#d62728" stroke-width="1.2" points="70.1,60.1 78.3,59.7 86.7,54.4 95.0,61.5 103.3,61.5 111.7,59.7 120.0,65.3 128.3,57.9 136.7,58.4 145.0,52.9 153.3,61.8 161.7,63.0 170.0,62.2 178.3,63.0 186.7,59.8 195.0,61.7 203.3,60.0 211.7,65.5 220.0,66.0 228.3,54.0 236.7,65.7 245.0,68.4 253.3,61.8 261.7,62.6 270.0,62.6 278.3,64.3 286.7,60.3 295.0,60.6 303.3,59.5 311.7,67.3 320.0,68.1 328.3,59.6 336.7,68.2 345.0,60.1 353.3,61.2 361.7,65.5 370.0,62.8 378.3,66.7 386.7,62.1 395.0,60.3 403.3,62.3 411.7,63.1 420.0,62.1 428.3,66.9 436.7,60.3 445.0,62.0 453.3,60.2 461.7,59.7 470.0,60.6 478.3,62.9 486.7,61.2 495.0,65.4 503.3,61.1 511.7,60.9 520.0,63.7 528.3,62.5 536.7,64.0 545.0,59.3 553.3,57.8 561.7,60.0 570.0,61.8"/>
+<circle cx="70.0" cy="61.0" r="4" fill="#d62728" stroke="black"/>
+<circle cx="153.3" cy="62.0" r="4" fill="#d62728" stroke="black"/>
+<circle cx="320.0" cy="62.9" r="4" fill="#d62728" stroke="black"/>
+<circle cx="570.0" cy="63.4" r="4" fill="#d62728" stroke="black"/>
+<line x1="70" y1="367.1" x2="570" y2="367.1" stroke="black" stroke-dasharray="8,4"/>
+<line x1="578" y1="42" x2="600" y2="42" stroke="#1f77b4" stroke-width="2"/>
+<circle cx="589" cy="42" r="3" fill="#1f77b4"/>
+<text x="604" y="46">C16-CONTROL (256 elements)</text>
+<line x1="578" y1="57" x2="600" y2="57" stroke="#2ca02c" stroke-width="2"/>
+<circle cx="589" cy="57" r="3" fill="#2ca02c"/>
+<text x="604" y="61">C4-REDUCED (64 elements)</text>
+<line x1="578" y1="72" x2="600" y2="72" stroke="#d62728" stroke-width="2"/>
+<circle cx="589" cy="72" r="3" fill="#d62728"/>
+<text x="604" y="76">C1-REDUCED (16 elements)</text>
+<line x1="578" y1="87" x2="600" y2="87" stroke="black" stroke-width="2" stroke-dasharray="8,4"/>
+<text x="604" y="91">secondary target 1e-4</text>
+</svg>

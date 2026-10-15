@@ -1,0 +1,24 @@
+launch wrapper: powershell pid=58940 started 2026-10-15T11:09:43.264+08:00
+cwd: D:\projects-cd\cg-fedllm-ulr\diagnostics\ulr_20261015_v1
+manifest: 8db0e72f9f9315c105dd0e82b5bc189b15f078ff4b300b18222f666bd9b00bb6
+env: CUDA_VISIBLE_DEVICES=-1 HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=[]
+before: cpu_load_percent=20 free_physical_bytes=8381267968 at 2026-10-15T11:09:45.548+08:00
+
+command status_before: D:/conda_envs/cgfedllm/python.exe -B ulr_supervise.py --status
+start: 2026-10-15T11:09:45.551+08:00
+end: 2026-10-15T11:09:46.614+08:00
+exit_code: 0
+
+command scientific: D:/conda_envs/cgfedllm/python.exe -B ulr_supervise.py --scientific --frozen-ulr-manifest-sha256 8db0e72f9f9315c105dd0e82b5bc189b15f078ff4b300b18222f666bd9b00bb6
+start: 2026-10-15T11:09:46.645+08:00
+end: 2026-10-15T11:38:14.154+08:00
+exit_code: 0
+
+after: cpu_load_percent=15 free_physical_bytes=8438771712 at 2026-10-15T11:38:16.286+08:00
+
+command status_after: D:/conda_envs/cgfedllm/python.exe -B ulr_supervise.py --status
+start: 2026-10-15T11:38:16.287+08:00
+end: 2026-10-15T11:38:17.328+08:00
+exit_code: 0
+
+LAUNCH_SCRIPT_END scientific_exit_code=0 at 2026-10-15T11:38:17.329+08:00

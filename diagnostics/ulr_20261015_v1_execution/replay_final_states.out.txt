@@ -1,0 +1,1 @@
+﻿{"all_bit_identical": true, "wall_s": 238.81199999999808}

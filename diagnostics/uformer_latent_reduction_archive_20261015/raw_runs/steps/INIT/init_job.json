@@ -1,0 +1,74 @@
+{
+  "batch_size": 8,
+  "cpu": {
+    "inter_op_threads": 24,
+    "intra_op_threads": 24
+  },
+  "diag_batches": 4,
+  "diag_schedule_seed": 20261014,
+  "fixture_hooks": null,
+  "forbidden_paths": [
+    "D:/cgfed-runs/ucx_20261014_v1/steps/BUILD-HELDOUT/heldout_tiles.safetensors",
+    "D:/cgfed-runs/ucx_20261014_v1/steps/EVAL/eval_predictions.safetensors",
+    "D:/cgfed-runs/ucx_20261014_v1/steps/EVAL/eval_payloads.safetensors",
+    "D:/cgfed-runs/ucx_20261014_v1/steps/EVAL/eval_record.json",
+    "D:/cgfed-runs/uoa_20261014_v1/steps/EVAL/eval_predictions.safetensors",
+    "D:/cgfed-runs/uoa_20261014_v1/steps/EVAL/eval_payloads.safetensors",
+    "D:/cgfed-runs/uoa_20261014_v1/steps/EVAL/eval_latents.safetensors",
+    "D:/cgfed-runs/uoa_20261014_v1/steps/EVAL/eval_sums.safetensors",
+    "D:/cgfed-runs/uoa_20261014_v1/steps/EVAL/eval_record.json"
+  ],
+  "hard_stop_monotonic": 55108.953,
+  "mode": "scientific",
+  "model": {
+    "core_depth": 2,
+    "core_layers": 3,
+    "down_channels": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      16
+    ],
+    "down_strides": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+    ],
+    "final_kernel": 7,
+    "in_channels": 1,
+    "input_hw": [
+      32,
+      32
+    ],
+    "mlp_ratio": 4.0,
+    "num_heads": 2,
+    "qkv_bias": true,
+    "shift_flag": true,
+    "stem_channels": 1,
+    "stem_kernel": 3,
+    "win_size": 4
+  },
+  "n_train_tiles": 1440,
+  "out_dir": "D:\\cgfed-runs\\ulr_20261015_v1\\steps\\INIT",
+  "phase": "init",
+  "poll_interval_s": 0.25,
+  "protocol_id": "ULR-20261015-v1",
+  "scale_global": 0.013576022496348934,
+  "soft_stop_monotonic": 55038.953,
+  "source": {
+    "file_sha256": "ce8659b156670de1bc386ad1df48ce0497bbe450737476ec7fb2f0d696db3646",
+    "path": "D:/cgfed-runs/uoa_20261014_v1/steps/U-LEAKY-LONG/state_12000.safetensors",
+    "state_sha256": "2f8e67bfcb3a3d797f93f8f52abbcd12498a50905c57ea0975092788f64df3ea"
+  },
+  "stop_file": "D:\\cgfed-runs\\ulr_20261015_v1\\steps\\INIT\\STOP_REQUEST_init",
+  "supervisor_create_time": 1792033786.6487052,
+  "supervisor_pid": 55812,
+  "torch_version": "2.14.0+cu130",
+  "train_tiles": "D:/cgfed-runs/ucx_20261014_v1/steps/BUILD-TRAIN/train_tiles.safetensors",
+  "train_tiles_sha256": "4e72647f4b21a518308a825be69094332e7ca48e7e5fc997514a357656fbf18b"
+}

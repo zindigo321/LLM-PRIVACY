@@ -1,0 +1,9 @@
+﻿{
+ "analysis_sha256": "977c1a52b74da14d89b2dadce1d6d6cfad292327679adf043c4166e1474abef6",
+ "problems": [],
+ "files": {
+  "learning_curves.csv": "bc4baa57c8ade551e36ab4af2a50c93147e51a750701b9feb23d9c5c84d22b64",
+  "checkpoints.csv": "b8f71e61d7915926ecc996b78b1540383fbd1b24bd18842592b656281c8b30aa",
+  "per_tile_metrics.csv": "4f6f32025ba1c7d45be61a8af13ca8adc20ad8171dd0f8cbc81e68fd0e9fec7c"
+ }
+}

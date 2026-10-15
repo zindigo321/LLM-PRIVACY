@@ -255,3 +255,6 @@ lm_eval_output/
 !diagnostics/ucov_20261013_v1/checks/fixture_tile_3.safetensors
 !diagnostics/ucov_20261013_v1/input/tile_4.safetensors
 !diagnostics/ucov_20261013_v1/checks/fixture_tile_4.safetensors
+
+# Include the six reviewed, manifest-bound ULR pre-freeze logs.
+!diagnostics/ulr_20261015_v1/evidence/final1_20261015/*.log

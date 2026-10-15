@@ -1,0 +1,4 @@
+command: D:/conda_envs/cgfedllm/python.exe -m ruff check . --exclude vendor
+exit_code: 0
+
+All checks passed!

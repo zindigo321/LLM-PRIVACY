@@ -1,0 +1,6 @@
+ruff_check exit=0
+ruff_format_check exit=0
+test_ulr_units exit=0
+test_ulr_lifecycle exit=0
+test_upp_20261014_classify_in_place exit=0
+status_readonly exit=0
