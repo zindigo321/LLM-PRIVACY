@@ -1,0 +1,143 @@
+{
+  "arm": "C16-CONTROL",
+  "checkpoint_eval_1440_s": 14.11780159999762,
+  "code": {
+    "pilot_sha256": "c64f5c51c6198c50bc1b84621c45245fa29acf30559e218c2c29e6da6e014a5e",
+    "train_update_source_sha256": "c3d533e79f3ae6f45b72f8bdbbf03d2ac33cbe0c3340823f612c3b2cb2c493f1",
+    "ulr_model_sha256": "a7c685f90246ecc07d02bf659d79d1d026bb0009829ec341566e64212c3d2fb9"
+  },
+  "cpu": {
+    "cuda_available": false,
+    "deterministic_algorithms": true,
+    "inter_op_threads": 24,
+    "intra_op_threads": 24,
+    "torch_version": "2.14.0+cu130"
+  },
+  "curve_point_s": {
+    "max": 0.12718390000372892,
+    "mean": 0.09297420000317895,
+    "median": 0.07789140000386396,
+    "min": 0.07384730000194395,
+    "n": 3,
+    "p90_nearest_rank": 0.12718390000372892
+  },
+  "discarded": {
+    "model_and_optimizer_deleted": true,
+    "states_written_only_to_deleted_temp_dir": true
+  },
+  "memory": {
+    "available_end_bytes": 7699619840,
+    "os_peak_wset_bytes": 700260352,
+    "rss_end_bytes": 695017472
+  },
+  "mode": "full",
+  "model": {
+    "c": 16,
+    "parameters": 70595,
+    "seed": 20261016,
+    "wire_latent_numel": 256
+  },
+  "modules": {
+    "ucx_codecs": {
+      "path": "vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_codecs.py",
+      "sha256": "5a63fa6b47c6fe2495c77af28b94b4a05403e3e4f2e8fd3cb81decda0b8dc6f2"
+    },
+    "ucx_common": {
+      "path": "vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_common.py",
+      "sha256": "ef6dbf42a6abc168fda23d59a33bcd41e4d09aeea1ec43b26b0dc68e757f9925"
+    },
+    "ucx_model": {
+      "path": "vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_model.py",
+      "sha256": "14af8734b680c9b20ac5e9487d8a01affaac9df179f615c42e75d412309c0c04"
+    },
+    "ucx_spec": {
+      "path": "vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_spec.py",
+      "sha256": "d1d65a40465cc6d21402e09f84760de06ef3432e775826e2eadcbee0853483da"
+    },
+    "uformer_ae": {
+      "path": "vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uformer_ae.py",
+      "sha256": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606"
+    },
+    "uformer_blocks": {
+      "path": "vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uformer_blocks.py",
+      "sha256": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747"
+    },
+    "uid_common": {
+      "path": "vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uid_common.py",
+      "sha256": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230"
+    },
+    "ulr_common": {
+      "path": "ulr_common.py",
+      "sha256": "9c5b9c992deaab80d6a5ed24bda808564d4280443ef6d00f942d7756241a0ed3"
+    },
+    "ulr_model": {
+      "path": "ulr_model.py",
+      "sha256": "a7c685f90246ecc07d02bf659d79d1d026bb0009829ec341566e64212c3d2fb9"
+    },
+    "ulr_spec": {
+      "path": "ulr_spec.py",
+      "sha256": "0e0d46a17b83e94f66f3d55deafbd26c558f9a445c1431026400920b2b7a700b"
+    },
+    "uoa_common": {
+      "path": "vendor/uoa_20261014_v1/uoa_common.py",
+      "sha256": "90f7edc45af1bbbbabb5dc8ddfe04add3c159950d2610ef5d7aaa7a3142fcbda"
+    },
+    "uoa_model": {
+      "path": "vendor/uoa_20261014_v1/uoa_model.py",
+      "sha256": "c60847d364db1d97c60486e0d1ce81b02c8f1a77f3562fc3476833f834c10f24"
+    },
+    "uoa_spec": {
+      "path": "vendor/uoa_20261014_v1/uoa_spec.py",
+      "sha256": "0aed13f3449edec168ada8a10b191c9f98d35af90b03a81f869f2ff92fc050fa"
+    }
+  },
+  "payload_bytes": [
+    1024
+  ],
+  "pid": 44000,
+  "receive_per_tile_s": 0.004676211000005423,
+  "send_per_tile_s": 0.004673614499988616,
+  "source_float_per_tile_s": 0.009620225500002562,
+  "state_save_s": 0.05607840000084252,
+  "steps": {
+    "all_losses_finite": true,
+    "completed": 25,
+    "measured": 20,
+    "measured_s": {
+      "max": 0.07261949999519857,
+      "mean": 0.057488194999677944,
+      "median": 0.059593199999653734,
+      "min": 0.03616030000557657,
+      "n": 20,
+      "p90_nearest_rank": 0.0656983999942895
+    },
+    "per_step_s": [
+      0.09283059999870602,
+      0.057800499998847954,
+      0.05122069999924861,
+      0.06318539999483619,
+      0.06534529999771621,
+      0.052542500001436565,
+      0.06202059999486664,
+      0.06691919999866514,
+      0.07261949999519857,
+      0.04823780000151601,
+      0.06561450000299374,
+      0.06414700000459561,
+      0.04551930000161519,
+      0.03616030000557657,
+      0.048417199999676086,
+      0.04984239999612328,
+      0.05347369999799412,
+      0.0656983999942895,
+      0.06415229999402072,
+      0.0565887000047951,
+      0.059801399998832494,
+      0.06098070000007283,
+      0.059394500000053085,
+      0.05784200000198325,
+      0.05979189999925438
+    ],
+    "warmup": 5
+  }
+}

@@ -1,0 +1,4 @@
+command: D:/conda_envs/cgfedllm/python.exe -m ruff format --check . --exclude vendor
+exit_code: 0
+
+20 files already formatted

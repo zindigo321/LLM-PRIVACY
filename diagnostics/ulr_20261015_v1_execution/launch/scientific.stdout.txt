@@ -1,0 +1,44 @@
+{
+  "aggregate_wall_s": 1707.1719999999987,
+  "counters": {
+    "channel_pca_fits": 1,
+    "neural_starts": 3
+  },
+  "evidence_bytes_run_root": 167668070,
+  "evidence_within_cap": true,
+  "interrupted": false,
+  "ledger_after": {
+    "channel_pca_fits": 1,
+    "invocation_closed": true,
+    "invocations": 1,
+    "neural_starts": 3,
+    "records": [
+      "end_C1-REDUCED.json",
+      "end_C16-CONTROL.json",
+      "end_C4-REDUCED.json",
+      "end_EVAL.json",
+      "end_INIT.json",
+      "invocation_001.json",
+      "invocation_001_end.json",
+      "start_C1-REDUCED.json",
+      "start_C16-CONTROL.json",
+      "start_C4-REDUCED.json",
+      "start_EVAL.json",
+      "start_INIT.json"
+    ],
+    "steps": {
+      "C1-REDUCED": "COMPLETED",
+      "C16-CONTROL": "COMPLETED",
+      "C4-REDUCED": "COMPLETED",
+      "EVAL": "COMPLETED",
+      "INIT": "COMPLETED"
+    }
+  },
+  "steps": {
+    "C1-REDUCED": "COMPLETED",
+    "C16-CONTROL": "COMPLETED",
+    "C4-REDUCED": "COMPLETED",
+    "EVAL": "COMPLETED",
+    "INIT": "COMPLETED"
+  }
+}

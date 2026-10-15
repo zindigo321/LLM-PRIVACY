@@ -1,0 +1,16 @@
+{
+  "channel_pca_fits": 0,
+  "invocation_closed": false,
+  "invocations": 0,
+  "neural_starts": 0,
+  "protocol_id": "ULR-20261015-v1",
+  "records": [],
+  "run_root_exists": false,
+  "steps": {
+    "C1-REDUCED": "NOT_STARTED",
+    "C16-CONTROL": "NOT_STARTED",
+    "C4-REDUCED": "NOT_STARTED",
+    "EVAL": "NOT_STARTED",
+    "INIT": "NOT_STARTED"
+  }
+}

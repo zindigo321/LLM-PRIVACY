@@ -1,0 +1,5 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider checks/test_ulr_lifecycle.py
+exit_code: 0
+
+......                                                                   [100%]
+6 passed in 64.06s (0:01:04)

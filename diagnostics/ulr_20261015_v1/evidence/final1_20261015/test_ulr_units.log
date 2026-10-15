@@ -1,0 +1,5 @@
+command: D:/conda_envs/cgfedllm/python.exe -B -m pytest -q -p no:cacheprovider checks/test_ulr_units.py
+exit_code: 0
+
+...........                                                              [100%]
+11 passed in 3.83s

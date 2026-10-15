@@ -1,0 +1,1175 @@
+{
+  "study": "ULR-20261015-v1",
+  "publication_date": "2026-10-15",
+  "source_base_commit": "0238e3b774e0f97f171bc5cbc53f1ec06aa49c7e",
+  "frozen_manifest_sha256": "8db0e72f9f9315c105dd0e82b5bc189b15f078ff4b300b18222f666bd9b00bb6",
+  "published_evidence_file_count": 149,
+  "published_evidence_bytes": 5701408,
+  "published_evidence": [
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/checks/build_manifest_ulr.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/checks/build_manifest_ulr.py",
+      "bytes": 3591,
+      "sha256": "3f83deb971e7a2d6cdf2328a2c2697ec6d793cd4f65f0a0ee4daf97d56cde3b3"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/checks/build_ulr_config.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/checks/build_ulr_config.py",
+      "bytes": 7168,
+      "sha256": "ebe30d70fbc424617e6ebe8ea6a4a605d7b0b5e2ddb86e2fdccf5a8f7e301d6d"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/checks/make_fixture.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/checks/make_fixture.py",
+      "bytes": 6329,
+      "sha256": "fd5abf42cd125460eb92a62fb9c20db306c768774b8a08f9d5136b519b6e08b6"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/checks/run_all_checks.ps1",
+      "repository_path": "diagnostics/ulr_20261015_v1/checks/run_all_checks.ps1",
+      "bytes": 1949,
+      "sha256": "6c983030d8923af726fafe98acd975edca67d176d155e740f3750d569cb284a6"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/checks/test_ulr_lifecycle.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/checks/test_ulr_lifecycle.py",
+      "bytes": 5697,
+      "sha256": "838fa4d089942c82fc1a3da8878e955ea1658658a957b53b7c666f89862bb5cb"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/checks/test_ulr_units.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/checks/test_ulr_units.py",
+      "bytes": 8565,
+      "sha256": "2dd96199a1a6cb5f5aea81ee268f0a78604433308c19f11136d406b45e745247"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/checks/write_source_inventory.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/checks/write_source_inventory.py",
+      "bytes": 3466,
+      "sha256": "2ee1125be9b2f4ec67d48c3f9e2a935cfffec49cb574c4a1f888f387f359f1f9"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/evidence/final1_20261015/ruff_check.log",
+      "repository_path": "diagnostics/ulr_20261015_v1/evidence/final1_20261015/ruff_check.log",
+      "bytes": 110,
+      "sha256": "b7e5f2d11fa52cb80c59ef5cb5de799c7270d131749b096cefe38544bbd8917c"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/evidence/final1_20261015/ruff_format_check.log",
+      "repository_path": "diagnostics/ulr_20261015_v1/evidence/final1_20261015/ruff_format_check.log",
+      "bytes": 127,
+      "sha256": "0373ff5f90b57e0c58658ad2b968e3cac71e78950e1edcb3003eb38618b3d7c8"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/evidence/final1_20261015/status_readonly.log",
+      "repository_path": "diagnostics/ulr_20261015_v1/evidence/final1_20261015/status_readonly.log",
+      "bytes": 454,
+      "sha256": "e9f0e827bd3485f3cf5f6e37835f8ccefc062704bdb7702064ce982c1db219ea"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/evidence/final1_20261015/SUMMARY.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1/evidence/final1_20261015/SUMMARY.txt",
+      "bytes": 157,
+      "sha256": "e2a8818b7ae51d1e6c8a309fe33514e946d46283b0c75e416892aad74621b48f"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/evidence/final1_20261015/test_ulr_lifecycle.log",
+      "repository_path": "diagnostics/ulr_20261015_v1/evidence/final1_20261015/test_ulr_lifecycle.log",
+      "bytes": 233,
+      "sha256": "1871c2d6c9d9163c6d0d45f30f904ccf717ba618590f00960ced9b362dad50a4"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/evidence/final1_20261015/test_ulr_units.log",
+      "repository_path": "diagnostics/ulr_20261015_v1/evidence/final1_20261015/test_ulr_units.log",
+      "bytes": 219,
+      "sha256": "e74fd92f349b33bf08d3fd305ca2bbb76f01b2627f0c1973990a0a015e4b71d7"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/evidence/final1_20261015/test_upp_20261014_classify_in_place.log",
+      "repository_path": "diagnostics/ulr_20261015_v1/evidence/final1_20261015/test_upp_20261014_classify_in_place.log",
+      "bytes": 363,
+      "sha256": "e72fb86fc551d9220c3a170df4d61e48b34642c68e9f8a9476eb58450e66f73c"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/manifest_ulr.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/manifest_ulr.json",
+      "bytes": 14132,
+      "sha256": "8db0e72f9f9315c105dd0e82b5bc189b15f078ff4b300b18222f666bd9b00bb6"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C1-REDUCED_child.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C1-REDUCED_child.json",
+      "bytes": 4617,
+      "sha256": "e6ff9279fb9101e983012acce0e42dc16b8b81a457fc012ed8f7588c7e92f3d3"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C1-REDUCED_record.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C1-REDUCED_record.json",
+      "bytes": 6365,
+      "sha256": "84a59d57a8895b96e2dac4f97043e0d8527a38d626d855eb91b954ade58d65ca"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C1-REDUCED_record.stderr.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C1-REDUCED_record.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C1-REDUCED_record.stdout.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C1-REDUCED_record.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C1-REDUCED_started.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C1-REDUCED_started.txt",
+      "bytes": 34,
+      "sha256": "1acac9c8c7ed1925bb9f52a2d8d81abb0c7ddcf76dde3cb23cccdf21ed23ca32"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C16-CONTROL_child.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C16-CONTROL_child.json",
+      "bytes": 4629,
+      "sha256": "fbd67ee5f4e07f34777af0392bc7eab263f63e041b46a9b40f0d4a6de25d1bab"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C16-CONTROL_record.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C16-CONTROL_record.json",
+      "bytes": 6379,
+      "sha256": "ca240e64a98aab1f4db554a609bd4bbf86ae167edc43f58e3d61f6669aa899c1"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C16-CONTROL_record.stderr.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C16-CONTROL_record.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C16-CONTROL_record.stdout.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C16-CONTROL_record.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C16-CONTROL_started.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C16-CONTROL_started.txt",
+      "bytes": 34,
+      "sha256": "0e9101ac60435acbf2f7df88954ebd4fdebd442aa41441255c0e52e22e793ca3"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C4-REDUCED_child.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C4-REDUCED_child.json",
+      "bytes": 4631,
+      "sha256": "eec15decdee6f1fb1f22d249ac1c9df04cb6d3bf980a18f7b394fd0568589da7"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C4-REDUCED_record.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C4-REDUCED_record.json",
+      "bytes": 6380,
+      "sha256": "cfd206f43fa141fc2622b6288037a7bd62149eb553938e889e960d37c876951a"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C4-REDUCED_record.stderr.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C4-REDUCED_record.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C4-REDUCED_record.stdout.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C4-REDUCED_record.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/pilot_C4-REDUCED_started.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/pilot_C4-REDUCED_started.txt",
+      "bytes": 34,
+      "sha256": "587afa5c403c7ad59369ca3e1c7597684697d3a9e1ff17e12816990d471c54e1"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/resource_pilot.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/resource_pilot.py",
+      "bytes": 6912,
+      "sha256": "c64f5c51c6198c50bc1b84621c45245fa29acf30559e218c2c29e6da6e014a5e"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preflight/run_resource_pilot.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/preflight/run_resource_pilot.py",
+      "bytes": 6737,
+      "sha256": "026be64cc06ca209a12589d308d9c22ed09164d397fe0817dc5cfb9b08fe3eeb"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preparation/fingerprint_protected.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/preparation/fingerprint_protected.py",
+      "bytes": 5333,
+      "sha256": "28321765b7b45de63cf3a4b1daf117fac5c513caf36df9a299e999a6f9fac800"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preparation/protected_fingerprint_before.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/preparation/protected_fingerprint_before.json",
+      "bytes": 673187,
+      "sha256": "16e2ebdf1cc88a7fb757540081d577193ce84ec79d789919d2953d7a50ae0f4a"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/preparation/protected_fingerprint_prefreeze.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/preparation/protected_fingerprint_prefreeze.json",
+      "bytes": 673187,
+      "sha256": "16e2ebdf1cc88a7fb757540081d577193ce84ec79d789919d2953d7a50ae0f4a"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/protocol.md",
+      "repository_path": "diagnostics/ulr_20261015_v1/protocol.md",
+      "bytes": 13417,
+      "sha256": "6c4ba301d009c4dccc853dacc108eea0dd803296b51eaa75a0c054f4443f4834"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/end_C1-REDUCED.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/end_C1-REDUCED.json",
+      "bytes": 431,
+      "sha256": "ef107a44e4308f08dce607a16a384b4f27008f2f2893cf2ad410cdfe478fe3e6"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/end_C16-CONTROL.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/end_C16-CONTROL.json",
+      "bytes": 430,
+      "sha256": "c8596cbb31455c867d5aa46b185d4e35bce235809c4187e7895ae945475479e4"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/end_C4-REDUCED.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/end_C4-REDUCED.json",
+      "bytes": 431,
+      "sha256": "de362fa1c6aa0d48fcd975acbb6a48c819ee8b61b1eef143fa7399f7df6ed0be"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/end_EVAL.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/end_EVAL.json",
+      "bytes": 424,
+      "sha256": "7b3cff3f08ea24bcad9192181b29d9fc99df3c38446c09745bda16442f715bd7"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/end_INIT.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/end_INIT.json",
+      "bytes": 422,
+      "sha256": "bd122740a40e9e17ff7cd9a7d8734e431684b4a0519a2d8612f33d9487d3c644"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/invocation_001.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/invocation_001.json",
+      "bytes": 1846,
+      "sha256": "e53e23c60c5d755286c9d093bcd6edc59d5640affd5a69e3d63ee824d57c19bc"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/invocation_001_end.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/invocation_001_end.json",
+      "bytes": 299,
+      "sha256": "15dcbae52518388a4eb0415d5db09d2b2b30de217281e1e7c81dcc849b4c619d"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/start_C1-REDUCED.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/start_C1-REDUCED.json",
+      "bytes": 159,
+      "sha256": "75ac0f5fa87bfbf96a57c605118f3b24df56d0150df218c2f9d3c104a0c1af5a"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/start_C16-CONTROL.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/start_C16-CONTROL.json",
+      "bytes": 160,
+      "sha256": "c039c2cfb4346e78642081e4361f2df61c11e4897bd68c41964ccebb53b8833f"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/start_C4-REDUCED.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/start_C4-REDUCED.json",
+      "bytes": 159,
+      "sha256": "3d269d00436c7116f87df79af6060d732ff06bf98033e917c73b87aa728a674e"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/start_EVAL.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/start_EVAL.json",
+      "bytes": 1608,
+      "sha256": "7bfacde1165cd7064f52dfe16c7a8e1f5b7d67b52ba866de112d669bc971fdb1"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/scientific_ledger_mirror/start_INIT.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/scientific_ledger_mirror/start_INIT.json",
+      "bytes": 96,
+      "sha256": "0a1471c103eaf632d819621af504ac2eb31585d089dc676a13faf9e96aa721e2"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/SOURCE_INVENTORY.md",
+      "repository_path": "diagnostics/ulr_20261015_v1/SOURCE_INVENTORY.md",
+      "bytes": 2901,
+      "sha256": "519f12bd86722be67f159a68e0f45987b73da09109274949ce5e7c08664389e5"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/ulr_analyze.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/ulr_analyze.py",
+      "bytes": 32851,
+      "sha256": "0bba41bd347b159a238ab9a02f8062b4cebd896c0b249b0f5a3bc0c6c5933acc"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/ulr_common.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/ulr_common.py",
+      "bytes": 5645,
+      "sha256": "9c5b9c992deaab80d6a5ed24bda808564d4280443ef6d00f942d7756241a0ed3"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/ulr_config.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/ulr_config.json",
+      "bytes": 19162,
+      "sha256": "ad5bd9f7316694d5fba9dd39a754e921802f8220e119d543e8a1cfd090dfd4e1"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/ulr_eval_child.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/ulr_eval_child.py",
+      "bytes": 15465,
+      "sha256": "9587b6e505ce6004f30ed8fc4d129cd76fc0b0fd1eb53a6b9073141b0bab3fca"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/ulr_init_child.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/ulr_init_child.py",
+      "bytes": 13919,
+      "sha256": "2c1fb4df91bbf8c7c83019b1ffce6f4c92a89b648c968d9a4413dcaf56027f8b"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/ulr_model.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/ulr_model.py",
+      "bytes": 14973,
+      "sha256": "a7c685f90246ecc07d02bf659d79d1d026bb0009829ec341566e64212c3d2fb9"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/ulr_spec.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/ulr_spec.py",
+      "bytes": 5991,
+      "sha256": "0e0d46a17b83e94f66f3d55deafbd26c558f9a445c1431026400920b2b7a700b"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/ulr_supervise.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/ulr_supervise.py",
+      "bytes": 22598,
+      "sha256": "52c16cbe59e939ed6386542a40e990802000673884a9b1eab2e5d0ed626f5bdb"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/ulr_train_child.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/ulr_train_child.py",
+      "bytes": 13029,
+      "sha256": "e76e78bd3733a403ef28bd9003d7ef0a8d7658d3d9ac7ff986cede05b7e331d3"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/UOA_CLARIFICATION_NOTE.md",
+      "repository_path": "diagnostics/ulr_20261015_v1/UOA_CLARIFICATION_NOTE.md",
+      "bytes": 2987,
+      "sha256": "fcdf4e9b1e210b34a9e4d9e956c218bfa7473348056d7cfe849cebd07bdac50c"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/uoa_codecs.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/uoa_codecs.py",
+      "bytes": 13060,
+      "sha256": "78fde1d4ddf1b483f5ae03d884084bf33511ec8116ba971221cafe675dac811a"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/uoa_common.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/uoa_common.py",
+      "bytes": 7117,
+      "sha256": "90f7edc45af1bbbbabb5dc8ddfe04add3c159950d2610ef5d7aaa7a3142fcbda"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/uoa_model.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/uoa_model.py",
+      "bytes": 12946,
+      "sha256": "c60847d364db1d97c60486e0d1ce81b02c8f1a77f3562fc3476833f834c10f24"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/uoa_spec.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/uoa_spec.py",
+      "bytes": 6149,
+      "sha256": "0aed13f3449edec168ada8a10b191c9f98d35af90b03a81f869f2ff92fc050fa"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/uoa_sums.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/uoa_sums.py",
+      "bytes": 2932,
+      "sha256": "612244d7091047456cd4dad19ac2bb11ecc47912aa830a43c96c8d62fa1c1340"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_codecs.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_codecs.py",
+      "bytes": 6843,
+      "sha256": "5a63fa6b47c6fe2495c77af28b94b4a05403e3e4f2e8fd3cb81decda0b8dc6f2"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_common.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_common.py",
+      "bytes": 9282,
+      "sha256": "ef6dbf42a6abc168fda23d59a33bcd41e4d09aeea1ec43b26b0dc68e757f9925"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_model.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_model.py",
+      "bytes": 4867,
+      "sha256": "14af8734b680c9b20ac5e9487d8a01affaac9df179f615c42e75d412309c0c04"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_spec.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_spec.py",
+      "bytes": 6188,
+      "sha256": "d1d65a40465cc6d21402e09f84760de06ef3432e775826e2eadcbee0853483da"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uformer_ae.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uformer_ae.py",
+      "bytes": 8544,
+      "sha256": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uformer_blocks.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uformer_blocks.py",
+      "bytes": 10213,
+      "sha256": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uid_common.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uid_common.py",
+      "bytes": 9691,
+      "sha256": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/uid_20261012_v2_r1/uid_r1_measure.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/uid_20261012_v2_r1/uid_r1_measure.py",
+      "bytes": 5965,
+      "sha256": "76b1bba28217812aff3985c19fcd1940f50cfa70e2a27ee5b2f7cab8236fc760"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/upp_20261014_v1/upp_20261014_classify.py",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/upp_20261014_v1/upp_20261014_classify.py",
+      "bytes": 18934,
+      "sha256": "423a8a44e47ab3445db65e6aca6818f892824de01a1f3f7053111e4619925957"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/upp_20261014_v1/upp_policy.json",
+      "repository_path": "diagnostics/ulr_20261015_v1/vendor/uoa_20261014_v1/vendor/upp_20261014_v1/upp_policy.json",
+      "bytes": 3800,
+      "sha256": "a7e357df98bc79d5541103196b543c9fd7236f2df57679269eb6c8ac1bc692b7"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/analysis/analysis.json",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/analysis/analysis.json",
+      "bytes": 580736,
+      "sha256": "977c1a52b74da14d89b2dadce1d6d6cfad292327679adf043c4166e1474abef6"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/analysis/checkpoints.csv",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/analysis/checkpoints.csv",
+      "bytes": 1015,
+      "sha256": "b8f71e61d7915926ecc996b78b1540383fbd1b24bd18842592b656281c8b30aa"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/analysis/learning_curves.csv",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/analysis/learning_curves.csv",
+      "bytes": 55356,
+      "sha256": "bc4baa57c8ade551e36ab4af2a50c93147e51a750701b9feb23d9c5c84d22b64"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/analysis/per_tile_metrics.csv",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/analysis/per_tile_metrics.csv",
+      "bytes": 1302575,
+      "sha256": "4f6f32025ba1c7d45be61a8af13ca8adc20ad8171dd0f8cbc81e68fd0e9fec7c"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/CONTINUATION_CHECKPOINT.md",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/CONTINUATION_CHECKPOINT.md",
+      "bytes": 3033,
+      "sha256": "5477fce362bd3954d9990111b785e5b583be6fe7975bc0b0c7a016c56c741fc8"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/element_count_vs_quality.svg",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/element_count_vs_quality.svg",
+      "bytes": 6403,
+      "sha256": "5e27db6e4420dfe7b485023a9217d7438899032a609f8d855787ea3b40e49d89"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/EVIDENCE_INVENTORY_SHA256.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/EVIDENCE_INVENTORY_SHA256.txt",
+      "bytes": 27570,
+      "sha256": "f7b5ca7f4c324532efed3dda04365f60d5294775c67209b73767ca83235a13c3"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/EXECUTION_AUTHORIZATION.md",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/EXECUTION_AUTHORIZATION.md",
+      "bytes": 1296,
+      "sha256": "8e6450fe3ff0db4d2732e4ee295478a74dbda76ffe0368764b0badbea9d27c7b"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/independent_verification.json",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/independent_verification.json",
+      "bytes": 8209,
+      "sha256": "b05c68e95a398d7c0795d3a1d18a71beccdf7617f7ca211ba4ecc0f1060d43e6"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/independent_verify.out.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/independent_verify.out.txt",
+      "bytes": 166,
+      "sha256": "2870e40ecf36648626daa9c73277bb14073da8b2262d84776652bf2fe5b1ee88"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/independent_verify.py",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/independent_verify.py",
+      "bytes": 12032,
+      "sha256": "be10760ee8d5b06169c87faa370e6220071c67277929392b33c98839f2788ac7"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/launch/COMMANDS_AND_EXIT_CODES.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/launch/COMMANDS_AND_EXIT_CODES.txt",
+      "bytes": 1167,
+      "sha256": "810bd8384259f429ba37500c278e8c9f19d629249150b71dcb0e7407254d5ee5"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/launch/scientific.stderr.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/launch/scientific.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/launch/scientific.stdout.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/launch/scientific.stdout.txt",
+      "bytes": 1082,
+      "sha256": "550bc9d68f08be8c49314a9b3783542dbd32d13832fe62ad1dfe1fe51db291b0"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/launch/status_after.stderr.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/launch/status_after.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/launch/status_after.stdout.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/launch/status_after.stdout.txt",
+      "bytes": 687,
+      "sha256": "ed5481d211536bec8603a2428c62e61612e04e6b0800dc4935903afd3639b291"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/launch/status_before.stderr.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/launch/status_before.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/launch/status_before.stdout.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/launch/status_before.stdout.txt",
+      "bytes": 368,
+      "sha256": "b6e5e609af9cabb4a42ee0b092a807b9200c9a4297b671993479f54fcc0dce6c"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/launch_scientific.ps1",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/launch_scientific.ps1",
+      "bytes": 3313,
+      "sha256": "fcc14939489f14ff33273a9573e1144d94c6f8672bdb76e98e24979fd05b79ed"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/learning_curves_ulr.svg",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/learning_curves_ulr.svg",
+      "bytes": 5186,
+      "sha256": "b95edbdc45b072a4494d53d6ddc25e692a02434210feb54711f0c06c5c0e847f"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/make_figures.py",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/make_figures.py",
+      "bytes": 7695,
+      "sha256": "d082abcc828ff23559c3994aa2def7dd8d49a0954c55e3b4ce334b7af3a963ca"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/prelaunch_verify.out.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/prelaunch_verify.out.txt",
+      "bytes": 440,
+      "sha256": "d66f3502ebe5b4f9f49f6f90edbeb24fc8fa6869d844f30ec837d2a048f67711"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/prelaunch_verify.py",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/prelaunch_verify.py",
+      "bytes": 3304,
+      "sha256": "a70c2eb5924a34dce4f2edbda1b139fa538b05dacccd94693c0f9776fa3d826d"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/protected_fingerprint_after.json",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/protected_fingerprint_after.json",
+      "bytes": 673187,
+      "sha256": "16e2ebdf1cc88a7fb757540081d577193ce84ec79d789919d2953d7a50ae0f4a"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/protected_fingerprint_after.out.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/protected_fingerprint_after.out.txt",
+      "bytes": 1273,
+      "sha256": "bd3dcce1448010e4a6d23d1959beea77e7ef05b5629fdbc4c6b4a8feaa9cc361"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/protected_fingerprint_comparison.out.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/protected_fingerprint_comparison.out.txt",
+      "bytes": 50,
+      "sha256": "ce1feab58c939114a4fd63da5fa40fd849f4f638c41d63f66081b21210d42896"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/PUBLICATION_HANDOFF.md",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/PUBLICATION_HANDOFF.md",
+      "bytes": 4892,
+      "sha256": "c6718259868bca50901b9bf41467c5cb26e0a4474bc4fede29c2d1e2a5b3ff3f"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/replay_final_states.json",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/replay_final_states.json",
+      "bytes": 5805,
+      "sha256": "facc655ebc66e92bf6cf8ac9076b3b305a3028dd64339d3cdb36e922638a8192"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/replay_final_states.out.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/replay_final_states.out.txt",
+      "bytes": 62,
+      "sha256": "a0f5ae14393a0f0a92053a06f06b98f361d4ca8fd90207fae0e48d6e630478ad"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/replay_final_states.py",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/replay_final_states.py",
+      "bytes": 6492,
+      "sha256": "b46a80e85e3140522ab2a179d85103fffbca80f784c9eb96d9e3589bc936909a"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/REPORT.md",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/REPORT.md",
+      "bytes": 21255,
+      "sha256": "1e809ed4d8c5ad98429ada097ef8785e40ea9cad2c50ebca847f41567a02f7fd"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/report_tables.md",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/report_tables.md",
+      "bytes": 10518,
+      "sha256": "9acc7a5bbef8a897dc37ad5017a6298d2b863be3ea72e6ed524b4b04f54494f8"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/report_tables.py",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/report_tables.py",
+      "bytes": 8144,
+      "sha256": "9e7c35450c31f1bbc7b49c0691e074d69ffd9cd1fb654504b91e50b98c6d98b6"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/ulr_analyze.out.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/ulr_analyze.out.txt",
+      "bytes": 411,
+      "sha256": "89d1757a6e081584178d6f07284085cc0ee99d328f31256753d4ce425f51fe87"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/verify_manifest_after.out.txt",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/verify_manifest_after.out.txt",
+      "bytes": 761,
+      "sha256": "d8c1f8ed1a3c9db5c418910d58f43be5489349e4a777a39cd0eba39c03f7fe7b"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/verify_manifest_after.py",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/verify_manifest_after.py",
+      "bytes": 1199,
+      "sha256": "a843f52e63581ecbb45c87783e03d873549fc39ffc56db641c0e217efa1286e0"
+    },
+    {
+      "source_path": "D:/projects-cd/cg-fedllm-ulr/diagnostics/ulr_20261015_v1_execution/write_inventory.py",
+      "repository_path": "diagnostics/ulr_20261015_v1_execution/write_inventory.py",
+      "bytes": 1200,
+      "sha256": "4ab74775a029bcae1b5a7a28dbe3a0dd28d5a4f127675a7091da2d0d11fc8272"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/end_C1-REDUCED.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/end_C1-REDUCED.json",
+      "bytes": 431,
+      "sha256": "ef107a44e4308f08dce607a16a384b4f27008f2f2893cf2ad410cdfe478fe3e6"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/end_C16-CONTROL.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/end_C16-CONTROL.json",
+      "bytes": 430,
+      "sha256": "c8596cbb31455c867d5aa46b185d4e35bce235809c4187e7895ae945475479e4"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/end_C4-REDUCED.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/end_C4-REDUCED.json",
+      "bytes": 431,
+      "sha256": "de362fa1c6aa0d48fcd975acbb6a48c819ee8b61b1eef143fa7399f7df6ed0be"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/end_EVAL.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/end_EVAL.json",
+      "bytes": 424,
+      "sha256": "7b3cff3f08ea24bcad9192181b29d9fc99df3c38446c09745bda16442f715bd7"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/end_INIT.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/end_INIT.json",
+      "bytes": 422,
+      "sha256": "bd122740a40e9e17ff7cd9a7d8734e431684b4a0519a2d8612f33d9487d3c644"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/invocation_001.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/invocation_001.json",
+      "bytes": 1846,
+      "sha256": "e53e23c60c5d755286c9d093bcd6edc59d5640affd5a69e3d63ee824d57c19bc"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/invocation_001_end.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/invocation_001_end.json",
+      "bytes": 299,
+      "sha256": "15dcbae52518388a4eb0415d5db09d2b2b30de217281e1e7c81dcc849b4c619d"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/start_C1-REDUCED.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/start_C1-REDUCED.json",
+      "bytes": 159,
+      "sha256": "75ac0f5fa87bfbf96a57c605118f3b24df56d0150df218c2f9d3c104a0c1af5a"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/start_C16-CONTROL.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/start_C16-CONTROL.json",
+      "bytes": 160,
+      "sha256": "c039c2cfb4346e78642081e4361f2df61c11e4897bd68c41964ccebb53b8833f"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/start_C4-REDUCED.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/start_C4-REDUCED.json",
+      "bytes": 159,
+      "sha256": "3d269d00436c7116f87df79af6060d732ff06bf98033e917c73b87aa728a674e"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/start_EVAL.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/start_EVAL.json",
+      "bytes": 1608,
+      "sha256": "7bfacde1165cd7064f52dfe16c7a8e1f5b7d67b52ba866de112d669bc971fdb1"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/ledger/start_INIT.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/ledger/start_INIT.json",
+      "bytes": 96,
+      "sha256": "0a1471c103eaf632d819621af504ac2eb31585d089dc676a13faf9e96aa721e2"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/checkpoints.jsonl",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C1-REDUCED/checkpoints.jsonl",
+      "bytes": 7199,
+      "sha256": "d62ba187f5b22497329c72dfcbabfb2d5aebdad04095925bf91101020c864a55"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/curve.jsonl",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C1-REDUCED/curve.jsonl",
+      "bytes": 168541,
+      "sha256": "fbd5f87df433441cb4450d8bf5c5750efd999c68565054136faafb23ebd20dfb"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/train.stderr.txt",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C1-REDUCED/train.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/train.stdout.txt",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C1-REDUCED/train.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/train_job.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C1-REDUCED/train_job.json",
+      "bytes": 3033,
+      "sha256": "a6dd244a049016a8a81e085d45140f05710c87c5aab317b4a46fbb318e32c94d"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/train_record.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C1-REDUCED/train_record.json",
+      "bytes": 174966,
+      "sha256": "54e8723c21a71d5768d9a7ec901bdeb5c9e00285b5e82c569a189740ab689cb1"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/checkpoints.jsonl",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C16-CONTROL/checkpoints.jsonl",
+      "bytes": 9567,
+      "sha256": "fba7e1dea4797a87e8b59bbb9095b4b74d4f5ddea502d0884ab56c02a8bfa175"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/curve.jsonl",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C16-CONTROL/curve.jsonl",
+      "bytes": 168830,
+      "sha256": "c75268f3c251efbdef47110a152efcde85c731fd0ed6553e4f0424128f0b295d"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/train.stderr.txt",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C16-CONTROL/train.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/train.stdout.txt",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C16-CONTROL/train.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/train_job.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C16-CONTROL/train_job.json",
+      "bytes": 3037,
+      "sha256": "8b34b8bea56fbf32b72b527845d3053724b4bc6dc765f815af1ade9f7ef2c318"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/train_record.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C16-CONTROL/train_record.json",
+      "bytes": 174870,
+      "sha256": "1e852c36719c3074b698570e2ea2f2df8d1ab0d9e8f8d4ce00149f3b53f87c15"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/checkpoints.jsonl",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C4-REDUCED/checkpoints.jsonl",
+      "bytes": 7662,
+      "sha256": "2c6578738edf7de18ed02cd8f95f135c1d7bb333b72c4b80f89c98cd365557d4"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/curve.jsonl",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C4-REDUCED/curve.jsonl",
+      "bytes": 168369,
+      "sha256": "0a643edea6c2d5bdfe38b779c6fc50cafb420bdc9651764d560cc288d7a25f80"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/train.stderr.txt",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C4-REDUCED/train.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/train.stdout.txt",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C4-REDUCED/train.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/train_job.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C4-REDUCED/train_job.json",
+      "bytes": 3033,
+      "sha256": "f5ec670712e3ace7a2fca3417d1f90ac271eb9c2b9731763d5822e45a70f6f55"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/train_record.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/C4-REDUCED/train_record.json",
+      "bytes": 174850,
+      "sha256": "68ee5c448e1785115f5169d6ad68a371b07aaca836dbc645cc70824bbd4698cd"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/EVAL/eval.stderr.txt",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/EVAL/eval.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/EVAL/eval.stdout.txt",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/EVAL/eval.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/EVAL/eval_job.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/EVAL/eval_job.json",
+      "bytes": 17534,
+      "sha256": "5ed90220691c35ca5c01238cb0440700a4dba5ea269752c4d683533abf4e8424"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/EVAL/eval_record.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/EVAL/eval_record.json",
+      "bytes": 82967,
+      "sha256": "1216d93591863b599d39ef4d19eecbc12848bf855fa980bec2fce8ab550ad7a8"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/INIT/init.stderr.txt",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/INIT/init.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/INIT/init.stdout.txt",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/INIT/init.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/INIT/init_job.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/INIT/init_job.json",
+      "bytes": 2289,
+      "sha256": "6ee0c46a598345c00c9dbadd62a8c43b955453670e14ae9c46b9876fec1431dc"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/INIT/init_record.json",
+      "repository_path": "diagnostics/uformer_latent_reduction_archive_20261015/raw_runs/steps/INIT/init_record.json",
+      "bytes": 24361,
+      "sha256": "30910706593e8025ba3f8fc8262073ba7225145a0a361800cfcf0dac99bbb211"
+    }
+  ],
+  "external_run_artifacts": [
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/checkpoint_00000_train_sums.safetensors",
+      "bytes": 93912,
+      "sha256": "cbfcb34ac8847a54996e843d1ab4569699bee7b68d528f6b79b21447399be5c2",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/checkpoint_01000_train_sums.safetensors",
+      "bytes": 93920,
+      "sha256": "7b02546bd7b0afe23a0f94969a6632697976db2b41e9b5d63a33241678cbef00",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/checkpoint_03000_train_sums.safetensors",
+      "bytes": 93920,
+      "sha256": "7bf365abd60b8767ec54fd56eff44272bcec1375e8494e207787b84b78b26c16",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/checkpoint_06000_train_sums.safetensors",
+      "bytes": 93920,
+      "sha256": "81fdc433e3853918f38a4fbddf4fde7d026c2d2aa1280b00d983c41ed4fdf77e",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/state_00000.safetensors",
+      "bytes": 338920,
+      "sha256": "b78c48a3402fb9ae35f16f50a0d07cdc2cf2e5667a92478b07526e62b4b062d5",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/state_01000.safetensors",
+      "bytes": 338928,
+      "sha256": "24f8a6d9de40f6dcef6b3a5cd7d57747b99a44f927e01e193dcdd575ac2e0d43",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/state_03000.safetensors",
+      "bytes": 338928,
+      "sha256": "39383145acaf7ce2f6760a0109729304cfebc6e6a90cff9515ba1204fe081846",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C1-REDUCED/state_06000.safetensors",
+      "bytes": 338928,
+      "sha256": "6eaee8e40eff53b8bcf464037581270c879024908d940f6a4b843968a60c8f31",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/checkpoint_00000_train_sums.safetensors",
+      "bytes": 93920,
+      "sha256": "091cce005cee4887c999f8ab22713fcd72db418c9208c9034f1cef81dc919dca",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/checkpoint_01000_train_sums.safetensors",
+      "bytes": 93920,
+      "sha256": "4459eda9ebc097f56f3ba9e13d0bd6f8c3aacbce6b01194d0d24f2da8993eb3d",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/checkpoint_03000_train_sums.safetensors",
+      "bytes": 93920,
+      "sha256": "d428f0c0944bea1ad24b229b50db592b0a3f84a6bfd0611fd5daed138572d2a0",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/checkpoint_06000_train_sums.safetensors",
+      "bytes": 93920,
+      "sha256": "f10eb4ad4497deb8cacc3961bc982ca29efa237ec8230368cfcc055cb6fcb109",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/state_00000.safetensors",
+      "bytes": 340908,
+      "sha256": "449f3b209144d2955460df1e19b8b9db5a682057704b717c48162aa84c688bb3",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/state_01000.safetensors",
+      "bytes": 340908,
+      "sha256": "14cce5a370cfb9f2c9e69693c24b250704a2132cfde4d2276be31429a7975c96",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/state_03000.safetensors",
+      "bytes": 340908,
+      "sha256": "94e34bb00b2dac65b4ce9ebb72eee1a96dd8feb9bb96eee679d7ac4c39e52be5",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C16-CONTROL/state_06000.safetensors",
+      "bytes": 340908,
+      "sha256": "b431e8aed486405f16ffa600163957fc84d805a1196525478aebefeb7d3f62b8",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/checkpoint_00000_train_sums.safetensors",
+      "bytes": 93912,
+      "sha256": "e51348f6b2d4f76013296e28fc695ec15e17da2d9e6a02160dbf420d4c162393",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/checkpoint_01000_train_sums.safetensors",
+      "bytes": 93920,
+      "sha256": "ed7fe91021c8f2e8b600ec729e1f1e01dfd626ddeefe9484a1eecf9c865f986d",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/checkpoint_03000_train_sums.safetensors",
+      "bytes": 93920,
+      "sha256": "9930451d3b2df2a0fb734f657aa4897a1068cee59edac0d37ff758a5003aab13",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/checkpoint_06000_train_sums.safetensors",
+      "bytes": 93920,
+      "sha256": "6a97073b109b210e2b798bea120bec63de027c7d007c13c022d4c9bc4fb05ea9",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/state_00000.safetensors",
+      "bytes": 339316,
+      "sha256": "1062cdad1747edaf974bb6d8bbef9c345d50aa260ea5a297e0adacfe980f05a7",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/state_01000.safetensors",
+      "bytes": 339324,
+      "sha256": "ce977cd97174578296f6f352b26ac8dcb08d98a327aa86327e8ef59196859bf3",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/state_03000.safetensors",
+      "bytes": 339324,
+      "sha256": "8a07a884e907b05631ad9536ce6ef72597805da294b45448edae4ed4124e59e4",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/C4-REDUCED/state_06000.safetensors",
+      "bytes": 339324,
+      "sha256": "a97b511e050f33f8d39413c794b903a8db131d5e893169d796cb3589fc9ef3b7",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/EVAL/eval_latents.safetensors",
+      "bytes": 7218280,
+      "sha256": "5c2115f2cec1f217cea69f86ce5653b1b13fee9ce4f54cabc3b4e108f6efe522",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/EVAL/eval_payloads.safetensors",
+      "bytes": 12818416,
+      "sha256": "7e4220029c24e2a0922812763a64d7d33ef587e173d04b75303ea460f87a7952",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/EVAL/eval_predictions.safetensors",
+      "bytes": 127406864,
+      "sha256": "607fe4c586e8aa15e7231d1dbe8fc147830304a1b6bdce7616d4be71cda283cb",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/EVAL/eval_sums.safetensors",
+      "bytes": 12423528,
+      "sha256": "9cef82f9f6f2fb96a9826eaf6212da455221c0bdf27352a606b363889eb5993a",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/INIT/bridge_init.safetensors",
+      "bytes": 8756,
+      "sha256": "c77a52f93023053541a636196136f41afd96fe33cc081edccd8cce222106b96c",
+      "availability": "external_local_only; not included in Git"
+    },
+    {
+      "source_path": "D:/cgfed-runs/ulr_20261015_v1/steps/INIT/init_train_sums.safetensors",
+      "bytes": 1391304,
+      "sha256": "db0f97a29c2fd5fd46b55c1c51da28464b355b0b73783198e99f141a8c09d513",
+      "availability": "external_local_only; not included in Git"
+    }
+  ],
+  "external_bound_files": [
+    {
+      "bytes": 336780,
+      "path": "D:/cgfed-runs/uoa_20261014_v1/steps/U-LEAKY-LONG/state_12000.safetensors",
+      "role": "UOA source state (U-LEAKY-LONG, 12,000 updates)",
+      "sha256": "ce8659b156670de1bc386ad1df48ce0497bbe450737476ec7fb2f0d696db3646"
+    },
+    {
+      "bytes": 344,
+      "path": "D:/cgfed-runs/uoa_20261014_v1/steps/CALIB/latent_scales_U-LEAKY-LONG.safetensors",
+      "role": "UOA source latent scales",
+      "sha256": "9b92c62030eb27cf3517c116c86be4946b224483cd44891252bed1a81430024e"
+    },
+    {
+      "bytes": 144,
+      "path": "D:/cgfed-runs/uoa_20261014_v1/steps/STAGE-A/scalar4_levels.safetensors",
+      "role": "UOA SCALAR-4 levels",
+      "sha256": "be40b0dd3193403cdbb5983ef41fe310bcb2503e8551aca44cf912c17603ede7"
+    },
+    {
+      "bytes": 14074344,
+      "path": "D:/cgfed-runs/uoa_20261014_v1/steps/EVAL/eval_sums.safetensors",
+      "role": "UOA eval sums (post-run reproduction check only)",
+      "sha256": "f52d7b42e02aad2dd9e336f5c40f9a16e6f27c1ea092d51bfa9a5e42bdc156af"
+    },
+    {
+      "bytes": 5972912,
+      "path": "D:/cgfed-runs/uoa_20261014_v1/steps/EVAL/eval_latents.safetensors",
+      "role": "UOA eval latents (post-run reproduction check only)",
+      "sha256": "60c5ba6489d3088be5120b8233f113b670a2b189f20dd4b2211c42d4d56fa747"
+    },
+    {
+      "bytes": 5898432,
+      "path": "D:/cgfed-runs/ucx_20261014_v1/steps/BUILD-TRAIN/train_tiles.safetensors",
+      "role": "UCX TRAIN tiles",
+      "sha256": "4e72647f4b21a518308a825be69094332e7ca48e7e5fc997514a357656fbf18b"
+    },
+    {
+      "bytes": 2064656,
+      "path": "D:/cgfed-runs/ucx_20261014_v1/steps/BUILD-HELDOUT/heldout_tiles.safetensors",
+      "role": "UCX held-out tiles (EVAL only)",
+      "sha256": "ac1245453d8c64513d44f08186f70bf86cfa879fe01c8de911b16181d2e41e85"
+    },
+    {
+      "bytes": 4336,
+      "path": "D:/cgfed-runs/ucx_20261014_v1/steps/BUILD-TRAIN/train_mean_tile.safetensors",
+      "role": "UCX TRAIN mean tile",
+      "sha256": "0c4338c762a72ce1763a465eb282e4e279549b377ae7996fd55f11b7417ef793"
+    },
+    {
+      "bytes": 1052920,
+      "path": "D:/cgfed-runs/ucx_20261014_v1/steps/PCA-FIT/pca_decoder.safetensors",
+      "role": "UCX PCA-256 decoder (input-PCA comparators)",
+      "sha256": "7fceee6170635cc5ec2c2db64b62bfb608d27b0f33b2489eeaa0fae9d70e2546"
+    },
+    {
+      "bytes": 16148,
+      "path": "D:/projects-cd/cg-fedllm-uoa/diagnostics/uoa_20261014_v1/manifest_uoa.json",
+      "role": "UOA frozen manifest",
+      "sha256": "c8b30ab08abcdae5a3564ece49e77c64d305856b8d0041b1b7da8eda135446ed"
+    },
+    {
+      "bytes": 18348,
+      "path": "D:/projects-cd/cg-fedllm-uoa/diagnostics/uoa_20261014_v1/uoa_config.json",
+      "role": "UOA configuration (split keys, wrong map)",
+      "sha256": "ec8f20f9a514d838c16e9ec4927a70743b7fd70339c75c685428ae793b8bc69b"
+    },
+    {
+      "bytes": 359818,
+      "path": "D:/cgfed-runs/uoa_20261014_v1/steps/U-LEAKY-LONG/train_record.json",
+      "role": "UOA U-LEAKY-LONG training record",
+      "sha256": "254d996861784e943f59f59fbf4939fc1e59c945ed317ff632e0128e6ce525df"
+    }
+  ],
+  "source_verification": {
+    "manifest_entries_checked": 61,
+    "external_bound_entries_checked": 12,
+    "original_inventory_entries_checked": 178,
+    "original_inventory_sha256": "f7b5ca7f4c324532efed3dda04365f60d5294775c67209b73767ca83235a13c3",
+    "method": "Read-only SHA-256 and size comparison; no analysis, inference or training rerun."
+  },
+  "replay_complete": false,
+  "limitations": [
+    "Original absolute paths and historical instructions remain unchanged in frozen records.",
+    "Checkpoints, payload tensors, predictions and external UOA/UCX input artifacts are not published here.",
+    "This publication does not authorize relaunching the closed study or starting follow-up experiments.",
+    "Saved scientific verification outputs are historical; publication checks only byte integrity and repository scope.",
+    "The index covers copied evidence, not itself or newly authored publication documentation/tooling."
+  ]
+}

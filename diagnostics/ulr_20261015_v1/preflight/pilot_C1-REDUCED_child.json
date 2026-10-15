@@ -1,0 +1,143 @@
+{
+  "arm": "C1-REDUCED",
+  "checkpoint_eval_1440_s": 15.956790099997306,
+  "code": {
+    "pilot_sha256": "c64f5c51c6198c50bc1b84621c45245fa29acf30559e218c2c29e6da6e014a5e",
+    "train_update_source_sha256": "c3d533e79f3ae6f45b72f8bdbbf03d2ac33cbe0c3340823f612c3b2cb2c493f1",
+    "ulr_model_sha256": "a7c685f90246ecc07d02bf659d79d1d026bb0009829ec341566e64212c3d2fb9"
+  },
+  "cpu": {
+    "cuda_available": false,
+    "deterministic_algorithms": true,
+    "inter_op_threads": 24,
+    "intra_op_threads": 24,
+    "torch_version": "2.14.0+cu130"
+  },
+  "curve_point_s": {
+    "max": 0.14011290000053123,
+    "mean": 0.11644286666705739,
+    "median": 0.10594519999722252,
+    "min": 0.10327050000341842,
+    "n": 3,
+    "p90_nearest_rank": 0.14011290000053123
+  },
+  "discarded": {
+    "model_and_optimizer_deleted": true,
+    "states_written_only_to_deleted_temp_dir": true
+  },
+  "memory": {
+    "available_end_bytes": 7730724864,
+    "os_peak_wset_bytes": 696320000,
+    "rss_end_bytes": 692912128
+  },
+  "mode": "full",
+  "model": {
+    "c": 1,
+    "parameters": 70100,
+    "seed": 20261016,
+    "wire_latent_numel": 16
+  },
+  "modules": {
+    "ucx_codecs": {
+      "path": "vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_codecs.py",
+      "sha256": "5a63fa6b47c6fe2495c77af28b94b4a05403e3e4f2e8fd3cb81decda0b8dc6f2"
+    },
+    "ucx_common": {
+      "path": "vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_common.py",
+      "sha256": "ef6dbf42a6abc168fda23d59a33bcd41e4d09aeea1ec43b26b0dc68e757f9925"
+    },
+    "ucx_model": {
+      "path": "vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_model.py",
+      "sha256": "14af8734b680c9b20ac5e9487d8a01affaac9df179f615c42e75d412309c0c04"
+    },
+    "ucx_spec": {
+      "path": "vendor/uoa_20261014_v1/vendor/ucx_20261014_v1/ucx_spec.py",
+      "sha256": "d1d65a40465cc6d21402e09f84760de06ef3432e775826e2eadcbee0853483da"
+    },
+    "uformer_ae": {
+      "path": "vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uformer_ae.py",
+      "sha256": "a3ad6e3f2b6e6f009158276f5534e2c68bf42781df18a1c1d9fcd0f5867c8606"
+    },
+    "uformer_blocks": {
+      "path": "vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uformer_blocks.py",
+      "sha256": "3333f1862288e720d83aadbe8f171898f5f6943d2c0f58c9bd0132aba60b0747"
+    },
+    "uid_common": {
+      "path": "vendor/uoa_20261014_v1/vendor/uid_20261012_v2/uid_common.py",
+      "sha256": "f1f55dc90faddb0e4ac10be5fca0cc756592cf218dedb4fb90d1c4e82dc41230"
+    },
+    "ulr_common": {
+      "path": "ulr_common.py",
+      "sha256": "9c5b9c992deaab80d6a5ed24bda808564d4280443ef6d00f942d7756241a0ed3"
+    },
+    "ulr_model": {
+      "path": "ulr_model.py",
+      "sha256": "a7c685f90246ecc07d02bf659d79d1d026bb0009829ec341566e64212c3d2fb9"
+    },
+    "ulr_spec": {
+      "path": "ulr_spec.py",
+      "sha256": "0e0d46a17b83e94f66f3d55deafbd26c558f9a445c1431026400920b2b7a700b"
+    },
+    "uoa_common": {
+      "path": "vendor/uoa_20261014_v1/uoa_common.py",
+      "sha256": "90f7edc45af1bbbbabb5dc8ddfe04add3c159950d2610ef5d7aaa7a3142fcbda"
+    },
+    "uoa_model": {
+      "path": "vendor/uoa_20261014_v1/uoa_model.py",
+      "sha256": "c60847d364db1d97c60486e0d1ce81b02c8f1a77f3562fc3476833f834c10f24"
+    },
+    "uoa_spec": {
+      "path": "vendor/uoa_20261014_v1/uoa_spec.py",
+      "sha256": "0aed13f3449edec168ada8a10b191c9f98d35af90b03a81f869f2ff92fc050fa"
+    }
+  },
+  "payload_bytes": [
+    64
+  ],
+  "pid": 53308,
+  "receive_per_tile_s": 0.005562570500005677,
+  "send_per_tile_s": 0.004923234999987472,
+  "source_float_per_tile_s": 0.01060117449997051,
+  "state_save_s": 0.07402075000209152,
+  "steps": {
+    "all_losses_finite": true,
+    "completed": 25,
+    "measured": 20,
+    "measured_s": {
+      "max": 0.07359910000377567,
+      "mean": 0.0578902699995524,
+      "median": 0.06294364999848767,
+      "min": 0.03894469999795547,
+      "n": 20,
+      "p90_nearest_rank": 0.0663868999981787
+    },
+    "per_step_s": [
+      0.09571519999735756,
+      0.06167070000083186,
+      0.06340679999993881,
+      0.06585369999811519,
+      0.06435230000352021,
+      0.06318540000211215,
+      0.04532959999778541,
+      0.0540610000025481,
+      0.06297929999709595,
+      0.06540720000339206,
+      0.06561019999935525,
+      0.0663868999981787,
+      0.06716420000157086,
+      0.06535359999543289,
+      0.06465570000000298,
+      0.0645619999995688,
+      0.0629079999998794,
+      0.04370270000072196,
+      0.041027999999641906,
+      0.05104120000032708,
+      0.05721659999835538,
+      0.050319499998295214,
+      0.03894469999795547,
+      0.054350499995052814,
+      0.07359910000377567
+    ],
+    "warmup": 5
+  }
+}
